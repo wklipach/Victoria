@@ -25,12 +25,14 @@
     "@fortawesome/fontawesome-free": "^5.13.0",
     "@types/jquery": "^3.3.34",
     "bootstrap": "^4.4.1",
-    "core-js": "^2.5.4",
+    "core-js": "^2.6.11",
+    "crypto-js": "^4.0.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
     "popper": "^1.0.1",
     "popper.js": "^1.16.1",
-    "rxjs": "6.5.4",
+    "rxjs": "^6.5.4",
+    "rxjs-compat": "^6.5.4",
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
@@ -53,5 +55,8 @@
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1",
     "typescript": "~3.7.5"
-  }
+  },"browser": {
+  "crypto": false,
+  "stream": false
+}
 }

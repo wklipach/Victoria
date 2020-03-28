@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import * as $ from 'jquery';
-import {environment} from '../environments/environment.prod';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +9,9 @@ export class AppComponent {
   title = 'app';
 
   constructor() {
-    console.log(environment.production); // Logs false for default environment
+
   }
 
-
-  testing() {
-    console.log('!!!', $.fn.jquery);
-  }
 
 }
 
