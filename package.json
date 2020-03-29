@@ -55,8 +55,9 @@
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1",
     "typescript": "~3.7.5"
-  },"browser": {
-  "crypto": false,
-  "stream": false
-}
+  },
+  "browser": {
+    "crypto": false,
+    "stream": false
+  }
 }

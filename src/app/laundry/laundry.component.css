@@ -1,0 +1,14 @@
+h2{
+  margin: 2% auto 2% 2%;
+}
+span{
+  float: right;
+}
+
+.list-group{
+  margin-left: 2%;
+}
+button{
+  margin: 2% auto 2% 2%;
+  width:20%;
+}

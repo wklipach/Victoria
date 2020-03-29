@@ -12,12 +12,20 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {GlobalRef} from './services/globalref';
 import { ParlorComponent } from './parlor/parlor.component';
+import { LaundryComponent } from './laundry/laundry.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { FootComponent } from './foot/foot.component';
+import { HeadComponent } from './head/head.component';
 
 // определение маршрутов
 const appRoutes: Routes = [
   {path: '', component: SmainComponent},
   {path: 'login', component: LoginComponent},
   {path: 'parlor', component: ParlorComponent},
+  {path: 'laundry', component: LaundryComponent},
+  {path: 'contacts', component: ContactsComponent},
+  {path: 'head', component: HeadComponent},
+  {path: 'foot', component: FootComponent},
   {path: '**', component: NotFoundComponent }
 ];
 
@@ -29,7 +37,11 @@ const appRoutes: Routes = [
     LoginComponent,
     NotFoundComponent,
     SmainComponent,
-    ParlorComponent
+    ParlorComponent,
+    LaundryComponent,
+    ContactsComponent,
+    FootComponent,
+    HeadComponent
   ],
   imports: [
     BrowserModule,
