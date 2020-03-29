@@ -1,0 +1,106 @@
+<div class="wrapper">
+  <div class="top">Регистрация</div>
+
+  <div class="box">
+
+    <form [formGroup]="myForm" novalidate (ngSubmit)="submit()">
+
+      <label class="userName">Имя пользователя (Nic)</label>
+      <input type="text" class="inputUserName" id="userName" formControlName="userName" placeholder="Имя пользователя">
+      <!-- Проверяем вносимый логин. Если логин уже есть в базе, показываем лейбл -Имя пользователя занято, или наоборот -->
+      <div class="alertWrong"
+           *ngIf="myForm.controls['userName'].touched && myForm.controls['userName'].value.length === 0 ">
+        Не указано имя
+      </div>
+
+      <div *ngIf="myForm.controls['userName'].value.length > 0">
+
+        <div *ngIf="myForm.controls['userName'].invalid; else trueUserNameTemplate">
+          <div class="alertBusyName">Имя пользователя занято</div>
+        </div>
+
+        <ng-template #trueUserNameTemplate>
+          <div class="alertSuccess">Имя пользователя свободно</div>
+        </ng-template>
+
+      </div>
+
+      <!-- закончили проверку логина -->
+
+      <label class="email" for="inputEmail">Email</label>
+      <input type="email" class="inputEmail" id="inputEmail" placeholder="Email" formControlName="userEmail">
+
+      <!-- начало обработки почтовых ошибок -->
+
+      <div *ngIf="myForm.controls['userEmail'].dirty">
+
+        <div class="alertWrong"
+
+             *ngIf="myForm.controls['userEmail'].value.length === 0 ">
+          Не указан Email.
+        </div>
+
+
+        <div *ngIf="myForm.controls['userEmail'].value.length > 0">
+
+          <div *ngIf="myForm.controls['userEmail'].invalid; else trueSucc">
+
+            <div class="alertWrong"
+
+                 *ngIf="myForm.controls['userEmail'].hasError('errorEmailExists') === true">
+
+              Данный Email уже занят.
+
+            </div>
+
+            <div class="alertWrong"
+
+                 *ngIf="myForm.controls['userEmail'].hasError('email') === true">
+
+              Неверно введен Email.
+
+            </div>
+
+          </div>
+
+          <ng-template #trueSucc>
+
+            <div class="alertSuccess">Email свободен.</div>
+
+          </ng-template>
+
+        </div>
+
+      </div>
+
+      <!-- закончили обработку почтовых ошибок -->
+
+
+      <label for="inputPassword1">Пароль</label>
+      <input type="password" class="form-control" id="inputPassword1" placeholder="Password" formControlName="userPassword1">
+      <label for="inputPassword1">Повторите пароль</label>
+      <input type="password" class="form-control" id="inputPassword2" placeholder="Password" formControlName="userPassword2">
+
+
+      <div *ngIf="myForm.controls['userPassword2'].value.length > 0">
+        <div *ngIf="myForm.controls['userPassword2'].invalid; else truePassword2Template">
+          <div class="alertWrong">Повторный пароль не совпадает</div>
+        </div>
+      </div>
+
+      <ng-template #truePassword2Template>
+        <div class="alertSuccess">Пароль совпал</div>
+      </ng-template>
+
+      <div *ngIf="bPassword">
+        Пароли не совпадают
+      </div>
+
+
+      <button class="btn-register" [disabled]="myForm.invalid">Зарегистрироваться</button>
+
+    </form>
+  </div>
+</div>
+
+

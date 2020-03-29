@@ -16,6 +16,7 @@ import { LaundryComponent } from './laundry/laundry.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { FootComponent } from './foot/foot.component';
 import { HeadComponent } from './head/head.component';
+import { RegisterComponent } from './entrance/register/register.component';
 
 // определение маршрутов
 const appRoutes: Routes = [
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'parlor', component: ParlorComponent},
   {path: 'laundry', component: LaundryComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'contacts', component: ContactsComponent},
   {path: 'head', component: HeadComponent},
   {path: 'foot', component: FootComponent},
@@ -41,7 +43,8 @@ const appRoutes: Routes = [
     LaundryComponent,
     ContactsComponent,
     FootComponent,
-    HeadComponent
+    HeadComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

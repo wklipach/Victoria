@@ -1,9 +1,5 @@
-// 6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918 - это 12
-//    const encrypted = CryptoJS.SHA256('12');
-//    console.log('encrypted', encrypted.toString());
-
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserTable} from '../../class/UserTable';
 import {Router} from '@angular/router';
 import * as CryptoJS from 'crypto-js';
@@ -19,21 +15,27 @@ import {AuthService} from '../../services/auth-service.service';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
+  nStopMs = 1000;
   bConnected = false;
-  loginForm: FormGroup;
   public showErr = false;
   public showSucc = false;
   public sResTrouble = '';
   public stopCondition = false;
   private subscribeTimer:  Subscription;
 
+  public loginForm: FormGroup;
+
   constructor(private router: Router, private authService: AuthService) {
-    this.loginForm  = new FormGroup({
+
+  this.loginForm  = new FormGroup({
       'nameOrEmail': new FormControl('',
         [Validators.required, Validators.minLength(3)]),
       'password': new FormControl('',
-      [Validators.required])
+        [Validators.required])
     });
+
+
+
   }
 
 
@@ -44,8 +46,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 //    this.bConnected = Res.bVictConnected;
 //    if (this.bConnected) {
 //      this.router.navigate(['/']);
-//    }
-
+// 6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918 - это 12
+//    const encrypted = CryptoJS.SHA256('12');
+//    console.log('encrypted', encrypted.toString());
 
   }
 
@@ -56,8 +59,20 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
 
+  block_button(ms: number) {
+    // блокируем кнопку 1 секунду
+    this.stopCondition = true;
+    this.subscribeTimer = timer(ms).subscribe(() =>
+      this.stopCondition = false);
+  }
+
+
   submit() {
+
     const sUserOrEmail = this.loginForm.controls['nameOrEmail'].value;
+
+    console.log('a1', sUserOrEmail);
+
     const sPassword = this.loginForm.controls['password'].value;
     const tUser =  {sUserOrEmail: this.loginForm.controls['nameOrEmail'].value, sPassword: this.loginForm.controls['password'].value};
 
@@ -69,6 +84,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.showSucc = false;
         this.sResTrouble = 'С такими данными больше одного пользователя.';
         this.authService.clearStorage();
+        this.block_button(this.nStopMs);
         }
 
         if (value[0].length === 0) {
@@ -76,6 +92,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.showSucc = false;
           this.sResTrouble = 'Пользователь не найден.';
           this.authService.clearStorage();
+          this.block_button(this.nStopMs);
         }
 
         if (value[0].length === 1) {
@@ -87,6 +104,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             this.showSucc = false;
             this.sResTrouble = 'Вы неверно ввели пароль.';
             this.authService.clearStorage();
+            this.block_button(this.nStopMs);
           }
 
           if (dbPassword === sFormPassword) {
@@ -95,7 +113,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             this.sResTrouble = '';
             this.authService.setStorage(value[0][0].nick, true, value[0][0].id);
             // куда-то там переходим
-            this.router.navigate(['/parlor']);
+            this.router.navigate(['/laundry']);
           }
 
         }

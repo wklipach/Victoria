@@ -1,3 +1,4 @@
+
 <div class="container">
 
   <div class="wrapper">
@@ -11,20 +12,21 @@
    <button type="submit" class="btn-signin" id="btnPwd" formControlName="btnPwd">Войти</button>
 -->
 
+
 <div class="box">
   <form [formGroup]="loginForm" novalidate (ngSubmit)="submit()">
-  <label class="login" for="inputLogin">Логин или E-Mail</label>
-  <input type="text" class="inputLogin" id="inputLogin" formControlName="nameOrEmail" placeholder="Логин или E-Mail"
-         [ngClass]="{
-                      succesfullvalidator: this.loginForm.controls['nameOrEmail'].value.length >= 3,
-                      troublevalidator: loginForm.controls['nameOrEmail'].value.length >= 1 && loginForm.controls['nameOrEmail'].value.length <= 2  }">
 
+      <label class="login" for="inputLogin">Логин или E-Mail</label>
+      <input type="text" class="inputLogin" id="inputLogin" formControlName="nameOrEmail" placeholder="Логин или E-Mail"
+             [ngClass]="{
+                          succesfullvalidator: this.loginForm.controls['nameOrEmail'].value.length >= 3,
+                          troublevalidator: loginForm.controls['nameOrEmail'].value.length >= 1 && loginForm.controls['nameOrEmail'].value.length <= 2  }">
 
   <label class="password" for="inputPassword">Пароль</label>
   <input type="password" class="inputPassword" id="inputPassword" formControlName="password"  placeholder="Пароль">
 
+   <button type="submit" class="btn-signin" role="button" id="btnpwd" [disabled]="loginForm.invalid || stopCondition">Войти</button>
 
-    <button type="submit" class="btn-signin" role="button" id="btnpwd" [disabled]="loginForm.invalid || stopCondition">Войти</button>
 
     <br>
 
@@ -48,8 +50,10 @@
   <!--
      занончили модель
   -->
-
 </div>
+
+
  </div>
 
 </div>
+

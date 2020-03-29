@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {AuthService} from '../services/auth-service.service';
 
 @Component({
   selector: 'app-laundry',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LaundryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
+  logout() {
+    this.authService.clearStorage();
+    this.router.navigate(['/login']);
+  }
 }

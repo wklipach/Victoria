@@ -30,9 +30,9 @@ export class AuthService {
   // получаем текущего пользователя из хранилища
   public loginStorage(): {victUserName: string; bVictConnected: boolean; id_user_vict: number} {
 
-  let victUserName = '';
-  if (window.localStorage.getItem('victUserName')) {
-    victUserName = JSON.parse(window.localStorage.getItem('victUserName'));
+    let victUserName = '';
+    if (window.localStorage.getItem('victUserName')) {
+    victUserName = window.localStorage.getItem('victUserName');
   }
 
   let bVictConnected = false;
@@ -45,14 +45,35 @@ export class AuthService {
     id_user_vict = JSON.parse(window.localStorage.getItem('id_user_vict'));
   }
 
-  return {victUserName: victUserName, bVictConnected: bVictConnected, id_user_vict: id_user_vict};
-}
+  const Res = {victUserName: victUserName, bVictConnected: bVictConnected, id_user_vict: id_user_vict};
+  console.log('в сервисе', Res);
+  return Res;
+  }
 
   // получаем пользователя и зашифрованные пароли из базы
   getUserFromBase(UserName: string) {
      const params = new HttpParams()
-      .set('getUser', UserName.toString());
+      .set('get_user', UserName.toString());
     return this.http.get(this.gr.sUrlGlobal + 'users', {params: params});
+  }
+
+  // получаем пользователя по почтовому адресу
+  getEmailUserTable(email: string) {
+    const params = new HttpParams()
+      .set('get_email_user', email.toString());
+    return this.http.get(this.gr.sUrlGlobal + 'users', {params: params});
+  }
+
+  getNickUserTable(nick: string) {
+    const params = new HttpParams()
+      .set('get_nick_user', nick.toString());
+    return this.http.get(this.gr.sUrlGlobal + 'users', {params: params});
+  }
+
+  setNewUser(NewUser, curSubject, curLetter) {
+      // вставить запрос по добавлению пользователя в базу
+      const user = { newuser : NewUser, subject: curSubject, letter: curLetter};
+      return this.http.post(this.gr.sUrlGlobal + 'users', user);
   }
 
 ////
