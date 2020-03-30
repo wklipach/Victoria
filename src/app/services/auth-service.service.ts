@@ -50,7 +50,7 @@ export class AuthService {
   return Res;
   }
 
-  // получаем пользователя и зашифрованные пароли из базы
+  // получаем пользователя, поиск по 2 полям - его почте и нику одновременно
   getUserFromBase(UserName: string) {
      const params = new HttpParams()
       .set('get_user', UserName.toString());

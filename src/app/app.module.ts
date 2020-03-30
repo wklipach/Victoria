@@ -17,6 +17,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { FootComponent } from './foot/foot.component';
 import { HeadComponent } from './head/head.component';
 import { RegisterComponent } from './entrance/register/register.component';
+import {ForgotPasswordComponent} from './entrance/forgot-password/forgot-password.component';
 
 // определение маршрутов
 const appRoutes: Routes = [
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'parlor', component: ParlorComponent},
   {path: 'laundry', component: LaundryComponent},
+  {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'contacts', component: ContactsComponent},
   {path: 'head', component: HeadComponent},
@@ -44,7 +46,8 @@ const appRoutes: Routes = [
     ContactsComponent,
     FootComponent,
     HeadComponent,
-    RegisterComponent
+    RegisterComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
