@@ -64,6 +64,13 @@ export class AuthService {
     return this.http.get(this.gr.sUrlGlobal + 'users', {params: params});
   }
 
+  getUserFromId(id_user) {
+    const params = new HttpParams()
+      .set('get_id_user', id_user.toString());
+    return this.http.get(this.gr.sUrlGlobal + 'users', {params: params});
+
+  }
+
   getNickUserTable(nick: string) {
     const params = new HttpParams()
       .set('get_nick_user', nick.toString());
@@ -76,6 +83,15 @@ export class AuthService {
       return this.http.post(this.gr.sUrlGlobal + 'users', user);
   }
 
+  updateAvatarUserTable(curAvatar: any, id_user: number) {
+    const data_avatar = { 'avatar': curAvatar, 'id_user' : id_user};
+    return this.http.post(this.gr.sUrlGlobal + 'users', data_avatar);
+  }
+
+  clearAvatarUserTable(id_user: number) {
+    const data_avatar = { 'clear_avatar': 'clear_avatar', 'id_user' : id_user};
+    return this.http.post(this.gr.sUrlGlobal + 'users', data_avatar);
+  }
 ////
 
 }
