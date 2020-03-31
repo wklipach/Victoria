@@ -44,10 +44,7 @@ export class AuthService {
   if (window.localStorage.getItem('id_user_vict')) {
     id_user_vict = JSON.parse(window.localStorage.getItem('id_user_vict'));
   }
-
-  const Res = {victUserName: victUserName, bVictConnected: bVictConnected, id_user_vict: id_user_vict};
-  console.log('в сервисе', Res);
-  return Res;
+  return {victUserName: victUserName, bVictConnected: bVictConnected, id_user_vict: id_user_vict};
   }
 
   // получаем пользователя, поиск по 2 полям - его почте и нику одновременно
@@ -88,10 +85,26 @@ export class AuthService {
     return this.http.post(this.gr.sUrlGlobal + 'users', data_avatar);
   }
 
+  updatePassword(password: string, id_user: number) {
+    const update_password = { 'update_password': password, 'id_user' : id_user};
+    return this.http.post(this.gr.sUrlGlobal + 'users', update_password);
+  }
+
+  updateUser(postUser, id_user: number) {
+    const update_user = { 'post_user': postUser, 'id_user' : id_user};
+    return this.http.post(this.gr.sUrlGlobal + 'users', update_user);
+  }
+
   clearAvatarUserTable(id_user: number) {
     const data_avatar = { 'clear_avatar': 'clear_avatar', 'id_user' : id_user};
     return this.http.post(this.gr.sUrlGlobal + 'users', data_avatar);
   }
 ////
+   getCheckEmailWithoutCurrentUser(email: string, id_user: number) {
+     const params = new HttpParams()
+       .set('email_without_user', email)
+        .set('email_without_iduser', id_user.toString());
+     return this.http.get(this.gr.sUrlGlobal + 'users', {params: params});
+   }
 
 }
