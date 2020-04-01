@@ -12,7 +12,7 @@ export class AuthService {
 
   }
 
-  // заносим текущего пользователя в локальное хранилище
+// заносим текущего пользователя в локальное хранилище
   public setStorage(victUserName: string, bVictConnected: boolean, id_user_vict: number) {
     window.localStorage.setItem('victUserName', victUserName);
     window.localStorage.setItem('bVictConnected', JSON.stringify(bVictConnected));
@@ -24,6 +24,7 @@ export class AuthService {
      window.localStorage.setItem('victUserName', '');
      window.localStorage.setItem('bVictConnected', JSON.stringify(false));
      window.localStorage.setItem('id_user_vict', JSON.stringify(-1));
+     window.localStorage.setItem('bShiftBegin', JSON.stringify(false));
   }
 
 
@@ -47,6 +48,10 @@ export class AuthService {
   return {victUserName: victUserName, bVictConnected: bVictConnected, id_user_vict: id_user_vict};
   }
 
+  getBranch (id_user_vict: number) {
+        return 1;
+  }
+
   // получаем пользователя, поиск по 2 полям - его почте и нику одновременно
   getUserFromBase(UserName: string) {
      const params = new HttpParams()
@@ -61,11 +66,19 @@ export class AuthService {
     return this.http.get(this.gr.sUrlGlobal + 'users', {params: params});
   }
 
+  getIpAddress(id_user, id_branch) {
+    const params = new HttpParams()
+      .set('get_ip_arrress', 'get_ip_arrress')
+      .set('id_user', id_user.toString())
+      .set('id_branch', id_branch.toString());
+    return this.http.get(this.gr.sUrlGlobal + 'users', {params: params});
+  }
+
+
   getUserFromId(id_user) {
     const params = new HttpParams()
       .set('get_id_user', id_user.toString());
     return this.http.get(this.gr.sUrlGlobal + 'users', {params: params});
-
   }
 
   getNickUserTable(nick: string) {

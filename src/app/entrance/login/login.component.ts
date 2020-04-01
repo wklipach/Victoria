@@ -67,7 +67,13 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
 
+
+
   submit() {
+
+    // сначала проверяем IP и не даем войти если IP не совпадает
+
+
 
     const sUserOrEmail = this.loginForm.controls['nameOrEmail'].value;
 
@@ -108,16 +114,29 @@ export class LoginComponent implements OnInit, OnDestroy {
           }
 
           if (dbPassword === sFormPassword) {
-            this.showErr = false;
-            this.showSucc = true;
-            this.sResTrouble = '';
-            this.authService.setStorage(value[0][0].nick, true, value[0][0].id);
-            // куда-то там переходим
-            this.router.navigate(['/laundry']);
-          }
-
-        }
-    });
+            // если все верно ввели проверяем IP
+            const id_branch1 = this.authService.getBranch(value[0][0].id);
+            this.authService.getIpAddress(value[0][0].id, id_branch1).subscribe(valueIP => {
+              console.log('valueIP', valueIP);
+              if (!valueIP) {
+                this.showErr = true;
+                this.showSucc = false;
+                this.sResTrouble = 'Вход под таким IP запрещен.';
+                this.authService.clearStorage();
+                this.block_button(this.nStopMs);
+              }
+              if (valueIP) {
+                this.showErr = false;
+                this.showSucc = true;
+                this.sResTrouble = '';
+                this.authService.setStorage(value[0][0].nick, true, value[0][0].id);
+                // куда-то там переходим
+                this.router.navigate(['/laundry']);
+              }
+            });
+          } // if dbPassword === sFormPassword
+        } // value[0].length === 1
+        });
 
   }
 
