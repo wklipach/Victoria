@@ -10,17 +10,32 @@ export class AdminService {
   constructor(private http: HttpClient, public gr: GlobalRef) { }
 
   // получаем полный список филиалов
-   getBranch() {
+   getBranch(id_city) {
     const params = new HttpParams()
-      .set('get_branch', 'get_branch');
+      .set('get_branch', 'get_branch')
+      .set('id_city', id_city);
     return this.http.get(this.gr.sUrlGlobal + 'admin', {params: params});
   }
 
   // добавдяем новый филиал
-  setBranch(newName, id_city) {
+  setBranch(id_city, newName) {
       const sUrl = this.gr.sUrlGlobal + 'admin';
-      const data_branch = { 'insert_branch': newName, 'id_city': id_city};
+      const data_branch = { 'id_city': id_city, 'insert_branch': newName };
       return this.http.post(sUrl, data_branch);
+  }
+
+  // изменяем имя филиала
+  setBranchName(id, newName) {
+    const sUrl = this.gr.sUrlGlobal + 'admin';
+    const data_branch = { 'id_update': id, 'insert_branch_name': newName };
+    return this.http.post(sUrl, data_branch);
+  }
+
+  // удаляем филиал
+  setBranchDelete(id) {
+    const sUrl = this.gr.sUrlGlobal + 'admin';
+    const data_branch = { 'id_branch_delete': id };
+    return this.http.post(sUrl, data_branch);
   }
 
 

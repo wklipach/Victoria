@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AdminService} from '../services/admin.service';
+import { Location } from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -9,83 +11,122 @@ import {AdminService} from '../services/admin.service';
 })
 export class AdminComponent implements OnInit {
 
+  id_city = 1;
   adminForm: FormGroup;
   branchList = [];
-  public bShowChangeBranch = false;
-  public bErrorEmptyBranch = false;
-  bShowNewBranch = false;
-  bErrorEmptyNewBranch = false;
   bShowDeleteBranch = false;
   sBranchName = '';
+  private selectedBL: any;
 
-  constructor(private adminserv: AdminService) {
+  constructor(private adminserv: AdminService, private location: Location, private router: Router) {
     this.adminForm = new FormGroup({
       'inputBranch': new FormControl({}, []),
-      'inputChangeBranche': new FormControl({}, []),
-      'inputNewBranche': new FormControl({}, [])
+      'inputChangeBranch': new FormControl({}, []),
+      'inputNewBranch': new FormControl({}, [])
     });
   }
 
   ngOnInit(): void {
-    this.loadBranchList();
+    this.loadBranchList(this.id_city);
+    this.adminForm.controls['inputNewBranch'].setValue('');
   }
 
-  loadBranchList() {
+  loadBranchList(id_city) {
     //
-    this.adminserv.getBranch().subscribe( (value: Array<any>) => {
+    this.adminserv.getBranch(id_city).subscribe( (value: Array<any>) => {
       value.forEach((element, ih) => {
         this.branchList.push(element);
       });
-
-      this.adminForm.controls['inputBranch'].setValue(this.branchList.find((valBranch) => valBranch.id === 1).name);
+      // this.adminForm.controls['inputBranch'].setValue(this.branchList.find((valBranch) => valBranch.id === 1).name);
     });
     //
   }
 
   changeBranch() {
+        this.CheckFirstBranch();
+        if (this.selectedBL) {
+          this.reloadAllInput();
+        }
 
-      console.log('-----', this.adminForm.controls['inputBranch'].value);
-    this.bShowChangeBranch = true;
-    this.adminForm.controls['inputChangeBranche'].setValue(this.adminForm.controls['inputBranch'].value);
-
-    //    sBranch =
-    // this.parlorForm.controls['inputGender'].setValue(this.genderList.find((value1) => value1.id === idGender)
-    // const gender = this.genderList.find((value) => value.name === inputGender).id;
-
-  }
-
-  DisappearFrameChangeBranch() {
-    this.bShowChangeBranch = false;
-  }
+        if (!this.selectedBL) {
+          this.adminForm.controls['inputChangeBranch'].setValue('');
+        }
+    }
 
   OnChangeBranch() {
     //
-    console.log('изменяем фидиал');
+    if (!this.selectedBL) {
+      return;
+    }
+      const sName = this.adminForm.controls['inputChangeBranch'].value.toString().trim();
+    if (sName.length === 0) {
+      return;
+    }
+
+    console.log('изменяем филиал', this.selectedBL.id, sName);
+    this.adminserv.setBranchName(this.selectedBL.id, sName).subscribe(value => {
+      this.RouterReload();
+    });
   }
 
-  DisappearFrameNewBranch() {
-    this.bShowNewBranch = false;
-  }
 
   newBranch() {
-    this.bShowNewBranch = true;
-    this.adminForm.controls['inputNewBranche'].setValue('');
+    const sName = this.adminForm.controls['inputNewBranch'].value.toString().trim();
+    if (sName !== '') {
+      console.log('добавляем филиал');
+      this.adminserv.setBranch(1, sName).subscribe( value => {
+        this.RouterReload();
+      });
+    }
   }
 
-  OnNewBranch() {
-    console.log('добавляем филиал');
+  RouterReload() {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+    this.router.navigated = false;
+
+    this.router.navigate([this.router.url]);
   }
+
+
 
   OnDeleteBranch() {
-    console.log('удаляем филиал');
+    console.log('удаляем филиал', this.selectedBL.id);
+    this.adminserv.setBranchDelete(this.selectedBL.id).subscribe(value => {
+      this.RouterReload();
+    });
   }
 
   DisappearFrameDeleteBranch() {
     this.bShowDeleteBranch = false;
   }
 
-  DeleteBranch() {
-    this.bShowDeleteBranch = true;
-    this.sBranchName = this.adminForm.controls['inputBranch'].value;
+  CheckFirstBranch() {
+    if (!this.selectedBL) {
+      if (this.branchList[0]) {
+        this.selectedBL = this.branchList[0];
+      }
+    }
   }
+
+
+DeleteBranch() {
+  this.CheckFirstBranch();
+  if (this.selectedBL) {
+      this.bShowDeleteBranch = true;
+      this.sBranchName = this.selectedBL.name;
+    }
+  }
+
+  mu(bl) {
+    this.selectedBL = bl;
+    this.reloadAllInput();
+  }
+
+  reloadAllInput() {
+    this.sBranchName = this.selectedBL.name;
+    this.adminForm.controls['inputChangeBranch'].setValue(this.selectedBL.name);
+  }
+
 }
