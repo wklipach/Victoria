@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {UserType} from '../class/UserType';
-import {Observable, Subject} from 'rxjs';
 import {GlobalRef} from './globalref';
 
 @Injectable()

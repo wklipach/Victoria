@@ -1,0 +1,45 @@
+<p>admin works!</p>
+<form [formGroup]="adminForm">
+<div class="line">
+  <select (change)="changeBranch()" class="inputGender" id="inputBranch" formControlName="inputBranch"  title="Выбрать филиал">
+    <option  *ngFor="let bl of branchList" [value]="bl.name">
+      {{bl.name}}
+    </option>
+  </select>
+</div>
+
+<button (click)="DeleteBranch()">Удалить филиал</button>
+<button (click)="newBranch()">Добавить филиал</button>
+<button (click)="changeBranch()">Изменить название</button>
+
+
+  <ng-container *ngIf="bShowChangeBranch">
+    <div class="changepassBox">
+      <input type="text" class="inputChangeBranche" id="inputChangeBranche" formControlName="inputChangeBranche" placeholder="Новое наименование">
+      <button type="submit" class="btn-newPassword" (click)="OnChangeBranch()">Изменить наименование</button>
+      <button class="btn-newPasswordCancel" (click)="DisappearFrameChangeBranch()">Отмена</button>
+      <div class="alertWrong" *ngIf="bErrorEmptyBranch">Филиал не должен быть пустым.</div>
+    </div>
+
+  </ng-container>
+
+  <ng-container *ngIf="bShowNewBranch">
+    <div class="changepassBox">
+      <input type="text" class="inputNewBranche" id="inputNewBranche" formControlName="inputNewBranche" placeholder="Новое наименование">
+      <button type="submit" class="btn-newPassword" (click)="OnNewBranch()">Добавить</button>
+      <button class="btn-newPasswordCancel" (click)="DisappearFrameNewBranch()">Отмена</button>
+      <div class="alertWrong" *ngIf="bErrorEmptyNewBranch">Филиал не должен быть пустым.</div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="bShowDeleteBranch">
+    <div class="changepassBox">
+      <label>Вы уверены что жедаете удалить филиал {{sBranchName}}?</label>
+      <button type="submit" class="btn-newPassword" (click)="OnDeleteBranch()">Удалить</button>
+      <button class="btn-newPasswordCancel" (click)="DisappearFrameDeleteBranch()">Отмена</button>
+    </div>
+  </ng-container>
+
+
+
+</form>
