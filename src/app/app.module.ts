@@ -19,6 +19,13 @@ import { HeadComponent } from './head/head.component';
 import { RegisterComponent } from './entrance/register/register.component';
 import {ForgotPasswordComponent} from './entrance/forgot-password/forgot-password.component';
 import { AdminComponent } from './admin/admin.component';
+import { HomeLaundryComponent } from './home-laundry/home-laundry.component';
+import { AcceptanceLaundryComponent } from './acceptance-laundry/acceptance-laundry.component';
+import { RepairLaundryComponent } from './repair-laundry/repair-laundry.component';
+import { WashingLaundryComponent } from './washing-laundry/washing-laundry.component';
+import { WarehouseLaundryComponent } from './warehouse-laundry/warehouse-laundry.component';
+import { ShipmentLaundryComponent } from './shipment-laundry/shipment-laundry.component';
+import { CommentLaundryComponent } from './comment-laundry/comment-laundry.component';
 
 // определение маршрутов
 const appRoutes: Routes = [
@@ -32,6 +39,13 @@ const appRoutes: Routes = [
   {path: 'admin', component: AdminComponent},
   {path: 'head', component: HeadComponent},
   {path: 'foot', component: FootComponent},
+  {path: 'home-laundry', component: HomeLaundryComponent},
+  {path: 'acceptance-laundry', component: AcceptanceLaundryComponent},
+  {path: 'repair-laundry', component: RepairLaundryComponent},
+  {path: 'washing-laundry', component: WashingLaundryComponent},
+  {path: 'warehouse-laundry', component: WarehouseLaundryComponent},
+  {path: 'shipment-laundry', component: ShipmentLaundryComponent},
+  {path: 'comment-laundry', component: CommentLaundryComponent},
   {path: '**', component: NotFoundComponent }
 ];
 
@@ -50,7 +64,14 @@ const appRoutes: Routes = [
     HeadComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    AdminComponent
+    AdminComponent,
+    HomeLaundryComponent,
+    AcceptanceLaundryComponent,
+    RepairLaundryComponent,
+    WashingLaundryComponent,
+    WarehouseLaundryComponent,
+    ShipmentLaundryComponent,
+    CommentLaundryComponent
   ],
   imports: [
     BrowserModule,
