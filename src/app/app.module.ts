@@ -12,20 +12,20 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {GlobalRef} from './services/globalref';
 import { ParlorComponent } from './parlor/parlor.component';
-import { LaundryComponent } from './laundry/laundry.component';
+import { LaundryComponent } from './washhouse/laundry/laundry.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { FootComponent } from './foot/foot.component';
 import { HeadComponent } from './head/head.component';
 import { RegisterComponent } from './entrance/register/register.component';
 import {ForgotPasswordComponent} from './entrance/forgot-password/forgot-password.component';
 import { AdminComponent } from './admin/admin.component';
-import { HomeLaundryComponent } from './home-laundry/home-laundry.component';
-import { AcceptanceLaundryComponent } from './acceptance-laundry/acceptance-laundry.component';
-import { RepairLaundryComponent } from './repair-laundry/repair-laundry.component';
-import { WashingLaundryComponent } from './washing-laundry/washing-laundry.component';
-import { WarehouseLaundryComponent } from './warehouse-laundry/warehouse-laundry.component';
-import { ShipmentLaundryComponent } from './shipment-laundry/shipment-laundry.component';
-import { CommentLaundryComponent } from './comment-laundry/comment-laundry.component';
+import { HomeLaundryComponent } from './washhouse/home-laundry/home-laundry.component';
+import { AcceptanceLaundryComponent } from './washhouse/acceptance-laundry/acceptance-laundry.component';
+import { RepairLaundryComponent } from './washhouse/repair-laundry/repair-laundry.component';
+import { WashingLaundryComponent } from './washhouse/washing-laundry/washing-laundry.component';
+import { WarehouseLaundryComponent } from './washhouse/warehouse-laundry/warehouse-laundry.component';
+import { ShipmentLaundryComponent } from './washhouse/shipment-laundry/shipment-laundry.component';
+import { CommentLaundryComponent } from './washhouse/comment-laundry/comment-laundry.component';
 
 // определение маршрутов
 const appRoutes: Routes = [
