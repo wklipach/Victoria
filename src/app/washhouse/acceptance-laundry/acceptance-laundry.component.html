@@ -1,3 +1,5 @@
+<form [formGroup]="acclaundform">
+
 <div class="container">
   <h2>Приемка</h2>
   <p class="text-info">Выберите размер и укажите количество целого и поврежденного белья.</p>
@@ -16,13 +18,13 @@
     </tr>
     <tr>
       <td>50x70</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name1" name="name1"></td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name2" name="name2"></td>
+      <td><input type="text" class="form-control"  name="n1" formControlName="n1" placeholder="шт" id="n1" name="name1"></td>
+      <td><input type="text" class="form-control" formControlName="n1_spoiled" placeholder="шт" id="name2" name="name2"></td>
     </tr>
     <tr>
       <td>70x70</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name3" name="name3"></td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name4" name="name4"></td>
+      <td><input type="text" class="form-control" name="n2" formControlName="n2" placeholder="шт" id="n2" name="name3"></td>
+      <td><input type="text" class="form-control" formControlName="n2_spoiled" placeholder="шт" id="name4" name="name4"></td>
     </tr>
     </tbody>
   </table>
@@ -41,13 +43,13 @@
     </tr>
     <tr>
       <td>1,5 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name5" name="name5"></td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name6" name="name6"></td>
+      <td><input type="text" class="form-control" formControlName="n3" placeholder="шт" id="name5" name="name5"></td>
+      <td><input type="text" class="form-control" formControlName="n3_spoiled" placeholder="шт" id="name6" name="name6"></td>
     </tr>
     <tr>
       <td>2 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name7" name="name7"></td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name8" name="name8"></td>
+      <td><input type="text" class="form-control" formControlName="n4" placeholder="шт" id="name7" name="name7"></td>
+      <td><input type="text" class="form-control" formControlName="n4_spoiled" placeholder="шт" id="name8" name="name8"></td>
     </tr>
     </tbody>
   </table>
@@ -66,13 +68,13 @@
     </tr>
     <tr>
       <td>1,5 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name9" name="name9"></td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name10" name="name10"></td>
+      <td><input type="text" class="form-control" formControlName="n5" placeholder="шт" id="name9" name="name9"></td>
+      <td><input type="text" class="form-control" formControlName="n5_spoiled" placeholder="шт" id="name10" name="name10"></td>
     </tr>
     <tr>
       <td>2 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name11" name="name11"></td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name12" name="name12"></td>
+      <td><input type="text" class="form-control" formControlName="n6" placeholder="шт" id="name11" name="name11"></td>
+      <td><input type="text" class="form-control" formControlName="n6_spoiled" placeholder="шт" id="name12" name="name12"></td>
     </tr>
     </tbody>
   </table>
@@ -91,23 +93,23 @@
     </tr>
     <tr>
       <td>30x60</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name13" name="name13"></td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name14" name="name14"></td>
+      <td><input type="text" class="form-control" formControlName="n7" placeholder="шт" id="name13" name="name13"></td>
+      <td><input type="text" class="form-control" formControlName="n7_spoiled" placeholder="шт" id="name14" name="name14"></td>
     </tr>
     <tr>
       <td>70x70</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name15" name="name15"></td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name16" name="name16"></td>
+      <td><input type="text" class="form-control" formControlName="n8" placeholder="шт" id="name15" name="name15"></td>
+      <td><input type="text" class="form-control" formControlName="n8_spoiled" placeholder="шт" id="name16" name="name16"></td>
     </tr>
     <tr>
       <td>70x140</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name17" name="name17"></td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name18" name="name18"></td>
+      <td><input type="text" class="form-control" formControlName="n9" placeholder="шт" id="name17" name="name17"></td>
+      <td><input type="text" class="form-control" formControlName="n9_spoiled" placeholder="шт" id="name18" name="name18"></td>
     </tr>
     <tr>
       <td>Кухонные</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name19" name="name19"></td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name20" name="name20"></td>
+      <td><input type="text" class="form-control" formControlName="n10" placeholder="шт" id="name19" name="name19"></td>
+      <td><input type="text" class="form-control" formControlName="n10_spoiled" placeholder="шт" id="name20" name="name20"></td>
     </tr>
     </tbody>
   </table>
@@ -128,13 +130,13 @@
     </tr>
     <tr>
       <td>Для ванны</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name21" name="name21"></td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name22" name="name22"></td>
+      <td><input type="text" class="form-control" formControlName="n11" placeholder="шт" id="name21" name="name21"></td>
+      <td><input type="text" class="form-control" formControlName="n11_spoiled" placeholder="шт" id="name22" name="name22"></td>
     </tr>
     <tr>
       <td>Придверный</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name23" name="name23"></td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name24" name="name24"></td>
+      <td><input type="text" class="form-control" formControlName="n12" placeholder="шт" id="name23" name="name23"></td>
+      <td><input type="text" class="form-control" formControlName="n12_spoiled" placeholder="шт" id="name24" name="name24"></td>
     </tr>
     </tbody>
   </table>
@@ -153,13 +155,13 @@
     </tr>
     <tr>
       <td>1,5 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name25" name="name25"></td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name26" name="name26"></td>
+      <td><input type="text" class="form-control" formControlName="n13" placeholder="шт" id="name25" name="name25"></td>
+      <td><input type="text" class="form-control" formControlName="n13_spoiled" placeholder="шт" id="name26" name="name26"></td>
     </tr>
     <tr>
       <td>2 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name27" name="name27"></td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name28" name="name28"></td>
+      <td><input type="text" class="form-control" formControlName="n14" placeholder="шт" id="name27" name="name27"></td>
+      <td><input type="text" class="form-control" formControlName="n14_spoiled" placeholder="шт" id="name28" name="name28"></td>
     </tr>
     </tbody>
   </table>
@@ -178,13 +180,13 @@
     </tr>
     <tr>
       <td>50x70</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name29" name="name29"></td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name30" name="name30"></td>
+      <td><input type="text" class="form-control" formControlName="n15" placeholder="шт" id="name29" name="name29"></td>
+      <td><input type="text" class="form-control" formControlName="n15_spoiled" placeholder="шт" id="name30" name="name30"></td>
     </tr>
     <tr>
       <td>70x70</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name31" name="name31"></td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name32" name="name32"></td>
+      <td><input type="text" class="form-control" formControlName="n16" placeholder="шт" id="name31" name="name31"></td>
+      <td><input type="text" class="form-control" formControlName="n16_spoiled" placeholder="шт" id="name32" name="name32"></td>
     </tr>
     </tbody>
   </table>
@@ -203,13 +205,13 @@
     </tr>
     <tr>
       <td>1,5 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name33" name="name33"></td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name34" name="name34"></td>
+      <td><input type="text" class="form-control" formControlName="n17" placeholder="шт" id="name33" name="name33"></td>
+      <td><input type="text" class="form-control" formControlName="n17_spoiled" placeholder="шт" id="name34" name="name34"></td>
     </tr>
     <tr>
       <td>2 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name35" name="name36"></td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name37" name="name37"></td>
+      <td><input type="text" class="form-control" formControlName="n18" placeholder="шт" id="name35" name="name36"></td>
+      <td><input type="text" class="form-control" formControlName="n18_spoiled" placeholder="шт" id="name37" name="name37"></td>
     </tr>
     </tbody>
   </table>
@@ -228,17 +230,46 @@
     </tr>
     <tr>
       <td>Шторы</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name38" name="name38"></td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name39" name="name39"></td>
+      <td><input type="text" class="form-control" formControlName="n19" placeholder="шт" id="name38" name="name38"></td>
+      <td><input type="text" class="form-control" formControlName="n19_spoiled" placeholder="шт" id="name39" name="name39"></td>
 
     </tr>
     <tr>
       <th>Общий вес белья:</th>
-      <td><input type="text" class="form-control" placeholder="кг" id="name40" name="name40"></td>
+      <td><input formControlName="massa" type="text" class="form-control" placeholder="кг" id="name40" name="name40"></td>
     </tr>
     </tbody>
   </table>
-  <button type="button" class="btn btn-primary">Отправить</button>
+
+  <button (click)="send_data()"
+          [disabled]="acclaundform.value.n1=='' && acclaundform.value.n1_spoiled=='' &&
+                      acclaundform.value.n2=='' && acclaundform.value.n2_spoiled=='' &&
+                      acclaundform.value.n3=='' && acclaundform.value.n3_spoiled=='' &&
+                      acclaundform.value.n4=='' && acclaundform.value.n4_spoiled=='' &&
+                      acclaundform.value.n5=='' && acclaundform.value.n5_spoiled=='' &&
+                      acclaundform.value.n6=='' && acclaundform.value.n6_spoiled=='' &&
+                      acclaundform.value.n7=='' && acclaundform.value.n7_spoiled=='' &&
+                      acclaundform.value.n8=='' && acclaundform.value.n8_spoiled=='' &&
+                      acclaundform.value.n9=='' && acclaundform.value.n9_spoiled=='' &&
+                      acclaundform.value.n10=='' && acclaundform.value.n10_spoiled=='' &&
+                      acclaundform.value.n11=='' && acclaundform.value.n11_spoiled=='' &&
+                      acclaundform.value.n12=='' && acclaundform.value.n12_spoiled=='' &&
+                      acclaundform.value.n13=='' && acclaundform.value.n13_spoiled=='' &&
+                      acclaundform.value.n14=='' && acclaundform.value.n14_spoiled=='' &&
+                      acclaundform.value.n15=='' && acclaundform.value.n15_spoiled=='' &&
+                      acclaundform.value.n16=='' && acclaundform.value.n16_spoiled=='' &&
+                      acclaundform.value.n17=='' && acclaundform.value.n17_spoiled=='' &&
+                      acclaundform.value.n18=='' && acclaundform.value.n18_spoiled=='' &&
+                      acclaundform.value.n19=='' && acclaundform.value.n19_spoiled=='' &&
+                      acclaundform.value.massa==''"
+          type="button" class="btn btn-primary">Отправить</button>
+
+
+
+
   <p class="text-info">После нажатия кнопки Отправить изменить данные будет нельзя!</p>
+  <p class="text-info">{{this.sError}}</p>
   <br><br><br><br>
 </div>
+
+</form>

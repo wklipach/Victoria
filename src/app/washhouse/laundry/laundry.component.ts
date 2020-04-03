@@ -79,13 +79,17 @@ export class LaundryComponent implements OnInit {
     // смотрим и выводим имя пользователя
     this.authService.getUserFromId(this.id_user_vict).subscribe(
       value => {
-            this.userName = value[0].name;
-            this.userSurname = value[0].surname;
+
+            if (value[0]) {
+              this.userName = value[0].name;
+              this.userSurname = value[0].surname;
+            }
+
             // после этого выводим данные о смене
             const id_branch = this.authService.getBranch(this.id_user_vict);
             this.ss.get_shiftuserbranch(this.id_user_vict, id_branch).subscribe((shift: Array<any>) => {
 
-              console.log('shift[0]', shift[0], shift.length);
+              // console.log('shift[0]', shift[0], shift.length);
               if (shift.length > 0) {
                 this.titleShiftDate = shift[0].date_begin;
                 this.titleShift = this.sEndShift;

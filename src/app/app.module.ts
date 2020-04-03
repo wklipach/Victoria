@@ -13,7 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {GlobalRef} from './services/globalref';
 import { ParlorComponent } from './parlor/parlor.component';
 import { LaundryComponent } from './washhouse/laundry/laundry.component';
-import { ContactsComponent } from './contacts/contacts.component';
+
 import { FootComponent } from './foot/foot.component';
 import { HeadComponent } from './head/head.component';
 import { RegisterComponent } from './entrance/register/register.component';
@@ -26,6 +26,7 @@ import { WashingLaundryComponent } from './washhouse/washing-laundry/washing-lau
 import { WarehouseLaundryComponent } from './washhouse/warehouse-laundry/warehouse-laundry.component';
 import { ShipmentLaundryComponent } from './washhouse/shipment-laundry/shipment-laundry.component';
 import { CommentLaundryComponent } from './washhouse/comment-laundry/comment-laundry.component';
+import { AcceptanceLaundryLastComponent } from './washhouse/acceptance-laundry-last/acceptance-laundry-last.component';
 
 // определение маршрутов
 const appRoutes: Routes = [
@@ -35,7 +36,6 @@ const appRoutes: Routes = [
   {path: 'laundry', component: LaundryComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'contacts', component: ContactsComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'head', component: HeadComponent},
   {path: 'foot', component: FootComponent},
@@ -46,6 +46,7 @@ const appRoutes: Routes = [
   {path: 'warehouse-laundry', component: WarehouseLaundryComponent},
   {path: 'shipment-laundry', component: ShipmentLaundryComponent},
   {path: 'comment-laundry', component: CommentLaundryComponent},
+  {path: 'acceptance_laundry_last', component: AcceptanceLaundryLastComponent},
   {path: '**', component: NotFoundComponent }
 ];
 
@@ -59,7 +60,6 @@ const appRoutes: Routes = [
     SmainComponent,
     ParlorComponent,
     LaundryComponent,
-    ContactsComponent,
     FootComponent,
     HeadComponent,
     RegisterComponent,
@@ -71,7 +71,8 @@ const appRoutes: Routes = [
     WashingLaundryComponent,
     WarehouseLaundryComponent,
     ShipmentLaundryComponent,
-    CommentLaundryComponent
+    CommentLaundryComponent,
+    AcceptanceLaundryLastComponent
   ],
   imports: [
     BrowserModule,
