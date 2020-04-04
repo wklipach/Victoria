@@ -27,6 +27,11 @@ import { WarehouseLaundryComponent } from './washhouse/warehouse-laundry/warehou
 import { ShipmentLaundryComponent } from './washhouse/shipment-laundry/shipment-laundry.component';
 import { CommentLaundryComponent } from './washhouse/comment-laundry/comment-laundry.component';
 import { AcceptanceLaundryLastComponent } from './washhouse/acceptance-laundry-last/acceptance-laundry-last.component';
+import {ExcelService} from './services/excel.service';
+import { registerLocaleData } from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
+
+registerLocaleData(localeRu);
 
 // определение маршрутов
 const appRoutes: Routes = [
@@ -81,7 +86,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ GlobalRef, AuthService, ForgotpasswordService],
+  providers: [ GlobalRef, AuthService, ForgotpasswordService, ExcelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

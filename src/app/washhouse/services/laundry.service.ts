@@ -16,6 +16,7 @@ export class LaundryService {
 
   setacceptance(value: any, id_shift) {
     const sUrl = this.gr.sUrlGlobal + 'laundry';
+
     const new_acceptance = { 'acceptance_insert': value, 'id_shift' : id_shift};
     console.log(new_acceptance);
     return this.http.post(sUrl, new_acceptance);
