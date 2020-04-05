@@ -1,20 +1,7 @@
+<!--
 <form [formGroup]="adminForm">
 
 <button (click)="DeleteBranch()">Удалить филиал</button>
-
-<!--
-
-<button (click)="changeBranch()">Изменить название</button>
-  <ng-container *ngIf="bShowChangeBranch">
-    <div class="changepassBox">
-      <input type="text" class="inputChangeBranche" id="inputChangeBranche" formControlName="inputChangeBranche" placeholder="Новое наименование">
-      <button type="submit" class="btn-newPassword" (click)="OnChangeBranch()">Изменить наименование</button>
-      <button class="btn-newPasswordCancel" (click)="DisappearFrameChangeBranch()">Отмена</button>
-      <div class="alertWrong" *ngIf="bErrorEmptyBranch">Филиал не должен быть пустым.</div>
-    </div>
-  </ng-container>
-
--->
 
   <ng-container *ngIf="bShowDeleteBranch">
     <div class="changepassBox">
@@ -68,15 +55,6 @@
 
       <br>
 
-<!--
-      <p>
-        <a class="btn btn-primary" data-toggle="collapse" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
-          Открыть список подразделений
-        </a>
-      </p>
-      <div class="collapse" id="collapse2">
--->
-
 
         <div class="card card-body">
 
@@ -86,13 +64,92 @@
 
         </div>
 
-<!--
-      </div>
--->
-
 
     </div>
   </div>
 </div>
 
 </form>
+-->
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-6">
+
+      <form [formGroup]="adminForm">
+
+        <ng-container *ngIf="bShowDeleteBranch">
+
+          <div class="changepassBox">
+            <label>Вы уверены что жедаете удалить филиал {{sBranchName}}?</label>
+            <button type="submit" class="btn-newPassword" (click)="OnDeleteBranch()">Удалить</button>
+            <button class="btn-newPasswordCancel" (click)="DisappearFrameDeleteBranch()">Отмена</button>
+          </div>
+        </ng-container>
+
+
+        <p>
+          <a class="btn btn-primary mt-3 w-50" data-toggle="collapse" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
+            Добавить отделение
+          </a>
+        </p>
+
+
+        <div class="collapse" id="collapse1">
+          <div class="card card-body">
+            <div class="input-group">
+              <input formControlName="inputNewBranch" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+              <div class="input-group-append">
+                <button class="btn btn-success" (click)="newBranch()" type="button">Сохранить</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="card card-body">
+
+          <ul class="list-group">
+
+            <li [class.selected] = "bl === selectedBL" class="list-group-item"  (click)="mu(bl)"  *ngFor="let bl of branchList">{{bl.name }}</li>
+
+          </ul>
+
+        </div>
+
+        <button class="btn btn-danger mt-3 w-50" (click)="DeleteBranch()">Удалить отделение</button>
+
+        <p>
+
+          <a class="btn btn-primary mt-3 w-50" (click)="changeBranch()"  data-toggle="collapse" href="#collapseCH" aria-expanded="false" aria-controls="collapse1">
+            Изменить отделение
+          </a>
+        </p>
+
+        <div class="collapse" id="collapseCH">
+
+          <div class="card card-body">
+
+            <div class="input-group">
+
+              <input formControlName="inputChangeBranch" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+
+              <div class="input-group-append">
+
+                <button class="btn btn-success" (click)="OnChangeBranch()" type="button">Изменить</button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+<div class="col-6">
+</div>

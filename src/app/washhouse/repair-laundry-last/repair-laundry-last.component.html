@@ -1,0 +1,30 @@
+<h4>Починенные вещи</h4>
+<br>
+<b>Псевдоним:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.nick}}</a>
+<br>
+<b>Фамилия:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.surname}}</a>
+<br>
+<b>Имя:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.usernane}}</a>
+<br>
+<b>Отчество:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.patronymic}}</a>
+<br>
+<b>Филиал:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.branchname}}</a>
+<br>
+<b>Смена от:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.shiftdate | date:'dd.MM.yyyy   HH.mm'}}</a>
+<br>
+<br>
+<br>
+<b>Дата передачи:</b><a *ngIf="alTitle !== undefined"> {{alTitle.date_oper | date:'dd.MM.yyyy   HH.mm' }}</a>
+<br>
+<b>Масса переданнного:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.massa}} кг</a>
+
+<br>
+<br>
+<h3>Cписок</h3>
+<li *ngFor="let dl of detailList">{{dl.name}}   {{dl.type}}:   {{dl.quant}} шт.  <a *ngIf="dl.bitadd===1">приход</a><a *ngIf="dl.bitadd===0">расход</a>
+</li>​​
+<br>
+<button (click)="back()">Далее</button>
+<button (click)="toExcel()">Сохранить в Эксель</button>
+
+

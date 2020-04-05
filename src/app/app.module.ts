@@ -30,6 +30,9 @@ import { AcceptanceLaundryLastComponent } from './washhouse/acceptance-laundry-l
 import {ExcelService} from './services/excel.service';
 import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
+import { WarehouseLaundryLastComponent } from './washhouse/warehouse-laundry-last/warehouse-laundry-last.component';
+import { RepairLaundryLastComponent } from './washhouse/repair-laundry-last/repair-laundry-last.component';
+import { ShipmentLaundryLastComponent } from './washhouse/shipment-laundry-last/shipment-laundry-last.component';
 
 registerLocaleData(localeRu);
 
@@ -52,10 +55,11 @@ const appRoutes: Routes = [
   {path: 'shipment-laundry', component: ShipmentLaundryComponent},
   {path: 'comment-laundry', component: CommentLaundryComponent},
   {path: 'acceptance_laundry_last', component: AcceptanceLaundryLastComponent},
+  {path: 'warehouse_laundry_last', component: WarehouseLaundryLastComponent},
+  {path: 'repair_laundry_last', component: RepairLaundryLastComponent},
+  {path: 'shipment_laundry_last', component: ShipmentLaundryLastComponent},
   {path: '**', component: NotFoundComponent }
 ];
-
-
 
 @NgModule({
   declarations: [
@@ -77,7 +81,10 @@ const appRoutes: Routes = [
     WarehouseLaundryComponent,
     ShipmentLaundryComponent,
     CommentLaundryComponent,
-    AcceptanceLaundryLastComponent
+    AcceptanceLaundryLastComponent,
+    WarehouseLaundryLastComponent,
+    RepairLaundryLastComponent,
+    ShipmentLaundryLastComponent
   ],
   imports: [
     BrowserModule,

@@ -1,244 +1,339 @@
+<form [formGroup]="shipmentForm">
 <div class="container">
-  <h2>Отгрузка</h2>
-  <p class="text-info">Белье, которое вы отправили по адресу Парковая д.72 (выберите размер и укажите количество)::</p>
-  <h3 class="alert alert-dark">Прямое белье</h3>
-  <table class="table table-borderless">
-    <thead>
-    <tr>
-      <th rowspan="3">Наволочка</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td></td>
-      <td>Целое</td>
-    </tr>
-    <tr>
-      <td>50x70</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name1" name="name1"></td>
+  <ul class="nav nav-tabs">
+    <li (click)="onElem(1)" class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#parkovaya">Парковая 72</a>
+    </li>
+    <li (click)="onElem(2)"class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#molodezhnaya">Молодежная 72</a>
+    </li>
+    <li (click)="onElem(3)" class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#fortov">Красных Фортов 13</a>
+    </li>
+    <li (click)="onElem(4)" class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#mira">Мира 5</a>
+    </li>
+    <li (click)="onElem(5)" class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#apartamenty">Апартаменты</a>
+    </li>
+  </ul>
+  <div class="tab-content p-3">
+    <div class="tab-pane fade show active" id="parkovaya">
+      <h2 class="h4 mb-3">Отгрузка - Парковая, 72</h2>
 
-    </tr>
-    <tr>
-      <td>70x70</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name3" name="name3"></td>
-
-    </tr>
-    </tbody>
-  </table>
-
-  <table class="table table-borderless">
-    <thead>
-    <tr>
-      <th rowspan="3">Простынь</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td></td>
-      <td>Целое</td>
-    </tr>
-    <tr>
-      <td>1,5 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name5" name="name5"></td>
-
-    </tr>
-    <tr>
-      <td>2 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name7" name="name7"></td>
-
-    </tr>
-    </tbody>
-  </table>
-
-  <table class="table table-borderless">
-    <thead>
-    <tr>
-      <th rowspan="3">Пододеяльник</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td></td>
-      <td>Целое</td>
-
-    </tr>
-    <tr>
-      <td>1,5 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name9" name="name9"></td>
-
-    </tr>
-    <tr>
-      <td>2 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name11" name="name11"></td>
-
-    </tr>
-    </tbody>
-  </table>
-
-  <table class="table table-borderless">
-    <thead>
-    <tr>
-      <th rowspan="3">Полотенце</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td></td>
-      <td>Целое</td>
-
-    </tr>
-    <tr>
-      <td>30x60</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name13" name="name13"></td>
-
-    </tr>
-    <tr>
-      <td>70x70</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name15" name="name15"></td>
-
-    </tr>
-    <tr>
-      <td>70x140</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name17" name="name17"></td>
-
-    </tr>
-    <tr>
-      <td>Кухонные</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name19" name="name19"></td>
-
-    </tr>
-    </tbody>
-  </table>
-
-  <h3 class="alert alert-dark">Не профильное</h3>
-
-  <table class="table table-borderless">
-    <thead>
-    <tr>
-      <th rowspan="3">Коврик</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td></td>
-      <td>Целое</td>
-
-    </tr>
-    <tr>
-      <td>Для ванны</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name21" name="name21"></td>
-
-    </tr>
-    <tr>
-      <td>Придверный</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name23" name="name23"></td>
-
-    </tr>
-    </tbody>
-  </table>
-
-  <table class="table table-borderless">
-    <thead>
-    <tr>
-      <th rowspan="3">Одеяло</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td></td>
-      <td>Целое</td>
-
-    </tr>
-    <tr>
-      <td>1,5 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name25" name="name25"></td>
-
-    </tr>
-    <tr>
-      <td>2 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name27" name="name27"></td>
-
-    </tr>
-    </tbody>
-  </table>
-
-  <table class="table table-borderless">
-    <thead>
-    <tr>
-      <th rowspan="3">Подушка</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td></td>
-      <td>Целое</td>
-
-    </tr>
-    <tr>
-      <td>50x70</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name29" name="name29"></td>
-
-    </tr>
-    <tr>
-      <td>70x70</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name31" name="name31"></td>
-
-    </tr>
-    </tbody>
-  </table>
-
-  <table class="table table-borderless">
-    <thead>
-    <tr>
-      <th rowspan="3">Наматрасник</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td></td>
-      <td>Целое</td>
-
-    </tr>
-    <tr>
-      <td>1,5 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name33" name="name33"></td>
-
-    </tr>
-    <tr>
-      <td>2 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name35" name="name36"></td>
-
-    </tr>
-    </tbody>
-  </table>
-
-  <table class="table table-borderless">
-    <thead>
-    <tr>
-      <th rowspan="3">Шторы</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td></td>
-      <td>Целое</td>
-
-    </tr>
-    <tr>
-      <td>Шторы</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name38" name="name38"></td>
+      <div class="alert alert-info" role="alert">
+        Белье, которое вы отправили по адресу <strong>Парковая, 72</strong> (выберите размер и укажите количество):
+      </div>
 
 
-    </tr>
-    <tr>
-      <th>Общий вес белья:</th>
-      <td><input type="text" class="form-control" placeholder="кг" id="name40" name="name40"></td>
-    </tr>
-    </tbody>
-  </table>
-  <button type="button" class="btn btn-primary">Отправить</button>
-  <p class="text-info">После нажатия кнопки Отправить изменить данные будет нельзя!</p>
-  <br><br><br><br>
+    </div>
+    <div class="tab-pane fade" id="molodezhnaya">
+      <h2 class="h4 mb-3">Отгрузка - Молодежная, 72</h2>
+      <div class="alert alert-info" role="alert">
+        Белье, которое вы отправили по адресу <strong>Молодежная, 72</strong> (выберите размер и укажите количество):
+      </div>
+    </div>
+    <div class="tab-pane fade" id="fortov">
+      <h2 class="h4 mb-3">Отгрузка - Красных Фортов, 13</h2>
+      <div class="alert alert-info" role="alert">
+        Белье, которое вы отправили по адресу <strong>Красных Фортов, 13</strong> (выберите размер и укажите количество):
+      </div>
+
+    </div>
+    <div class="tab-pane fade" id="mira">
+      <h2 class="h4 mb-3">Отгрузка - Мира, 5</h2>
+      <div class="alert alert-info" role="alert">
+        Белье, которое вы отправили по адресу <strong>Мира, 5</strong> (выберите размер и укажите количество):
+      </div>
+
+    </div>
+    <div class="tab-pane fade" id="apartamenty">
+      <h2 class="h4 mb-3">Отгрузка - Апартаменты</h2>
+      <div class="alert alert-info" role="alert">
+        Белье, которое вы отправили в <strong>Апартаменты</strong> (выберите размер и укажите количество):
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+  <div class="row">
+    <div class="col-6 align-middle">
+
+      <h3 class="alert alert-dark">Прямое белье</h3>
+      <table class="table table-borderless">
+        <thead>
+        <tr>
+          <th rowspan="3">Наволочка</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td></td>
+          <td>Целое</td>
+        </tr>
+        <tr>
+          <td>50x70</td>
+          <td><input type="text" formControlName="n1" class="form-control" placeholder="шт" id="name1" name="name1"></td>
+
+        </tr>
+        <tr>
+          <td>70x70</td>
+          <td><input type="text" formControlName="n2" class="form-control" placeholder="шт" id="name3" name="name3"></td>
+
+        </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-borderless">
+        <thead>
+        <tr>
+          <th rowspan="3">Простынь</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td></td>
+          <td>Целое</td>
+        </tr>
+        <tr>
+          <td>1,5 сп</td>
+          <td><input type="text" formControlName="n3" class="form-control" placeholder="шт" id="name5" name="name5"></td>
+
+        </tr>
+        <tr>
+          <td>2 сп</td>
+          <td><input type="text" formControlName="n4" class="form-control" placeholder="шт" id="name7" name="name7"></td>
+
+        </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-borderless">
+        <thead>
+        <tr>
+          <th rowspan="3">Пододеяльник</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td></td>
+          <td>Целое</td>
+
+        </tr>
+        <tr>
+          <td>1,5 сп</td>
+          <td><input type="text" formControlName="n5" class="form-control" placeholder="шт" id="name9" name="name9"></td>
+
+        </tr>
+        <tr>
+          <td>2 сп</td>
+          <td><input type="text" formControlName="n6"class="form-control" placeholder="шт" id="name11" name="name11"></td>
+
+        </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-borderless">
+        <thead>
+        <tr>
+          <th rowspan="3">Полотенце</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td></td>
+          <td>Целое</td>
+
+        </tr>
+        <tr>
+          <td>30x60</td>
+          <td><input type="text" formControlName="n7" class="form-control" placeholder="шт" id="name13" name="name13"></td>
+
+        </tr>
+        <tr>
+          <td>70x70</td>
+          <td><input type="text" formControlName="n8" class="form-control" placeholder="шт" id="name15" name="name15"></td>
+
+        </tr>
+        <tr>
+          <td>70x140</td>
+          <td><input type="text" formControlName="n9" class="form-control" placeholder="шт" id="name17" name="name17"></td>
+
+        </tr>
+        <tr>
+          <td>Кухонные</td>
+          <td><input type="text" formControlName="n10" class="form-control" placeholder="шт" id="name19" name="name19"></td>
+
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-6 align-middle">
+      <h3 class="alert alert-dark">Не профильное</h3>
+
+      <table class="table table-borderless">
+        <thead>
+        <tr>
+          <th rowspan="3">Коврик</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td></td>
+          <td>Целое</td>
+
+        </tr>
+        <tr>
+          <td>Для ванны</td>
+          <td><input type="text" formControlName="n11" class="form-control" placeholder="шт" id="name21" name="name21"></td>
+
+        </tr>
+        <tr>
+          <td>Придверный</td>
+          <td><input type="text" formControlName="n12" class="form-control" placeholder="шт" id="name23" name="name23"></td>
+
+        </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-borderless">
+        <thead>
+        <tr>
+          <th rowspan="3">Одеяло</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td></td>
+          <td>Целое</td>
+
+        </tr>
+        <tr>
+          <td>1,5 сп</td>
+          <td><input type="text" formControlName="n13" class="form-control" placeholder="шт" id="name25" name="name25"></td>
+
+        </tr>
+        <tr>
+          <td>2 сп</td>
+          <td><input type="text" formControlName="n14" class="form-control" placeholder="шт" id="name27" name="name27"></td>
+
+        </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-borderless">
+        <thead>
+        <tr>
+          <th rowspan="3">Подушка</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td></td>
+          <td>Целое</td>
+
+        </tr>
+        <tr>
+          <td>50x70</td>
+          <td><input type="text" formControlName="n15" class="form-control" placeholder="шт" id="name29" name="name29"></td>
+
+        </tr>
+        <tr>
+          <td>70x70</td>
+          <td><input type="text" formControlName="n16" class="form-control" placeholder="шт" id="name31" name="name31"></td>
+
+        </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-borderless">
+        <thead>
+        <tr>
+          <th rowspan="3">Наматрасник</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td></td>
+          <td>Целое</td>
+
+        </tr>
+        <tr>
+          <td>1,5 сп</td>
+          <td><input type="text" formControlName="n17" class="form-control" placeholder="шт" id="name33" name="name33"></td>
+
+        </tr>
+        <tr>
+          <td>2 сп</td>
+          <td><input type="text" formControlName="n18" class="form-control" placeholder="шт" id="name35" name="name36"></td>
+
+        </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-borderless">
+        <thead>
+        <tr>
+          <th rowspan="3">Шторы</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td></td>
+          <td>Целое</td>
+
+        </tr>
+        <tr>
+          <td>Шторы</td>
+          <td><input type="text" formControlName="n19" class="form-control" placeholder="шт" id="name38" name="name38"></td>
+
+
+        </tr>
+        <tr>
+          <th>Общий вес белья:</th>
+          <td><input type="text" formControlName="massa" class="form-control" placeholder="кг" id="name40" name="name40"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <button type="button" class="btn btn-primary" (click)="send_data()"
+                [disabled]="shipmentForm.value.n1=='' &&
+                      shipmentForm.value.n2=='' &&
+                      shipmentForm.value.n3=='' &&
+                      shipmentForm.value.n4=='' &&
+                      shipmentForm.value.n5=='' &&
+                      shipmentForm.value.n6=='' &&
+                      shipmentForm.value.n7=='' &&
+                      shipmentForm.value.n8=='' &&
+                      shipmentForm.value.n9=='' &&
+                      shipmentForm.value.n10=='' &&
+                      shipmentForm.value.n11=='' &&
+                      shipmentForm.value.n12=='' &&
+                      shipmentForm.value.n13=='' &&
+                      shipmentForm.value.n14=='' &&
+                      shipmentForm.value.n15=='' &&
+                      shipmentForm.value.n16=='' &&
+                      shipmentForm.value.n17=='' &&
+                      shipmentForm.value.n18=='' &&
+                      shipmentForm.value.n19=='' &&
+                      shipmentForm.value.massa==''">Отправить</button>
+
+        <div class="alert alert-warning mt-4" role="alert">
+          <strong>Внимание!</strong> После нажатия кнопки <strong>Отправить</strong> изменить данные будет нельзя!
+          <p class="text-info">{{this.sError}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
-
-
+</form>

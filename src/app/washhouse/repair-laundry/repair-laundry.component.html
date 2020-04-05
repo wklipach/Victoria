@@ -1,3 +1,4 @@
+<form [formGroup]="repairForm">
 <div class="container">
   <h2>Ремонт</h2>
   <p class="text-info">Белье, которое вы отремонтировали (выберите размер и укажите количество):</p>
@@ -15,12 +16,12 @@
     </tr>
     <tr>
       <td>50x70</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name1" name="name1"></td>
+      <td><input type="text" class="form-control" formControlName="n1" placeholder="шт" id="name1" name="name1"></td>
 
     </tr>
     <tr>
       <td>70x70</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name3" name="name3"></td>
+      <td><input type="text" class="form-control" formControlName="n2" placeholder="шт" id="name3" name="name3"></td>
 
     </tr>
     </tbody>
@@ -39,12 +40,12 @@
     </tr>
     <tr>
       <td>1,5 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name5" name="name5"></td>
+      <td><input type="text" class="form-control" formControlName="n3" placeholder="шт" id="name5" name="name5"></td>
 
     </tr>
     <tr>
       <td>2 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name7" name="name7"></td>
+      <td><input type="text" class="form-control" formControlName="n4" placeholder="шт" id="name7" name="name7"></td>
 
     </tr>
     </tbody>
@@ -64,12 +65,12 @@
     </tr>
     <tr>
       <td>1,5 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name9" name="name9"></td>
+      <td><input type="text" class="form-control" formControlName="n5" placeholder="шт" id="name9" name="name9"></td>
 
     </tr>
     <tr>
       <td>2 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name11" name="name11"></td>
+      <td><input type="text" class="form-control" formControlName="n6" placeholder="шт" id="name11" name="name11"></td>
 
     </tr>
     </tbody>
@@ -89,22 +90,22 @@
     </tr>
     <tr>
       <td>30x60</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name13" name="name13"></td>
+      <td><input type="text" class="form-control" formControlName="n7" placeholder="шт" id="name13" name="name13"></td>
 
     </tr>
     <tr>
       <td>70x70</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name15" name="name15"></td>
+      <td><input type="text" class="form-control" formControlName="n8" placeholder="шт" id="name15" name="name15"></td>
 
     </tr>
     <tr>
       <td>70x140</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name17" name="name17"></td>
+      <td><input type="text" class="form-control" formControlName="n9" placeholder="шт" id="name17" name="name17"></td>
 
     </tr>
     <tr>
       <td>Кухонные</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name19" name="name19"></td>
+      <td><input type="text" class="form-control" formControlName="n10" placeholder="шт" id="name19" name="name19"></td>
 
     </tr>
     </tbody>
@@ -126,12 +127,12 @@
     </tr>
     <tr>
       <td>Для ванны</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name21" name="name21"></td>
+      <td><input type="text" class="form-control" formControlName="n11" placeholder="шт" id="name21" name="name21"></td>
 
     </tr>
     <tr>
       <td>Придверный</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name23" name="name23"></td>
+      <td><input type="text" class="form-control" formControlName="n12" placeholder="шт" id="name23" name="name23"></td>
 
     </tr>
     </tbody>
@@ -151,12 +152,12 @@
     </tr>
     <tr>
       <td>1,5 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name25" name="name25"></td>
+      <td><input type="text" class="form-control" formControlName="n13" placeholder="шт" id="name25" name="name25"></td>
 
     </tr>
     <tr>
       <td>2 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name27" name="name27"></td>
+      <td><input type="text" class="form-control" formControlName="n14" placeholder="шт" id="name27" name="name27"></td>
 
     </tr>
     </tbody>
@@ -176,12 +177,12 @@
     </tr>
     <tr>
       <td>50x70</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name29" name="name29"></td>
+      <td><input type="text" class="form-control" formControlName="n15" placeholder="шт" id="name29" name="name29"></td>
 
     </tr>
     <tr>
       <td>70x70</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name31" name="name31"></td>
+      <td><input type="text" class="form-control" formControlName="n16" placeholder="шт" id="name31" name="name31"></td>
 
     </tr>
     </tbody>
@@ -201,12 +202,12 @@
     </tr>
     <tr>
       <td>1,5 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name33" name="name33"></td>
+      <td><input type="text" class="form-control" formControlName="n17" placeholder="шт" id="name33" name="name33"></td>
 
     </tr>
     <tr>
       <td>2 сп</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name35" name="name36"></td>
+      <td><input type="text" class="form-control" formControlName="n18" placeholder="шт" id="name35" name="name36"></td>
 
     </tr>
     </tbody>
@@ -226,18 +227,40 @@
     </tr>
     <tr>
       <td>Шторы</td>
-      <td><input type="text" class="form-control" placeholder="шт" id="name38" name="name38"></td>
+      <td><input type="text" class="form-control" formControlName="n19" placeholder="шт" id="name38" name="name38"></td>
 
 
     </tr>
     <tr>
       <th>Общий вес белья:</th>
-      <td><input type="text" class="form-control" placeholder="кг" id="name40" name="name40"></td>
+      <td><input type="text" class="form-control" formControlName="massa" placeholder="кг" id="name40" name="name40"></td>
     </tr>
     </tbody>
   </table>
-  <button type="button" class="btn btn-primary">Отправить</button>
+  <button type="button" class="btn btn-primary" (click)="send_data()"
+          [disabled]="repairForm.value.n1=='' &&
+                      repairForm.value.n2=='' &&
+                      repairForm.value.n3=='' &&
+                      repairForm.value.n4=='' &&
+                      repairForm.value.n5=='' &&
+                      repairForm.value.n6=='' &&
+                      repairForm.value.n7=='' &&
+                      repairForm.value.n8=='' &&
+                      repairForm.value.n9=='' &&
+                      repairForm.value.n10=='' &&
+                      repairForm.value.n11=='' &&
+                      repairForm.value.n12=='' &&
+                      repairForm.value.n13=='' &&
+                      repairForm.value.n14=='' &&
+                      repairForm.value.n15=='' &&
+                      repairForm.value.n16=='' &&
+                      repairForm.value.n17=='' &&
+                      repairForm.value.n18=='' &&
+                      repairForm.value.n19=='' &&
+                      repairForm.value.massa==''">Отправить</button>
+
   <p class="text-info">После нажатия кнопки Отправить изменить данные будет нельзя!</p>
+  <p class="text-info">{{this.sError}}</p>
   <br><br><br><br>
 </div>
-
+</form>

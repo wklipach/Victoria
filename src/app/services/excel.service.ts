@@ -64,13 +64,13 @@ export class ExcelService {
         return true;
   }
 
-  excelAcceptanceLaundryLast(alTitle, detailList) {
+  excelAcceptanceLaundryLast(alTitle, detailList, sTitle, sOper) {
 
 
 //    this.excel.generateExcel(this.detailList);
 
 
-    const title = 'Передача белья';
+    const title = sTitle;
     // this.excel.generateExcel();
     const workbook = new Excel.Workbook();
     const worksheet = workbook.addWorksheet('Acceptance Laundry');
@@ -91,6 +91,10 @@ export class ExcelService {
     tArray.push(['Смена от:', dPipe.transform(alTitle.shiftdate, 'dd.MM.yyyy   HH.mm')]);
     tArray.push(['Дата передачи:', dPipe.transform(alTitle.date_oper, 'dd.MM.yyyy   HH.mm')]);
     tArray.push(['Масса переданнного:', alTitle.massa + ' ' + 'кг.']);
+    if (alTitle.address) {
+      tArray.push(['Адрес передачи:', alTitle.address]);
+    }
+
     tArray.push([]);
     tArray.forEach(d => {
       const row = worksheet.addRow(d);
@@ -105,15 +109,26 @@ export class ExcelService {
     col3.width = 20;
 
 // передача массива отчета для отчета
-    const tT = worksheet.addRow(['наимнование', 'количество', 'поврежденность']);
+    const tT = worksheet.addRow(['наимнование', 'количество', sOper]);
     tT.font = {bold: true };
     detailList.forEach(d => {
       // const arr = Object.keys(d).map(key => d[key]);
 
-      let sLine = 'прямое';
-      if (d.bitspoiled === 1) {
-        sLine = 'поврежденное';
+      let sLine = '';
+      if (d.bitspoiled) {
+        sLine = 'прямое';
+        if (d.bitspoiled === 1) {
+          sLine = 'поврежденное';
+        }
       }
+
+      if (d.bitadd) {
+        sLine = 'приход';
+        if (d.bitspoiled === 1) {
+          sLine = 'расход';
+        }
+      }
+
       const arr = [d.name + ' ' + d.type, d.quant, sLine];
       const row = worksheet.addRow(arr);
 

@@ -114,7 +114,7 @@ export class AcceptanceLaundryComponent implements OnInit {
     this.shiftservice.get_shiftuserbranch(res_user.id_user_vict, id_branch).subscribe( shift => {
 
 
-      console.log('shift[0]', shift[0]);
+      // console.log('shift[0]', shift[0]);
 
       if (shift[0]) {
         // прием белья в проводку в базе применительно к смене
@@ -122,8 +122,6 @@ export class AcceptanceLaundryComponent implements OnInit {
         this.ls.setacceptance(this.acclaundform.value, shift[0].id).subscribe( value => {
           console.log('value', value);
           if (value === true) {
-
-            console.log('уке', 'еук');
 
             this.router.navigate(['/acceptance_laundry_last']);
           }

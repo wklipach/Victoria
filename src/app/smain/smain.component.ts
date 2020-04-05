@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {AuthService} from '../services/auth-service.service';
 
 @Component({
   selector: 'app-smain',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SmainComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
+    const Res = this.authService.loginStorage();
+    if (!Res.bVictConnected) {
+      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['/laundry']);
+    }
   }
 
 }
