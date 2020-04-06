@@ -67,13 +67,10 @@ export class ExcelService {
   excelAcceptanceLaundryLast(alTitle, detailList, sTitle, sOper) {
 
 
-//    this.excel.generateExcel(this.detailList);
-
-
     const title = sTitle;
     // this.excel.generateExcel();
     const workbook = new Excel.Workbook();
-    const worksheet = workbook.addWorksheet('Acceptance Laundry');
+    const worksheet = workbook.addWorksheet('Laundry');
     const titleRow = worksheet.addRow([title]);
     titleRow.font = { name: 'Comic Sans MS', family: 4, size: 16, underline: 'double', bold: true };
     // const subTitleRow = worksheet.addRow(['Date : ' + '01-01-2010']);
@@ -111,20 +108,21 @@ export class ExcelService {
 // передача массива отчета для отчета
     const tT = worksheet.addRow(['наимнование', 'количество', sOper]);
     tT.font = {bold: true };
-    detailList.forEach(d => {
-      // const arr = Object.keys(d).map(key => d[key]);
 
+
+    detailList.forEach(d => {
       let sLine = '';
-      if (d.bitspoiled) {
+
+      if ('bitspoiled' in d) {
         sLine = 'прямое';
         if (d.bitspoiled === 1) {
           sLine = 'поврежденное';
         }
       }
 
-      if (d.bitadd) {
+      if ('bitadd' in d) {
         sLine = 'приход';
-        if (d.bitspoiled === 1) {
+        if (d.bitadd === 0) {
           sLine = 'расход';
         }
       }
@@ -137,7 +135,7 @@ export class ExcelService {
 
     workbook.xlsx.writeBuffer().then((data) => {
       const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-      fs.saveAs(blob, 'AcceptanceLaundryLast.xlsx');
+      fs.saveAs(blob, 'LaundryLast.xlsx');
     });
 
   }
