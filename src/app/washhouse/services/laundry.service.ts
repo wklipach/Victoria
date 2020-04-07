@@ -94,6 +94,12 @@ export class LaundryService {
     return this.http.get(this.gr.sUrlGlobal + 'laundry', {params: params});
   }
 
+  getValidatorsRepair(id_branch) {
+    const params = new HttpParams()
+      .set('get_valid_repair', 'get_valid_repair')
+      .set('id_branch', id_branch.toString());
+    return this.http.get(this.gr.sUrlGlobal + 'validators', {params: params});
+  }
 
 
 }
