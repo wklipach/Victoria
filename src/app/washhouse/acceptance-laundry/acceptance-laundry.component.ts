@@ -15,10 +15,14 @@ export class AcceptanceLaundryComponent implements OnInit {
   public acclaundform: FormGroup;
   sError = '';
 
+  // Цвет вадидации, элемент, разрешенное из базыколичество, показываемое на экране значение
+  arrayFlag: [number, string, number, string][] = [[0, 'init', -1, 'init']];
+
   constructor(private router: Router,
               private authService: AuthService,
               private ls: LaundryService,
               private shiftservice: ShiftService) {
+
     this.acclaundform  = new FormGroup({
       'n1': new FormControl('', [Validators.required]),
       'n2': new FormControl('', [Validators.required]),
@@ -60,14 +64,135 @@ export class AcceptanceLaundryComponent implements OnInit {
       'n19_spoiled': new FormControl('', [Validators.required]),
       'massa': new FormControl('', [Validators.required])
     });
+
+    this.setColorArray();
+    this.setAllFlagFromCicle();
   }
+
+///// VALIDATORS
+  setColorArray() {
+    Object.keys(this.acclaundform.controls).forEach(key => {
+      this.arrayFlag.push([0, key, -1, '']);
+    });
+  }
+
+getCokorFlag(key): [number, string] {
+    const arrRes = this.arrayFlag.find(element => element[1] === key);
+
+    if (arrRes === undefined) {
+        return [0, ''];
+    } else {
+      return [arrRes[0], arrRes[3]];
+    }
+  }
+
+  setCokorFlag(key, value) {
+    const arrRes = this.arrayFlag.find(element => element[1] === key);
+
+    if (arrRes !== undefined) {
+      arrRes[0] = value;
+    }
+  }
+
+
+ // обход массива с присвоение переменным разрешенных значений из базы
+ setAllFlagFromCicle() {
+   // тут ничего нет потому что разрешены любые значения
+ }
+
+  // проверка массива на введенные значения
+  getAllFlagFromCicle(): boolean {
+    // тут мои присваивания элементам правильных значений
+    let resBoolean = true;
+    Object.keys(this.acclaundform.controls).forEach(key => {
+
+      resBoolean = this.checkValue(this.acclaundform.controls[key], key);
+
+/*
+      const arrRes = this.arrayFlag.find(element => element[1] === key);
+      if (arrRes !== undefined) {
+        arrRes[0] = 2;
+        arrRes[3] = '';
+      }
+
+      const sVal = this.acclaundform.controls[key].value.toString().trim();
+      if (sVal !== '') {
+        if (isNaN(Number(sVal))) {
+          if (arrRes !== undefined) {
+            arrRes[0] = 1;
+            arrRes[3] = 'Введите цифровое значение';
+            resBoolean = false;
+          }
+        } else {
+          if (Number(sVal) <= 0) {
+            if (arrRes !== undefined) {
+              arrRes[0] = 1;
+              arrRes[3] = 'Введите положительное значение';
+              resBoolean = false;
+            }
+          }
+
+        }
+      }
+*/
+
+    });
+
+    return resBoolean;
+  }
+
+  onChandeValid(elName: string) {
+    const formControl   = this.acclaundform.controls[elName];
+    if (formControl) {
+      this.checkValue(formControl, elName);
+    }
+  }
+
+
+checkValue(formControl, key): boolean {
+  let resBoolean = true;
+  const sVal = formControl.value.toString().trim();
+  const arrRes = this.arrayFlag.find(element => element[1] === key);
+  if (arrRes !== undefined) {
+    arrRes[0] = 2;
+    arrRes[3] = '';
+  }
+
+  if (sVal === '') {
+    arrRes[0] = 0;
+  }
+
+  if (sVal !== '') {
+    if (isNaN(Number(sVal))) {
+      if (arrRes !== undefined) {
+        arrRes[0] = 1;
+        arrRes[3] = 'Введите цифровое значение';
+        resBoolean = false;
+      }
+    } else {
+      if (Number(sVal) <= 0) {
+        if (arrRes !== undefined) {
+          arrRes[0] = 1;
+          arrRes[3] = 'Введите положительное значение';
+          resBoolean = false;
+        }
+      }
+
+    }
+  }
+  return resBoolean;
+}
+
+
+///// END VALIDATORS
 
   ngOnInit(): void {
     const Res = this.authService.loginStorage();
     if (!Res.bVictConnected) {
       this.router.navigate(['/login']);
     }
-  }
+
+   }
 
 
   checkValueMassa() {
@@ -97,6 +222,13 @@ export class AcceptanceLaundryComponent implements OnInit {
   }
 
   send_data() {
+
+    this.setAllFlagFromCicle();
+    if (this.getAllFlagFromCicle() === false) {
+      this.sError = 'Найдены неправильные значения. Измените их на правильные пользуясь подсказкой.';
+      return;
+    }
+
     this.sError = '';
     // если какие-то данные с формы не преобразуются в int сообщаем об этом
     if (!this.checkValueInt()) {
@@ -129,6 +261,12 @@ export class AcceptanceLaundryComponent implements OnInit {
       }
       });
 
+  }
+
+  my() {
+
+    this.setCokorFlag('n1', 1);
+    this.setCokorFlag('n1_spoiled', 2);
   }
 
 }
