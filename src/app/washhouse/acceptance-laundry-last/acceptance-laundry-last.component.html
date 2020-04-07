@@ -21,7 +21,7 @@
 <br>
 <br>
 <h3>Cписок</h3>
-<li *ngFor="let dl of detailList">{{dl.name}}   {{dl.type}}:   {{dl.quant}} шт.  <a *ngIf="dl.bitspoiled===1">поврежденное</a><a *ngIf="dl.bitspoiled===0">прямое</a>
+<li *ngFor="let dl of detailList">{{dl.name}}   {{dl.type}}:   {{dl.quant}} шт.  <a *ngIf="dl.bitspoiled===1">поврежденное</a><a *ngIf="dl.bitspoiled===0">целое</a>
 </li>​​
 <br>
 <button (click)="back()">Далее</button>

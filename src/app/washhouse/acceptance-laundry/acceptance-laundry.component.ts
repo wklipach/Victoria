@@ -108,34 +108,6 @@ getCokorFlag(key): [number, string] {
 
       resBoolean = this.checkValue(this.acclaundform.controls[key], key);
 
-/*
-      const arrRes = this.arrayFlag.find(element => element[1] === key);
-      if (arrRes !== undefined) {
-        arrRes[0] = 2;
-        arrRes[3] = '';
-      }
-
-      const sVal = this.acclaundform.controls[key].value.toString().trim();
-      if (sVal !== '') {
-        if (isNaN(Number(sVal))) {
-          if (arrRes !== undefined) {
-            arrRes[0] = 1;
-            arrRes[3] = 'Введите цифровое значение';
-            resBoolean = false;
-          }
-        } else {
-          if (Number(sVal) <= 0) {
-            if (arrRes !== undefined) {
-              arrRes[0] = 1;
-              arrRes[3] = 'Введите положительное значение';
-              resBoolean = false;
-            }
-          }
-
-        }
-      }
-*/
-
     });
 
     return resBoolean;
@@ -180,6 +152,16 @@ checkValue(formControl, key): boolean {
 
     }
   }
+
+  // особый случай не введена масса белья
+  if ((sVal === '') &&  (key.toString() === 'massa')) {
+    if (arrRes !== undefined) {
+      arrRes[0] = 1;
+      arrRes[3] = 'Введите массу белья, кг';
+      resBoolean = false;
+    }
+  }
+
   return resBoolean;
 }
 
@@ -263,10 +245,5 @@ checkValue(formControl, key): boolean {
 
   }
 
-  my() {
-
-    this.setCokorFlag('n1', 1);
-    this.setCokorFlag('n1_spoiled', 2);
-  }
 
 }

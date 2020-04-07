@@ -106,7 +106,7 @@ export class ExcelService {
     col3.width = 20;
 
 // передача массива отчета для отчета
-    const tT = worksheet.addRow(['наимнование', 'количество', sOper]);
+    const tT = worksheet.addRow(['наименование', 'количество', sOper]);
     tT.font = {bold: true };
 
 
@@ -114,7 +114,7 @@ export class ExcelService {
       let sLine = '';
 
       if ('bitspoiled' in d) {
-        sLine = 'прямое';
+        sLine = 'целое';
         if (d.bitspoiled === 1) {
           sLine = 'поврежденное';
         }

@@ -53,12 +53,12 @@
     <tr>
       <td>50x70</td>
       <td>{{getCokorFlag('n1')[1]}}<input type="text" (change)="onChandeValid('n1')"  [class]="getCokorFlag('n1')[0] === 0 ? 'form-control' : getCokorFlag('n1')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" name="n1" formControlName="n1" placeholder="шт" id="n1" name="name1"></td>
-      <td>{{getCokorFlag('n1_spoiled')[1]}}<input type="text" (change)="onChandeValid('n1_spoiled')" [class]="getCokorFlag('n1_spoiled')[0] === 0 ? 'form-control' : getCokorFlag('n1_spoiled')[0] === 1 ? 'form-control is-valid' : 'form-control is-invalid'" formControlName="n1_spoiled" placeholder="шт" id="name2" name="name2"></td>
+      <td>{{getCokorFlag('n1_spoiled')[1]}}<input type="text" (change)="onChandeValid('n1_spoiled')" [class]="getCokorFlag('n1_spoiled')[0] === 0 ? 'form-control' : getCokorFlag('n1_spoiled')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n1_spoiled" placeholder="шт" id="name2" name="name2"></td>
     </tr>
     <tr>
       <td>70x70</td>
       <td>{{getCokorFlag('n2')[1]}}<input type="text" (change)="onChandeValid('n2')" [class]="getCokorFlag('n2')[0] === 0 ? 'form-control' : getCokorFlag('n2')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" name="n2" formControlName="n2" placeholder="шт" id="n2" name="name3"></td>
-      <td>{{getCokorFlag('n2_spoiled')[1]}}<input type="text" (change)="onChandeValid('n2_spoiled')" [class]="getCokorFlag('n2_spoiled')[0] === 0 ? 'form-control' : getCokorFlag('n2_spoiled')[0] === 1 ? 'form-control is-valid' : 'form-control is-invalid'" formControlName="n2_spoiled" placeholder="шт" id="name4" name="name4"></td>
+      <td>{{getCokorFlag('n2_spoiled')[1]}}<input type="text" (change)="onChandeValid('n2_spoiled')" [class]="getCokorFlag('n2_spoiled')[0] === 0 ? 'form-control' : getCokorFlag('n2_spoiled')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n2_spoiled" placeholder="шт" id="name4" name="name4"></td>
     </tr>
     </tbody>
   </table>
@@ -305,8 +305,6 @@
   <p class="text-info">{{this.sError}}</p>
   <br><br><br><br>
 </div>
-
-  <button (click)="my()">!!!</button>
 
 
 </form>
