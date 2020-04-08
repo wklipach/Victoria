@@ -77,7 +77,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     const sUserOrEmail = this.loginForm.controls['nameOrEmail'].value;
 
-    console.log('a1', sUserOrEmail);
+
+    if (this.loginForm.controls['nameOrEmail'].value.toString().length < 3)  {
+      this.sResTrouble = 'Слишком короткое имя входа.';
+      return;
+    }
 
     const sPassword = this.loginForm.controls['password'].value;
     const tUser =  {sUserOrEmail: this.loginForm.controls['nameOrEmail'].value, sPassword: this.loginForm.controls['password'].value};
@@ -99,7 +103,20 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.sResTrouble = 'Пользователь не найден.';
           this.authService.clearStorage();
           this.block_button(this.nStopMs);
+          return;
         }
+
+        console.log('value[0]', value[0], value[0][0]['CountBranch']);
+
+        if (value[0][0].CountBranch === 0) {
+          this.showErr = true;
+          this.showSucc = false;
+          this.sResTrouble = 'Дождитесь решения администратора.';
+          this.authService.clearStorage();
+          this.block_button(this.nStopMs);
+          return;
+        }
+
 
         if (value[0].length === 1) {
 

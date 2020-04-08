@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService) {
 
     this.myForm  = new FormGroup({
-      'userName': new FormControl('', [Validators.required], [this.userNameAsyncValidator.bind(this)]
+      'userName': new FormControl('', [Validators.required, Validators.minLength(3)], [this.userNameAsyncValidator.bind(this)]
       ),
 
       'userEmail': new FormControl(null, [
@@ -28,8 +28,8 @@ export class RegisterComponent implements OnInit {
           Validators.email
         ], [this.userEmailAsyncValidator.bind(this)]
       ),
-      'userPassword1': new FormControl('', [Validators.required, Validators.minLength(1)]),
-      'userPassword2': new FormControl('', [Validators.required, Validators.minLength(1)], [this.password2AsyncValidator.bind(this)])
+      'userPassword1': new FormControl('', [Validators.required, Validators.minLength(2)]),
+      'userPassword2': new FormControl('', [Validators.required, Validators.minLength(2)], [this.password2AsyncValidator.bind(this)])
     });
 
   }
@@ -87,7 +87,6 @@ export class RegisterComponent implements OnInit {
   }
 
   submit() {
-    console.log('sss1');
     this.bPassword = false;
 
     const {userName, userEmail, userPassword1, userPassword2} = this.myForm.value;
@@ -118,7 +117,7 @@ export class RegisterComponent implements OnInit {
 
     return this.authService.setNewUser(NewUser, curSubject, curLetter).subscribe((value) => {
           this.authService.setStorage(value[0][0].nick, true, value[0][0].id);
-          this.router.navigate(['/parlor']);
+          this.router.navigate(['/login']);
         });
   }
 

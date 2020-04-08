@@ -24,6 +24,33 @@ export class AdminService {
       return this.http.post(sUrl, data_branch);
   }
 
+  // разрушаем связь филиала и юзера
+  setDeleteUserBranch(id_user, id_branch) {
+    const sUrl = this.gr.sUrlGlobal + 'admin';
+    const data_branch = { 'userbranch_delete': 'userbranch_delete', 'id_user': id_user, 'id_branch': id_branch};
+    return this.http.post(sUrl, data_branch);
+  }
+
+  setDeleteUserFull(id_user) {
+    const sUrl = this.gr.sUrlGlobal + 'admin';
+    const data_branch = { 'user_delete': 'user_delete', 'id_user': id_user};
+    return this.http.post(sUrl, data_branch);
+  }
+
+  setUpdateNickNane(id_user, nick) {
+
+    const sUrl = this.gr.sUrlGlobal + 'admin';
+    const data_branch = { 'user_nick': 'user_nick', 'id_user': id_user, 'nick': nick};
+    return this.http.post(sUrl, data_branch);
+  }
+
+  setUpdateLinkBranchUser(id_user, chbranch, ip, checkIP) {
+    const sUrl = this.gr.sUrlGlobal + 'admin';
+    const data_branch = { 'linkbranchuser': 'linkbranchuser', 'id_user': id_user, 'chbranch': chbranch, 'ip': ip, 'checkIP' : checkIP};
+    return this.http.post(sUrl, data_branch);
+  }
+
+
   // изменяем имя филиала
   setBranchName(id, newName) {
     const sUrl = this.gr.sUrlGlobal + 'admin';
@@ -38,5 +65,20 @@ export class AdminService {
     return this.http.post(sUrl, data_branch);
   }
 
+  // получаем полный список филиалов
+  getUsers(id_branch) {
+    const params = new HttpParams()
+      .set('get_users', 'get_users')
+      .set('id_branch', id_branch);
+    return this.http.get(this.gr.sUrlGlobal + 'admin', {params: params});
+  }
+
+  getBranchUser(id_user, id_branch) {
+    const params = new HttpParams()
+      .set('get_branch_user', 'get_branch_user')
+      .set('id_user', id_user)
+      .set('id_branch', id_branch);
+    return this.http.get(this.gr.sUrlGlobal + 'admin', {params: params});
+  }
 
 }

@@ -5,15 +5,17 @@
 
       <form [formGroup]="adminForm">
 
-        <ng-container *ngIf="bShowDeleteBranch">
-
-          <div class="changepassBox">
-            <label>Вы уверены что жедаете удалить филиал {{sBranchName}}?</label>
-            <button type="submit" class="btn-newPassword" (click)="OnDeleteBranch()">Удалить</button>
-            <button class="btn-newPasswordCancel" (click)="DisappearFrameDeleteBranch()">Отмена</button>
+        <div class="collapse" id="collapseDeleteBranch">
+          <div class="card card-body">
+            <div class="alert alert-primary" role="alert">
+              Вы уверены что желаете удалить отделение {{sBranchName}}?
+            </div>
+              <div class="input-group-append">
+                <button class="btn btn-outline-primary float-right" type="button" (click)="OnDeleteBranch()">Да</button>
+                <button class="btn btn-outline-primary float-right" data-toggle="collapse" data-target="#collapseDeleteBranch" type="button">Нет</button>
+              </div>
           </div>
-        </ng-container>
-
+        </div>
 
         <p>
           <a class="btn btn-primary mt-3 w-50" data-toggle="collapse" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
@@ -35,19 +37,19 @@
 
 
         <div class="card card-body">
-
           <ul class="list-group">
-
             <li [class.selected] = "bl === selectedBL" class="list-group-item"  (click)="mu(bl)"  *ngFor="let bl of branchList">{{bl.name }}</li>
-
           </ul>
-
         </div>
 
-        <button class="btn btn-danger mt-3 w-50" (click)="DeleteBranch()">Удалить отделение</button>
 
         <p>
+          <a class="btn btn-danger mt-3 w-50" data-toggle="collapse" href="#collapseDeleteBranch" aria-expanded="false" aria-controls="collapse1">
+            Удалить отделение
+          </a>
+        </p>
 
+        <p>
           <a class="btn btn-primary mt-3 w-50" (click)="changeBranch()"  data-toggle="collapse" href="#collapseCH" aria-expanded="false" aria-controls="collapse1">
             Изменить отделение
           </a>
@@ -73,33 +75,44 @@
 
         </div>
 
-
       <h3 class="alert-primary my-3">Редактирование пользователей</h3>
-
         <div class="card card-body">
           <ul class="list-group">
-            <li class="list-group-item">Иванова Ивона
-              <button class="btn btn-outline-primary float-right" type="button">Задать права</button>
-            </li>
-            <li class="list-group-item">Петрова Холмская
-              <button class="btn btn-outline-primary float-right" type="button">Задать права</button>
+            <li [class.selected] = "uElem === selectedUser" class="list-group-item"  (click)="muUser(uElem)" *ngFor="let uElem of usersList">
+              <span class="badge badge-secondary" *ngIf="uElem.filial===0">!</span>
+              {{uElem.nick}}
+               <button data-toggle="collapse" data-target="#collapseUserFrame" class="btn btn-outline-primary float-right" type="button" (click)="changeUserRight(uElem)">
+                 Задать права
+               </button>
+
             </li>
           </ul>
         </div>
 
+<!--
+//TODO !!!!
+-->
+
+        <div class="collapse" id="collapseUserFrame">
         <h3 class="alert-primary my-3">Настройка пользователей</h3>
 
         <div class="card card-body">
           <ul class="list-group">
             <li class="list-group-item">
 
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" formControlName="checkIP" class="form-check-input">
+                  Проверять IP адрес
+                </label>
+              </div>
+
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1">IP</span>
                 </div>
-                <input type="text" class="form-control" placeholder="127.0.0.1" aria-label="IP пользователя" aria-describedby="basic-addon1">
+                <input type="text" formControlName="ip" class="form-control" placeholder="127.0.0.1" aria-label="IP пользователя" aria-describedby="basic-addon1">
               </div>
-
             </li>
             <li class="list-group-item">
 
@@ -107,14 +120,12 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon2">Группа</span>
                 </div>
-                <input type="text" class="form-control" placeholder="Не назначен" aria-label="Не назначен" aria-describedby="basic-addon2">
+                <input type="text"  formControlName="chbranch" class="form-control" placeholder="Не назначен" aria-label="Не назначен" aria-describedby="basic-addon2">
                 <div class="dropdown">
                   <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Администрация</a>
-                    <a class="dropdown-item" href="#">Прачечная</a>
-                    <a class="dropdown-item" href="#">Такси</a>
+                    <a class="dropdown-item" (click)="choiseBranchForUser(chBranch)" *ngFor="let chBranch of branchList">{{chBranch.name }}</a>
                   </div>
                 </div>
               </div>
@@ -125,21 +136,54 @@
 
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">Еще что забыл?</span>
+                  <span class="input-group-text" id="basic-addon3">Ник</span>
                 </div>
-                <input type="text" class="form-control" placeholder="Еще что забыл" aria-label="Еще что забыл" aria-describedby="basic-addon3">
+                <input type="text" formControlName="nick"  class="form-control" placeholder="Еще что забыл" aria-label="Еще что забыл" aria-describedby="basic-addon3">
               </div>
 
             </li>
-
-
-
           </ul>
+
+          <button class="btn btn-outline-primary float-right" type="button"  data-toggle="collapse" data-target="#collapseChoiseBranch">Отвязать от филиала</button>
+          <button class="btn btn-outline-primary float-right" type="button" data-toggle="collapse" data-target="#collapseDeleteUserAll">Удалить пользователя полностью</button>
+          <button class="btn btn-outline-primary float-right" type="button" (click)="OnSaveAllUserBranch()">Сохранить</button>
+          <button class="btn btn-outline-primary float-right" data-toggle="collapse" data-target="#collapseUserFrame" type="button">Отмена</button>
+
+
         </div>
 
 
+</div>
 
+
+
+        <div *ngIf="this.chBranch"  class="collapse" id="collapseChoiseBranch">
+          <div class="card card-body">
+            <div class="alert alert-primary" role="alert">
+              Вы уверены что желаете удалить связь с выбранным отделением {{this.chBranch.name}}?
+            </div>
+            <div class="input-group-append">
+              <button class="btn btn-outline-primary float-right" type="button" (click)="OnDeleteUserBranch()">Да</button>
+              <button class="btn btn-outline-primary float-right" data-toggle="collapse" data-target="#collapseChoiseBranch" type="button">Нет</button>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="this.selectedUser"  class="collapse" id="collapseDeleteUserAll">
+          <div class="card card-body">
+            <div class="alert alert-primary" role="alert">
+              Вы уверены что желаете полностью удалить пользователя {{this.selectedUser.nick}}?
+            </div>
+            <div class="input-group-append">
+              <button class="btn btn-outline-primary float-right" type="button" (click)="OnDeleteUserFull()">Да</button>
+              <button class="btn btn-outline-primary float-right" data-toggle="collapse" data-target="#collapseDeleteUserAll" type="button">Нет</button>
+            </div>
+          </div>
+        </div>
       </form>
+
+      {{sError}}
+
     </div>
   </div>
 

@@ -69,16 +69,14 @@ export class ParlorComponent implements OnInit {
          this.parlorForm.controls['inputUserName'].setValue(value[0].nick);
       }
 
-      if (value[0].gender.data) {
-                let idGender = 1;
+      let idGender = 1;
+      if (value[0].gender) {
         if (value[0].gender.data[0] === 0) {
           idGender = 0;
         }
-
-        console.log('idGender', idGender);
-
-        this.parlorForm.controls['inputGender'].setValue(this.genderList.find((value1) => value1.id === idGender).name);
       }
+      this.parlorForm.controls['inputGender'].setValue(this.genderList.find((value1) => value1.id === idGender).name);
+
 
       if (value[0].name) {
         this.parlorForm.controls['inputName'].setValue(value[0].name);

@@ -9,11 +9,11 @@
       <input type="text" class="inputUserName" id="userName" formControlName="userName" placeholder="Имя пользователя">
       <!-- Проверяем вносимый логин. Если логин уже есть в базе, показываем лейбл -Имя пользователя занято, или наоборот -->
       <div class="alertWrong"
-           *ngIf="myForm.controls['userName'].touched && myForm.controls['userName'].value.length === 0 ">
-        Не указано имя
+           *ngIf="myForm.controls['userName'].touched && myForm.controls['userName'].value.length <= 2 ">
+        Имя должно содержать не менее 3 символов.
       </div>
 
-      <div *ngIf="myForm.controls['userName'].value.length > 0">
+      <div *ngIf="myForm.controls['userName'].value.length > 2">
 
         <div *ngIf="myForm.controls['userName'].invalid; else trueUserNameTemplate">
           <div class="alertBusyName">Имя пользователя занято</div>
