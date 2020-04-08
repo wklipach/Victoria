@@ -1,77 +1,3 @@
-<!--
-<form [formGroup]="adminForm">
-
-<button (click)="DeleteBranch()">Удалить филиал</button>
-
-  <ng-container *ngIf="bShowDeleteBranch">
-    <div class="changepassBox">
-      <label>Вы уверены что жедаете удалить филиал {{sBranchName}}?</label>
-      <button type="submit" class="btn-newPassword" (click)="OnDeleteBranch()">Удалить</button>
-      <button class="btn-newPasswordCancel" (click)="DisappearFrameDeleteBranch()">Отмена</button>
-    </div>
-  </ng-container>
-
-  <p>
-    <a class="btn btn-primary" (click)="changeBranch()"  data-toggle="collapse" href="#collapseCH" aria-expanded="false" aria-controls="collapse1">
-      Изменить подразделение
-    </a>
-  </p>
-  <div class="collapse" id="collapseCH">
-    <div class="card card-body">
-
-      <div class="input-group">
-        <input formControlName="inputChangeBranch" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-        <div class="input-group-append">
-          <button class="btn btn-success" (click)="OnChangeBranch()" type="button">Изменить</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <br>
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-6">
-      <p>
-        <a class="btn btn-primary" data-toggle="collapse" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
-          Добавить подразделение
-        </a>
-      </p>
-      <div class="collapse" id="collapse1">
-        <div class="card card-body">
-
-          <div class="input-group">
-            <input formControlName="inputNewBranch" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-            <div class="input-group-append">
-              <button class="btn btn-success" (click)="newBranch()" type="button">Сохранить</button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <br>
-
-
-        <div class="card card-body">
-
-          <ul class="list-group">
-            <li [class.selected] = "bl === selectedBL" class="list-group-item"  (click)="mu(bl)"  *ngFor="let bl of branchList">{{bl.name }}</li>
-          </ul>
-
-        </div>
-
-
-    </div>
-  </div>
-</div>
-
-</form>
--->
-
 <div class="container">
 
   <div class="row">
@@ -147,9 +73,89 @@
 
         </div>
 
+
+      <h3 class="alert-primary my-3">Редактирование пользователей</h3>
+
+        <div class="card card-body">
+          <ul class="list-group">
+            <li class="list-group-item">Иванова Ивона
+              <button class="btn btn-outline-primary float-right" type="button">Задать права</button>
+            </li>
+            <li class="list-group-item">Петрова Холмская
+              <button class="btn btn-outline-primary float-right" type="button">Задать права</button>
+            </li>
+          </ul>
+        </div>
+
+        <h3 class="alert-primary my-3">Настройка пользователей</h3>
+
+        <div class="card card-body">
+          <ul class="list-group">
+            <li class="list-group-item">
+
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">IP</span>
+                </div>
+                <input type="text" class="form-control" placeholder="127.0.0.1" aria-label="IP пользователя" aria-describedby="basic-addon1">
+              </div>
+
+            </li>
+            <li class="list-group-item">
+
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon2">Группа</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Не назначен" aria-label="Не назначен" aria-describedby="basic-addon2">
+                <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Администрация</a>
+                    <a class="dropdown-item" href="#">Прачечная</a>
+                    <a class="dropdown-item" href="#">Такси</a>
+                  </div>
+                </div>
+              </div>
+
+            </li>
+
+            <li class="list-group-item">
+
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3">Еще что забыл?</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Еще что забыл" aria-label="Еще что забыл" aria-describedby="basic-addon3">
+              </div>
+
+            </li>
+
+
+
+          </ul>
+        </div>
+
+
+
       </form>
     </div>
   </div>
+
+
+
 </div>
 <div class="col-6">
 </div>
+
+
+<div class="row">
+  <div class="col-12">
+
+
+
+
+</div>
+  </div>
+
