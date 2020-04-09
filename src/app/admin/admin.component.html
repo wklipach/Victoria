@@ -5,6 +5,12 @@
 
       <form [formGroup]="adminForm">
 
+<!-- Заменил на модальное окно с вопросом
+        <p>
+          <a class="btn btn-danger mt-3 w-50" data-toggle="collapse" href="#collapseDeleteBranch" aria-expanded="false" aria-controls="collapse1">
+            Удалить отделение
+          </a>
+        </p>
         <div class="collapse" id="collapseDeleteBranch">
           <div class="card card-body">
             <div class="alert alert-primary" role="alert">
@@ -16,6 +22,8 @@
               </div>
           </div>
         </div>
+
+-->
 
         <p>
           <a class="btn btn-primary mt-3 w-50" data-toggle="collapse" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
@@ -43,11 +51,36 @@
         </div>
 
 
-        <p>
-          <a class="btn btn-danger mt-3 w-50" data-toggle="collapse" href="#collapseDeleteBranch" aria-expanded="false" aria-controls="collapse1">
-            Удалить отделение
-          </a>
-        </p>
+        <!-- Кнопка модального окна удаления отделения -->
+        <button type="button" class="btn btn-danger mt-3 w-50" data-toggle="modal" data-target="#collapseDeleteBranch">
+          Удалить бранч
+        </button>
+
+        <!-- Модальное окно удаления отделения -->
+        <div class="modal fade" id="collapseDeleteBranch" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalLongTitle">Удаление отделения</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Вы уверены что желаете удалить отделение<span class="font-weight-bold"> "{{sBranchName}}"</span>?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="OnDeleteBranch()">Да</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
 
         <p>
           <a class="btn btn-primary mt-3 w-50" (click)="changeBranch()"  data-toggle="collapse" href="#collapseCH" aria-expanded="false" aria-controls="collapse1">
