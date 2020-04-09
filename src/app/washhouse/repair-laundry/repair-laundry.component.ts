@@ -236,6 +236,10 @@ export class RepairLaundryComponent implements OnInit {
     if (!Res.bVictConnected) {
       this.router.navigate(['/login']);
     }
+
+    if (!ShiftService.getShift()) {
+      this.router.navigate(['/']);
+    }
   }
 
 

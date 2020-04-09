@@ -50,6 +50,10 @@ export class ShipmentLaundryComponent implements OnInit {
     if (!Res.bVictConnected) {
       this.router.navigate(['/login']);
     }
+
+    if (!ShiftService.getShift()) {
+      this.router.navigate(['/']);
+    }
   }
 
   onElem(intCurTab: number) {

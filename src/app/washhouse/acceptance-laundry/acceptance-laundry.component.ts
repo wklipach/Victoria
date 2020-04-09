@@ -174,6 +174,10 @@ checkValue(formControl, key): boolean {
       this.router.navigate(['/login']);
     }
 
+    if (!ShiftService.getShift()) {
+      this.router.navigate(['/']);
+    }
+
    }
 
 
@@ -226,9 +230,6 @@ checkValue(formControl, key): boolean {
     const res_user = this.authService.loginStorage();
     const id_branch = this.authService.getBranch(res_user.id_user_vict);
     this.shiftservice.get_shiftuserbranch(res_user.id_user_vict, id_branch).subscribe( shift => {
-
-
-      // console.log('shift[0]', shift[0]);
 
       if (shift[0]) {
         // прием белья в проводку в базе применительно к смене

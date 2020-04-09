@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ShiftService} from '../../services/shift.service';
+import {Router} from '@angular/router';
+import {AuthService} from '../../services/auth-service.service';
 
 @Component({
   selector: 'app-washing-laundry',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WashingLaundryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,
+              private authService: AuthService) { }
 
   ngOnInit(): void {
+
+    const Res = this.authService.loginStorage();
+    if (!Res.bVictConnected) {
+      this.router.navigate(['/login']);
+    }
+
+    if (!ShiftService.getShift()) {
+      this.router.navigate(['/']);
+    }
+
   }
 
 }

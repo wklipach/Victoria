@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth-service.service';
 import {ShiftService} from '../../services/shift.service';
-import {any} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-laundry',
