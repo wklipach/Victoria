@@ -266,6 +266,11 @@ DeleteBranch() {
     this.adminserv.getUniqueNick(id_user, nick).subscribe( countvalue => {
       // select count(id) as res  from tuser where id=1 and nick <> 'Администратор'
             if (countvalue[0].res > 0 ) {
+
+              console.log('countvalue', countvalue);
+              console.log('countvalue[0]', countvalue[0]);
+              console.log('countvalue[0].res', countvalue[0].res);
+
                 this.sError = 'Никнейм уже используется.';
                 return;
             }

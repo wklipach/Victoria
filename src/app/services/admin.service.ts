@@ -53,8 +53,11 @@ export class AdminService {
   getUniqueNick(id_user, nick) {
     const params = new HttpParams()
       .set('get_unique_nick', 'get_unique_nick')
-      .set('id_user', 'id_user')
+      .set('id_user', id_user)
       .set('nick', nick);
+
+    console.log('params', params);
+
     return this.http.get(this.gr.sUrlGlobal + 'admin', {params: params});
 
   }
