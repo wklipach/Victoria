@@ -44,33 +44,41 @@
 
       <h3 class="alert-info mt-2 mb-3">Принято в прачечную</h3>
 
-      <h5 class="text-muted">Отделение: <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.nick}}</span></a></h5>
+      <ul class="list-group">
+        <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Отделение:</h5>   <a *ngIf="alTitle !== undefined">   <span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.nick}}</span></a></li>
 
-      <h5 class="text-muted">Фамилия: <a *ngIf="alTitle !== undefined"> <span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.surname}}</span></a></h5>
+        <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Фамилия:</h5> <a *ngIf="alTitle !== undefined"> <span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.surname}}</span></a></li>
 
-      <h5 class="text-muted">Имя: <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.usernane}}</span></a></h5>
+        <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Имя:</h5> <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.usernane}}</span></a></li>
 
-      <h5 class="text-muted">Отчество: <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.patronymic}}</span></a></h5>
+        <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Отчество:</h5> <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.patronymic}}</span></a></li>
 
-      <h5 class="text-muted">Филиал:<a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.branchname}}</span></a></h5>
+        <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Филиал:</h5><a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.branchname}}</span></a></li>
 
-      <h5 class="text-muted">Смена от: <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.shiftdate | date:'dd.MM.yyyy   HH.mm'}}</span></a></h5>
+        <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Смена от:</h5> <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.shiftdate | date:'dd.MM.yyyy   HH.mm'}}</span></a></li>
 
-      <h5 class="text-muted">Дата передачи:<a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.date_oper | date:'dd.MM.yyyy   HH.mm' }}</span></a></h5>
+        <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Дата передачи:</h5><a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.date_oper | date:'dd.MM.yyyy   HH.mm' }}</span></a></li>
 
-      <h5 class="text-muted">Масса переданнного: <a *ngIf="alTitle !== undefined"> <span class="badge badge-secondary p-2 badge-pill ml-5"> {{alTitle.massa}}</span> кг.</a></h5>
+        <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Масса переданнного:</h5> <a *ngIf="alTitle !== undefined"> <span class="badge badge-secondary p-2 badge-pill ml-5"> {{alTitle.massa}}</span> кг.</a></li>
+      </ul>
 
       <h5 class="alert-info  mt-2 mb-3">Cписок</h5>
 
+
       <ul class="list-group"  *ngFor="let dl of detailList">
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <span>{{dl.name}}<a *ngIf="dl.bitspoiled===1">поврежденное</a></span>
-          <span> <a *ngIf="dl.bitspoiled===0">целое</a>{{dl.type}}:</span>
-          <span class="badge badge-primary p-1 badge-pill float-right">{{dl.quant}}</span>
+        <li class="list-group-item d-flex">
+          <div class="flex-fill">{{dl.name}}</div>
+          <div class="flex-fill mx-3">{{dl.type}}</div>
+
+          <a class="font-italic mx-2" *ngIf="dl.bitspoiled===1">поврежденное</a>
+
+          <div class="flex-fill font-italic mx-2">  <a class="font-italic mx-2" *ngIf="dl.bitspoiled===0">целое</a></div>
+
+          <div class="float-right mw-10">
+            <span class="badge badge-primary p-2 badge-pill">{{dl.quant}}</span>
+          </div>
+
         </li>
-
-
-
       </ul>
 
 
@@ -78,59 +86,6 @@
       <button type="button" class="btn btn-primary mt-5" (click)="toExcel()">Сохранить в Эксель</button>
 
 
-
-
     </div>
   </div>
 </div>
-
-
-
-
-<!--
-<h4>Передано</h4>
-<br>
-<b>Псевдоним:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.nick}}</a>
-<br>
-<b>Фамилия:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.surname}}</a>
-<br>
-<b>Имя:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.usernane}}</a>
-<br>
-<b>Отчество:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.patronymic}}</a>
-<br>
-<b>Филиал:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.branchname}}</a>
-<br>
-<b>Смена от:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.shiftdate | date:'dd.MM.yyyy   HH.mm'}}</a>
-<br>
-<br>
-<br>
-<b>Дата передачи:</b><a *ngIf="alTitle !== undefined"> {{alTitle.date_oper | date:'dd.MM.yyyy   HH.mm' }}</a>
-<br>
-<b>Масса переданнного:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.massa}}</a>
-
-<br>
-<br>
-<h3>Cписок</h3>
-<li *ngFor="let dl of detailList">{{dl.name}}   {{dl.type}}:   {{dl.quant}} шт.  <a *ngIf="dl.bitspoiled===1">поврежденное</a><a *ngIf="dl.bitspoiled===0">целое</a>
-</li>​​
-<br>
-<button (click)="back()">Далее</button>
-<button (click)="toExcel()">Сохранить в Эксель</button>
-
-
-<ul class="list-group">
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          Здесь название
-          <span class="badge badge-primary badge-pill">14</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          Dapibus ac facilisis in
-          <span class="badge badge-primary badge-pill">2</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          Morbi leo risus
-          <span class="badge badge-primary badge-pill">1</span>
-        </li>
-      </ul>
-
--->
