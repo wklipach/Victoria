@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {GlobalRef} from './globalref';
+import {Observable} from 'rxjs';
+import 'rxjs-compat/add/observable/of';
 
 @Injectable({
   providedIn: 'root'
@@ -37,11 +39,24 @@ export class AdminService {
     return this.http.post(sUrl, data_branch);
   }
 
-  setUpdateNickNane(id_user, nick) {
 
-    const sUrl = this.gr.sUrlGlobal + 'admin';
-    const data_branch = { 'user_nick': 'user_nick', 'id_user': id_user, 'nick': nick};
-    return this.http.post(sUrl, data_branch);
+  setUpdateNickNane(id_user, nick) {
+    if (id_user === 1) {
+      return Observable.of(true);
+    } else {
+      const sUrl = this.gr.sUrlGlobal + 'admin';
+      const data_branch = {'user_nick': 'user_nick', 'id_user': id_user, 'nick': nick};
+      return this.http.post(sUrl, data_branch);
+    }
+  }
+
+  getUniqueNick(id_user, nick) {
+    const params = new HttpParams()
+      .set('get_unique_nick', 'get_unique_nick')
+      .set('id_user', 'id_user')
+      .set('nick', nick);
+    return this.http.get(this.gr.sUrlGlobal + 'admin', {params: params});
+
   }
 
   setUpdateLinkBranchUser(id_user, chbranch, ip, checkIP) {

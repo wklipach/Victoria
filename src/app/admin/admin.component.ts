@@ -263,19 +263,24 @@ DeleteBranch() {
         ip = this.adminForm.controls['ip'].value.toString().trim();
     }
 
-    this.adminserv.setUpdateNickNane(id_user, nick).subscribe( value => {
-      if (chbranch.length === 0) {
-        this.RouterReload();
-      }
+    this.adminserv.getUniqueNick(id_user, nick).subscribe( countvalue => {
+      // select count(id) as res  from tuser where id=1 and nick <> 'Администратор'
+            if (countvalue[0].res > 0 ) {
+                this.sError = 'Никнейм уже используется.';
+                return;
+            }
+            this.adminserv.setUpdateNickNane(id_user, nick).subscribe( value => {
+                if (chbranch.length === 0) {
+                this.RouterReload();
+                }
 
-      if (chbranch.length > 0) {
-        this.adminserv.setUpdateLinkBranchUser(id_user, chbranch, ip, checkIP).subscribe( res => {
-          this.RouterReload();
-        });
-      }
+                if (chbranch.length > 0) {
+                this.adminserv.setUpdateLinkBranchUser(id_user, chbranch, ip, checkIP).subscribe( res => {
+                this.RouterReload();
+                });
+              }
+            });
     });
-
-
 
 
 
