@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {GlobalRef} from './globalref';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class AuthService {
@@ -50,6 +51,14 @@ export class AuthService {
         return 1;
   }
 
+  getItIsAdmin(id_user) {
+
+    let bAdmin = false;
+    if (id_user === 1) {
+      bAdmin = true;
+  }
+    return Observable.of(bAdmin);
+  }
   // получаем пользователя, поиск по 2 полям - его почте и нику одновременно
   getUserFromBase(UserName: string) {
      const params = new HttpParams()

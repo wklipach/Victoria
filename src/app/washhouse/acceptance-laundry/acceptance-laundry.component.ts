@@ -14,6 +14,7 @@ export class AcceptanceLaundryComponent implements OnInit {
 
   public acclaundform: FormGroup;
   sError = '';
+  bItIsAdmin = false;
 
   // Цвет вадидации, элемент, разрешенное из базыколичество, показываемое на экране значение
   arrayFlag: [number, string, number, string][] = [[0, 'init', -1, 'init']];
@@ -172,6 +173,15 @@ checkValue(formControl, key): boolean {
     const Res = this.authService.loginStorage();
     if (!Res.bVictConnected) {
       this.router.navigate(['/login']);
+    }
+
+
+    if (Res.bVictConnected) {
+      this.authService.getItIsAdmin(Res.id_user_vict).subscribe( value => {
+        if (value === true) {
+          this.bItIsAdmin = true;
+        }
+    });
     }
 
     if (!ShiftService.getShift()) {
