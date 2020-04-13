@@ -1,9 +1,9 @@
 <div class="container">
 
-  <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <nav class="navbar navbar-expand-sm bg-basic navbar-light">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Дом</a>
+        <a class="nav-link" href="#">Прачечная</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="acceptance-laundry">Приемка</a>
@@ -53,8 +53,8 @@
 
        <div class="card card-body mt-4">
 
-          <button class="btn btn-primary mb-4 w-25" data-toggle="collapse" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
-            Добавить отделение
+          <button class="btn btn-primary mb-4 w-1 short" data-toggle="collapse" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
+            <i class="fa fa-plus"></i>
           </button>
 
           <div class="collapse" id="collapse1">
@@ -75,12 +75,12 @@
          <div class="btn-group-justified">
 
            <!-- Кнопка редактирования отделения -->
-           <button class="btn btn-primary mt-3 w-25" (click)="changeBranch()"  data-toggle="collapse" href="#collapseCH" aria-expanded="false" aria-controls="collapse1">
-             Изменить отделение
+           <button class="btn btn-primary mt-3 w-1" (click)="changeBranch()"  data-toggle="collapse" href="#collapseCH" aria-expanded="false" aria-controls="collapse1">
+             <i class="fa fa-edit"></i>
            </button>
            <!-- Кнопка модального окна удаления отделения -->
-           <button type="button" class="btn btn-danger mt-3 ml-4 w-25" data-toggle="modal" data-target="#collapseDeleteBranch">
-             Удалить отделение
+           <button type="button" class="btn btn-danger mt-3 ml-4 w-1" data-toggle="modal" data-target="#collapseDeleteBranch">
+             <i class="fa fa-trash"></i>
            </button>
 
          </div>

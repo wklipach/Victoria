@@ -1,8 +1,8 @@
 <div class="container">
-  <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <nav class="navbar navbar-expand-sm bg-basic navbar-light">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Дом</a>
+        <a class="nav-link" href="#">Прачечная</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="acceptance-laundry">Приемка</a>
@@ -27,28 +27,24 @@
   </nav>
 
 
-      <h2>{{this.userName+' '+this.userSurname}}</h2>
-
-
-      <button type="button" class="btn btn-primary" (click)="onShift()">{{titleShift}}</button>
-
+      <h2 class="my-4">{{this.userName+' '+this.userSurname}}</h2>
 
 
       <ul class="list-group">
-        <li class="list-group-item">Дата начала смены<span class="startDate">{{this.titleShiftDate | date:'dd.MM.yyyy'}}</span></li>
-        <li class="list-group-item">Время начала смены<span class="startTime">{{this.titleShiftDate | date:'HH.mm'}}</span></li>
-        <li class="list-group-item">Выработка за неделю<span class="weeklyOutput">500</span></li>
-        <li class="list-group-item">Часов за неделю<span class="hoursWeek">42</span></li>
-        <li class="list-group-item">З/п за неделю<span class="wagesWeek">6500</span></li>
-        <li class="list-group-item">Бонусы за неделю<span class="weeklyBonus">30</span></li>
-        <li class="list-group-item">Итого, руб.<span class="totalRuble">5410</span></li>
-        <li class="list-group-item">З/п за смену<span class="wagesShift">650</span></li>
-        <li class="list-group-item">Рейтинг сотрудника<span class="employeeRating">20</span></li>
+        <li class="list-group-item">Дата начала смены<span class="startDate float-right">{{this.titleShiftDate | date:'dd.MM.yyyy'}}</span></li>
+        <li class="list-group-item">Время начала смены<span class="startTime float-right">{{this.titleShiftDate | date:'HH.mm'}}</span></li>
+        <li class="list-group-item">Выработка за неделю<span class="weeklyOutput float-right">500</span></li>
+        <li class="list-group-item">Часов за неделю<span class="hoursWeek float-right">42</span></li>
+        <li class="list-group-item">З/п за неделю<span class="wagesWeek float-right">6500</span></li>
+        <li class="list-group-item">Бонусы за неделю<span class="weeklyBonus float-right">30</span></li>
+        <li class="list-group-item">Итого, руб.<span class="totalRuble float-right">5410</span></li>
+        <li class="list-group-item">З/п за смену<span class="wagesShift float-right">650</span></li>
+        <li class="list-group-item">Рейтинг сотрудника<span class="employeeRating float-right">20</span></li>
       </ul>
 
-      <button type="button" class="btn btn-primary" (click)="logout()">Выход из системы</button>
-
-
-
+  <div class="btn-group">
+      <button type="button" class="btn btn-primary my-3" (click)="onShift()">{{titleShift}}</button>
+      <button type="button" class="btn btn-primary my-3 ml-8" (click)="logout()">Выход из системы</button>
+  </div>
 
 </div>
