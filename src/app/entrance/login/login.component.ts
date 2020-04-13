@@ -97,7 +97,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.block_button(this.nStopMs);
         }
 
-        if (value[0].length === 0) {
+        if (!value[0][0].id) {
           this.showErr = true;
           this.showSucc = false;
           this.sResTrouble = 'Пользователь не найден.';
@@ -106,7 +106,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           return;
         }
 
-        console.log('value[0]', value[0], value[0][0]['CountBranch']);
+        // console.log('value[0]', value[0], value[0][0]['CountBranch']);
 
         if (value[0][0].CountBranch === 0) {
           this.showErr = true;
