@@ -1,48 +1,63 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12 align-items-center">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="laundry">Прачечная</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Инфо<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="acceptance-laundry">Приемка</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="repair-laundry">Ремонт</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Стирка</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="warehouse-laundry">Склад</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="shipment-laundry">Отгрузка</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Комментарий</a>
-            </li>
+  <nav>
+    <ul class="mcd-menu">
+      <li>
+        <a href="#" class="active">
+          <i class="fa fa-home"></i>
+          <strong>Home</strong>
+          <small>информация</small>
+        </a>
+      </li>
+      <li>
 
-          </ul>
-        </div>
-      </nav>
+        <a href="acceptance-laundry">
+          <i class="fa fa-suitcase"></i>
+          <strong>Приемка</strong>
+          <small>внести количество</small>
+        </a>
+      </li>
+      <li>
+        <a href="repair-laundry">
+          <i class="fa fa-wrench"></i>
+          <strong>Ремонт</strong>
+          <small>внести количество</small>
+        </a>
+      </li>
+      <li>
+        <a href="washing-laundry">
+          <i class="fa fa-support"></i>
+          <strong>Стирка</strong>
+          <small>внести количество</small>
+        </a>
+      </li>
+      <li>
+        <a href="warehouse-laundry">
+          <i class="fa fa-gift"></i>
+          <strong>Склад</strong>
+          <small>внести количество</small>
+        </a>
+      </li>
+      <li>
+        <a href="shipment-laundry">
+          <i class="fa fa-truck"></i>
+          <strong>Отгрузка</strong>
+          <small>внести количество</small>
+        </a>
+      </li>
+      <li>
+        <a href="comment-laundry">
+          <i class="fa fa-edit"></i>
+          <strong>Написать</strong>
+          <small>комментарий</small>
+        </a>
+      </li>
+    </ul>
+  </nav>
 
-    </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
 
-      <h3 class="alert-info mt-2 mb-3">Принято в прачечную</h3>
+
+  <h3 class="alert-info mt-2 mb-3">Принято в прачечную</h3>
 
       <ul class="list-group">
         <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Отделение:</h5>   <a *ngIf="alTitle !== undefined">   <span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.nick}}</span></a></li>
@@ -87,5 +102,5 @@
 
 
     </div>
-  </div>
-</div>
+
+

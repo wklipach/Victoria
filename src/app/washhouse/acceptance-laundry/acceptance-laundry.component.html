@@ -1,40 +1,57 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="laundry">Прачечная</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<div class="container">
+<nav>
+  <ul class="mcd-menu">
+    <li>
+      <a href="#" class="active">
+        <i class="fa fa-home"></i>
+        <strong>Home</strong>
+        <small>информация</small>
+      </a>
+    </li>
+    <li>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Инфо<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="acceptance-laundry">Приемка</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="repair-laundry">Ремонт</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="washing-laundry">Стирка</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="warehouse-laundry">Склад</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="shipment-laundry">Отгрузка</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="comment-laundry">Комментарий</a>
-      </li>
-
-      <li *ngIf = "bItIsAdmin === true" class="nav-item">
-        <a class="nav-link" href="admin">Администрирование</a>
-      </li>
-
-
-    </ul>
-  </div>
+      <a href="acceptance-laundry">
+        <i class="fa fa-suitcase"></i>
+        <strong>Приемка</strong>
+        <small>внести количество</small>
+      </a>
+    </li>
+    <li>
+      <a href="repair-laundry">
+        <i class="fa fa-wrench"></i>
+        <strong>Ремонт</strong>
+        <small>внести количество</small>
+      </a>
+    </li>
+    <li>
+      <a href="washing-laundry">
+        <i class="fa fa-support"></i>
+        <strong>Стирка</strong>
+        <small>внести количество</small>
+      </a>
+    </li>
+    <li>
+      <a href="warehouse-laundry">
+        <i class="fa fa-gift"></i>
+        <strong>Склад</strong>
+        <small>внести количество</small>
+      </a>
+    </li>
+    <li>
+      <a href="shipment-laundry">
+        <i class="fa fa-truck"></i>
+        <strong>Отгрузка</strong>
+        <small>внести количество</small>
+      </a>
+    </li>
+    <li>
+      <a href="comment-laundry">
+        <i class="fa fa-edit"></i>
+        <strong>Написать</strong>
+        <small>комментарий</small>
+      </a>
+    </li>
+  </ul>
 </nav>
 
 <form [formGroup]="acclaundform">
@@ -313,3 +330,6 @@
 
 
 </form>
+
+
+</div>
