@@ -15,6 +15,7 @@ export class ShipmentLaundryComponent implements OnInit {
   public intAddress = 1;
   shipmentForm: FormGroup;
   sError = '';
+  id_user_vict = -1;
 
   constructor(private router: Router,
               private authService: AuthService,
@@ -54,6 +55,11 @@ export class ShipmentLaundryComponent implements OnInit {
     if (!ShiftService.getShift()) {
       this.router.navigate(['/']);
     }
+
+    if (Res.bVictConnected) {
+      this.id_user_vict = Res.id_user_vict;
+    }
+
   }
 
   onElem(intCurTab: number) {

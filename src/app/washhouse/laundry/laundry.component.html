@@ -23,6 +23,16 @@
         <a class="nav-link" href="comment-laundry">Комментарий</a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link" href="parlor">Инфо</a>
+      </li>
+
+      <li *ngIf="id_user_vict === 1" class="nav-item">
+        <a class="nav-link" href="admin">Администрирование</a>
+      </li>
+
+
+
     </ul>
   </nav>
 
@@ -32,7 +42,7 @@
 
       <ul class="list-group">
         <li class="list-group-item">Дата начала смены<span class="startDate float-right">{{this.titleShiftDate | date:'dd.MM.yyyy'}}</span></li>
-        <li class="list-group-item">Время начала смены<span class="startTime float-right">{{this.titleShiftDate | date:'HH.mm'}}</span></li>
+        <li class="list-group-item">Время начала смены<span class="startTime float-right">{{this.titleShiftDate | date:'HH:mm'}}</span></li>
         <li class="list-group-item">Выработка за неделю<span class="weeklyOutput float-right">500</span></li>
         <li class="list-group-item">Часов за неделю<span class="hoursWeek float-right">42</span></li>
         <li class="list-group-item">З/п за неделю<span class="wagesWeek float-right">6500</span></li>
@@ -44,7 +54,13 @@
 
   <div class="btn-group">
       <button type="button" class="btn btn-primary my-3" (click)="onShift()">{{titleShift}}</button>
-      <button type="button" class="btn btn-primary my-3 ml-8" (click)="logout()">Выход из системы</button>
   </div>
+  &nbsp;
+  &nbsp;
+  <div class="btn-group">
+      <button type="button" class="btn btn-primary my-3 ml-8" (click)="logout()">
+        Выход из системы
+      </button>
+   </div>
 
 </div>

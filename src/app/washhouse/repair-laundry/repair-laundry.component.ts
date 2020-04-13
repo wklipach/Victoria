@@ -14,6 +14,7 @@ import {Observable} from 'rxjs';
 export class RepairLaundryComponent implements OnInit {
   repairForm: FormGroup;
   sError = '';
+  id_user_vict = -1;
   // Цвет вадидации, элемент, разрешенное из базы количество, показываемое на экране значение
   arrayFlag: [number, string, number, string][] = [[0, 'init', -1, 'init']];
 
@@ -250,6 +251,10 @@ export class RepairLaundryComponent implements OnInit {
     if (!ShiftService.getShift()) {
       this.router.navigate(['/']);
     }
+    if (Res.bVictConnected) {
+      this.id_user_vict = Res.id_user_vict;
+    }
+
   }
 
 

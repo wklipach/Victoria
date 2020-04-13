@@ -23,6 +23,15 @@
         <a class="nav-link" href="comment-laundry">Комментарий</a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link" href="parlor">Инфо</a>
+      </li>
+
+      <li *ngIf="id_user_vict === 1" class="nav-item">
+        <a class="nav-link" href="admin">Администрирование</a>
+      </li>
+
+
     </ul>
   </nav>
 

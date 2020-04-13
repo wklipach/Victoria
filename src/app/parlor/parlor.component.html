@@ -1,3 +1,38 @@
+<nav class="navbar navbar-expand-sm bg-basic navbar-light">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="#">Прачечная</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="acceptance-laundry">Приемка</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="repair-laundry">Ремонт</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="washing-laundry">Стирка</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="warehouse-laundry">Склад</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="shipment-laundry">Отгрузка</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="comment-laundry">Комментарий</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="parlor">Инфо</a>
+    </li>
+
+    <li *ngIf="id_user_vict === 1" class="nav-item">
+      <a class="nav-link" href="admin">Администрирование</a>
+    </li>
+
+  </ul>
+</nav>
+
 <h3 class="alert-primary my-3">Личный кабинет</h3>
 
 <div style="opacity:0; position: absolute;">{{id_user_vict}}</div>

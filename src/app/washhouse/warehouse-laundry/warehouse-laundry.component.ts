@@ -13,6 +13,7 @@ import {ShiftService} from '../../services/shift.service';
 export class WarehouseLaundryComponent implements OnInit {
   warehouseForm: FormGroup;
   sError = '';
+  id_user_vict = -1;
 
   constructor(private router: Router,
               private authService: AuthService,
@@ -52,6 +53,11 @@ export class WarehouseLaundryComponent implements OnInit {
     if (!ShiftService.getShift()) {
       this.router.navigate(['/']);
     }
+
+    if (Res.bVictConnected) {
+      this.id_user_vict = Res.id_user_vict;
+    }
+
   }
 
   checkValueMassa() {

@@ -11,6 +11,8 @@ import {LaundryService} from '../services/laundry.service';
 })
 export class CommentLaundryComponent implements OnInit {
 
+  id_user_vict = -1;
+
   constructor(private router: Router,
               private authService: AuthService,
               private ls: LaundryService,
@@ -26,6 +28,11 @@ export class CommentLaundryComponent implements OnInit {
     if (!ShiftService.getShift()) {
       this.router.navigate(['/']);
     }
+
+    if (Res.bVictConnected) {
+      this.id_user_vict = Res.id_user_vict;
+    }
+
   }
 
 }
