@@ -1,58 +1,30 @@
 <div class="container">
-<nav>
-  <ul class="mcd-menu">
-    <li>
-      <a href="#" class="active">
-        <i class="fa fa-home"></i>
-        <strong>Home</strong>
-        <small>информация</small>
-      </a>
-    </li>
-    <li>
+  <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Дом</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="acceptance-laundry">Приемка</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="repair-laundry">Ремонт</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="washing-laundry">Стирка</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="warehouse-laundry">Склад</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="shipment-laundry">Отгрузка</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="comment-laundry">Комментарий</a>
+      </li>
 
-      <a href="acceptance-laundry">
-        <i class="fa fa-suitcase"></i>
-        <strong>Приемка</strong>
-        <small>внести количество</small>
-      </a>
-    </li>
-    <li>
-      <a href="repair-laundry">
-        <i class="fa fa-wrench"></i>
-        <strong>Ремонт</strong>
-        <small>внести количество</small>
-      </a>
-    </li>
-    <li>
-      <a href="washing-laundry">
-        <i class="fa fa-support"></i>
-        <strong>Стирка</strong>
-        <small>внести количество</small>
-      </a>
-    </li>
-    <li>
-      <a href="warehouse-laundry">
-        <i class="fa fa-gift"></i>
-        <strong>Склад</strong>
-        <small>внести количество</small>
-      </a>
-    </li>
-    <li>
-      <a href="shipment-laundry">
-        <i class="fa fa-truck"></i>
-        <strong>Отгрузка</strong>
-        <small>внести количество</small>
-      </a>
-    </li>
-    <li>
-      <a href="comment-laundry">
-        <i class="fa fa-edit"></i>
-        <strong>Написать</strong>
-        <small>комментарий</small>
-      </a>
-    </li>
-  </ul>
-</nav>
+    </ul>
+  </nav>
 
 <form [formGroup]="shipmentForm">
 <div class="container">
