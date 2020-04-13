@@ -147,7 +147,8 @@ export class LoginComponent implements OnInit, OnDestroy {
                 this.showSucc = true;
                 this.sResTrouble = '';
                 this.authService.setStorage(value[0][0].nick, true, value[0][0].id);
-                // куда-то там переходим
+                // переходим на главную страницу
+                console.log('');
                 this.router.navigate(['/laundry']);
               }
             });
