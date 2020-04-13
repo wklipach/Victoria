@@ -12,7 +12,7 @@ import {ExcelService} from '../../services/excel.service';
 export class WarehouseLaundryLastComponent implements OnInit {
   public id_user_vict = -1;
   public alTitle: any;
-  private detailList: any;
+  public detailList: any;
 
   constructor(private router: Router,
               private authService: AuthService,

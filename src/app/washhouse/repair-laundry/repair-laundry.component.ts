@@ -4,6 +4,7 @@ import {AuthService} from '../../services/auth-service.service';
 import {LaundryService} from '../services/laundry.service';
 import {ShiftService} from '../../services/shift.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-repair-laundry',
@@ -74,7 +75,7 @@ export class RepairLaundryComponent implements OnInit {
 
 
   // обход массива с присвоение переменным разрешенных значений из базы
-  setAllFlagFromCicle() {
+  setAllFlagFromCicle(): boolean {
     const res_user = this.authService.loginStorage();
     const id_branch = this.authService.getBranch(res_user.id_user_vict);
     // везде устанавливаем ноль разрешенного
@@ -110,9 +111,15 @@ export class RepairLaundryComponent implements OnInit {
           }
         });
 
-      });
-  }
 
+
+        this.send_data_with_refresh();
+
+      });
+
+    return false;
+
+  }
   // проверка массива на введенные значения
   getAllFlagFromCicle(): boolean {
     // тут мои присваивания элементам правильных значений
@@ -180,10 +187,13 @@ export class RepairLaundryComponent implements OnInit {
       }
     }
 
+
       // если это любой другой элемент
         if (this.isMyNumber(arrRes, sVal)) {
+          console.log('truekey', key);
           return true;
         } else {
+          console.log('falsekey', key, arrRes);
           return false;
         }
       }
@@ -272,47 +282,55 @@ export class RepairLaundryComponent implements OnInit {
   send_data() {
 
     this.setAllFlagFromCicle();
-    if (this.getAllFlagFromCicle() === false) {
-      this.sError = 'Найдены неправильные значения. Измените их на правильные пользуясь подсказкой.';
-      return;
-    }
 
-    if (!this.getAllFlagNotEmpty()) {
-      this.sError = 'Вы не вели ни одного значения для передачи.';
-      return;
-    }
+}
 
 
+send_data_with_refresh () {
 
-    this.sError = '';
-    // если какие-то данные с формы не преобразуются в int сообщаем об этом
-    if (!this.checkValueInt()) {
-      this.sError = 'В одном из полей нецифровые данные. Измените их на цифровые.';
-      return;
-    }
-
-    if (!this.checkValueMassa()) {
-      this.sError = 'Вы не указали массу белья.';
-      return;
-    }
-
-    const res_user = this.authService.loginStorage();
-    const id_branch = this.authService.getBranch(res_user.id_user_vict);
-
-    this.shiftservice.get_shiftuserbranch(res_user.id_user_vict, id_branch).subscribe( shift => {
-
-
-      if (shift[0]) {
-        // прием белья в складскую проводку в базе применительно к смене
-        // console.log('shift[0]', shift[0]);
-        this.ls.setrepair(this.repairForm.value, shift[0].id).subscribe( value => {
-          console.log('value', value);
-          if (value === true) {
-            this.router.navigate(['/repair_laundry_last']);
-          }
-        });
-      }
-    });
-    //
+  if (this.getAllFlagFromCicle() === false) {
+    this.sError = 'Найдены неправильные значения. Измените их на правильные пользуясь подсказкой.';
+    return;
   }
+
+  if (!this.getAllFlagNotEmpty()) {
+    this.sError = 'Вы не вели ни одного значения для передачи.';
+    return;
+  }
+
+
+
+  this.sError = '';
+  // если какие-то данные с формы не преобразуются в int сообщаем об этом
+  if (!this.checkValueInt()) {
+    this.sError = 'В одном из полей нецифровые данные. Измените их на цифровые.';
+    return;
+  }
+
+  if (!this.checkValueMassa()) {
+    this.sError = 'Вы не указали массу белья.';
+    return;
+  }
+
+  const res_user = this.authService.loginStorage();
+  const id_branch = this.authService.getBranch(res_user.id_user_vict);
+
+  this.shiftservice.get_shiftuserbranch(res_user.id_user_vict, id_branch).subscribe( shift => {
+
+
+    if (shift[0]) {
+      // прием белья в складскую проводку в базе применительно к смене
+      // console.log('shift[0]', shift[0]);
+      this.ls.setrepair(this.repairForm.value, shift[0].id).subscribe( value => {
+        console.log('value', value);
+        if (value === true) {
+          this.router.navigate(['/repair_laundry_last']);
+        }
+      });
+    }
+  });
+  //
+}
+
+
 }
