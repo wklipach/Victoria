@@ -19,8 +19,8 @@ export class AdminComponent implements OnInit {
   bShowDeleteBranch = false;
   sBranchName = '';
   private selectedBL: any;
-  private selectedUser: any;
-  private chBranch: any;
+  public selectedUser: any;
+  public chBranch: any;
 
   constructor(private adminserv: AdminService, private location: Location, private router: Router) {
     this.adminForm = new FormGroup({
