@@ -1,0 +1,22 @@
+    <ul class="nav nav-tabs">
+
+
+      <li *ngFor="let al of addressList" (click)="onElem(al.id_address)" class="nav-item">
+        <a *ngIf="al.id_address === selectedID" class="nav-link active" data-toggle="tab" [href]="'#address'+al.id_address" >{{al.address}}</a>
+        <a *ngIf="al.id_address !== selectedID" class="nav-link" data-toggle="tab" [href]="'#address'+al.id_address" >{{al.address}}</a>
+      </li>
+    </ul>
+
+
+    <div class="tab-content p-3">
+
+      <div *ngFor="let al2 of addressList; let i = index" [class]="al2.id_address === this.selectedID ? 'tab-pane fade active show' : 'tab-pane fade' " [id]="'address'+al2.id_address">
+          <h2 class="h4 mb-3">{{titleString}} {{al2.address}}</h2>
+          <div class="alert alert-info" role="alert">
+            {{beginString}} <strong>{{al2.address}}</strong> {{endString}}
+          </div>
+        </div>
+
+    </div>
+
+

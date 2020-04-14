@@ -101,5 +101,12 @@ export class LaundryService {
     return this.http.get(this.gr.sUrlGlobal + 'validators', {params: params});
   }
 
+  getWashHouseAddress(id_branch) {
+    const params = new HttpParams()
+      .set('get_washhouse_address', 'get_washhouse_address')
+      .set('id_branch', id_branch.toString());
+    return this.http.get(this.gr.sUrlGlobal + 'laundry', {params: params});
+  }
+
 
 }

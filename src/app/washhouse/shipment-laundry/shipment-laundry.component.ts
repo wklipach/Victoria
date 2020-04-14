@@ -62,10 +62,6 @@ export class ShipmentLaundryComponent implements OnInit {
 
   }
 
-  onElem(intCurTab: number) {
-   console.log('intAddress=', intCurTab);
-    this.intAddress = intCurTab;
-  }
   checkValueMassa() {
     let bRes = true;
     let sVal = this.shipmentForm.controls['massa'].value.toString().trim();
@@ -119,5 +115,10 @@ export class ShipmentLaundryComponent implements OnInit {
       }
     });
 
+  }
+
+  clickPage($event: number) {
+    console.log('intAddress=', $event);
+    this.intAddress = $event;
   }
 }

@@ -33,6 +33,8 @@ import localeRu from '@angular/common/locales/ru';
 import { WarehouseLaundryLastComponent } from './washhouse/warehouse-laundry-last/warehouse-laundry-last.component';
 import { RepairLaundryLastComponent } from './washhouse/repair-laundry-last/repair-laundry-last.component';
 import { ShipmentLaundryLastComponent } from './washhouse/shipment-laundry-last/shipment-laundry-last.component';
+import { CustomerAddressComponent } from './victoriacomp/customer-address/customer-address.component';
+import { TestComponent } from './test/test.component';
 
 registerLocaleData(localeRu);
 
@@ -58,6 +60,7 @@ const appRoutes: Routes = [
   {path: 'warehouse_laundry_last', component: WarehouseLaundryLastComponent},
   {path: 'repair_laundry_last', component: RepairLaundryLastComponent},
   {path: 'shipment_laundry_last', component: ShipmentLaundryLastComponent},
+  {path: 'test', component: TestComponent},
   {path: '**', component: NotFoundComponent }
 ];
 
@@ -84,7 +87,9 @@ const appRoutes: Routes = [
     AcceptanceLaundryLastComponent,
     WarehouseLaundryLastComponent,
     RepairLaundryLastComponent,
-    ShipmentLaundryLastComponent
+    ShipmentLaundryLastComponent,
+    CustomerAddressComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

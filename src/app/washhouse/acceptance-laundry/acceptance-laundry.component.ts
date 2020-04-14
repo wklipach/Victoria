@@ -16,6 +16,7 @@ export class AcceptanceLaundryComponent implements OnInit {
   sError = '';
   bItIsAdmin = false;
   id_user_vict = -1;
+  public intAddress = 1;
 
   // Цвет вадидации, элемент, разрешенное из базыколичество, показываемое на экране значение
   arrayFlag: [number, string, number, string][] = [[0, 'init', -1, 'init']];
@@ -259,4 +260,8 @@ checkValue(formControl, key): boolean {
   }
 
 
+  clickPage($event: number) {
+    console.log('intAddress=', $event);
+    this.intAddress = $event;
+  }
 }
