@@ -35,6 +35,7 @@ import { RepairLaundryLastComponent } from './washhouse/repair-laundry-last/repa
 import { ShipmentLaundryLastComponent } from './washhouse/shipment-laundry-last/shipment-laundry-last.component';
 import { CustomerAddressComponent } from './victoriacomp/customer-address/customer-address.component';
 import { TestComponent } from './test/test.component';
+import { MainmenuComponent } from './victoriacomp/mainmenu/mainmenu.component';
 
 registerLocaleData(localeRu);
 
@@ -89,7 +90,8 @@ const appRoutes: Routes = [
     RepairLaundryLastComponent,
     ShipmentLaundryLastComponent,
     CustomerAddressComponent,
-    TestComponent
+    TestComponent,
+    MainmenuComponent
   ],
   imports: [
     BrowserModule,
