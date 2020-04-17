@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth-service.service';
 import {LaundryService} from '../services/laundry.service';
 import {ShiftService} from '../../services/shift.service';
+import {Check} from '../../static/check';
 
 @Component({
   selector: 'app-acceptance-laundry',
@@ -27,147 +28,111 @@ export class AcceptanceLaundryComponent implements OnInit {
               private shiftservice: ShiftService) {
 
     this.acclaundform  = new FormGroup({
-      'n1': new FormControl('', [Validators.required]),
-      'n2': new FormControl('', [Validators.required]),
-      'n3': new FormControl('', [Validators.required]),
-      'n4': new FormControl('', [Validators.required]),
-      'n5': new FormControl('', [Validators.required]),
-      'n6': new FormControl('', [Validators.required]),
-      'n7': new FormControl('', [Validators.required]),
-      'n8': new FormControl('', [Validators.required]),
-      'n9': new FormControl('', [Validators.required]),
-      'n10': new FormControl('', [Validators.required]),
-      'n11': new FormControl('', [Validators.required]),
-      'n12': new FormControl('', [Validators.required]),
-      'n13': new FormControl('', [Validators.required]),
-      'n14': new FormControl('', [Validators.required]),
-      'n15': new FormControl('', [Validators.required]),
-      'n16': new FormControl('', [Validators.required]),
-      'n17': new FormControl('', [Validators.required]),
-      'n18': new FormControl('', [Validators.required]),
-      'n19': new FormControl('', [Validators.required]),
-      'n1_spoiled': new FormControl('', [Validators.required]),
-      'n2_spoiled': new FormControl('', [Validators.required]),
-      'n3_spoiled': new FormControl('', [Validators.required]),
-      'n4_spoiled': new FormControl('', [Validators.required]),
-      'n5_spoiled': new FormControl('', [Validators.required]),
-      'n6_spoiled': new FormControl('', [Validators.required]),
-      'n7_spoiled': new FormControl('', [Validators.required]),
-      'n8_spoiled': new FormControl('', [Validators.required]),
-      'n9_spoiled': new FormControl('', [Validators.required]),
-      'n10_spoiled': new FormControl('', [Validators.required]),
-      'n11_spoiled': new FormControl('', [Validators.required]),
-      'n12_spoiled': new FormControl('', [Validators.required]),
-      'n13_spoiled': new FormControl('', [Validators.required]),
-      'n14_spoiled': new FormControl('', [Validators.required]),
-      'n15_spoiled': new FormControl('', [Validators.required]),
-      'n16_spoiled': new FormControl('', [Validators.required]),
-      'n17_spoiled': new FormControl('', [Validators.required]),
-      'n18_spoiled': new FormControl('', [Validators.required]),
-      'n19_spoiled': new FormControl('', [Validators.required]),
-      'massa': new FormControl('', [Validators.required])
+      'n1': new FormControl('', [Validators.required, this.flagValidator('n1')]),
+      'n2': new FormControl('', [Validators.required, this.flagValidator('n2')]),
+      'n3': new FormControl('', [Validators.required, this.flagValidator('n3')]),
+      'n4': new FormControl('', [Validators.required, this.flagValidator('n4')]),
+      'n5': new FormControl('', [Validators.required, this.flagValidator('n5')]),
+      'n6': new FormControl('', [Validators.required, this.flagValidator('n6')]),
+      'n7': new FormControl('', [Validators.required, this.flagValidator('n7')]),
+      'n8': new FormControl('', [Validators.required, this.flagValidator('n8')]),
+      'n9': new FormControl('', [Validators.required, this.flagValidator('n9')]),
+      'n10': new FormControl('', [Validators.required, this.flagValidator('n10')]),
+      'n11': new FormControl('', [Validators.required, this.flagValidator('n11')]),
+      'n12': new FormControl('', [Validators.required, this.flagValidator('n12')]),
+      'n13': new FormControl('', [Validators.required, this.flagValidator('n13')]),
+      'n14': new FormControl('', [Validators.required, this.flagValidator('n14')]),
+      'n15': new FormControl('', [Validators.required, this.flagValidator('n15')]),
+      'n16': new FormControl('', [Validators.required, this.flagValidator('n16')]),
+      'n17': new FormControl('', [Validators.required, this.flagValidator('n17')]),
+      'n18': new FormControl('', [Validators.required, this.flagValidator('n18')]),
+      'n19': new FormControl('', [Validators.required, this.flagValidator('n19')]),
+      'n1_spoiled': new FormControl('', [Validators.required, this.flagValidator('n1_spoiled')]),
+      'n2_spoiled': new FormControl('', [Validators.required, this.flagValidator('n2_spoiled')]),
+      'n3_spoiled': new FormControl('', [Validators.required, this.flagValidator('n3_spoiled')]),
+      'n4_spoiled': new FormControl('', [Validators.required, this.flagValidator('n4_spoiled')]),
+      'n5_spoiled': new FormControl('', [Validators.required, this.flagValidator('n5_spoiled')]),
+      'n6_spoiled': new FormControl('', [Validators.required, this.flagValidator('n6_spoiled')]),
+      'n7_spoiled': new FormControl('', [Validators.required, this.flagValidator('n7_spoiled')]),
+      'n8_spoiled': new FormControl('', [Validators.required, this.flagValidator('n8_spoiled')]),
+      'n9_spoiled': new FormControl('', [Validators.required, this.flagValidator('n9_spoiled')]),
+      'n10_spoiled': new FormControl('', [Validators.required, this.flagValidator('n10_spoiled')]),
+      'n11_spoiled': new FormControl('', [Validators.required, this.flagValidator('n11_spoiled')]),
+      'n12_spoiled': new FormControl('', [Validators.required, this.flagValidator('n12_spoiled')]),
+      'n13_spoiled': new FormControl('', [Validators.required, this.flagValidator('n13_spoiled')]),
+      'n14_spoiled': new FormControl('', [Validators.required, this.flagValidator('n14_spoiled')]),
+      'n15_spoiled': new FormControl('', [Validators.required, this.flagValidator('n15_spoiled')]),
+      'n16_spoiled': new FormControl('', [Validators.required, this.flagValidator('n16_spoiled')]),
+      'n17_spoiled': new FormControl('', [Validators.required, this.flagValidator('n17_spoiled')]),
+      'n18_spoiled': new FormControl('', [Validators.required, this.flagValidator('n18_spoiled')]),
+      'n19_spoiled': new FormControl('', [Validators.required, this.flagValidator('n19_spoiled')]),
+      'massa': new FormControl('', [Validators.required, this.flagValidator('massa')])
     });
 
     this.setColorArray();
-    this.setAllFlagFromCicle();
+
   }
 
 ///// VALIDATORS
+
+  flagValidator(sname: string): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: string} | null => {
+      const flagRgEx: RegExp = /^0*[1-9]\d*$/;
+      if (!control.value) {
+        return {};
+      }
+
+      if (flagRgEx.test(control.value)) {
+        return null;
+      }
+
+      if (!flagRgEx.test(control.value)) {
+        return {victoriaValidator: 'Введите целое положительное значение.'};
+      }
+
+    };
+  }
+
+  getErrorText(el) {
+    if (!this.acclaundform.controls[el].errors) {
+      return '';
+    }
+
+    if (this.acclaundform.controls[el].errors['victoriaValidator']) {
+      return this.acclaundform.controls[el].errors['victoriaValidator'];
+    } else {
+      return '';
+    }
+  }
+
+  getClassName(el): string {
+    if (!this.acclaundform.controls[el].touched) {
+      return  'form-control';
+    }
+
+    if (this.acclaundform.controls[el].value === '') {
+      return 'form-control';
+    }
+
+    if (this.acclaundform.controls[el].invalid) {
+      return 'form-control is-invalid';
+    }
+
+    if (this.acclaundform.controls[el].valid) {
+      return  'form-control is-valid';
+    }
+  }
+
+  clickPage($event: number) {
+    console.log('intAddress=', $event);
+    this.intAddress = $event;
+  }
+
   setColorArray() {
     Object.keys(this.acclaundform.controls).forEach(key => {
       this.arrayFlag.push([0, key, -1, '']);
     });
   }
-
-getCokorFlag(key): [number, string] {
-    const arrRes = this.arrayFlag.find(element => element[1] === key);
-
-    if (arrRes === undefined) {
-        return [0, ''];
-    } else {
-      return [arrRes[0], arrRes[3]];
-    }
-  }
-
-  setCokorFlag(key, value) {
-    const arrRes = this.arrayFlag.find(element => element[1] === key);
-
-    if (arrRes !== undefined) {
-      arrRes[0] = value;
-    }
-  }
-
-
- // обход массива с присвоение переменным разрешенных значений из базы
- setAllFlagFromCicle() {
-   // тут ничего нет потому что разрешены любые значения
- }
-
-  // проверка массива на введенные значения
-  getAllFlagFromCicle(): boolean {
-    // тут мои присваивания элементам правильных значений
-    let resBoolean = true;
-    Object.keys(this.acclaundform.controls).forEach(key => {
-
-      resBoolean = this.checkValue(this.acclaundform.controls[key], key);
-
-    });
-
-    return resBoolean;
-  }
-
-  onChandeValid(elName: string) {
-    const formControl   = this.acclaundform.controls[elName];
-    if (formControl) {
-      this.checkValue(formControl, elName);
-    }
-  }
-
-
-checkValue(formControl, key): boolean {
-  let resBoolean = true;
-  const sVal = formControl.value.toString().trim();
-  const arrRes = this.arrayFlag.find(element => element[1] === key);
-  if (arrRes !== undefined) {
-    arrRes[0] = 2;
-    arrRes[3] = '';
-  }
-
-  if (sVal === '') {
-    arrRes[0] = 0;
-  }
-
-  if (sVal !== '') {
-    if (isNaN(Number(sVal))) {
-      if (arrRes !== undefined) {
-        arrRes[0] = 1;
-        arrRes[3] = 'Введите цифровое значение';
-        resBoolean = false;
-      }
-    } else {
-      if (Number(sVal) <= 0) {
-        if (arrRes !== undefined) {
-          arrRes[0] = 1;
-          arrRes[3] = 'Введите положительное значение';
-          resBoolean = false;
-        }
-      }
-
-    }
-  }
-
-  // особый случай не введена масса белья
-  if ((sVal === '') &&  (key.toString() === 'massa')) {
-    if (arrRes !== undefined) {
-      arrRes[0] = 1;
-      arrRes[3] = 'Введите массу белья, кг';
-      resBoolean = false;
-    }
-  }
-
-  return resBoolean;
-}
-
 
 ///// END VALIDATORS
 
@@ -186,56 +151,29 @@ checkValue(formControl, key): boolean {
         }
     });
     }
-
     if (!ShiftService.getShift()) {
       this.router.navigate(['/']);
     }
 
-   }
+ }
 
-
-  checkValueMassa() {
-    let bRes = true;
-    let sVal = this.acclaundform.controls['massa'].value.toString().trim();
-    if (sVal === '') {
-      sVal = '0';
-    }
-    if (Number(sVal) <= 0) {bRes = false; }
-    return bRes;
-  }
-
-  checkValueInt() {
-    // tslint:disable-next-line:no-unused-expression
-    let sVal = '';
-    let bRes = true;
-    Object.keys(this.acclaundform.controls).forEach(key => {
-      sVal = this.acclaundform.controls[key].value.toString().trim();
-      if (sVal === '') {
-        sVal = '0';
-      }
-      if (isNaN(Number(sVal))) {
-        bRes = false;
-      }
-    });
-    return bRes;
-  }
 
   send_data() {
 
-    this.setAllFlagFromCicle();
-    if (this.getAllFlagFromCicle() === false) {
-      this.sError = 'Найдены неправильные значения. Измените их на правильные пользуясь подсказкой.';
-      return;
-    }
-
     this.sError = '';
-    // если какие-то данные с формы не преобразуются в int сообщаем об этом
-    if (!this.checkValueInt()) {
-      this.sError = 'В одном из полей нецифровые данные. Измените их на цифровые.';
+
+    // проверка переданной формы на хоть какие-то введенные значения, кроме массы
+    if (Check.getFormDirty(this.acclaundform)) {
+      this.sError = 'Найдены нецифровые значения.';
       return;
     }
 
-    if (!this.checkValueMassa()) {
+    if (!Check.getFormPositive(this.acclaundform)) {
+      this.sError = 'Не найдено передаваемых значений.';
+      return;
+    }
+
+    if (!Check.checkValueMassa(this.acclaundform)) {
       this.sError = 'Вы не указали массу белья.';
       return;
     }
@@ -246,8 +184,7 @@ checkValue(formControl, key): boolean {
 
       if (shift[0]) {
         // прием белья в проводку в базе применительно к смене
-        // console.log('shift[0]', shift[0]);
-        this.ls.setacceptance(this.acclaundform.value, shift[0].id).subscribe( value => {
+        this.ls.setacceptance(this.acclaundform.value, shift[0].id, this.intAddress).subscribe( value => {
           console.log('value', value);
           if (value === true) {
 
@@ -259,9 +196,4 @@ checkValue(formControl, key): boolean {
 
   }
 
-
-  clickPage($event: number) {
-    console.log('intAddress=', $event);
-    this.intAddress = $event;
-  }
 }

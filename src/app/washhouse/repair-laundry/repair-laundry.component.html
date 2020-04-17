@@ -4,8 +4,13 @@
 
 <form [formGroup]="repairForm">
 <div class="container">
-  <h2>Ремонт</h2>
-  <p class="text-info">Белье, которое вы отремонтировали (выберите размер и укажите количество):</p>
+
+  <app-customer-address  [beginString] = "'Белье, которое вы отремонтировали с адреса'"
+                         [endString]="'(выберите размер и укажите количество):'"
+                         [titleString]="'Ремонт - '"
+                         (ChangedPage)="clickPage($event)">
+  </app-customer-address>
+
   <h3 class="alert alert-dark">Прямое белье</h3>
   <table class="table table-borderless">
     <thead>
@@ -16,16 +21,16 @@
     <tbody>
     <tr>
       <td></td>
-      <td>Целое</td>
+      <td>Починено</td>
     </tr>
     <tr>
       <td>50x70</td>
-      <td>{{getCokorFlag('n1')[1]}}<input type="text" (change)="onChandeValid('n1')"  [class]="getCokorFlag('n1')[0] === 0 ? 'form-control' : getCokorFlag('n1')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n1" placeholder="шт" id="name1" name="name1"></td>
+      <td>{{getErrorAndText('n1')}}<input type="text" [class]="getClassName('n1')" formControlName="n1" placeholder="шт" id="name1" name="name1"></td>
 
     </tr>
     <tr>
       <td>70x70</td>
-      <td>{{getCokorFlag('n2')[1]}}<input type="text" (change)="onChandeValid('n2')"  [class]="getCokorFlag('n2')[0] === 0 ? 'form-control' : getCokorFlag('n2')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n2" placeholder="шт" id="name3" name="name3"></td>
+      <td>{{getErrorAndText('n2')}}<input type="text" [class]="getClassName('n2')" formControlName="n2" placeholder="шт" id="name3" name="name3"></td>
 
     </tr>
     </tbody>
@@ -40,16 +45,16 @@
     <tbody>
     <tr>
       <td></td>
-      <td>Целое</td>
+      <td>Починено</td>
     </tr>
     <tr>
       <td>1,5 сп</td>
-      <td>{{getCokorFlag('n3')[1]}}<input type="text" (change)="onChandeValid('n3')"  [class]="getCokorFlag('n3')[0] === 0 ? 'form-control' : getCokorFlag('n3')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n3" placeholder="шт" id="name5" name="name5"></td>
+      <td>{{getErrorAndText('n3')}}<input type="text" [class]="getClassName('n3')" formControlName="n3" placeholder="шт" id="name5" name="name5"></td>
 
     </tr>
     <tr>
       <td>2 сп</td>
-      <td>{{getCokorFlag('n4')[1]}}<input type="text" (change)="onChandeValid('n4')"  [class]="getCokorFlag('n4')[0] === 0 ? 'form-control' : getCokorFlag('n4')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n4" placeholder="шт" id="name7" name="name7"></td>
+      <td>{{getErrorAndText('n4')}}<input type="text" [class]="getClassName('n4')" formControlName="n4" placeholder="шт" id="name7" name="name7"></td>
 
     </tr>
     </tbody>
@@ -64,17 +69,17 @@
     <tbody>
     <tr>
       <td></td>
-      <td>Целое</td>
+      <td>Починено</td>
 
     </tr>
     <tr>
       <td>1,5 сп</td>
-      <td>{{getCokorFlag('n5')[1]}}<input type="text" (change)="onChandeValid('n5')"  [class]="getCokorFlag('n5')[0] === 0 ? 'form-control' : getCokorFlag('n5')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n5" placeholder="шт" id="name9" name="name9"></td>
+      <td>{{getErrorAndText('n5')}}<input type="text" [class]="getClassName('n5')" formControlName="n5" placeholder="шт" id="name9" name="name9"></td>
 
     </tr>
     <tr>
       <td>2 сп</td>
-      <td>{{getCokorFlag('n6')[1]}}<input type="text" (change)="onChandeValid('n6')"  [class]="getCokorFlag('n6')[0] === 0 ? 'form-control' : getCokorFlag('n6')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n6" placeholder="шт" id="name11" name="name11"></td>
+      <td>{{getErrorAndText('n6')}}<input type="text" [class]="getClassName('n6')" formControlName="n6" placeholder="шт" id="name11" name="name11"></td>
 
     </tr>
     </tbody>
@@ -89,27 +94,27 @@
     <tbody>
     <tr>
       <td></td>
-      <td>Целое</td>
+      <td>Починено</td>
 
     </tr>
     <tr>
       <td>30x60</td>
-      <td>{{getCokorFlag('n7')[1]}}<input type="text" (change)="onChandeValid('n7')"  [class]="getCokorFlag('n7')[0] === 0 ? 'form-control' : getCokorFlag('n7')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n7" placeholder="шт" id="name13" name="name13"></td>
+      <td>{{getErrorAndText('n7')}}<input type="text" [class]="getClassName('n7')" formControlName="n7" placeholder="шт" id="name13" name="name13"></td>
 
     </tr>
     <tr>
       <td>70x70</td>
-      <td>{{getCokorFlag('n8')[1]}}<input type="text" class="form-control" (change)="onChandeValid('n8')"  [class]="getCokorFlag('n8')[0] === 0 ? 'form-control' : getCokorFlag('n8')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n8" placeholder="шт" id="name15" name="name15"></td>
+      <td>{{getErrorAndText('n8')}}<input type="text" [class]="getClassName('n8')" formControlName="n8" placeholder="шт" id="name15" name="name15"></td>
 
     </tr>
     <tr>
       <td>70x140</td>
-      <td>{{getCokorFlag('n9')[1]}}<input type="text" (change)="onChandeValid('n9')"  [class]="getCokorFlag('n9')[0] === 0 ? 'form-control' : getCokorFlag('n9')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n9" placeholder="шт" id="name17" name="name17"></td>
+      <td>{{getErrorAndText('n9')}}<input type="text" [class]="getClassName('n9')" formControlName="n9" placeholder="шт" id="name17" name="name17"></td>
 
     </tr>
     <tr>
       <td>Кухонные</td>
-      <td>{{getCokorFlag('n10')[1]}}<input type="text" (change)="onChandeValid('n10')"  [class]="getCokorFlag('n10')[0] === 0 ? 'form-control' : getCokorFlag('n10')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n10" placeholder="шт" id="name19" name="name19"></td>
+      <td>{{getErrorAndText('n10')}}<input type="text" [class]="getClassName('n10')" formControlName="n10" placeholder="шт" id="name19" name="name19"></td>
 
     </tr>
     </tbody>
@@ -126,17 +131,17 @@
     <tbody>
     <tr>
       <td></td>
-      <td>Целое</td>
+      <td>Починено</td>
 
     </tr>
     <tr>
       <td>Для ванны</td>
-      <td>{{getCokorFlag('n11')[1]}}<input type="text" (change)="onChandeValid('n11')"  [class]="getCokorFlag('n11')[0] === 0 ? 'form-control' : getCokorFlag('n11')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n11" placeholder="шт" id="name21" name="name21"></td>
+      <td>{{getErrorAndText('n11')}}<input type="text" [class]="getClassName('n11')" formControlName="n11" placeholder="шт" id="name21" name="name21"></td>
 
     </tr>
     <tr>
       <td>Придверный</td>
-      <td>{{getCokorFlag('n12')[1]}}<input type="text" (change)="onChandeValid('n12')"  [class]="getCokorFlag('n12')[0] === 0 ? 'form-control' : getCokorFlag('n12')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n12" placeholder="шт" id="name23" name="name23"></td>
+      <td>{{getErrorAndText('n12')}}<input type="text" [class]="getClassName('n12')" formControlName="n12" placeholder="шт" id="name23" name="name23"></td>
 
     </tr>
     </tbody>
@@ -151,17 +156,17 @@
     <tbody>
     <tr>
       <td></td>
-      <td>Целое</td>
+      <td>Починено</td>
 
     </tr>
     <tr>
       <td>1,5 сп</td>
-      <td>{{getCokorFlag('n13')[1]}}<input type="text" (change)="onChandeValid('n13')"  [class]="getCokorFlag('n13')[0] === 0 ? 'form-control' : getCokorFlag('n13')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n13" placeholder="шт" id="name25" name="name25"></td>
+      <td>{{getErrorAndText('n13')}}<input type="text" [class]="getClassName('n13')" formControlName="n13" placeholder="шт" id="name25" name="name25"></td>
 
     </tr>
     <tr>
       <td>2 сп</td>
-      <td>{{getCokorFlag('n14')[1]}}<input type="text" (change)="onChandeValid('n14')"  [class]="getCokorFlag('n14')[0] === 0 ? 'form-control' : getCokorFlag('n14')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n14" placeholder="шт" id="name27" name="name27"></td>
+      <td>{{getErrorAndText('n14')}}<input type="text" [class]="getClassName('n14')" formControlName="n14" placeholder="шт" id="name27" name="name27"></td>
 
     </tr>
     </tbody>
@@ -176,17 +181,17 @@
     <tbody>
     <tr>
       <td></td>
-      <td>Целое</td>
+      <td>Починено</td>
 
     </tr>
     <tr>
       <td>50x70</td>
-      <td>{{getCokorFlag('n15')[1]}}<input type="text" (change)="onChandeValid('n15')"  [class]="getCokorFlag('n15')[0] === 0 ? 'form-control' : getCokorFlag('n15')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n15" placeholder="шт" id="name29" name="name29"></td>
+      <td>{{getErrorAndText('n15')}}<input type="text" [class]="getClassName('n15')" formControlName="n15" placeholder="шт" id="name29" name="name29"></td>
 
     </tr>
     <tr>
       <td>70x70</td>
-      <td>{{getCokorFlag('n16')[1]}}<input type="text" (change)="onChandeValid('n16')"  [class]="getCokorFlag('n16')[0] === 0 ? 'form-control' : getCokorFlag('n16')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n16" placeholder="шт" id="name31" name="name31"></td>
+      <td>{{getErrorAndText('n16')}}<input type="text" [class]="getClassName('n16')" formControlName="n16" placeholder="шт" id="name31" name="name31"></td>
 
     </tr>
     </tbody>
@@ -201,17 +206,17 @@
     <tbody>
     <tr>
       <td></td>
-      <td>Целое</td>
+      <td>Починено</td>
 
     </tr>
     <tr>
       <td>1,5 сп</td>
-      <td>{{getCokorFlag('n17')[1]}}<input type="text" (change)="onChandeValid('n17')"  [class]="getCokorFlag('n17')[0] === 0 ? 'form-control' : getCokorFlag('n17')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n17" placeholder="шт" id="name33" name="name33"></td>
+      <td>{{getErrorAndText('n17')}}<input type="text" [class]="getClassName('n17')" formControlName="n17" placeholder="шт" id="name33" name="name33"></td>
 
     </tr>
     <tr>
       <td>2 сп</td>
-      <td>{{getCokorFlag('n18')[1]}}<input type="text" (change)="onChandeValid('n18')"  [class]="getCokorFlag('n18')[0] === 0 ? 'form-control' : getCokorFlag('n18')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n18" placeholder="шт" id="name35" name="name36"></td>
+      <td>{{getErrorAndText('n18')}}<input type="text" [class]="getClassName('n18')" formControlName="n18" placeholder="шт" id="name35" name="name36"></td>
 
     </tr>
     </tbody>
@@ -226,19 +231,20 @@
     <tbody>
     <tr>
       <td></td>
-      <td>Целое</td>
+      <td>Починено</td>
 
     </tr>
     <tr>
       <td>Шторы</td>
-      <td>{{getCokorFlag('n19')[1]}}<input type="text" (change)="onChandeValid('n19')"  [class]="getCokorFlag('n19')[0] === 0 ? 'form-control' : getCokorFlag('n19')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="n19" placeholder="шт" id="name38" name="name38"></td>
-
-
+      <td>{{getErrorAndText('n19')}}<input type="text" [class]="getClassName('n19')" formControlName="n19" placeholder="шт" id="name38" name="name38"></td>
     </tr>
+
     <tr>
       <th>Общий вес белья:</th>
-      <td>{{getCokorFlag('massa')[1]}}<input type="text" (change)="onChandeValid('massa')"  [class]="getCokorFlag('massa')[0] === 0 ? 'form-control' : getCokorFlag('massa')[0] === 1 ? 'form-control is-invalid' : 'form-control is-valid'" formControlName="massa" placeholder="кг" id="name40" name="name40"></td>
+      <td>{{getMassaText('massa')}}<input type="text" [class]="getClassName('massa')"  formControlName="massa" placeholder="кг" id="elMassa" name="elMassa"></td>
     </tr>
+
+
     </tbody>
   </table>
   <button type="button" class="btn btn-primary" (click)="send_data()"
@@ -268,5 +274,7 @@
   <br><br><br><br>
 </div>
 </form>
+
+
 
 </div>

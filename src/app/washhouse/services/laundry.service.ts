@@ -14,10 +14,9 @@ export class LaundryService {
     return this.http.post(sUrl, {email, pwd, hash});
   }
 
-  setacceptance(value: any, id_shift) {
+  setacceptance(value: any, id_shift, id_address) {
     const sUrl = this.gr.sUrlGlobal + 'laundry';
-    const new_acceptance = { 'acceptance_insert': value, 'id_shift' : id_shift};
-    console.log(new_acceptance);
+    const new_acceptance = { 'acceptance_insert': value, 'id_shift' : id_shift, 'id_address': id_address};
     return this.http.post(sUrl, new_acceptance);
   }
 
@@ -33,16 +32,29 @@ export class LaundryService {
     return this.http.post(sUrl, new_shipment);
   }
 
-  setrepair(value: any, id_shift) {
+  setrepair(value: any, id_shift, id_address) {
     const sUrl = this.gr.sUrlGlobal + 'laundry';
-    const new_repair = { 'repair_insert': value, 'id_shift' : id_shift};
-    console.log(new_repair);
+    const new_repair = { 'repair_insert': value, 'id_shift' : id_shift, 'id_address': id_address};
     return this.http.post(sUrl, new_repair);
+  }
+
+  setwashing(value: any, id_shift, id_address) {
+    const sUrl = this.gr.sUrlGlobal + 'laundry';
+    const new_washing = { 'washing_insert': value, 'id_shift' : id_shift, 'id_address': id_address};
+    return this.http.post(sUrl, new_washing);
   }
 
   getLastAcceptance(id_user, id_branch) {
     const params = new HttpParams()
       .set('last_acceptance', 'last_acceptance')
+      .set('id_user', id_user.toString())
+      .set('id_branch', id_branch.toString());
+    return this.http.get(this.gr.sUrlGlobal + 'laundry', {params: params});
+  }
+
+  getLastWashing(id_user, id_branch) {
+    const params = new HttpParams()
+      .set('last_washing', 'last_washing')
       .set('id_user', id_user.toString())
       .set('id_branch', id_branch.toString());
     return this.http.get(this.gr.sUrlGlobal + 'laundry', {params: params});
@@ -61,6 +73,13 @@ export class LaundryService {
     const params = new HttpParams()
       .set('detail_acceptance', 'detail_acceptance')
       .set('id_accept', id_accept.toString());
+    return this.http.get(this.gr.sUrlGlobal + 'laundry', {params: params});
+  }
+
+  getDetailWashing(id_washing) {
+    const params = new HttpParams()
+      .set('detail_washing', 'detail_washing')
+      .set('id_washing', id_washing.toString());
     return this.http.get(this.gr.sUrlGlobal + 'laundry', {params: params});
   }
 
@@ -94,9 +113,18 @@ export class LaundryService {
     return this.http.get(this.gr.sUrlGlobal + 'laundry', {params: params});
   }
 
-  getValidatorsRepair(id_branch) {
+  getValidatorsRepair(id_address, id_branch) {
     const params = new HttpParams()
       .set('get_valid_repair', 'get_valid_repair')
+      .set('id_address', id_address.toString())
+      .set('id_branch', id_branch.toString());
+    return this.http.get(this.gr.sUrlGlobal + 'validators', {params: params});
+  }
+
+  getValidatorsWashing(id_address, id_branch) {
+    const params = new HttpParams()
+      .set('get_valid_washing', 'get_valid_washing')
+      .set('id_address', id_address.toString())
       .set('id_branch', id_branch.toString());
     return this.http.get(this.gr.sUrlGlobal + 'validators', {params: params});
   }

@@ -36,6 +36,8 @@ import { ShipmentLaundryLastComponent } from './washhouse/shipment-laundry-last/
 import { CustomerAddressComponent } from './victoriacomp/customer-address/customer-address.component';
 import { TestComponent } from './test/test.component';
 import { MainmenuComponent } from './victoriacomp/mainmenu/mainmenu.component';
+import {Check} from './static/check';
+import { WashingLaundryLastComponent } from './washhouse/washing-laundry-last/washing-laundry-last.component';
 
 registerLocaleData(localeRu);
 
@@ -61,6 +63,7 @@ const appRoutes: Routes = [
   {path: 'warehouse_laundry_last', component: WarehouseLaundryLastComponent},
   {path: 'repair_laundry_last', component: RepairLaundryLastComponent},
   {path: 'shipment_laundry_last', component: ShipmentLaundryLastComponent},
+  {path: 'washing_laundry_last', component: WashingLaundryLastComponent},
   {path: 'test', component: TestComponent},
   {path: '**', component: NotFoundComponent }
 ];
@@ -91,7 +94,8 @@ const appRoutes: Routes = [
     ShipmentLaundryLastComponent,
     CustomerAddressComponent,
     TestComponent,
-    MainmenuComponent
+    MainmenuComponent,
+    WashingLaundryLastComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +104,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ GlobalRef, AuthService, ForgotpasswordService, ExcelService],
+  providers: [ GlobalRef, AuthService, ForgotpasswordService, ExcelService, Check],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
