@@ -4,8 +4,13 @@
 
 <form [formGroup]="warehouseForm">
 <div class="container">
-  <h2>Прием на склад</h2>
-  <p class="text-info">Белье, которое вы сдали на склад (выберите размер и укажите количество):</p>
+
+  <app-customer-address  [beginString] = "'Белье, которое принято на склад для адреса'"
+                         [endString]="'(выберите размер и укажите количество):'"
+                         [titleString]="'Прием на склад - '"
+                         (ChangedPage)="clickPage($event)">
+  </app-customer-address>
+
   <h3 class="alert alert-dark">Прямое белье</h3>
   <table class="table table-borderless">
     <thead>
@@ -20,12 +25,12 @@
     </tr>
     <tr>
       <td>50x70</td>
-      <td><input type="text" class="form-control" formControlName="n1" placeholder="шт" id="name1" name="name1"></td>
+      <td>{{getErrorAndText('n1')}}<input type="text" [class]="getClassName('n1')" formControlName="n1" placeholder="шт" id="name1" name="name1"></td>
 
     </tr>
     <tr>
       <td>70x70</td>
-      <td><input type="text" class="form-control" formControlName="n2" placeholder="шт" id="name3" name="name3"></td>
+      <td>{{getErrorAndText('n2')}}<input type="text" [class]="getClassName('n2')" formControlName="n2" placeholder="шт" id="name3" name="name3"></td>
 
     </tr>
     </tbody>
@@ -44,12 +49,12 @@
     </tr>
     <tr>
       <td>1,5 сп</td>
-      <td><input type="text" class="form-control" formControlName="n3" placeholder="шт" id="name5" name="name5"></td>
+      <td>{{getErrorAndText('n3')}}<input type="text" [class]="getClassName('n3')" formControlName="n3" placeholder="шт" id="name5" name="name5"></td>
 
     </tr>
     <tr>
       <td>2 сп</td>
-      <td><input type="text" class="form-control" formControlName="n4" placeholder="шт" id="name7" name="name7"></td>
+      <td>{{getErrorAndText('n4')}}<input type="text" [class]="getClassName('n4')" formControlName="n4" placeholder="шт" id="name7" name="name7"></td>
 
     </tr>
     </tbody>
@@ -69,12 +74,12 @@
     </tr>
     <tr>
       <td>1,5 сп</td>
-      <td><input type="text" class="form-control" formControlName="n5" placeholder="шт" id="name9" name="name9"></td>
+      <td>{{getErrorAndText('n5')}}<input type="text" [class]="getClassName('n5')" formControlName="n5" placeholder="шт" id="name9" name="name9"></td>
 
     </tr>
     <tr>
       <td>2 сп</td>
-      <td><input type="text" class="form-control" formControlName="n6" placeholder="шт" id="name11" name="name11"></td>
+      <td>{{getErrorAndText('n6')}}<input type="text" [class]="getClassName('n6')" formControlName="n6" placeholder="шт" id="name11" name="name11"></td>
 
     </tr>
     </tbody>
@@ -94,22 +99,22 @@
     </tr>
     <tr>
       <td>30x60</td>
-      <td><input type="text" class="form-control" formControlName="n7" placeholder="шт" id="name13" name="name13"></td>
+      <td>{{getErrorAndText('n7')}}<input type="text" [class]="getClassName('n7')" formControlName="n7" placeholder="шт" id="name13" name="name13"></td>
 
     </tr>
     <tr>
       <td>70x70</td>
-      <td><input type="text" class="form-control" formControlName="n8" placeholder="шт" id="name15" name="name15"></td>
+      <td>{{getErrorAndText('n8')}}<input type="text" [class]="getClassName('n8')" formControlName="n8" placeholder="шт" id="name15" name="name15"></td>
 
     </tr>
     <tr>
       <td>70x140</td>
-      <td><input type="text" class="form-control" formControlName="n9" placeholder="шт" id="name17" name="name17"></td>
+      <td>{{getErrorAndText('n9')}}<input type="text" [class]="getClassName('n9')" formControlName="n9" placeholder="шт" id="name17" name="name17"></td>
 
     </tr>
     <tr>
       <td>Кухонные</td>
-      <td><input type="text" class="form-control" formControlName="n10" placeholder="шт" id="name19" name="name19"></td>
+      <td>{{getErrorAndText('n10')}}<input type="text" [class]="getClassName('n10')" formControlName="n10" placeholder="шт" id="name19" name="name19"></td>
 
     </tr>
     </tbody>
@@ -131,12 +136,12 @@
     </tr>
     <tr>
       <td>Для ванны</td>
-      <td><input type="text" class="form-control" formControlName="n11" placeholder="шт" id="name21" name="name21"></td>
+      <td>{{getErrorAndText('n11')}}<input type="text" [class]="getClassName('n11')" formControlName="n11" placeholder="шт" id="name21" name="name21"></td>
 
     </tr>
     <tr>
       <td>Придверный</td>
-      <td><input type="text" class="form-control" formControlName="n12" placeholder="шт" id="name23" name="name23"></td>
+      <td>{{getErrorAndText('n12')}}<input type="text" [class]="getClassName('n12')" formControlName="n12" placeholder="шт" id="name23" name="name23"></td>
 
     </tr>
     </tbody>
@@ -156,12 +161,12 @@
     </tr>
     <tr>
       <td>1,5 сп</td>
-      <td><input type="text" class="form-control" formControlName="n13" placeholder="шт" id="name25" name="name25"></td>
+      <td>{{getErrorAndText('n13')}}<input type="text" [class]="getClassName('n13')" formControlName="n13" placeholder="шт" id="name25" name="name25"></td>
 
     </tr>
     <tr>
       <td>2 сп</td>
-      <td><input type="text" class="form-control" formControlName="n14" placeholder="шт" id="name27" name="name27"></td>
+      <td>{{getErrorAndText('n14')}}<input type="text" [class]="getClassName('n14')" formControlName="n14" placeholder="шт" id="name27" name="name27"></td>
 
     </tr>
     </tbody>
@@ -181,12 +186,12 @@
     </tr>
     <tr>
       <td>50x70</td>
-      <td><input type="text" class="form-control" formControlName="n15" placeholder="шт" id="name29" name="name29"></td>
+      <td>{{getErrorAndText('n15')}}<input type="text" [class]="getClassName('n15')" formControlName="n15" placeholder="шт" id="name29" name="name29"></td>
 
     </tr>
     <tr>
       <td>70x70</td>
-      <td><input type="text" class="form-control" formControlName="n16" placeholder="шт" id="name31" name="name31"></td>
+      <td>{{getErrorAndText('n16')}}<input type="text" [class]="getClassName('n16')" formControlName="n16" placeholder="шт" id="name31" name="name31"></td>
 
     </tr>
     </tbody>
@@ -206,12 +211,12 @@
     </tr>
     <tr>
       <td>1,5 сп</td>
-      <td><input type="text" class="form-control" formControlName="n17" placeholder="шт" id="name33" name="name33"></td>
+      <td>{{getErrorAndText('n17')}}<input type="text" [class]="getClassName('n17')" formControlName="n17" placeholder="шт" id="name33" name="name33"></td>
 
     </tr>
     <tr>
       <td>2 сп</td>
-      <td><input type="text" class="form-control" formControlName="n18" placeholder="шт" id="name35" name="name36"></td>
+      <td>{{getErrorAndText('n18')}}<input type="text" [class]="getClassName('n18')" formControlName="n18" placeholder="шт" id="name35" name="name36"></td>
 
     </tr>
     </tbody>
@@ -231,13 +236,13 @@
     </tr>
     <tr>
       <td>Шторы</td>
-      <td><input type="text" class="form-control" formControlName="n19" placeholder="шт" id="name38" name="name38"></td>
+      <td>{{getErrorAndText('n19')}}<input type="text" [class]="getClassName('n19')" formControlName="n19" placeholder="шт" id="name38" name="name38"></td>
 
 
     </tr>
     <tr>
       <th>Общий вес белья:</th>
-      <td><input type="text" class="form-control"  formControlName="massa" placeholder="кг" id="name40" name="name40"></td>
+      <td>{{getMassaText('massa')}}<input type="text" [class]="getClassName('massa')" formControlName="massa" placeholder="кг" id="name40" name="name40"></td>
     </tr>
     </tbody>
   </table>

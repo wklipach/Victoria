@@ -31,7 +31,7 @@ export class WarehouseLaundryLastComponent implements OnInit {
 
   LoadInfo(id_user) {
     console.log('загружаем данные');
-    this.ls.getLastRepair(id_user, this.authService.getBranch(id_user)).subscribe( value => {
+    this.ls.getLastWarehouse(id_user, this.authService.getBranch(id_user)).subscribe( value => {
       if (value[0]) {
         this.alTitle = value[0];
       } else {

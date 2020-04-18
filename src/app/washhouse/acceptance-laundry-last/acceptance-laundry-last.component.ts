@@ -62,7 +62,7 @@ export class AcceptanceLaundryLastComponent implements OnInit {
 
   toExcel() {
     if (this.detailList) {
-      this.excel.excelAcceptanceLaundryLast(this.alTitle, this.detailList, 'Передача белья', 'поврежденность');
+      this.excel.excelAcceptanceLaundryLast(this.alTitle, this.detailList, 'Принято в прачечную', 'поврежденность');
     }
   }
 }

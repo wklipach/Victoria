@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth-service.service';
 import {LaundryService} from '../services/laundry.service';
 import {ExcelService} from '../../services/excel.service';
+import {PdfService} from '../../services/pdf.service';
 
 @Component({
   selector: 'app-washing-laundry-last',
@@ -17,6 +18,7 @@ export class WashingLaundryLastComponent implements OnInit {
   constructor(private router: Router,
               private authService: AuthService,
               private ls: LaundryService,
+              private pdf: PdfService,
               private excel: ExcelService) { }
 
   ngOnInit(): void {
@@ -54,5 +56,9 @@ export class WashingLaundryLastComponent implements OnInit {
       this.excel.excelAcceptanceLaundryLast(this.alTitle, this.detailList, 'Передача белья', '');
     }
   }
+
+  toPdf() {
+   this.pdf.savepdf(this.alTitle, this.detailList, 'Передача белья', '');
+}
 
 }

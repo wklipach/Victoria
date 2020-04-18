@@ -1,59 +1,48 @@
 <div class="container">
-  <nav class="navbar navbar-expand-sm bg-basic navbar-light">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Прачечная</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="acceptance-laundry">Приемка</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="repair-laundry">Ремонт</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="washing-laundry">Стирка</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="warehouse-laundry">Склад</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="shipment-laundry">Отгрузка</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="comment-laundry">Комментарий</a>
-      </li>
+  <app-mainmenu></app-mainmenu>
 
-    </ul>
-  </nav>
+  <h3 class="alert-info mt-2 mb-3">Починенные вещи</h3>
 
-<h4>Починенные вещи</h4>
-<br>
-<b>Псевдоним:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.nick}}</a>
-<br>
-<b>Фамилия:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.surname}}</a>
-<br>
-<b>Имя:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.usernane}}</a>
-<br>
-<b>Отчество:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.patronymic}}</a>
-<br>
-<b>Филиал:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.branchname}}</a>
-<br>
-<b>Смена от:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.shiftdate | date:'dd.MM.yyyy   HH.mm'}}</a>
-<br>
-<br>
-<br>
-<b>Дата передачи:</b><a *ngIf="alTitle !== undefined"> {{alTitle.date_oper | date:'dd.MM.yyyy   HH.mm' }}</a>
-<br>
-<b>Масса переданнного:</b> <a *ngIf="alTitle !== undefined"> {{alTitle.massa}} кг</a>
+  <ul class="list-group">
+    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Пользователь:</h5>   <a *ngIf="alTitle !== undefined">   <span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.nick}}</span></a></li>
 
-<br>
-<br>
-<h3>Cписок</h3>
-<li *ngFor="let dl of detailList">{{dl.name}}   {{dl.type}}:   {{dl.quant}} шт.  <a *ngIf="dl.bitadd===1">приход</a><a *ngIf="dl.bitadd===0">расход</a>
-</li>​​
-<br>
-<button (click)="back()">Далее</button>
-<button (click)="toExcel()">Сохранить в Эксель</button>
+    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Адрес отправки:</h5>   <a *ngIf="alTitle !== undefined">   <span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.address}}</span></a></li>
+
+    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Фамилия:</h5> <a *ngIf="alTitle !== undefined"> <span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.surname}}</span></a></li>
+
+    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Имя:</h5> <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.usernane}}</span></a></li>
+
+    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Отчество:</h5> <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.patronymic}}</span></a></li>
+
+    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Филиал:</h5><a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.branchname}}</span></a></li>
+
+    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Смена от:</h5> <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.shiftdate | date:'dd.MM.yyyy   HH.mm'}}</span></a></li>
+
+    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Дата передачи:</h5><a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.date_oper | date:'dd.MM.yyyy   HH.mm' }}</span></a></li>
+
+    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Масса переданнного:</h5> <a *ngIf="alTitle !== undefined"> <span class="badge badge-secondary p-2 badge-pill ml-5"> {{alTitle.massa}}</span> кг.</a></li>
+  </ul>
+
+  <h5 class="alert-info  mt-2 mb-3">Cписок</h5>
+
+  <ul class="list-group"  *ngFor="let dl of detailList">
+    <li class="list-group-item d-flex">
+      <div class="flex-fill">{{dl.name}}</div>
+      <div class="flex-fill mx-3">{{dl.type}}</div>
+
+
+      <div class="flex-fill font-italic mx-2">  <a class="font-italic mx-2"><a *ngIf="dl.bitadd===1">приход</a><a *ngIf="dl.bitadd===0">расход</a></a></div>
+
+      <div class="float-right mw-10">
+        <span class="badge badge-primary p-2 badge-pill">{{dl.quant}}</span>
+      </div>
+
+    </li>
+  </ul>
+
+
+ <button type="button" class="btn btn-primary mr-3 mt-5" (click)="back()">Далее</button>
+ <button type="button" class="btn btn-primary mt-5" (click)="toExcel()">Сохранить в Эксель</button>
 
 
 </div>

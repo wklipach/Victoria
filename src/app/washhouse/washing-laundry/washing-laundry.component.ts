@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ShiftService} from '../../services/shift.service';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth-service.service';
-import {AbstractControl, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {LaundryService} from '../services/laundry.service';
 import {Check} from '../../static/check';
 
@@ -160,14 +160,12 @@ export class WashingLaundryComponent implements OnInit {
     this.arrayFlag.forEach(arr => {
       if (arr[1] !== 'massa') {
         if (arr[2] === 0) {
-          console.log('выключаем элемент', arr[1]);
           if (this.washingForm.controls[arr[1]]) {
             if (this.washingForm.controls[arr[1]].value === '') {
               this.washingForm.controls[arr[1]].disable();
             }
           }
         } else {
-          console.log('включаем элемент', arr[1]);
           if (this.washingForm.controls[arr[1]]) {
             this.washingForm.controls[arr[1]].enable();
           }
@@ -271,5 +269,7 @@ export class WashingLaundryComponent implements OnInit {
     this.intAddress = $event;
     this.setAllFlagFromCicle();
   }
+
+
 
 }

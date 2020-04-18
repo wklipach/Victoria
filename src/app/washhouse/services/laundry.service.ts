@@ -20,9 +20,9 @@ export class LaundryService {
     return this.http.post(sUrl, new_acceptance);
   }
 
-  setwarehouse(value: any, id_shift) {
+  setwarehouse(value: any, id_shift, id_address) {
     const sUrl = this.gr.sUrlGlobal + 'laundry';
-    const new_warehouse = { 'warehouse_insert': value, 'id_shift' : id_shift};
+    const new_warehouse = { 'warehouse_insert': value, 'id_shift' : id_shift, 'id_address' : id_address};
     return this.http.post(sUrl, new_warehouse);
   }
 
@@ -124,6 +124,22 @@ export class LaundryService {
   getValidatorsWashing(id_address, id_branch) {
     const params = new HttpParams()
       .set('get_valid_washing', 'get_valid_washing')
+      .set('id_address', id_address.toString())
+      .set('id_branch', id_branch.toString());
+    return this.http.get(this.gr.sUrlGlobal + 'validators', {params: params});
+  }
+
+  getValidatorsWarehouse(id_address, id_branch) {
+    const params = new HttpParams()
+      .set('get_valid_warehouse', 'get_valid_warehouse')
+      .set('id_address', id_address.toString())
+      .set('id_branch', id_branch.toString());
+    return this.http.get(this.gr.sUrlGlobal + 'validators', {params: params});
+  }
+
+  getValidatorsShipment(id_address, id_branch) {
+    const params = new HttpParams()
+      .set('get_valid_shipment', 'get_valid_shipment')
       .set('id_address', id_address.toString())
       .set('id_branch', id_branch.toString());
     return this.http.get(this.gr.sUrlGlobal + 'validators', {params: params});

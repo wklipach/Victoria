@@ -5,7 +5,9 @@
       <h3 class="alert-info mt-2 mb-3">Принято в прачечную</h3>
 
       <ul class="list-group">
-        <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Отделение:</h5>   <a *ngIf="alTitle !== undefined">   <span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.nick}}</span></a></li>
+        <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Пользователь:</h5>   <a *ngIf="alTitle !== undefined">   <span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.nick}}</span></a></li>
+
+        <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Адрес отправки:</h5>   <a *ngIf="alTitle !== undefined">   <span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.address}}</span></a></li>
 
         <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Фамилия:</h5> <a *ngIf="alTitle !== undefined"> <span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.surname}}</span></a></li>
 
