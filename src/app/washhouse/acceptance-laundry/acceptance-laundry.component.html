@@ -1,9 +1,8 @@
 <div class="container">
-<app-mainmenu></app-mainmenu>
+
+  <app-mainmenu></app-mainmenu>
 
 <form [formGroup]="acclaundform">
-
-<div class="container">
 
   <app-customer-address  [beginString] = "'Белье, которое вы принмаете с адреса'"
                          [endString]="'(выберите размер и укажите количество):'"
@@ -281,8 +280,7 @@
 
   <p class="text-info">После нажатия кнопки Отправить изменить данные будет нельзя!</p>
   <p class="text-info">{{this.sError}}</p>
-  <br><br><br><br>
-</div>
+
 
 
 </form>

@@ -38,6 +38,7 @@ import { TestComponent } from './test/test.component';
 import { MainmenuComponent } from './victoriacomp/mainmenu/mainmenu.component';
 import {Check} from './static/check';
 import { WashingLaundryLastComponent } from './washhouse/washing-laundry-last/washing-laundry-last.component';
+import { AddWorkComponent } from './add-work/add-work.component';
 
 registerLocaleData(localeRu);
 
@@ -64,6 +65,7 @@ const appRoutes: Routes = [
   {path: 'repair_laundry_last', component: RepairLaundryLastComponent},
   {path: 'shipment_laundry_last', component: ShipmentLaundryLastComponent},
   {path: 'washing_laundry_last', component: WashingLaundryLastComponent},
+  {path: 'add-work', component: AddWorkComponent},
   {path: 'test', component: TestComponent},
   {path: '**', component: NotFoundComponent }
 ];
@@ -95,7 +97,8 @@ const appRoutes: Routes = [
     CustomerAddressComponent,
     TestComponent,
     MainmenuComponent,
-    WashingLaundryLastComponent
+    WashingLaundryLastComponent,
+    AddWorkComponent
   ],
   imports: [
     BrowserModule,
