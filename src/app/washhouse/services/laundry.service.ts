@@ -26,6 +26,12 @@ export class LaundryService {
     return this.http.post(sUrl, new_warehouse);
   }
 
+  setAddWork(value: any, id_shift) {
+    const sUrl = this.gr.sUrlGlobal + 'laundry';
+    const new_addwork = { 'addwork_insert': value, 'id_shift' : id_shift};
+    return this.http.post(sUrl, new_addwork);
+  }
+
   setshipment(value: any, id_shift, id_address) {
     const sUrl = this.gr.sUrlGlobal + 'laundry';
     const new_shipment = { 'shipment_insert': value, 'id_shift' : id_shift, 'id_address' : id_address};
@@ -90,6 +96,13 @@ export class LaundryService {
     return this.http.get(this.gr.sUrlGlobal + 'laundry', {params: params});
   }
 
+  getDetailAddwork(id_addwork) {
+    const params = new HttpParams()
+      .set('detail_addwork', 'detail_addwork')
+      .set('id_addwork', id_addwork.toString());
+    return this.http.get(this.gr.sUrlGlobal + 'laundry', {params: params});
+  }
+
   getLastRepair(id_user, id_branch) {
     const params = new HttpParams()
       .set('last_repair', 'last_repair')
@@ -105,6 +118,15 @@ export class LaundryService {
       .set('id_branch', id_branch.toString());
     return this.http.get(this.gr.sUrlGlobal + 'laundry', {params: params});
   }
+
+  getLastAddWork(id_user, id_branch) {
+    const params = new HttpParams()
+      .set('last_addwork', 'last_addwork')
+      .set('id_user', id_user.toString())
+      .set('id_branch', id_branch.toString());
+    return this.http.get(this.gr.sUrlGlobal + 'laundry', {params: params});
+  }
+
 
   getDetailRepair(id_repair) {
     const params = new HttpParams()
@@ -149,6 +171,12 @@ export class LaundryService {
     const params = new HttpParams()
       .set('get_washhouse_address', 'get_washhouse_address')
       .set('id_branch', id_branch.toString());
+    return this.http.get(this.gr.sUrlGlobal + 'laundry', {params: params});
+  }
+
+  getAddWork() {
+    const params = new HttpParams()
+      .set('get_laundry_add_work', 'get_laundry_add_work');
     return this.http.get(this.gr.sUrlGlobal + 'laundry', {params: params});
   }
 

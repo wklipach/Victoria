@@ -1,0 +1,20 @@
+<div class="container">
+  <app-mainmenu></app-mainmenu>
+
+  <h2>Дополнительная работа</h2>
+  <p class="text-muted">Укажите количество выполненных работ.</p>
+
+  <form [formGroup]="addworkForm" *ngFor="let dl of detailList">
+
+      <div class="form-group">
+        <label [for]="'addWork' + dl.id">{{dl.work_name}}</label>
+        {{getAddWorkText(dl.id)}}
+        <input type="text"  [formControlName]="dl.id" [class]="getClassName(dl.id)" [id]="'addWork' + dl.id" placeholder="0">
+      </div>
+
+  </form>
+  <button type="button" class="btn btn-primary" (click)="send_data()">Отправить</button>
+  {{this.sError}}
+
+</div>
+

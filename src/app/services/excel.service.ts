@@ -87,7 +87,9 @@ export class ExcelService {
     tArray.push(['Филиал:', alTitle.branchname]);
     tArray.push(['Смена от:', dPipe.transform(alTitle.shiftdate, 'dd.MM.yyyy   HH.mm')]);
     tArray.push(['Дата передачи:', dPipe.transform(alTitle.date_oper, 'dd.MM.yyyy   HH.mm')]);
-    tArray.push(['Масса переданнного:', alTitle.massa + ' ' + 'кг.']);
+    if (alTitle.massa) {
+      tArray.push(['Масса переданнного:', alTitle.massa + ' ' + 'кг.']);
+    }
     if (alTitle.address) {
       tArray.push(['Адрес передачи:', alTitle.address]);
     }
@@ -127,7 +129,19 @@ export class ExcelService {
         }
       }
 
-      const arr = [d.name + ' ' + d.type, d.quant, sLine];
+      let sName = '';
+      if ('type' in d) {
+        sName = d.name;
+        if (d.type !== null) {
+          sName = sName + ' ' + d.type;
+        }
+      }
+
+      if ('work_name' in d) {
+        sName = d.work_name;
+      }
+
+      const arr = [sName, d.quant, sLine];
       const row = worksheet.addRow(arr);
 
     });

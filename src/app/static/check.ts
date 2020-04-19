@@ -161,8 +161,6 @@ export class Check {
   public static massaValidator(sname: string): ValidatorFn {
     return (control: AbstractControl): {[key: string]: string} | null => {
       const massaRgEx: RegExp = /^0*[1-9]\d*$/;
-      console.log('sname', sname);
-      console.log('endsname');
       if (!control.value) {
         return {};
       }
@@ -177,5 +175,24 @@ export class Check {
 
     };
   }
+
+  public static victNullValidator(sname: string): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: string} | null => {
+      const massaRgEx: RegExp = /^0*[0-9]\d*$/;
+      if (!control.value) {
+        return {};
+      }
+
+      if (massaRgEx.test(control.value)) {
+        return null;
+      }
+
+      if (!massaRgEx.test(control.value)) {
+        return {victoriaValidator: 'Количество - целое положительное значение.'};
+      }
+
+    };
+  }
+
 
 }
