@@ -19,12 +19,35 @@ export class AdminService {
     return this.http.get(this.gr.sUrlGlobal + 'admin', {params: params});
   }
 
+  // сведения о филиале по номеру филиала
+  getBranchInfo (id_branch: number) {
+    const params = new HttpParams()
+      .set('get_branch_info', id_branch.toString());
+    return this.http.get(this.gr.sUrlGlobal + 'admin', {params: params});
+
+  }
+
   // добавдяем новый филиал
   setBranch(id_city, newName) {
       const sUrl = this.gr.sUrlGlobal + 'admin';
       const data_branch = { 'id_city': id_city, 'insert_branch': newName };
       return this.http.post(sUrl, data_branch);
   }
+
+  // добавдяем новую допработу
+  setAddWork(newName, price) {
+    const sUrl = this.gr.sUrlGlobal + 'admin';
+    const data_addwork = { 'insert_addwork': 'insert_addwork', 'name': newName, 'price': price };
+    return this.http.post(sUrl, data_addwork);
+  }
+
+   // добавляем новый адрес доставки
+  setAddress(newName, id_branch) {
+    const sUrl = this.gr.sUrlGlobal + 'admin';
+    const data_address = { 'insert_address': 'insert_address', 'name': newName, 'id_branch': id_branch };
+    return this.http.post(sUrl, data_address);
+  }
+
 
   // разрушаем связь филиала и юзера
   setDeleteUserBranch(id_user, id_branch) {
@@ -56,8 +79,6 @@ export class AdminService {
       .set('id_user', id_user)
       .set('nick', nick);
 
-    console.log('params', params);
-
     return this.http.get(this.gr.sUrlGlobal + 'admin', {params: params});
 
   }
@@ -75,6 +96,37 @@ export class AdminService {
     const data_branch = { 'id_update': id, 'insert_branch_name': newName };
     return this.http.post(sUrl, data_branch);
   }
+
+// изменяем допуслугу
+  setChangeAddWork(id, newName, newPrice) {
+    const sUrl = this.gr.sUrlGlobal + 'admin';
+    const data_addwork = { 'update_addwork': 'update_addwork', 'id': id, 'work_name': newName, 'price': newPrice};
+    return this.http.post(sUrl, data_addwork);
+  }
+
+  // изменяем адрес доставки
+  setChangeAddress(id_address, address, id_branch) {
+     const sUrl = this.gr.sUrlGlobal + 'admin';
+    const data_address = { 'update_address': 'update_address', 'id_address': id_address, 'address': address, 'id_branch': id_branch};
+    return this.http.post(sUrl, data_address);
+  }
+
+
+  // удаляем допуслугу
+  setAddWorkDelete(id) {
+    const sUrl = this.gr.sUrlGlobal + 'admin';
+    const data_addwork = { 'id_addwork_delete': id };
+    return this.http.post(sUrl, data_addwork);
+  }
+
+  // удаляем адрес доставки
+  setAddressDelete(id_address) {
+
+    const sUrl = this.gr.sUrlGlobal + 'admin';
+    const data_address = { 'id_address_delete': id_address};
+    return this.http.post(sUrl, data_address);
+  }
+
 
   // удаляем филиал
   setBranchDelete(id) {

@@ -1,0 +1,92 @@
+<form [formGroup]="addworkForm">
+
+
+  <h4 class="alert-primary py-2 pl-2">Редактирование дополнительных работ</h4>
+
+  <div class="card card-body mt-4 pt-0">
+    <div class="btn-group-justified">
+
+      <!-- Кнопка раскрытия таблицы -->
+      <button type="button" class="btn btn-light my-2 mr-4 w-1"  title="имеющиеся данные" data-toggle="collapse" data-target="#collapseShowAW">
+        <i class="fa fa-angle-double-down"></i>
+      </button>
+
+      <!-- Кнопка добавления -->
+      <button class="btn btn-primary my-2 mr-4 w-1" data-toggle="collapse" title="добавить дополнительную работу" href="#collapseNewAW" aria-expanded="false" aria-controls="collapse1">
+        <i class="fa fa-plus"></i>
+      </button>
+
+      <!-- Кнопка редактирования -->
+      <button class="btn btn-primary my-2 mr-4 w-1" (click)="changeAW()"  data-toggle="collapse"  title="изменить дополнительную работу" href="#collapseChangeAW" aria-expanded="false" aria-controls="collapse1">
+        <i class="fa fa-edit"></i>
+      </button>
+
+      <!-- Кнопка модального окна удаления -->
+      <button type="button" class="btn btn-danger my-2 mr-4 w-1"  title="удалить дополнительную работу" data-toggle="modal" data-target="#collapseDeleteAW">
+        <i class="fa fa-trash"></i>
+      </button>
+
+
+    </div>
+
+    <div class="collapse" id="collapseNewAW">
+      <div class="card card-body my-2">
+        {{sErrorNewAW}}
+        <div class="input-group">
+          <input formControlName="inputNewAW" type="text" class="form-control" placeholder="Работа" aria-label="" aria-describedby="basic-addon1">
+          <input formControlName="inputNewAWPrice" type="text" class="form-control" placeholder="Стоимость" aria-label="" aria-describedby="basic-addon1">
+          <div class="input-group-append">
+            <button class="btn btn-success" (click)="newAW()" type="button">Сохранить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapse" id="collapseChangeAW">
+
+      <div class="card card-body">
+        {{sErrorChangeAW}}
+        <div class="input-group">
+          <input formControlName="inputChangeAW" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+          <input formControlName="inputChangeAWPrice" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+
+          <div class="input-group-append">
+            <button class="btn btn-success" (click)="OnChangeAW()" type="button">Изменить</button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="collapse" id="collapseShowAW">
+    <ul class="list-group">
+      <li [class.active] = "aw === selectedAW" class="list-group-item"  (click)="mu(aw)"  *ngFor="let aw of addworkList">{{aw['work_name']}} &nbsp;&nbsp;&nbsp;&nbsp;   {{aw['price']}}</li>
+    </ul>
+    </div>
+
+    <!-- Модальное окно удаления -->
+    <div class="modal fade" id="collapseDeleteAW" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLongTitle">Удаление дополнительной работы</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Вы уверены что желаете удалить дополнительную работу <span class="font-weight-bold"> "{{sAwName}}"</span>?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="OnDeleteAW()">Да</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</form>

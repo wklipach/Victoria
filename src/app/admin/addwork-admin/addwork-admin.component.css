@@ -1,7 +1,4 @@
-.short{
-  width: 15%;
-}
-.list-group-item:hover {
+li.active{
   background-color: #b8b8b8;
   font-weight: bold;
 }

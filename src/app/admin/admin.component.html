@@ -3,27 +3,7 @@
   <app-mainmenu></app-mainmenu>
 
 
-
   <form [formGroup]="adminForm">
-
-    <!-- Заменил на модальное окно с вопросом
-            <p>
-              <a class="btn btn-danger mt-3 w-50" data-toggle="collapse" href="#collapseDeleteBranch" aria-expanded="false" aria-controls="collapse1">
-                Удалить отделение
-              </a>
-            </p>
-            <div class="collapse" id="collapseDeleteBranch">
-              <div class="card card-body">
-                <div class="alert alert-primary" role="alert">
-                  Вы уверены что желаете удалить отделение {{sBranchName}}?
-                </div>
-                  <div class="input-group-append">
-                    <button class="btn btn-outline-primary float-right" type="button" (click)="OnDeleteBranch()">Да</button>
-                    <button class="btn btn-outline-primary float-right" data-toggle="collapse" data-target="#collapseDeleteBranch" type="button">Нет</button>
-                  </div>
-              </div>
-            </div>
-    -->
     <div class="row">
       <div class="col-6">
 
@@ -112,8 +92,6 @@
       </div>
 
       <div class="col-6">
-
-
         <h4 class="alert-primary py-2 pl-2">Редактирование пользователей</h4>
         <div class="card card-body mt-4">
           <ul class="list-group">
@@ -140,15 +118,15 @@
             <ul class="list-group">
               <li class="list-group-item">
 
-        <!--     Поменял этот на красивый чек-бокс, строка 154
+                <!--     Поменял этот на красивый чек-бокс, строка 154
 
-           <div class="form-check">
-                  <label class="form-check-label">
-                    <input type="checkbox" formControlName="checkIP" class="form-check-input">
-                    Проверять IP адрес
-                  </label>
-                </div>
--->
+                   <div class="form-check">
+                          <label class="form-check-label">
+                            <input type="checkbox" formControlName="checkIP" class="form-check-input">
+                            Проверять IP адрес
+                          </label>
+                        </div>
+        -->
                 <div class="custom-control custom-checkbox">
                   <input type="checkbox" class="custom-control-input" id="checkIP" formControlName="checkIP">
                   <label class="custom-control-label" for="checkIP">Проверять IP адрес</label>
@@ -228,10 +206,19 @@
 
           </div>
         </div>
+
       </div>
     </div>
   </form>
 
+    <div class="row">
+      <div class="col-6">
+        <app-addwork-admin></app-addwork-admin>
+      </div>
+      <div class="col-6">
+        <app-address-admin></app-address-admin>
+      </div>
+    </div>
 
 
 </div>

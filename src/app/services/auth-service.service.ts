@@ -51,6 +51,8 @@ export class AuthService {
         return 1;
   }
 
+
+
   getItIsAdmin(id_user) {
 
     let bAdmin = false;

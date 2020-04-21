@@ -40,6 +40,9 @@ import {Check} from './static/check';
 import { WashingLaundryLastComponent } from './washhouse/washing-laundry-last/washing-laundry-last.component';
 import { AddWorkComponent } from './washhouse/add-work/add-work.component';
 import { AddworkLaundryLastComponent } from './washhouse/addwork-laundry-last/addwork-laundry-last.component';
+import { AddworkAdminComponent } from './admin/addwork-admin/addwork-admin.component';
+import { AddressAdminComponent } from './admin/address-admin/address-admin.component';
+import { UsersAdminComponent } from './admin/users-admin/users-admin.component';
 
 registerLocaleData(localeRu);
 
@@ -101,7 +104,10 @@ const appRoutes: Routes = [
     MainmenuComponent,
     WashingLaundryLastComponent,
     AddWorkComponent,
-    AddworkLaundryLastComponent
+    AddworkLaundryLastComponent,
+    AddworkAdminComponent,
+    AddressAdminComponent,
+    UsersAdminComponent
   ],
   imports: [
     BrowserModule,

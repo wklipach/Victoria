@@ -1,0 +1,92 @@
+<form [formGroup]="addressForm">
+
+    <h4 class="alert-primary py-2 pl-2">Адреса доставки</h4>
+
+    <div class="card card-body mt-4 pt-0">
+      <div class="btn-group-justified">
+
+        <!-- Кнопка раскрытия таблицы -->
+        <button type="button" class="btn btn-light my-2 mr-4 w-1"  title="имеющиеся данные" data-toggle="collapse" data-target="#collapseShowAD">
+          <i class="fa fa-angle-double-down"></i>
+        </button>
+
+        <!-- Кнопка добавления -->
+        <button class="btn btn-primary my-2 mr-4 w-1" data-toggle="collapse" title="добавить адрес" href="#collapseNewAD" aria-expanded="false" aria-controls="collapse1">
+          <i class="fa fa-plus"></i>
+        </button>
+
+        <!-- Кнопка редактирования -->
+        <button class="btn btn-primary my-2 mr-4 w-1" (click)="changeAD()"  data-toggle="collapse"  title="изменить адрес" href="#collapseChangeAD" aria-expanded="false" aria-controls="collapse1">
+          <i class="fa fa-edit"></i>
+        </button>
+
+        <!-- Кнопка модального окна удаления -->
+        <button type="button" class="btn btn-danger my-2 mr-4 w-1"  title="удалить адрес" data-toggle="modal" data-target="#collapseDeleteAD">
+          <i class="fa fa-trash"></i>
+        </button>
+
+
+      </div>
+
+      <div class="collapse" id="collapseNewAD">
+        <div class="card card-body my-2">
+          {{sErrorNewAD}}
+          <div class="input-group">
+            <input formControlName="inputNewAD" type="text" class="form-control" placeholder="Адрес" aria-label="" aria-describedby="basic-addon1">
+            <input formControlName="inputNewADBranch" type="text" class="form-control" placeholder="Филиал" aria-label="" aria-describedby="basic-addon1">
+            <div class="input-group-append">
+              <button class="btn btn-success" (click)="newAD()" type="button">Сохранить</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapse" id="collapseChangeAD">
+
+        <div class="card card-body">
+          {{sErrorChangeAD}}
+          <div class="input-group">
+            <input formControlName="inputChangeAD" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+            <input formControlName="inputChangeADBranch" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+
+            <div class="input-group-append">
+              <button class="btn btn-success" (click)="OnChangeAD()" type="button">Изменить</button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="collapse" id="collapseShowAD">
+        <ul class="list-group">
+          <li [class.active] = "ad === selectedAD" class="list-group-item" (click)="mu(ad)"  *ngFor="let ad of addressList">{{ad['address']}},&nbsp;{{ad['branch_name']}}</li>
+        </ul>
+      </div>
+
+      <!-- Модальное окно удаления -->
+      <div class="modal fade" id="collapseDeleteAD" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalLongTitle">Удаление адреса</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Вы уверены что желаете удалить адрес <span class="font-weight-bold"> "{{sAdName}}"</span>?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="OnDeleteAD()">Да</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+</form>
