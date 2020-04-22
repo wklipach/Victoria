@@ -48,6 +48,13 @@ export class AdminService {
     return this.http.post(sUrl, data_address);
   }
 
+  // добавляем новую должность
+  insertPosition(newName, newPrice, id_branch) {
+    const sUrl = this.gr.sUrlGlobal + 'admin';
+    const data_address = { 'insert_position': 'insert_position', 'name': newName, 'price': newPrice, 'id_branch': id_branch };
+    return this.http.post(sUrl, data_address);
+  }
+
 
   // разрушаем связь филиала и юзера
   setDeleteUserBranch(id_user, id_branch) {
@@ -83,9 +90,11 @@ export class AdminService {
 
   }
 
-  setUpdateLinkBranchUser(id_user, chbranch, ip, checkIP) {
+  setUpdateLinkBranchUser(id_user, chbranch, ip, checkIP, id_position) {
     const sUrl = this.gr.sUrlGlobal + 'admin';
-    const data_branch = { 'linkbranchuser': 'linkbranchuser', 'id_user': id_user, 'chbranch': chbranch, 'ip': ip, 'checkIP' : checkIP};
+    const data_branch = { 'linkbranchuser': 'linkbranchuser', 'id_user': id_user,
+                           'chbranch': chbranch, 'ip': ip, 'checkIP' : checkIP,
+                           'id_position': id_position};
     return this.http.post(sUrl, data_branch);
   }
 
@@ -111,6 +120,12 @@ export class AdminService {
     return this.http.post(sUrl, data_address);
   }
 
+  // изменяем должность
+  setChangePosition(id, name, price, id_branch) {
+    const sUrl = this.gr.sUrlGlobal + 'admin';
+    const data_position = { 'update_position': 'update_position', 'id': id, 'name': name, 'price': price, 'id_branch': id_branch};
+    return this.http.post(sUrl, data_position);
+  }
 
   // удаляем допуслугу
   setAddWorkDelete(id) {
@@ -121,10 +136,17 @@ export class AdminService {
 
   // удаляем адрес доставки
   setAddressDelete(id_address) {
-
     const sUrl = this.gr.sUrlGlobal + 'admin';
     const data_address = { 'id_address_delete': id_address};
     return this.http.post(sUrl, data_address);
+  }
+
+
+  // удаляем адрес должность
+  setPositionDelete(id) {
+    const sUrl = this.gr.sUrlGlobal + 'admin';
+    const data_position = { 'id_position_delete': id};
+    return this.http.post(sUrl, data_position);
   }
 
 
@@ -148,6 +170,13 @@ export class AdminService {
       .set('get_branch_user', 'get_branch_user')
       .set('id_user', id_user)
       .set('id_branch', id_branch);
+    return this.http.get(this.gr.sUrlGlobal + 'admin', {params: params});
+  }
+
+  getPosition(id_branch) {
+    const params = new HttpParams()
+      .set('get_position', 'get_position')
+      .set('id_branch', id_branch.toString());
     return this.http.get(this.gr.sUrlGlobal + 'admin', {params: params});
   }
 

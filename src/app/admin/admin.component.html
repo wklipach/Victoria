@@ -12,6 +12,13 @@
         <div class="card card-body mt-4 pt-0">
           <div class="btn-group-justified">
 
+
+            <!-- Кнопка раскрытия таблицы -->
+            <button type="button" class="btn btn-light my-2 mr-4 w-1"  title="имеющиеся данные" data-toggle="collapse" data-target="#collapseShowBranch">
+              <i class="fa fa-angle-double-down"></i>
+            </button>
+
+
             <!-- Кнопка добавления отделения -->
             <button class="btn btn-primary my-2 mr-4 w-1" data-toggle="collapse" title="добавить отделение" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
               <i class="fa fa-plus"></i>
@@ -61,10 +68,11 @@
 
           </div>
 
-
+          <div class="collapse" id="collapseShowBranch">
           <ul class="list-group">
-            <li [class.selected] = "bl === selectedBL" class="list-group-item"  (click)="mu(bl)"  *ngFor="let bl of branchList">{{bl.name }}</li>
+            <li [class.active] = "bl === selectedBL" class="list-group-item"  (click)="mu(bl)"  *ngFor="let bl of branchList">{{bl.name }}</li>
           </ul>
+          </div>
 
           <!-- Модальное окно удаления отделения -->
           <div class="modal fade" id="collapseDeleteBranch" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle" aria-hidden="true">
@@ -93,17 +101,29 @@
 
       <div class="col-6">
         <h4 class="alert-primary py-2 pl-2">Редактирование пользователей</h4>
+
         <div class="card card-body mt-4">
+
+          <div class="btn-group-justified">
+          <!-- Кнопка раскрытия таблицы -->
+          <button type="button" class="btn btn-light my-2 mr-4 w-1"  title="имеющиеся данные" data-toggle="collapse" data-target="#collapseShowUser">
+            <i class="fa fa-angle-double-down"></i>
+          </button>
+          </div>
+
+
+          <div class="collapse" id="collapseShowUser">
           <ul class="list-group">
-            <li [class.selected] = "uElem === selectedUser" class="list-group-item"  (click)="muUser(uElem)" *ngFor="let uElem of usersList">
+            <li [class.active] = "uElem === selectedUser" class="list-group-item"  (click)="muUser(uElem)" *ngFor="let uElem of usersList">
               <span class="badge badge-secondary" *ngIf="uElem.filial===0">!</span>
               {{uElem.nick}}
               <button data-toggle="collapse" data-target="#collapseUserFrame" class="btn btn-primary float-right" type="button" title="задать права пользователю" (click)="changeUserRight(uElem)">
                 <i class="fa fa-edit"></i>
               </button>
-
             </li>
           </ul>
+          </div>
+
         </div>
 
         <!--
@@ -118,15 +138,6 @@
             <ul class="list-group">
               <li class="list-group-item">
 
-                <!--     Поменял этот на красивый чек-бокс, строка 154
-
-                   <div class="form-check">
-                          <label class="form-check-label">
-                            <input type="checkbox" formControlName="checkIP" class="form-check-input">
-                            Проверять IP адрес
-                          </label>
-                        </div>
-        -->
                 <div class="custom-control custom-checkbox">
                   <input type="checkbox" class="custom-control-input" id="checkIP" formControlName="checkIP">
                   <label class="custom-control-label" for="checkIP">Проверять IP адрес</label>
@@ -143,7 +154,7 @@
 
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon2">Группа</span>
+                    <span class="input-group-text" id="basic-addon2">Филиал</span>
                   </div>
                   <input type="text"  formControlName="chbranch" class="form-control" placeholder="Не назначен" aria-label="Не назначен" aria-describedby="basic-addon2">
                   <div class="dropdown">
@@ -156,6 +167,25 @@
                 </div>
 
               </li>
+
+              <li class="list-group-item">
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-position">Должность</span>
+                  </div>
+                  <input type="text"  formControlName="chPosition" class="form-control" placeholder="Не назначен" aria-label="Не назначен" aria-describedby="basic-position">
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownPosition" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownPosition">
+                      <a class="dropdown-item" (click)="choisePositionForUser(chPosition)" *ngFor="let chPosition of positionList">{{chPosition.name }}</a>
+                    </div>
+                  </div>
+                </div>
+
+              </li>
+
 
               <li class="list-group-item">
 
@@ -181,10 +211,10 @@
 
         </div>
 
-        <div *ngIf="this.chBranch"  class="collapse" id="collapseChoiseBranch">
+        <div *ngIf="this.chBranchU"  class="collapse" id="collapseChoiseBranch">
           <div class="card card-body">
             <div class="alert alert-primary" role="alert">
-              Вы уверены что желаете удалить связь с выбранным отделением {{this.chBranch.name}}?
+              Вы уверены что желаете удалить связь с выбранным отделением {{this.chBranchU.name}}?
             </div>
             <div class="input-group-append">
               <button class="btn btn-outline-primary float-right" type="button" (click)="OnDeleteUserBranch()">Да</button>
@@ -219,6 +249,14 @@
         <app-address-admin></app-address-admin>
       </div>
     </div>
+
+  <div class="row">
+    <div class="col-6">
+      <app-position></app-position>
+    </div>
+  </div>
+
+
 
 
 </div>

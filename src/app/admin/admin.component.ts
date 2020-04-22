@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {AdminService} from '../services/admin.service';
 import { Location } from '@angular/common';
 import {Router} from '@angular/router';
+import {AuthService} from '../services/auth-service.service';
 
 @Component({
   selector: 'app-admin',
@@ -15,14 +16,16 @@ export class AdminComponent implements OnInit {
   id_city = 1;
   adminForm: FormGroup;
   branchList = [];
+  positionList = [];
   usersList = [];
   bShowDeleteBranch = false;
   sBranchName = '';
   private selectedBL: any;
   public selectedUser: any;
-  public chBranch: any;
+  public chBranchU: any;
+  public chPositionU: any;
 
-  constructor(private adminserv: AdminService, private location: Location, private router: Router) {
+  constructor(private adminserv: AdminService, private location: Location, private router: Router, private authService: AuthService) {
     this.adminForm = new FormGroup({
       'inputBranch': new FormControl({}, []),
       'inputChangeBranch': new FormControl({}, []),
@@ -30,6 +33,7 @@ export class AdminComponent implements OnInit {
       'checkIP': new FormControl({}, []),
       'ip': new FormControl({}, []),
       'nick': new FormControl({}, []),
+      'chPosition': new FormControl({}, []),
       'chbranch': new FormControl({}, [])
     });
   }
@@ -47,9 +51,26 @@ export class AdminComponent implements OnInit {
       });
       this.CheckFirstBranch();
       this.LoadUserFromBranch();
+      this.LoadPositionList();
       // this.adminForm.controls['inputBranch'].setValue(this.branchList.find((valBranch) => valBranch.id === 1).name);
     });
     //
+  }
+
+  LoadPositionList() {
+
+    const Res = this.authService.loginStorage();
+    let id_user_vict = -1;
+    if (Res.bVictConnected) {
+      id_user_vict = Res.id_user_vict;
+    }
+
+    const id_branch = this.authService.getBranch(id_user_vict);
+    this.adminserv.getPosition(id_branch).subscribe((value: Array<any>) => {
+      value.forEach((element, ih) => {
+        this.positionList.push(element);
+      });
+    });
   }
 
   changeBranch() {
@@ -172,6 +193,10 @@ DeleteBranch() {
   }
 
   changeUserRight(uElem) {
+
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+
+
     this.selectedUser = uElem;
 
     this.adminForm.controls['checkIP'].setValue(Boolean(uElem.check_ip));
@@ -191,14 +216,21 @@ DeleteBranch() {
      this.adminForm.controls['chbranch'].setValue('');
    }
 
+    // проверяем должность, если показывает или задаем пустое поле
+    if (uElem.id_position !== 0) {
+      this.adminForm.controls['chPosition'].setValue(uElem.position_name);
+    } else {
+      this.adminForm.controls['chPosition'].setValue('');
+    }
+
 
   }
 
   choiseBranchForUser(chBranch: any) {
-    this.chBranch = chBranch;
-    this.adminForm.controls['chbranch'].setValue(this.chBranch.name);
+    this.chBranchU = chBranch;
+    this.adminForm.controls['chbranch'].setValue(this.chBranchU.name);
 
-    this.adminserv.getBranchUser(this.selectedUser.id, this.chBranch.id).subscribe((value: Array<any>) => {
+    this.adminserv.getBranchUser(this.selectedUser.id, this.chBranchU.id).subscribe((value: Array<any>) => {
 
       if (value.length === 0 ) {
         this.adminForm.controls['ip'].setValue('');
@@ -221,8 +253,13 @@ DeleteBranch() {
    // console.log('choiseBranchForUser', chBranch);
   }
 
+  choisePositionForUser(chPosition: any) {
+    this.chPositionU = chPosition;
+    this.adminForm.controls['chPosition'].setValue(this.chPositionU.name);
+  }
+
   OnDeleteUserBranch() {
-    this.adminserv.setDeleteUserBranch(this.selectedUser.id, this.chBranch.id).subscribe( valee => {
+    this.adminserv.setDeleteUserBranch(this.selectedUser.id, this.chBranchU.id).subscribe( valee => {
       this.RouterReload();
     });
   }
@@ -245,6 +282,15 @@ DeleteBranch() {
     if (this.adminForm.controls['nick'].value.toString().trim().length < 3 ) {
       this.sError = 'Никнейм не должен быть короче 3 символов';
       return;
+    }
+
+
+
+    const strPosition = this.adminForm.controls['chPosition'].value.toString().trim();
+    let id_position = 0;
+    const elemPosition = this.positionList.find((curPos) => curPos.name === strPosition);
+    if (elemPosition) {
+      id_position = elemPosition.id;
     }
 
     // пересохраняем данные
@@ -280,7 +326,7 @@ DeleteBranch() {
                 }
 
                 if (chbranch.length > 0) {
-                this.adminserv.setUpdateLinkBranchUser(id_user, chbranch, ip, checkIP).subscribe( res => {
+                this.adminserv.setUpdateLinkBranchUser(id_user, chbranch, ip, checkIP, id_position).subscribe( res => {
                 this.RouterReload();
                 });
               }

@@ -47,6 +47,7 @@ import { ReportAcceptanceComponent } from './washhouse/reports/report-acceptance
 import { ReportWarehouseComponent } from './washhouse/reports/report-warehouse/report-warehouse.component';
 import { ReportWashingComponent } from './washhouse/reports/report-washing/report-washing.component';
 import { ReportRepairComponent } from './washhouse/reports/report-repair/report-repair.component';
+import { PositionComponent } from './admin/position/position.component';
 
 registerLocaleData(localeRu);
 
@@ -115,7 +116,8 @@ const appRoutes: Routes = [
     ReportAcceptanceComponent,
     ReportWarehouseComponent,
     ReportWashingComponent,
-    ReportRepairComponent
+    ReportRepairComponent,
+    PositionComponent
   ],
   imports: [
     BrowserModule,
