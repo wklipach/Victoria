@@ -43,6 +43,10 @@ import { AddworkLaundryLastComponent } from './washhouse/addwork-laundry-last/ad
 import { AddworkAdminComponent } from './admin/addwork-admin/addwork-admin.component';
 import { AddressAdminComponent } from './admin/address-admin/address-admin.component';
 import { UsersAdminComponent } from './admin/users-admin/users-admin.component';
+import { ReportAcceptanceComponent } from './washhouse/reports/report-acceptance/report-acceptance.component';
+import { ReportWarehouseComponent } from './washhouse/reports/report-warehouse/report-warehouse.component';
+import { ReportWashingComponent } from './washhouse/reports/report-washing/report-washing.component';
+import { ReportRepairComponent } from './washhouse/reports/report-repair/report-repair.component';
 
 registerLocaleData(localeRu);
 
@@ -107,7 +111,11 @@ const appRoutes: Routes = [
     AddworkLaundryLastComponent,
     AddworkAdminComponent,
     AddressAdminComponent,
-    UsersAdminComponent
+    UsersAdminComponent,
+    ReportAcceptanceComponent,
+    ReportWarehouseComponent,
+    ReportWashingComponent,
+    ReportRepairComponent
   ],
   imports: [
     BrowserModule,

@@ -275,3 +275,11 @@
 </form>
 
 </div>
+
+<a class="btn btn-primary" data-toggle="collapse"
+   href="#collapseWarehouseReport" role="button" aria-expanded="false" aria-controls="collapseWarehouseReport">
+  На складе
+</a>
+<div class="collapse" id="collapseWarehouseReport">
+  <app-report-warehouse [intAddress]="this.intAddress"></app-report-warehouse>
+</div>

@@ -1,0 +1,26 @@
+
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th>#</th>
+    <th>Приемка, {{sAddress}}</th>
+    <th>Целое, шт.</th>
+    <th>Масса</th>
+    <th>Поврежденное, шт.</th>
+    <th>Масса</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr *ngFor="let dl of acceptanceList; let i = index; ">
+
+    <th scope="row">{{i+1}}</th>
+    <td>{{dl.name}} {{dl.type}}</td>
+    <td>{{dl.summa}}</td>
+    <td>{{dl.massa}}</td>
+    <td>{{dl.summa_spoiled}}</td>
+    <td>{{dl.massa_spoiled}}</td>
+  </tr>
+
+  </tbody>
+</table>
