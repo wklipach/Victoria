@@ -2,258 +2,499 @@
 
   <app-mainmenu></app-mainmenu>
 
-<form [formGroup]="acclaundform">
+  <form [formGroup]="acclaundform">
 
-  <app-customer-address  [beginString] = "'Белье, которое вы принмаете с адреса'"
-                         [endString]="'(выберите размер и укажите количество):'"
-                         [titleString]="'Приемка - '"
-                         (ChangedPage)="clickPage($event)">
-  </app-customer-address>
+    <app-customer-address  [beginString] = "'Белье, которое вы принмаете с адреса'"
+                           [endString]="'(выберите размер и укажите количество):'"
+                           [titleString]="'Приемка - '"
+                           (ChangedPage)="clickPage($event)">
+    </app-customer-address>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6">
+
+        <h3 class="alert alert-dark">Прямое белье</h3>
+
+        <div class="card mb-2">
+          <div class="card-body py-2">
+            <h5 class="card-title">Наволочка</h5>
+
+            <div class="d-flex justify-content-between">
+              <span class="w-25"></span>
+              <span class="w-25 ml-2">Целое</span>
+              <span class="w-25">Поврежденное</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <label class="w-25 font-weight-bold">50 x 70</label>
+              <p class="w-25">{{getErrorText('n1')}}<input type="text" [class]="getClassName('n1')" formControlName="n1" placeholder="шт" id="n1" name="name1"></p>
+              <p class="w-25">{{getErrorText('n1_spoiled')}}<input type="text" [class]="getClassName('n1_spoiled')" formControlName="n1_spoiled" placeholder="шт" id="name2" name="name2"></p>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <label class="w-25 font-weight-bold">70 x 70</label>
+              <p class="w-25">{{getErrorText('n1')}}<input type="text" [class]="getClassName('n1')" formControlName="n1" placeholder="шт" id="n101" name="name1"></p>
+              <p class="w-25">{{getErrorText('n1_spoiled')}}<input type="text" [class]="getClassName('n1_spoiled')" formControlName="n1_spoiled" placeholder="шт" id="name202" name="name2"> </p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card mb-2">
+          <div class="card-body py-2">
+            <h5 class="card-title">Простынь</h5>
+
+            <div class="d-flex justify-content-between">
+              <span class="w-25"></span>
+              <span class="w-25 ml-2">Целое</span>
+              <span class="w-25">Поврежденное</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <label class="w-25 font-weight-bold">1,5 сп</label>
+              <p class="w-25">{{getErrorText('n3')}}<input type="text" [class]="getClassName('n3')" formControlName="n3" placeholder="шт" id="name5" name="name5"></p>
+              <p class="w-25">{{getErrorText('n3_spoiled')}}<input type="text" [class]="getClassName('n3_spoiled')" formControlName="n3_spoiled" placeholder="шт" id="name6" name="name6"></p>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <label class="w-25 font-weight-bold">2 сп</label>
+              <p class="w-25">{{getErrorText('n4')}}<input type="text" [class]="getClassName('n4')" formControlName="n4" placeholder="шт" id="name7" name="name7"></p>
+              <p class="w-25">{{getErrorText('n4_spoiled')}}<input type="text" [class]="getClassName('n4_spoiled')" formControlName="n4_spoiled" placeholder="шт" id="name8" name="name8"></p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card mb-2">
+          <div class="card-body py-2">
+            <h5 class="card-title">Пододеяльник</h5>
+
+            <div class="d-flex justify-content-between">
+              <span class="w-25"></span>
+              <span class="w-25 ml-2">Целое</span>
+              <span class="w-25">Поврежденное</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <label class="w-25 font-weight-bold">1,5 сп</label>
+              <p class="w-25">{{getErrorText('n5')}}<input type="text" [class]="getClassName('n5')" formControlName="n5" placeholder="шт" id="name9" name="name9"></p>
+              <p class="w-25">{{getErrorText('n5_spoiled')}}<input type="text" [class]="getClassName('n5_spoiled')" formControlName="n5_spoiled" placeholder="шт" id="name10" name="name10"></p>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <label class="w-25 font-weight-bold">2 сп</label>
+              <p class="w-25">{{getErrorText('n6')}}<input type="text" [class]="getClassName('n6')" formControlName="n6" placeholder="шт" id="name11" name="name11"></p>
+              <p class="w-25">{{getErrorText('n6_spoiled')}}<input type="text" [class]="getClassName('n6_spoiled')" formControlName="n6_spoiled" placeholder="шт" id="name12" name="name12"></p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card mb-2">
+          <div class="card-body py-2">
+            <h5 class="card-title">Полотенце</h5>
+
+            <div class="d-flex justify-content-between">
+              <span class="w-25"></span>
+              <span class="w-25 ml-2">Целое</span>
+              <span class="w-25">Поврежденное</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <label class="w-25 font-weight-bold">30 x 60</label>
+              <p class="w-25">{{getErrorText('n7')}}<input type="text" [class]="getClassName('n7')" formControlName="n7" placeholder="шт" id="name13" name="name13"></p>
+              <p class="w-25">{{getErrorText('n7_spoiled')}}<input type="text" [class]="getClassName('n7_spoiled')" formControlName="n7_spoiled" placeholder="шт" id="name14" name="name14"></p>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <label class="w-25 font-weight-bold">70 x 70</label>
+              <p class="w-25">{{getErrorText('n8')}}<input type="text" [class]="getClassName('n8')" formControlName="n8" placeholder="шт" id="name15" name="name15"></p>
+              <p class="w-25">{{getErrorText('n8_spoiled')}}<input type="text" [class]="getClassName('n8_spoiled')" formControlName="n8_spoiled" placeholder="шт" id="name16" name="name16"></p>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <label class="w-25 font-weight-bold">70 x 140</label>
+              <p class="w-25">{{getErrorText('n9')}}<input type="text" [class]="getClassName('n9')" formControlName="n9" placeholder="шт" id="name17" name="name17"></p>
+              <p class="w-25">{{getErrorText('n9_spoiled')}}<input type="text" [class]="getClassName('n9_spoiled')" formControlName="n9_spoiled" placeholder="шт" id="name18" name="name18"></p>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <label class="w-25 font-weight-bold">Кухонные</label>
+              <p class="w-25">{{getErrorText('n10')}}<input type="text" [class]="getClassName('n10')" formControlName="n10" placeholder="шт" id="name19" name="name19"></p>
+              <p class="w-25">{{getErrorText('n10_spoiled')}}<input type="text" [class]="getClassName('n10_spoiled')" formControlName="n10_spoiled" placeholder="шт" id="name20" name="name20"></p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <label class="w-50 font-weight-bold">Общий вес белья:</label>
+          <p class="w-25">{{getErrorText('massa')}}<input type="text" [class]="getClassName('massa')" formControlName="massa" placeholder="кг" id="name40" name="name40"></p>
+
+        </div>
+
+      </div> <!-- end col -6 -->
+
+      <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6">
+        <h3 class="alert alert-dark">Не профильное</h3>
+
+        <div class="card mb-2">
+          <div class="card-body py-2">
+            <h5 class="card-title">Коврик</h5>
+
+            <div class="d-flex justify-content-between">
+              <span class="w-25"></span>
+              <span class="w-25 ml-2">Целое</span>
+              <span class="w-25">Поврежденное</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <label class="w-25 font-weight-bold">Для ванны</label>
+              <p class="w-25">{{getErrorText('n11')}}<input type="text" [class]="getClassName('n11')" formControlName="n11" placeholder="шт" id="name21" name="name21"></p>
+              <p class="w-25">{{getErrorText('n11_spoiled')}}<input type="text" [class]="getClassName('n11_spoiled')" formControlName="n11_spoiled" placeholder="шт" id="name22" name="name22"></p>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <label class="w-25 font-weight-bold">Придверный</label>
+              <p class="w-25">{{getErrorText('n12')}}<input type="text" [class]="getClassName('n12')" formControlName="n12" placeholder="шт" id="name23" name="name23"></p>
+              <p class="w-25">{{getErrorText('n12_spoiled')}}<input type="text" [class]="getClassName('n12_spoiled')" formControlName="n12_spoiled" placeholder="шт" id="name24" name="name24"></p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card mb-2">
+          <div class="card-body py-2">
+            <h5 class="card-title">Одеяло</h5>
+
+            <div class="d-flex justify-content-between">
+              <span class="w-25"></span>
+              <span class="w-25 ml-2">Целое</span>
+              <span class="w-25">Поврежденное</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <label class="w-25 font-weight-bold">1,5 сп</label>
+              <p class="w-25">{{getErrorText('n13')}}<input type="text" [class]="getClassName('n13')" formControlName="n13" placeholder="шт" id="name25" name="name25"></p>
+              <p class="w-25">{{getErrorText('n13_spoiled')}}<input type="text" [class]="getClassName('n13_spoiled')" formControlName="n13_spoiled" placeholder="шт" id="name26" name="name26"></p>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <label class="w-25 font-weight-bold">2 сп</label>
+              <p class="w-25">{{getErrorText('n14')}}<input type="text" [class]="getClassName('n14')" formControlName="n14" placeholder="шт" id="name27" name="name27"></p>
+              <p class="w-25">{{getErrorText('n14_spoiled')}}<input type="text" [class]="getClassName('n14_spoiled')" formControlName="n14_spoiled" placeholder="шт" id="name28" name="name28"></p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card mb-2">
+          <div class="card-body py-2">
+            <h5 class="card-title">Подушка</h5>
+
+            <div class="d-flex justify-content-between">
+              <span class="w-25"></span>
+              <span class="w-25 ml-2">Целое</span>
+              <span class="w-25">Поврежденное</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <label class="w-25 font-weight-bold">50 x 70</label>
+              <p class="w-25">{{getErrorText('n15')}}<input type="text" [class]="getClassName('n15')" formControlName="n15" placeholder="шт" id="name29" name="name29"></p>
+              <p class="w-25">{{getErrorText('n15_spoiled')}}<input type="text" [class]="getClassName('n15_spoiled')" formControlName="n15_spoiled" placeholder="шт" id="name30" name="name30"></p>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <label class="w-25 font-weight-bold">70 x 70</label>
+              <p class="w-25">{{getErrorText('n16')}}<input type="text" [class]="getClassName('n16')" formControlName="n16" placeholder="шт" id="name31" name="name31"></p>
+              <p class="w-25">{{getErrorText('n16_spoiled')}}<input type="text" [class]="getClassName('n16_spoiled')" formControlName="n16_spoiled" placeholder="шт" id="name32" name="name32"></p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card mb-2">
+          <div class="card-body py-2">
+            <h5 class="card-title">Наматрасник</h5>
+
+            <div class="d-flex justify-content-between">
+              <span class="w-25"></span>
+              <span class="w-25 ml-2">Целое</span>
+              <span class="w-25">Поврежденное</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <label class="w-25 font-weight-bold">1,5 сп</label>
+              <p class="w-25">{{getErrorText('n17')}}<input type="text" [class]="getClassName('n17')" formControlName="n17" placeholder="шт" id="name33" name="name33"></p>
+              <p class="w-25">{{getErrorText('n17_spoiled')}}<input type="text" [class]="getClassName('n17_spoiled')" formControlName="n17_spoiled" placeholder="шт" id="name34" name="name34"></p>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <label class="w-25 font-weight-bold">2 сп</label>
+              <p class="w-25">{{getErrorText('n18')}}<input type="text" [class]="getClassName('n18')" formControlName="n18" placeholder="шт" id="name35" name="name36"></p>
+              <p class="w-25">{{getErrorText('n18_spoiled')}}<input type="text" [class]="getClassName('n18_spoiled')" formControlName="n18_spoiled" placeholder="шт" id="name37" name="name37"></p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card mb-2">
+          <div class="card-body py-2">
+            <h5 class="card-title">Шторы</h5>
+
+            <div class="d-flex justify-content-between">
+              <span class="w-25"></span>
+              <span class="w-25 ml-2">Целое</span>
+              <span class="w-25">Поврежденное</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <label class="w-25 font-weight-bold">Шторы</label>
+              <p class="w-25">{{getErrorText('n19')}}<input type="text" [class]="getClassName('n19')" formControlName="n19" placeholder="шт" id="name38" name="name38"></p>
+              <p class="w-25">{{getErrorText('n19_spoiled')}}<input type="text" [class]="getClassName('n19_spoiled')" formControlName="n19_spoiled" placeholder="шт" id="name39" name="name39"></p>
+            </div>
+
+          </div>
+        </div>
+
+      </div> <!-- end col -6 -->
+    </div> <!-- end row -->
+    <!--
+      <h2>Приемка</h2>
+      <p class="text-info">Выберите размер и укажите количество целого и поврежденного белья.</p>
+
+      <table class="table table-borderless">
+        <thead>
+        <tr>
+          <th rowspan="3">Наволочка</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td></td>
+          <td>Целое</td>
+          <td>Поврежденное</td>
+        </tr>
+        <tr>
+          <td>50x70</td>
+          <td>{{getErrorText('n1')}}<input type="text" [class]="getClassName('n1')" formControlName="n1" placeholder="шт" id="n1" name="name1"></td>
+          <td>{{getErrorText('n1_spoiled')}}<input type="text" [class]="getClassName('n1_spoiled')" formControlName="n1_spoiled" placeholder="шт" id="name2" name="name2"></td>
+        </tr>
+        <tr>
+          <td>70x70</td>
+          <td>{{getErrorText('n2')}}<input type="text" [class]="getClassName('n2')" formControlName="n2" placeholder="шт" id="n2" name="name3"></td>
+          <td>{{getErrorText('n2_spoiled')}}<input type="text" [class]="getClassName('n2_spoiled')" formControlName="n2_spoiled" placeholder="шт" id="name4" name="name4"></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-borderless">
+        <thead>
+        <tr>
+          <th rowspan="3">Простынь</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td></td>
+          <td>Целое</td>
+          <td>Поврежденное</td>
+        </tr>
+        <tr>
+          <td>1,5 сп</td>
+          <td>{{getErrorText('n3')}}<input type="text" [class]="getClassName('n3')" formControlName="n3" placeholder="шт" id="name5" name="name5"></td>
+          <td>{{getErrorText('n3_spoiled')}}<input type="text" [class]="getClassName('n3_spoiled')" formControlName="n3_spoiled" placeholder="шт" id="name6" name="name6"></td>
+        </tr>
+        <tr>
+          <td>2 сп</td>
+          <td>{{getErrorText('n4')}}<input type="text" [class]="getClassName('n4')" formControlName="n4" placeholder="шт" id="name7" name="name7"></td>
+          <td>{{getErrorText('n4_spoiled')}}<input type="text" [class]="getClassName('n4_spoiled')" formControlName="n4_spoiled" placeholder="шт" id="name8" name="name8"></td>
+        </tr>
+        </tbody>
+      </table>
+
+
+      <table class="table table-borderless">
+        <thead>
+        <tr>
+          <th rowspan="3">Пододеяльник</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td></td>
+          <td>Целое</td>
+          <td>Поврежденное</td>
+        </tr>
+        <tr>
+          <td>1,5 сп</td>
+          <td>{{getErrorText('n5')}}<input type="text" [class]="getClassName('n5')" formControlName="n5" placeholder="шт" id="name9" name="name9"></td>
+          <td>{{getErrorText('n5_spoiled')}}<input type="text" [class]="getClassName('n5_spoiled')" formControlName="n5_spoiled" placeholder="шт" id="name10" name="name10"></td>
+        </tr>
+        <tr>
+          <td>2 сп</td>
+          <td>{{getErrorText('n6')}}<input type="text" [class]="getClassName('n6')" formControlName="n6" placeholder="шт" id="name11" name="name11"></td>
+          <td>{{getErrorText('n6_spoiled')}}<input type="text" [class]="getClassName('n6_spoiled')" formControlName="n6_spoiled" placeholder="шт" id="name12" name="name12"></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-borderless">
+        <thead>
+        <tr>
+          <th rowspan="3">Полотенце</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td></td>
+          <td>Целое</td>
+          <td>Поврежденное</td>
+        </tr>
+        <tr>
+          <td>30x60</td>
+          <td>{{getErrorText('n7')}}<input type="text" [class]="getClassName('n7')" formControlName="n7" placeholder="шт" id="name13" name="name13"></td>
+          <td>{{getErrorText('n7_spoiled')}}<input type="text" [class]="getClassName('n7_spoiled')" formControlName="n7_spoiled" placeholder="шт" id="name14" name="name14"></td>
+        </tr>
+        <tr>
+          <td>70x70</td>
+          <td>{{getErrorText('n8')}}<input type="text" [class]="getClassName('n8')" formControlName="n8" placeholder="шт" id="name15" name="name15"></td>
+          <td>{{getErrorText('n8_spoiled')}}<input type="text" [class]="getClassName('n8_spoiled')" formControlName="n8_spoiled" placeholder="шт" id="name16" name="name16"></td>
+        </tr>
+        <tr>
+          <td>70x140</td>
+          <td>{{getErrorText('n9')}}<input type="text" [class]="getClassName('n9')" formControlName="n9" placeholder="шт" id="name17" name="name17"></td>
+          <td>{{getErrorText('n9_spoiled')}}<input type="text" [class]="getClassName('n9_spoiled')" formControlName="n9_spoiled" placeholder="шт" id="name18" name="name18"></td>
+        </tr>
+        <tr>
+          <td>Кухонные</td>
+          <td>{{getErrorText('n10')}}<input type="text" [class]="getClassName('n10')" formControlName="n10" placeholder="шт" id="name19" name="name19"></td>
+          <td>{{getErrorText('n10_spoiled')}}<input type="text" [class]="getClassName('n10_spoiled')" formControlName="n10_spoiled" placeholder="шт" id="name20" name="name20"></td>
+        </tr>
+        </tbody>
+      </table>
 
 
 
-  <h2>Приемка</h2>
-  <p class="text-info">Выберите размер и укажите количество целого и поврежденного белья.</p>
-  <h3 class="alert alert-dark">Прямое белье</h3>
-  <table class="table table-borderless">
-    <thead>
-    <tr>
-      <th rowspan="3">Наволочка</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td></td>
-      <td>Целое</td>
-      <td>Поврежденное</td>
-    </tr>
-    <tr>
-      <td>50x70</td>
-      <td>{{getErrorText('n1')}}<input type="text" [class]="getClassName('n1')" formControlName="n1" placeholder="шт" id="n1" name="name1"></td>
-      <td>{{getErrorText('n1_spoiled')}}<input type="text" [class]="getClassName('n1_spoiled')" formControlName="n1_spoiled" placeholder="шт" id="name2" name="name2"></td>
-    </tr>
-    <tr>
-      <td>70x70</td>
-      <td>{{getErrorText('n2')}}<input type="text" [class]="getClassName('n2')" formControlName="n2" placeholder="шт" id="n2" name="name3"></td>
-      <td>{{getErrorText('n2_spoiled')}}<input type="text" [class]="getClassName('n2_spoiled')" formControlName="n2_spoiled" placeholder="шт" id="name4" name="name4"></td>
-    </tr>
-    </tbody>
-  </table>
+      <table class="table table-borderless">
+        <thead>
+        <tr>
+          <th rowspan="3">Коврик</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td></td>
+          <td>Целое</td>
+          <td>Поврежденное</td>
+        </tr>
+        <tr>
+          <td>Для ванны</td>
+          <td>{{getErrorText('n11')}}<input type="text" [class]="getClassName('n11')" formControlName="n11" placeholder="шт" id="name21" name="name21"></td>
+          <td>{{getErrorText('n11_spoiled')}}<input type="text" [class]="getClassName('n11_spoiled')" formControlName="n11_spoiled" placeholder="шт" id="name22" name="name22"></td>
+        </tr>
+        <tr>
+          <td>Придверный</td>
+          <td>{{getErrorText('n12')}}<input type="text" [class]="getClassName('n12')" formControlName="n12" placeholder="шт" id="name23" name="name23"></td>
+          <td>{{getErrorText('n12_spoiled')}}<input type="text" [class]="getClassName('n12_spoiled')" formControlName="n12_spoiled" placeholder="шт" id="name24" name="name24"></td>
+        </tr>
+        </tbody>
+      </table>
 
-  <table class="table table-borderless">
-    <thead>
-    <tr>
-      <th rowspan="3">Простынь</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td></td>
-      <td>Целое</td>
-      <td>Поврежденное</td>
-    </tr>
-    <tr>
-      <td>1,5 сп</td>
-      <td>{{getErrorText('n3')}}<input type="text" [class]="getClassName('n3')" formControlName="n3" placeholder="шт" id="name5" name="name5"></td>
-      <td>{{getErrorText('n3_spoiled')}}<input type="text" [class]="getClassName('n3_spoiled')" formControlName="n3_spoiled" placeholder="шт" id="name6" name="name6"></td>
-    </tr>
-    <tr>
-      <td>2 сп</td>
-      <td>{{getErrorText('n4')}}<input type="text" [class]="getClassName('n4')" formControlName="n4" placeholder="шт" id="name7" name="name7"></td>
-      <td>{{getErrorText('n4_spoiled')}}<input type="text" [class]="getClassName('n4_spoiled')" formControlName="n4_spoiled" placeholder="шт" id="name8" name="name8"></td>
-    </tr>
-    </tbody>
-  </table>
+    <table class="table table-borderless">
+      <thead>
+      <tr>
+        <th rowspan="3">Одеяло</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td></td>
+        <td>Целое</td>
+        <td>Поврежденное</td>
+      </tr>
+      <tr>
+        <td>1,5 сп</td>
+        <td>{{getErrorText('n13')}}<input type="text" [class]="getClassName('n13')" formControlName="n13" placeholder="шт" id="name25" name="name25"></td>
+        <td>{{getErrorText('n13_spoiled')}}<input type="text" [class]="getClassName('n13_spoiled')" formControlName="n13_spoiled" placeholder="шт" id="name26" name="name26"></td>
+      </tr>
+      <tr>
+        <td>2 сп</td>
+        <td>{{getErrorText('n14')}}<input type="text" [class]="getClassName('n14')" formControlName="n14" placeholder="шт" id="name27" name="name27"></td>
+        <td>{{getErrorText('n14_spoiled')}}<input type="text" [class]="getClassName('n14_spoiled')" formControlName="n14_spoiled" placeholder="шт" id="name28" name="name28"></td>
+      </tr>
+      </tbody>
+    </table>
 
-  <table class="table table-borderless">
-    <thead>
-    <tr>
-      <th rowspan="3">Пододеяльник</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td></td>
-      <td>Целое</td>
-      <td>Поврежденное</td>
-    </tr>
-    <tr>
-      <td>1,5 сп</td>
-      <td>{{getErrorText('n5')}}<input type="text" [class]="getClassName('n5')" formControlName="n5" placeholder="шт" id="name9" name="name9"></td>
-      <td>{{getErrorText('n5_spoiled')}}<input type="text" [class]="getClassName('n5_spoiled')" formControlName="n5_spoiled" placeholder="шт" id="name10" name="name10"></td>
-    </tr>
-    <tr>
-      <td>2 сп</td>
-      <td>{{getErrorText('n6')}}<input type="text" [class]="getClassName('n6')" formControlName="n6" placeholder="шт" id="name11" name="name11"></td>
-      <td>{{getErrorText('n6_spoiled')}}<input type="text" [class]="getClassName('n6_spoiled')" formControlName="n6_spoiled" placeholder="шт" id="name12" name="name12"></td>
-    </tr>
-    </tbody>
-  </table>
+    <table class="table table-borderless">
+      <thead>
+      <tr>
+        <th rowspan="3">Подушка</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td></td>
+        <td>Целое</td>
+        <td>Поврежденное</td>
+      </tr>
+      <tr>
+        <td>50x70</td>
+        <td>{{getErrorText('n15')}}<input type="text" [class]="getClassName('n15')" formControlName="n15" placeholder="шт" id="name29" name="name29"></td>
+        <td>{{getErrorText('n15_spoiled')}}<input type="text" [class]="getClassName('n15_spoiled')" formControlName="n15_spoiled" placeholder="шт" id="name30" name="name30"></td>
+      </tr>
+      <tr>
+        <td>70x70</td>
+        <td>{{getErrorText('n16')}}<input type="text" [class]="getClassName('n16')" formControlName="n16" placeholder="шт" id="name31" name="name31"></td>
+        <td>{{getErrorText('n16_spoiled')}}<input type="text" [class]="getClassName('n16_spoiled')" formControlName="n16_spoiled" placeholder="шт" id="name32" name="name32"></td>
+      </tr>
+      </tbody>
+    </table>
 
-  <table class="table table-borderless">
-    <thead>
-    <tr>
-      <th rowspan="3">Полотенце</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td></td>
-      <td>Целое</td>
-      <td>Поврежденное</td>
-    </tr>
-    <tr>
-      <td>30x60</td>
-      <td>{{getErrorText('n7')}}<input type="text" [class]="getClassName('n7')" formControlName="n7" placeholder="шт" id="name13" name="name13"></td>
-      <td>{{getErrorText('n7_spoiled')}}<input type="text" [class]="getClassName('n7_spoiled')" formControlName="n7_spoiled" placeholder="шт" id="name14" name="name14"></td>
-    </tr>
-    <tr>
-      <td>70x70</td>
-      <td>{{getErrorText('n8')}}<input type="text" [class]="getClassName('n8')" formControlName="n8" placeholder="шт" id="name15" name="name15"></td>
-      <td>{{getErrorText('n8_spoiled')}}<input type="text" [class]="getClassName('n8_spoiled')" formControlName="n8_spoiled" placeholder="шт" id="name16" name="name16"></td>
-    </tr>
-    <tr>
-      <td>70x140</td>
-      <td>{{getErrorText('n9')}}<input type="text" [class]="getClassName('n9')" formControlName="n9" placeholder="шт" id="name17" name="name17"></td>
-      <td>{{getErrorText('n9_spoiled')}}<input type="text" [class]="getClassName('n9_spoiled')" formControlName="n9_spoiled" placeholder="шт" id="name18" name="name18"></td>
-    </tr>
-    <tr>
-      <td>Кухонные</td>
-      <td>{{getErrorText('n10')}}<input type="text" [class]="getClassName('n10')" formControlName="n10" placeholder="шт" id="name19" name="name19"></td>
-      <td>{{getErrorText('n10_spoiled')}}<input type="text" [class]="getClassName('n10_spoiled')" formControlName="n10_spoiled" placeholder="шт" id="name20" name="name20"></td>
-    </tr>
-    </tbody>
-  </table>
+    <table class="table table-borderless">
+      <thead>
+      <tr>
+        <th rowspan="3">Наматрасник</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td></td>
+        <td>Целое</td>
+        <td>Поврежденное</td>
+      </tr>
+      <tr>
+        <td>1,5 сп</td>
+        <td>{{getErrorText('n17')}}<input type="text" [class]="getClassName('n17')" formControlName="n17" placeholder="шт" id="name33" name="name33"></td>
+        <td>{{getErrorText('n17_spoiled')}}<input type="text" [class]="getClassName('n17_spoiled')" formControlName="n17_spoiled" placeholder="шт" id="name34" name="name34"></td>
+      </tr>
+      <tr>
+        <td>2 сп</td>
+        <td>{{getErrorText('n18')}}<input type="text" [class]="getClassName('n18')" formControlName="n18" placeholder="шт" id="name35" name="name36"></td>
+        <td>{{getErrorText('n18_spoiled')}}<input type="text" [class]="getClassName('n18_spoiled')" formControlName="n18_spoiled" placeholder="шт" id="name37" name="name37"></td>
+      </tr>
+      </tbody>
+    </table>
 
-  <h3 class="alert alert-dark">Не профильное</h3>
+    <table class="table table-borderless">
+      <thead>
+      <tr>
+        <th rowspan="3">Шторы</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td></td>
+        <td>Целое</td>
+        <td>Поврежденное</td>
+      </tr>
+      <tr>
+        <td>Шторы</td>
+        <td>{{getErrorText('n19')}}<input type="text" [class]="getClassName('n19')" formControlName="n19" placeholder="шт" id="name38" name="name38"></td>
+        <td>{{getErrorText('n19_spoiled')}}<input type="text" [class]="getClassName('n19_spoiled')" formControlName="n19_spoiled" placeholder="шт" id="name39" name="name39"></td>
 
-  <table class="table table-borderless">
-    <thead>
-    <tr>
-      <th rowspan="3">Коврик</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td></td>
-      <td>Целое</td>
-      <td>Поврежденное</td>
-    </tr>
-    <tr>
-      <td>Для ванны</td>
-      <td>{{getErrorText('n11')}}<input type="text" [class]="getClassName('n11')" formControlName="n11" placeholder="шт" id="name21" name="name21"></td>
-      <td>{{getErrorText('n11_spoiled')}}<input type="text" [class]="getClassName('n11_spoiled')" formControlName="n11_spoiled" placeholder="шт" id="name22" name="name22"></td>
-    </tr>
-    <tr>
-      <td>Придверный</td>
-      <td>{{getErrorText('n12')}}<input type="text" [class]="getClassName('n12')" formControlName="n12" placeholder="шт" id="name23" name="name23"></td>
-      <td>{{getErrorText('n12_spoiled')}}<input type="text" [class]="getClassName('n12_spoiled')" formControlName="n12_spoiled" placeholder="шт" id="name24" name="name24"></td>
-    </tr>
-    </tbody>
-  </table>
+      </tr>
+      <tr>
+        <th>Общий вес белья:</th>
+        <td>{{getErrorText('massa')}}<input type="text" [class]="getClassName('massa')" formControlName="massa" placeholder="кг" id="name40" name="name40"></td>
+      </tr>
+      </tbody>
+    </table>-->
 
-  <table class="table table-borderless">
-    <thead>
-    <tr>
-      <th rowspan="3">Одеяло</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td></td>
-      <td>Целое</td>
-      <td>Поврежденное</td>
-    </tr>
-    <tr>
-      <td>1,5 сп</td>
-      <td>{{getErrorText('n13')}}<input type="text" [class]="getClassName('n13')" formControlName="n13" placeholder="шт" id="name25" name="name25"></td>
-      <td>{{getErrorText('n13_spoiled')}}<input type="text" [class]="getClassName('n13_spoiled')" formControlName="n13_spoiled" placeholder="шт" id="name26" name="name26"></td>
-    </tr>
-    <tr>
-      <td>2 сп</td>
-      <td>{{getErrorText('n14')}}<input type="text" [class]="getClassName('n14')" formControlName="n14" placeholder="шт" id="name27" name="name27"></td>
-      <td>{{getErrorText('n14_spoiled')}}<input type="text" [class]="getClassName('n14_spoiled')" formControlName="n14_spoiled" placeholder="шт" id="name28" name="name28"></td>
-    </tr>
-    </tbody>
-  </table>
-
-  <table class="table table-borderless">
-    <thead>
-    <tr>
-      <th rowspan="3">Подушка</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td></td>
-      <td>Целое</td>
-      <td>Поврежденное</td>
-    </tr>
-    <tr>
-      <td>50x70</td>
-      <td>{{getErrorText('n15')}}<input type="text" [class]="getClassName('n15')" formControlName="n15" placeholder="шт" id="name29" name="name29"></td>
-      <td>{{getErrorText('n15_spoiled')}}<input type="text" [class]="getClassName('n15_spoiled')" formControlName="n15_spoiled" placeholder="шт" id="name30" name="name30"></td>
-    </tr>
-    <tr>
-      <td>70x70</td>
-      <td>{{getErrorText('n16')}}<input type="text" [class]="getClassName('n16')" formControlName="n16" placeholder="шт" id="name31" name="name31"></td>
-      <td>{{getErrorText('n16_spoiled')}}<input type="text" [class]="getClassName('n16_spoiled')" formControlName="n16_spoiled" placeholder="шт" id="name32" name="name32"></td>
-    </tr>
-    </tbody>
-  </table>
-
-  <table class="table table-borderless">
-    <thead>
-    <tr>
-      <th rowspan="3">Наматрасник</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td></td>
-      <td>Целое</td>
-      <td>Поврежденное</td>
-    </tr>
-    <tr>
-      <td>1,5 сп</td>
-      <td>{{getErrorText('n17')}}<input type="text" [class]="getClassName('n17')" formControlName="n17" placeholder="шт" id="name33" name="name33"></td>
-      <td>{{getErrorText('n17_spoiled')}}<input type="text" [class]="getClassName('n17_spoiled')" formControlName="n17_spoiled" placeholder="шт" id="name34" name="name34"></td>
-    </tr>
-    <tr>
-      <td>2 сп</td>
-      <td>{{getErrorText('n18')}}<input type="text" [class]="getClassName('n18')" formControlName="n18" placeholder="шт" id="name35" name="name36"></td>
-      <td>{{getErrorText('n18_spoiled')}}<input type="text" [class]="getClassName('n18_spoiled')" formControlName="n18_spoiled" placeholder="шт" id="name37" name="name37"></td>
-    </tr>
-    </tbody>
-  </table>
-
-  <table class="table table-borderless">
-    <thead>
-    <tr>
-      <th rowspan="3">Шторы</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td></td>
-      <td>Целое</td>
-      <td>Поврежденное</td>
-    </tr>
-    <tr>
-      <td>Шторы</td>
-      <td>{{getErrorText('n19')}}<input type="text" [class]="getClassName('n19')" formControlName="n19" placeholder="шт" id="name38" name="name38"></td>
-      <td>{{getErrorText('n19_spoiled')}}<input type="text" [class]="getClassName('n19_spoiled')" formControlName="n19_spoiled" placeholder="шт" id="name39" name="name39"></td>
-
-    </tr>
-    <tr>
-      <th>Общий вес белья:</th>
-      <td>{{getErrorText('massa')}}<input type="text" [class]="getClassName('massa')" formControlName="massa" placeholder="кг" id="name40" name="name40"></td>
-    </tr>
-    </tbody>
-  </table>
-
-  <button (click)="send_data()"
-          [disabled]="acclaundform.value.n1=='' && acclaundform.value.n1_spoiled=='' &&
+    <div class="alert alert-info">
+      <button (click)="send_data()"
+              [disabled]="acclaundform.value.n1=='' && acclaundform.value.n1_spoiled=='' &&
                       acclaundform.value.n2=='' && acclaundform.value.n2_spoiled=='' &&
                       acclaundform.value.n3=='' && acclaundform.value.n3_spoiled=='' &&
                       acclaundform.value.n4=='' && acclaundform.value.n4_spoiled=='' &&
@@ -273,25 +514,30 @@
                       acclaundform.value.n18=='' && acclaundform.value.n18_spoiled=='' &&
                       acclaundform.value.n19=='' && acclaundform.value.n19_spoiled=='' &&
                       acclaundform.value.massa==''"
-          type="button" class="btn btn-primary">Отправить</button>
+              type="button" class="btn btn-primary mt-2">Отправить</button>
 
 
 
 
-  <p class="text-info">После нажатия кнопки Отправить изменить данные будет нельзя!</p>
-  <p class="text-info">{{this.sError}}</p>
+      <p class="text-info">После нажатия кнопки Отправить изменить данные будет нельзя!</p>
+      <p class="text-info">{{this.sError}}</p>
+    </div>
+  </form>
 
 
 
-</form>
+  <div class="row">
+    <div class="col-12">
+
+      <a class="btn btn-primary my-4" data-toggle="collapse"
+         href="#collapseAcceptanceWarehouse" role="button" aria-expanded="false" aria-controls="collapseAcceptanceWarehouse">
+        Уже принято
+      </a>
+      <div class="collapse" id="collapseAcceptanceWarehouse">
+        <app-report-acceptance [intAddress]="this.intAddress"></app-report-acceptance>
+      </div>
+    </div>
+  </div>
 
 
-</div>
-
-<a class="btn btn-primary" data-toggle="collapse"
-   href="#collapseAcceptanceWarehouse" role="button" aria-expanded="false" aria-controls="collapseAcceptanceWarehouse">
-  В приемке
-</a>
-<div class="collapse" id="collapseAcceptanceWarehouse">
-  <app-report-acceptance [intAddress]="this.intAddress"></app-report-acceptance>
 </div>
