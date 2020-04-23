@@ -48,6 +48,7 @@ import { ReportWarehouseComponent } from './washhouse/reports/report-warehouse/r
 import { ReportWashingComponent } from './washhouse/reports/report-washing/report-washing.component';
 import { ReportRepairComponent } from './washhouse/reports/report-repair/report-repair.component';
 import { PositionComponent } from './admin/position/position.component';
+import {FullCalendarModule} from '@fullcalendar/angular';
 
 registerLocaleData(localeRu);
 
@@ -124,6 +125,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    FullCalendarModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [ GlobalRef, AuthService, ForgotpasswordService, ExcelService, Check],
