@@ -28,7 +28,7 @@ import { ShipmentLaundryComponent } from './washhouse/shipment-laundry/shipment-
 import { CommentLaundryComponent } from './washhouse/comment-laundry/comment-laundry.component';
 import { AcceptanceLaundryLastComponent } from './washhouse/acceptance-laundry-last/acceptance-laundry-last.component';
 import {ExcelService} from './services/excel.service';
-import { registerLocaleData } from '@angular/common';
+import {CommonModule, registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import { WarehouseLaundryLastComponent } from './washhouse/warehouse-laundry-last/warehouse-laundry-last.component';
 import { RepairLaundryLastComponent } from './washhouse/repair-laundry-last/repair-laundry-last.component';
@@ -49,6 +49,8 @@ import { ReportWashingComponent } from './washhouse/reports/report-washing/repor
 import { ReportRepairComponent } from './washhouse/reports/report-repair/report-repair.component';
 import { PositionComponent } from './admin/position/position.component';
 import {FullCalendarModule} from '@fullcalendar/angular';
+import { SummaryLaundryComponent } from './washhouse/summary-laundry/summary-laundry.component';
+import { SummaryWeekComponent } from './washhouse/summary-laundry/summary-week/summary-week.component';
 
 registerLocaleData(localeRu);
 
@@ -77,6 +79,7 @@ const appRoutes: Routes = [
   {path: 'washing_laundry_last', component: WashingLaundryLastComponent},
   {path: 'add-work', component: AddWorkComponent},
   {path: 'addwork_laundry_last', component: AddworkLaundryLastComponent},
+  {path: 'summary-laundry', component: SummaryLaundryComponent},
   {path: 'test', component: TestComponent},
   {path: '**', component: NotFoundComponent }
 ];
@@ -118,7 +121,9 @@ const appRoutes: Routes = [
     ReportWarehouseComponent,
     ReportWashingComponent,
     ReportRepairComponent,
-    PositionComponent
+    PositionComponent,
+    SummaryLaundryComponent,
+    SummaryWeekComponent
   ],
   imports: [
     BrowserModule,
@@ -126,6 +131,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     FullCalendarModule,
+    CommonModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [ GlobalRef, AuthService, ForgotpasswordService, ExcelService, Check],

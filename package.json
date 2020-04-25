@@ -40,7 +40,8 @@
     "popper.js": "^1.16.1",
     "rxjs": "^6.5.4",
     "rxjs-compat": "^6.5.4",
-    "zone.js": "^0.10.3"
+    "zone.js": "^0.10.3",
+    "@fullcalendar/bootstrap": "latest"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.901.0",

@@ -25,6 +25,7 @@ export class Check {
     return boolDirty;
   }
 
+
   public static  isEmpty(obj) {
     for ( const key in obj) {
       if (obj.hasOwnProperty(key)) {

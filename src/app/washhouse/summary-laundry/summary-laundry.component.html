@@ -1,0 +1,28 @@
+<div class="contaner">
+  <div class="row">
+    <div class="col-6">
+      <full-calendar (datesRender)="onChange()" (eventClick)="myClick($event)"  #calendar [plugins]="calendarPlugins"></full-calendar>
+    </div>
+    <div class="col-8">
+      <app-summary-week [date_begin]="weekDateBegin" [date_end]="weekDateEnd" [id_user]="weekUser" [id_branch]="weekBranch"></app-summary-week>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-12">
+
+
+      <div *ngIf="resultPay !== undefined">
+        <div>Дата: {{resultPay.payday | date:'dd.MM.yyyy'}} </div>
+        <div>Часов: {{resultPay.payhour}}</div>
+        <div>Оплата в час: {{resultPay.paymentperhour}}</div>
+        <div>ЗСР: {{resultPay.paykoeff}}</div>
+        <div>Доп. работы: {{resultPay.payaddwork}}</div>
+        <div>Итого: {{resultPay.paymentperhour}} * {{resultPay.payhour}} * {{resultPay.paykoeff}} + {{resultPay.payaddwork}} = {{resultPay.itogo}}</div>
+       </div>
+
+  </div>
+</div>

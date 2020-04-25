@@ -9,6 +9,17 @@ export class ReportService {
 
   constructor(private http: HttpClient, private gr: GlobalRef) { }
 
+  getSelectReportWeek(id_user, id_branch, date_begin, date_end) {
+    const params = new HttpParams()
+      .set('select_report_week', 'select_report_week')
+      .set('id_user', id_user)
+      .set('id_branch', id_branch)
+      .set('date_begin', date_begin)
+      .set('date_end', date_end);
+    return this.http.get(this.gr.sUrlGlobal + 'report', {params: params});
+  }
+
+
   getAddress(id_address) {
     const params = new HttpParams()
       .set('report_address', 'report_address')

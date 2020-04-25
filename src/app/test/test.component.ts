@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import {FullCalendarComponent} from '@fullcalendar/angular';
+import bootstrapPlugin from '@fullcalendar/bootstrap';
 
 
 @Component({
@@ -11,11 +12,9 @@ import {FullCalendarComponent} from '@fullcalendar/angular';
 
 export class TestComponent implements OnInit, AfterViewInit  {
 
-  option: Object;
+  idUser = -1;
 
   calendarPlugins = [dayGridPlugin]; // important!
-
-  // plugins: [dayGridPlugin, interactionPlugin, timeGridPlugin, resourceTimeGridPlugin]
 
   @ViewChild('calendar') public calendarComponent: FullCalendarComponent;
 
@@ -23,30 +22,22 @@ export class TestComponent implements OnInit, AfterViewInit  {
 
   }
 
-
-  someMethod() {
-//    const calendarApi = this.calendarComponent.getApi();
-//    calendarApi.setOption('firstDay', 1);
-//    calendarApi.next();
-  }
-
   ngOnInit(): void {
-    // calendarApi.next();
+    // вначале берем текущего
+    this.idUser = 1;
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     const calendarApi = this.calendarComponent.getApi();
     calendarApi.setOption('firstDay', 1);
     calendarApi.setOption('locale', 'ru');
-
     calendarApi.setOption('header', {
         left: 'prev,next, today',
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
     });
-
     calendarApi.setOption('buttonText', {today: 'Сегодня'});
-
+//    calendarApi.next();
 
   }
 
