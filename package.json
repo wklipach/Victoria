@@ -24,6 +24,7 @@
     "@fortawesome/angular-fontawesome": "^0.6.0",
     "@fortawesome/fontawesome-free": "^5.13.0",
     "@fullcalendar/angular": "^4.4.5-beta",
+    "@fullcalendar/bootstrap": "^4.4.0",
     "@fullcalendar/core": "^4.4.0",
     "@fullcalendar/daygrid": "^4.4.0",
     "@types/jquery": "^3.3.34",
@@ -40,8 +41,7 @@
     "popper.js": "^1.16.1",
     "rxjs": "^6.5.4",
     "rxjs-compat": "^6.5.4",
-    "zone.js": "^0.10.3",
-    "@fullcalendar/bootstrap": "latest"
+    "zone.js": "^0.10.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.901.0",

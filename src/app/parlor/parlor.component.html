@@ -1,203 +1,187 @@
-<nav class="navbar navbar-expand-sm bg-basic navbar-light">
-  <ul class="navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Прачечная</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="acceptance-laundry">Приемка</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="repair-laundry">Ремонт</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="washing-laundry">Стирка</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="warehouse-laundry">Склад</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="shipment-laundry">Отгрузка</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="comment-laundry">Комментарий</a>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link" href="parlor">Инфо</a>
-    </li>
-
-    <li *ngIf="id_user_vict === 1" class="nav-item">
-      <a class="nav-link" href="admin">Администрирование</a>
-    </li>
-
-  </ul>
-</nav>
-
-<h3 class="alert-primary my-3">Личный кабинет</h3>
-
-<div style="opacity:0; position: absolute;">{{id_user_vict}}</div>
-<div style="opacity:0; position: absolute;">{{nick}}</div>
+<div class="container">
+  <app-mainmenu></app-mainmenu>
 
 
-<div class="leftSide">
+  <h3 class="alert-primary mb-3 d-flex justify-content-between my-3 px-3">
+    <p>Личный кабинет</p>
+    <p>{{nick}}</p>
+  </h3>
 
-  <form [formGroup]="form">
+  <div style="opacity:0; position: absolute;">{{id_user_vict}}</div>
 
-<div *ngIf="this.sAvatarPath.length>0;then contentLoadAvatar else contentDefault">Профиль</div>
-<ng-template #contentLoadAvatar>
-  <img class="logotype" [src]="this.sAvatarPath" alt="Профиль" id="img" onclick="document.getElementById('avatar').click()">
-</ng-template>
+  <div class="row">
+    <div class="col-4">
 
-<ng-template #contentDefault>
-  <img src="/assets/img/usernull.png" class="img-thumbnail" onclick="document.getElementById('avatar').click()">
-</ng-template>
+      <form [formGroup]="form">
 
-<div class="up-clear">
+        <div *ngIf="this.sAvatarPath.length>0;then contentLoadAvatar else contentDefault">Профиль</div>
+        <ng-template #contentLoadAvatar>
+          <img class="rounded" [src]="this.sAvatarPath" alt="Профиль" id="img" onclick="document.getElementById('avatar').click()">
+        </ng-template>
 
-  <input type="file" id="avatar" (change)="onFileChange($event)" #fileInput style="display:none">
-  <label class="photo-upload" onclick="document.getElementById('avatar').click()">Загрузить фото</label>
-  <label class="clear" (click)="clearFile()">Очистить</label>
-</div>
+        <ng-template #contentDefault>
+          <img src="/assets/img/usernull.png" class="rounded" onclick="document.getElementById('avatar').click()">
+        </ng-template>
 
-  </form>
-</div>
+        <div>
 
+          <input type="file" id="avatar" (change)="onFileChange($event)" #fileInput style="display:none">
+          <label class="text-muted ml-1 mt-3" style="display: block; cursor: pointer; text-decoration: underline;" onclick="document.getElementById('avatar').click()">Загрузить фото</label>
+          <label class="text-muted ml-1" style="display: block; cursor: pointer; text-decoration: underline;" (click)="clearFile()">Очистить</label>
+        </div>
 
-<!-- ВТОРАЯ ФОРМА НЕ СВЯЗАННАЯ С ФОТО -->
-
-
-<div class="rightSide">
-    <form class="employee-form" [formGroup]="parlorForm">
-
-   <div class="line">
-      <label class="user-name">Имя пользователя</label>
-      <label class="email">Email</label>
-  </div>
-
-   <div class="line">
-      <input type="text" class="inputUserName" id="inputUserName" formControlName="inputUserName" placeholder="введите имя пользователя" maxlength="100" title="Не редактируется">
-      <input type="text" class="inputEmail" id="inputEmail" formControlName="inputEmail" placeholder="введите Email">
-   </div>
-
-      <div class="line">
-      <label class="gender">Выбрать пол</label>
-      <label class="birth" for="inputBirth">Дата рождения</label>
-      </div>
-
-
-   <div class="line">
-      <select class="inputGender" id="inputGender" formControlName="inputGender"  title="Выбрать пол">
-        <option  *ngFor="let gl of genderList" [value]="gl.name">
-          {{gl.name}}
-        </option>
-      </select>
-     <input  class="inputBirth" type="date" id="inputBirth" name="inputBirth" formControlName="inputBirth">
-   </div>
-
-      <!-- начало обработки почтовых ошибок -->
-
-<div *ngIf="parlorForm.controls['inputEmail'].dirty">
-
-  <div class="alertWrong"
-       *ngIf="parlorForm.controls['inputEmail'].value.length === 0 ">
-    Не указан Email.
-  </div>
-
-  <div *ngIf="parlorForm.controls['inputEmail'].value.length > 0">
-    <div *ngIf="parlorForm.controls['inputEmail'].invalid; else trueSucc">
-      <div class="alertWrong"
-           *ngIf="parlorForm.controls['inputEmail'].hasError('errorEmailExists') === true">
-        Данный Email уже занят.
-      </div>
-
-      <div class="alertWrong"
-           *ngIf="parlorForm.controls['inputEmail'].hasError('email') === true">
-        Неверно введен Email.
-      </div>
+      </form>
 
     </div>
 
-    <ng-template #trueSucc>
+    <div class="col-8">
 
-      <div class="alertSuccess">Email свободен.</div>
+      <!-- ВТОРАЯ ФОРМА НЕ СВЯЗАННАЯ С ФОТО class="rounded float-left" alt="Фото" -->
 
-    </ng-template>
+      <form [formGroup]="parlorForm">
 
-  </div>
+        <div class="d-flex justify-content my-3">
+          <label class="w-25 pt-2 text-muted" for="inputUserName">Имя пользователя</label>
+          <input type="text" class="form-control w-50" id="inputUserName" formControlName="inputUserName" placeholder="введите имя пользователя" maxlength="100" title="Не редактируется">
+        </div>
 
-</div>
+        <div class="d-flex justify-content my-3">
+          <label class="w-25 pt-2 text-muted" for="inputEmail">Email</label>
+          <input type="text" class="form-control w-50" id="inputEmail" formControlName="inputEmail" placeholder="введите Email">
+        </div>
 
-<!-- закончили обработку почтовых ошибок -->
+        <div class="d-flex justify-content my-3">
+          <label class="w-25 pt-2 text-muted" for="inputGender">Выбрать пол</label>
+          <select class="form-control w-50" id="inputGender" formControlName="inputGender" title="Выбрать пол">
+            <option  *ngFor="let gl of genderList" [value]="gl.name">
+              {{gl.name}}
+            </option>
+          </select>
+        </div>
 
+        <div class="d-flex justify-content my-3">
+          <label class="w-25 pt-2 text-muted" for="inputBirth">Дата рождения</label>
+          <input  class="form-control w-50" type="date" id="inputBirth" name="inputBirth" formControlName="inputBirth">
+        </div>
 
-<div class="line">
-  <label class="name">Имя</label>
-  <label class="lastname">Фамилия</label>
-</div>
-
-<div class="line">
-  <input type="text" class="input-name" id="inputName" formControlName="inputName" placeholder="Имя">
-  <input type="text" class="inputLastname" id="inputLastname" formControlName="inputLastName" placeholder="Фамилия">
-</div>
-
-<div class="line">
-  <label class="location">Отчество</label>
-  <label class="zip">Почтовый индекс</label>
-</div>
-
-<div class="line">
-  <input type="text" class="input-name"  id="inputPatronymic" formControlName="inputPatronymic" placeholder="Отчество">
-  <input type="text" class="inputZip" id="inputZip" formControlName="inputZip" placeholder="почтовый индекс">
-</div>
-
-
-<label class="home-address">Домашний адрес</label>
-<input type="text" class="inputHomeAddress" id="inputAddress" formControlName="inputAddress" placeholder="Домашний адрес" maxlength="100">
-
-<label class="phone">Телефон</label>
-<input type="text" class="inputPhone" id="inputPhone" formControlName="inputPhone" placeholder="Телефон">
-
-<label class="phone">Телефон 2</label>
-<input type="text" class="inputPhone" id="inputPhone2" formControlName="inputPhone2" placeholder="Телефон 2">
+        <div class="d-flex justify-content my-3">
+          <label class="w-25 pt-2 text-muted" for="inputLastname">Фамилия</label>
+          <input type="text" class="form-control w-50" id="inputLastname" formControlName="inputLastName" placeholder="Фамилия">
+        </div>
 
 
-<img class="img-lock" src="/assets/img/lock.png" alt="Смена пароля" title="Смена пароля">
-
-<label class="changePass" (click)="accessPassword()">Изменить пароль</label>
-<ng-container *ngIf="bShowChangePassword">
-  <div class="changepassBox">
-    <input (click)="onClearInputError()" type="password" class="inputNewPassword1" id="inputNewPassword1" formControlName="inputNewPassword1" placeholder="Введите новый пароль">
-    <input (click)="onClearInputError()" type="password" class="inputNewPassword2" id="inputNewPassword2" formControlName="inputNewPassword2" placeholder="Повторите пароль">
+        <div class="d-flex justify-content my-3">
+          <label class="w-25 pt-2 text-muted" for="inputName">Имя</label>
+          <input type="text" class="form-control w-50" id="inputName" formControlName="inputName" placeholder="Имя">
+        </div>
 
 
-    <button type="submit" class="btn-newPassword" (click)="NewPassword()">Изменить пароль</button>
-    <button class="btn-newPasswordCancel" (click)="DisappearFrame()">Отмена</button>
+        <div class="d-flex justify-content my-3">
+          <label class="w-25 pt-2 text-muted" for="inputPatronymic">Отчество</label>
+          <input type="text" class="form-control w-50"  id="inputPatronymic" formControlName="inputPatronymic" placeholder="Отчество">
+        </div>
+
+        <div class="d-flex justify-content my-3">
+          <label class="w-25 pt-2 text-muted" for="inputZip">Почтовый индекс</label>
+          <input type="text" class="form-control w-50" id="inputZip" formControlName="inputZip" placeholder="почтовый индекс">
+        </div>
+
+        <div class="d-flex justify-content my-3">
+          <label class="w-25 pt-2 text-muted" for="inputAddress">Домашний адрес</label>
+          <input type="text" class="form-control w-50" id="inputAddress" formControlName="inputAddress" placeholder="Домашний адрес" maxlength="100">
+        </div>
+
+        <div class="d-flex justify-content my-3">
+          <label class="w-25 pt-2 text-muted" for="inputPhone">Телефон</label>
+          <input type="text" class="form-control w-50" id="inputPhone" formControlName="inputPhone" placeholder="Телефон">
+        </div>
+
+        <div class="d-flex justify-content my-3">
+          <label class="w-25 pt-2 text-muted" for="inputPhone2">Телефон 2</label>
+          <input type="text" class="form-control w-50" id="inputPhone2" formControlName="inputPhone2" placeholder="Телефон 2">
+        </div>
+        <br>
+
+        <!-- начало обработки почтовых ошибок -->
+
+        <div *ngIf="parlorForm.controls['inputEmail'].dirty">
+
+          <div class="alert alert-danger" role="alert"
+               *ngIf="parlorForm.controls['inputEmail'].value.length === 0 ">
+            Не указан Email.
+          </div>
+
+          <div *ngIf="parlorForm.controls['inputEmail'].value.length > 0">
+            <div *ngIf="parlorForm.controls['inputEmail'].invalid; else trueSucc">
+
+              <div class="alert alert-danger" role="alert"
+                   *ngIf="parlorForm.controls['inputEmail'].hasError('errorEmailExists') === true">
+                Данный Email уже занят.
+              </div>
+
+              <div class="alert alert-danger" role="alert"
+                   *ngIf="parlorForm.controls['inputEmail'].hasError('email') === true">
+                Неверно введен Email.
+              </div>
+
+            </div>
+
+            <ng-template #trueSucc>
+
+              <div class="alert alert-success" role="alert">Email свободен.</div>
+
+            </ng-template>
+
+          </div>
+
+        </div>
+
+        <!-- закончили обработку почтовых ошибок -->
 
 
-    <ng-container *ngIf="bPasswordNew">Пароль изменен</ng-container>
-
-    <div class="alertWrong" *ngIf="bErrorRepeatPassword">Пароли не совпадают</div>
-    <div class="alertWrong" *ngIf="bErrorEmptyPassword">Пароли не должны быть пустыми</div>
 
 
-    <div *ngIf="parlorForm.controls['inputNewPassword2'].value.length > 0">
-      <div *ngIf="parlorForm.controls['inputNewPassword2'].invalid; else truePassword2Template">
-        <div class="alertWrong">Повторный пароль не совпадает</div>
-      </div>
+        <img class="img-lock" src="/assets/img/lock.png" alt="Смена пароля" title="Смена пароля">
+        <label class="ml-3 text-muted" style="cursor: pointer; text-decoration: underline;" (click)="accessPassword()">Изменить пароль</label>
+
+        <ng-container *ngIf="bShowChangePassword">
+          <div class="changepassBox">
+            <input (click)="onClearInputError()" type="password" class="form-control w-50 my-3" id="inputNewPassword1" formControlName="inputNewPassword1" placeholder="Введите новый пароль">
+            <input (click)="onClearInputError()" type="password" class="form-control w-50" id="inputNewPassword2" formControlName="inputNewPassword2" placeholder="Повторите пароль">
+
+            <button type="submit" class="btn btn-outline-primary my-3 mr-3" style="width:120px" (click)="NewPassword()">Ок</button>
+            <button type="submit" class="btn btn-outline-primary my-3 mr-3" style="width:120px" (click)="DisappearFrame()">Отмена</button>
+
+
+            <ng-container *ngIf="bPasswordNew">Пароль изменен</ng-container>
+
+            <div class="alert alert-danger" role="alert" *ngIf="bErrorRepeatPassword">Пароли не совпадают</div>
+            <div class="alert alert-danger" role="alert" *ngIf="bErrorEmptyPassword">Пароли не должны быть пустыми</div>
+
+
+            <div *ngIf="parlorForm.controls['inputNewPassword2'].value.length > 0">
+              <div *ngIf="parlorForm.controls['inputNewPassword2'].invalid; else truePassword2Template">
+                <div class="alert alert-danger" role="alert">Повторный пароль не совпадает</div>
+              </div>
+            </div>
+
+            <ng-template #truePassword2Template>
+              <div class="alert alert-success" role="alert">Пароль совпал</div>
+            </ng-template>
+
+          </div>
+
+        </ng-container>
+
+      </form>
+
+      <br>
+      <button type="submit" class="btn btn-primary my-3 mr-3" (click)="savecv()" [disabled]="parlorForm.invalid" style="width:120px">Сохранить</button>
+      <button type="submit" class="btn btn-primary my-3" (click)="back()" style="width:120px">Отмена</button>
+
     </div>
 
-    <ng-template #truePassword2Template>
-      <div class="alertSuccess">Пароль совпал</div>
-    </ng-template>
 
-  </div>
-
-</ng-container>
-
-</form>
-
-  <div class="line">
-    <button type="submit" class="btn-save" (click)="savecv()" [disabled]="parlorForm.invalid" >Сохранить</button>
-    <button type="submit" class="btn-cancel" (click)="back()">Отмена</button>
   </div>
 </div>
+

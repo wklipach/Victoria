@@ -14,7 +14,7 @@
 
 
             <!-- Кнопка раскрытия таблицы -->
-            <button type="button" class="btn btn-light my-2 mr-4 w-1"  title="имеющиеся данные" data-toggle="collapse" data-target="#collapseShowBranch">
+            <button type="button" class="btn btn-primary my-2 mr-4 w-1"  title="имеющиеся данные" data-toggle="collapse" data-target="#collapseShowBranch">
               <i class="fa fa-angle-double-down"></i>
             </button>
 
@@ -69,9 +69,9 @@
           </div>
 
           <div class="collapse" id="collapseShowBranch">
-          <ul class="list-group">
-            <li [class.active] = "bl === selectedBL" class="list-group-item"  (click)="mu(bl)"  *ngFor="let bl of branchList">{{bl.name }}</li>
-          </ul>
+            <ul class="list-group">
+              <li [class.active] = "bl === selectedBL" class="list-group-item"  (click)="mu(bl)"  *ngFor="let bl of branchList">{{bl.name }}</li>
+            </ul>
           </div>
 
           <!-- Модальное окно удаления отделения -->
@@ -105,23 +105,23 @@
         <div class="card card-body mt-4">
 
           <div class="btn-group-justified">
-          <!-- Кнопка раскрытия таблицы -->
-          <button type="button" class="btn btn-light my-2 mr-4 w-1"  title="имеющиеся данные" data-toggle="collapse" data-target="#collapseShowUser">
-            <i class="fa fa-angle-double-down"></i>
-          </button>
+            <!-- Кнопка раскрытия таблицы -->
+            <button type="button" class="btn btn-primary my-2 mr-4 w-1"  title="имеющиеся данные" data-toggle="collapse" data-target="#collapseShowUser">
+              <i class="fa fa-angle-double-down"></i>
+            </button>
           </div>
 
 
           <div class="collapse" id="collapseShowUser">
-          <ul class="list-group">
-            <li [class.active] = "uElem === selectedUser" class="list-group-item"  (click)="muUser(uElem)" *ngFor="let uElem of usersList">
-              <span class="badge badge-secondary" *ngIf="uElem.filial===0">!</span>
-              {{uElem.nick}}
-              <button data-toggle="collapse" data-target="#collapseUserFrame" class="btn btn-primary float-right" type="button" title="задать права пользователю" (click)="changeUserRight(uElem)">
-                <i class="fa fa-edit"></i>
-              </button>
-            </li>
-          </ul>
+            <ul class="list-group">
+              <li [class.active] = "uElem === selectedUser" class="list-group-item"  (click)="muUser(uElem)" *ngFor="let uElem of usersList">
+                <span class="badge badge-secondary" *ngIf="uElem.filial===0">!</span>
+                {{uElem.nick}}
+                <button data-toggle="collapse" data-target="#collapseUserFrame" class="btn btn-primary float-right" type="button" title="задать права пользователю" (click)="changeUserRight(uElem)">
+                  <i class="fa fa-edit"></i>
+                </button>
+              </li>
+            </ul>
           </div>
 
         </div>
@@ -241,14 +241,14 @@
     </div>
   </form>
 
-    <div class="row">
-      <div class="col-6">
-        <app-addwork-admin></app-addwork-admin>
-      </div>
-      <div class="col-6">
-        <app-address-admin></app-address-admin>
-      </div>
+  <div class="row">
+    <div class="col-6">
+      <app-addwork-admin></app-addwork-admin>
     </div>
+    <div class="col-6">
+      <app-address-admin></app-address-admin>
+    </div>
+  </div>
 
   <div class="row">
     <div class="col-6">
@@ -260,5 +260,3 @@
 
 
 </div>
-
-
