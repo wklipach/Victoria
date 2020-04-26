@@ -269,4 +269,42 @@ export class ShipmentLaundryComponent implements OnInit {
     this.intAddress = $event;
     this.setAllFlagFromCicle();
   }
+
+  globalOnClickMinus(el: string) {
+    if (this.shipmentForm) {
+      if (this.shipmentForm.controls[el]) {
+        let sVal = this.shipmentForm.controls[el].value.toString().trim();
+        if (Check.ZeroOrPositive(sVal)) {
+          if (sVal === '0' || sVal === '1') {
+            sVal = 1;
+          } else {
+            sVal = (Number(sVal) - 1).toString();
+          }
+        } else {
+          sVal = 1;
+        }
+
+        this.shipmentForm.controls[el].setValue(sVal);
+      }
+    }
+  }
+
+  globalOnClickPlus(el: string) {
+    if (this.shipmentForm) {
+      if (this.shipmentForm.controls[el]) {
+        let sVal = this.shipmentForm.controls[el].value.toString().trim();
+        if (Check.ZeroOrPositive(sVal)) {
+          if (sVal === '0') {
+            sVal = 1;
+          } else {
+            sVal = (Number(sVal) + 1).toString();
+          }
+        } else {
+          sVal = 1;
+        }
+
+        this.shipmentForm.controls[el].setValue(sVal);
+      }
+    }
+  }
 }

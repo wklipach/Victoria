@@ -266,4 +266,43 @@ export class WarehouseLaundryComponent implements OnInit {
     this.intAddress = $event;
     this.setAllFlagFromCicle();
   }
+
+  globalOnClickMinus(el: string) {
+    if (this.warehouseForm) {
+      if (this.warehouseForm.controls[el]) {
+        let sVal = this.warehouseForm.controls[el].value.toString().trim();
+        if (Check.ZeroOrPositive(sVal)) {
+          if (sVal === '0' || sVal === '1') {
+            sVal = 1;
+          } else {
+            sVal = (Number(sVal) - 1).toString();
+          }
+        } else {
+          sVal = 1;
+        }
+
+        this.warehouseForm.controls[el].setValue(sVal);
+      }
+    }
+  }
+
+  globalOnClickPlus(el: string) {
+    if (this.warehouseForm) {
+      if (this.warehouseForm.controls[el]) {
+        let sVal = this.warehouseForm.controls[el].value.toString().trim();
+        if (Check.ZeroOrPositive(sVal)) {
+          if (sVal === '0') {
+            sVal = 1;
+          } else {
+            sVal = (Number(sVal) + 1).toString();
+          }
+        } else {
+          sVal = 1;
+        }
+
+        this.warehouseForm.controls[el].setValue(sVal);
+      }
+    }
+  }
+
 }

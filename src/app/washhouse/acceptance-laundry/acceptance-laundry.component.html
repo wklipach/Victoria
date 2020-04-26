@@ -29,8 +29,8 @@
 
               <p class="w-25">{{getErrorText('n1')}}
                 <input type="text" [class]="getClassName('n1')" formControlName="n1" placeholder="шт" id="n1" name="name1"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n1')" ><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n1')"><i class="fa fa-minus"></i></p>
 
               <p class="w-25">{{getErrorText('n1_spoiled')}}
                 <input type="text" [class]="getClassName('n1_spoiled')" formControlName="n1_spoiled" placeholder="шт" id="name2" name="name2"></p>
@@ -43,13 +43,13 @@
             <div class="d-flex justify-content-between">
               <label class="w-25 font-weight-bold">70 x 70</label>
 
-              <p class="w-25">{{getErrorText('n1')}}
-                <input type="text" [class]="getClassName('n1')" formControlName="n1" placeholder="шт" id="n101" name="name1"></p>
+              <p class="w-25">{{getErrorText('n2')}}
+                <input type="text" [class]="getClassName('n2')" formControlName="n2" placeholder="шт" id="n101" name="name1"></p>
               <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
               <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
 
-              <p class="w-25">{{getErrorText('n1_spoiled')}}
-                <input type="text" [class]="getClassName('n1_spoiled')" formControlName="n1_spoiled" placeholder="шт" id="name202" name="name2"></p>
+              <p class="w-25">{{getErrorText('n2_spoiled')}}
+                <input type="text" [class]="getClassName('n2_spoiled')" formControlName="n2_spoiled" placeholder="шт" id="name202" name="name2"></p>
               <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
               <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
             </div>

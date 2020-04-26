@@ -271,5 +271,42 @@ export class WashingLaundryComponent implements OnInit {
   }
 
 
+  globalOnClickMinus(el: string) {
+    if (this.washingForm) {
+      if (this.washingForm.controls[el]) {
+        let sVal = this.washingForm.controls[el].value.toString().trim();
+        if (Check.ZeroOrPositive(sVal)) {
+          if (sVal === '0' || sVal === '1') {
+            sVal = 1;
+          } else {
+            sVal = (Number(sVal) - 1).toString();
+          }
+        } else {
+          sVal = 1;
+        }
+
+        this.washingForm.controls[el].setValue(sVal);
+      }
+    }
+  }
+
+  globalOnClickPlus(el: string) {
+    if (this.washingForm) {
+      if (this.washingForm.controls[el]) {
+        let sVal = this.washingForm.controls[el].value.toString().trim();
+        if (Check.ZeroOrPositive(sVal)) {
+          if (sVal === '0') {
+            sVal = 1;
+          } else {
+            sVal = (Number(sVal) + 1).toString();
+          }
+        } else {
+          sVal = 1;
+        }
+
+        this.washingForm.controls[el].setValue(sVal);
+      }
+    }
+  }
 
 }

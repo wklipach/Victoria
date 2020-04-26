@@ -196,4 +196,42 @@ export class AcceptanceLaundryComponent implements OnInit {
 
   }
 
+  globalOnClickPlus(el: string) {
+    if (this.acclaundform) {
+      if (this.acclaundform.controls[el]) {
+         let sVal = this.acclaundform.controls[el].value.toString().trim();
+         if (Check.ZeroOrPositive(sVal)) {
+           if (sVal === '0') {
+             sVal = 1;
+           } else {
+             sVal = (Number(sVal) + 1).toString();
+           }
+         } else {
+           sVal = 1;
+         }
+
+        this.acclaundform.controls[el].setValue(sVal);
+      }
+    }
+  }
+
+  globalOnClickMinus(el: string) {
+    if (this.acclaundform) {
+      if (this.acclaundform.controls[el]) {
+        let sVal = this.acclaundform.controls[el].value.toString().trim();
+        if (Check.ZeroOrPositive(sVal)) {
+          if (sVal === '0' || sVal === '1') {
+            sVal = 1;
+          } else {
+            sVal = (Number(sVal) - 1).toString();
+          }
+        } else {
+          sVal = 1;
+        }
+
+        this.acclaundform.controls[el].setValue(sVal);
+      }
+    }
+  }
+
 }
