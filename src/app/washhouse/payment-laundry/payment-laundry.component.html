@@ -1,6 +1,11 @@
+
+<div class="container">
+  <app-mainmenu></app-mainmenu>
+  <div class="d-flex justify-content-between">
 <label [style]="'background-color:#87CEEB'"> одобрено </label>
  <label [style]="'background-color:#FFFFE0'"> не подтверждено </label>
   <label [style]="'background-color:#DCDCDC'"> не рабочий </label>
+  </div>
 
 <form [formGroup]="paymentForm">
     <li class="list-group-item">
@@ -8,19 +13,22 @@
       <option value="{{chUser.id}}" *ngFor="let chUser of userList">{{chUser.nick}}</option>
     </select>
   </li>
+
+  <div class="card p-2 my-2">
 {{this.sError}}
-  <div class="input-append btn-group">
-    <input formControlName="dateBegin" type="date" class="form-control">
-    <input formControlName="dateEnd" type="date" class="form-control">
-    <button class="form-control" (click)="showPay()">Показать</button>
-    <button class="form-control" (click)="saveData()">Применить</button>
+  <div class="d-flex justify-content-between">
+    <input formControlName="dateBegin" type="date" class="form-control w-25">
+    <input formControlName="dateEnd" type="date" class="form-control w-25">
+    <button class="btn btn-outline-primary" (click)="showPay()">Показать</button>
+    <button class="btn btn-outline-primary" (click)="saveData()">Применить</button>
   </div>
+</div>
 
   <form [formGroup]="payDynamForm">
 
 
     <table class="table">
-      <thead class="thead-dark">
+      <thead class="thead-light">
       <tr>
         <th>#</th>
         <th>Дата</th>
@@ -50,9 +58,10 @@
 
   </form>
 
-
-
 </form>
 <div class="input-append btn-group">
   <button class="form-control" (click)="Clear()">Очистить</button>
+</div>
+
+
 </div>
