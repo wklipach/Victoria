@@ -1,0 +1,58 @@
+<label [style]="'background-color:#87CEEB'"> одобрено </label>
+ <label [style]="'background-color:#FFFFE0'"> не подтверждено </label>
+  <label [style]="'background-color:#DCDCDC'"> не рабочий </label>
+
+<form [formGroup]="paymentForm">
+    <li class="list-group-item">
+    <select class="custom-select" id="inputGroupSelect01" formControlName="cs1" (change)="userChange($event)">
+      <option value="{{chUser.id}}" *ngFor="let chUser of userList">{{chUser.nick}}</option>
+    </select>
+  </li>
+{{this.sError}}
+  <div class="input-append btn-group">
+    <input formControlName="dateBegin" type="date" class="form-control">
+    <input formControlName="dateEnd" type="date" class="form-control">
+    <button class="form-control" (click)="showPay()">Показать</button>
+    <button class="form-control" (click)="saveData()">Применить</button>
+  </div>
+
+  <form [formGroup]="payDynamForm">
+
+
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th>#</th>
+        <th>Дата</th>
+        <th>Выплачено</th>
+        <th>Стоимость часа</th>
+        <th>Отработано, ч.</th>
+        <th>ЗСР</th>
+        <th>Доп. работы</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr
+        [style]="this.getCurStyle(p)" *ngFor="let p of this.showPayModel; let i = index; ">
+
+        <th scope="row">{{i+1}}</th>
+        <td>{{this.arrayPay[p-1][1] | date:'dd.MM.yyyy' }}</td>
+        <td><input type="checkbox" disabled [checked]="this.arrayPay[p-1][6]" ></td>
+        <td><input type="text"  formControlName="PayPerHour{{p}}"></td>
+        <td><input type="text"  formControlName="Hour{{p}}"></td>
+        <td><input type="text"  formControlName="Koeff{{p}}"></td>
+        <td><input type="text"  formControlName="AddWork{{p}}"></td>
+      </tr>
+
+      </tbody>
+    </table>
+
+  </form>
+
+
+
+</form>
+<div class="input-append btn-group">
+  <button class="form-control" (click)="Clear()">Очистить</button>
+</div>

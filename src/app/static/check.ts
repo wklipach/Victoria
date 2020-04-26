@@ -195,5 +195,22 @@ export class Check {
     };
   }
 
+  // проверка на 0 или больше нуля, остальные ФАЛЬШЕ
+  public static  ZeroOrPositive(str: string): boolean {
+      const nRgEx: RegExp = /^0*[1-9]\d*$/;
+
+      if (!str) {
+        return false;
+      }
+
+      if (!nRgEx.test(str)) {
+         if (str !== '0') {
+           return false;
+         }
+      }
+      return true;
+  }
+
+
 
 }
