@@ -1,30 +1,29 @@
 <form [formGroup]="addressForm">
 
-    <h4 class="alert-primary py-2 pl-2">Адреса доставки</h4>
+  <h4 class="alert-primary mt-2 my-2 py-2 pl-2">Адреса доставки</h4>
 
-    <div class="card card-body mt-4 pt-0">
-      <div class="btn-group-justified">
-
-        <!-- Кнопка раскрытия таблицы -->
-        <button type="button" class="btn btn-light my-2 mr-4 w-1"  title="имеющиеся данные" data-toggle="collapse" data-target="#collapseShowAD">
-          <i class="fa fa-angle-double-down"></i>
-        </button>
+  <div class="card card-body mt-4 p-3">
+    <div class="d-flex justify-content-start">
 
         <!-- Кнопка добавления -->
-        <button class="btn btn-primary my-2 mr-4 w-1" data-toggle="collapse" title="добавить адрес" href="#collapseNewAD" aria-expanded="false" aria-controls="collapse1">
+        <button class="btn btn-primary my-2 mr-4" data-toggle="collapse" title="добавить адрес" href="#collapseNewAD" aria-expanded="false" aria-controls="collapse1">
           <i class="fa fa-plus"></i>
         </button>
 
         <!-- Кнопка редактирования -->
-        <button class="btn btn-primary my-2 mr-4 w-1" (click)="changeAD()"  data-toggle="collapse"  title="изменить адрес" href="#collapseChangeAD" aria-expanded="false" aria-controls="collapse1">
+        <button class="btn btn-primary my-2 mr-4" (click)="changeAD()"  data-toggle="collapse"  title="изменить адрес" href="#collapseChangeAD" aria-expanded="false" aria-controls="collapse1">
           <i class="fa fa-edit"></i>
         </button>
 
         <!-- Кнопка модального окна удаления -->
-        <button type="button" class="btn btn-danger my-2 mr-4 w-1"  title="удалить адрес" data-toggle="modal" data-target="#collapseDeleteAD">
+        <button type="button" class="btn btn-danger my-2 mr-4"  title="удалить адрес" data-toggle="modal" data-target="#collapseDeleteAD">
           <i class="fa fa-trash"></i>
         </button>
 
+      <!-- Кнопка раскрытия таблицы -->
+      <button type="button" class="btn btn-primary my-2 ml-auto"  title="имеющиеся данные" data-toggle="collapse" data-target="#collapseShowAD">
+        <i class="fa fa-angle-double-down"></i>
+      </button>
 
       </div>
 
@@ -60,7 +59,7 @@
       </div>
 
       <div class="collapse" id="collapseShowAD">
-        <ul class="list-group">
+        <ul class="list-group mt-2">
           <li [class.active] = "ad === selectedAD" class="list-group-item" (click)="mu(ad)"  *ngFor="let ad of addressList">{{ad['address']}},&nbsp;{{ad['branch_name']}}</li>
         </ul>
       </div>

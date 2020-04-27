@@ -7,31 +7,29 @@
     <div class="row">
       <div class="col-6">
 
-        <h4 class="alert-primary py-2 pl-2">Редактирование отделений</h4>
+        <h4 class="alert-primary my-2 py-2 pl-2">Редактирование отделений</h4>
 
-        <div class="card card-body mt-4 pt-0">
-          <div class="btn-group-justified">
-
-
-            <!-- Кнопка раскрытия таблицы -->
-            <button type="button" class="btn btn-primary my-2 mr-4 w-1"  title="имеющиеся данные" data-toggle="collapse" data-target="#collapseShowBranch">
-              <i class="fa fa-angle-double-down"></i>
-            </button>
-
+        <div class="card card-body mt-4 p-3">
+          <div class="d-flex justify-content-start">
 
             <!-- Кнопка добавления отделения -->
-            <button class="btn btn-primary my-2 mr-4 w-1" data-toggle="collapse" title="добавить отделение" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
+            <button class="btn btn-primary my-2 mr-4" data-toggle="collapse" title="Добавить отделение" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
               <i class="fa fa-plus"></i>
             </button>
 
             <!-- Кнопка редактирования отделения -->
-            <button class="btn btn-primary my-2 mr-4 w-1" (click)="changeBranch()"  data-toggle="collapse"  title="изменить название" href="#collapseCH" aria-expanded="false" aria-controls="collapse1">
+            <button class="btn btn-primary my-2 mr-4" (click)="changeBranch()"  data-toggle="collapse"  title="Изменить название" href="#collapseCH" aria-expanded="false" aria-controls="collapse1">
               <i class="fa fa-edit"></i>
             </button>
 
             <!-- Кнопка модального окна удаления отделения -->
-            <button type="button" class="btn btn-danger my-2 mr-4 w-1"  title="удалить отделение" data-toggle="modal" data-target="#collapseDeleteBranch">
+            <button type="button" class="btn btn-danger my-2 mr-4"  title="Удалить отделение" data-toggle="modal" data-target="#collapseDeleteBranch">
               <i class="fa fa-trash"></i>
+            </button>
+
+            <!-- Кнопка раскрытия таблицы -->
+            <button type="button" class="btn btn-primary my-2 ml-auto"  title="Список отделений" data-toggle="collapse" data-target="#collapseShowBranch">
+              <i class="fa fa-angle-double-down"></i>
             </button>
 
 
@@ -69,7 +67,7 @@
           </div>
 
           <div class="collapse" id="collapseShowBranch">
-            <ul class="list-group">
+            <ul class="list-group mt-2">
               <li [class.active] = "bl === selectedBL" class="list-group-item"  (click)="mu(bl)"  *ngFor="let bl of branchList">{{bl.name }}</li>
             </ul>
           </div>
@@ -100,13 +98,13 @@
       </div>
 
       <div class="col-6">
-        <h4 class="alert-primary py-2 pl-2">Редактирование пользователей</h4>
+        <h4 class="alert-primary my-2 py-2 pl-2">Редактирование пользователей</h4>
 
-        <div class="card card-body mt-4">
+        <div class="card card-body mt-4 p-3">
+          <div class="d-flex justify-content-end">
 
-          <div class="btn-group-justified">
             <!-- Кнопка раскрытия таблицы -->
-            <button type="button" class="btn btn-primary my-2 mr-4 w-1"  title="имеющиеся данные" data-toggle="collapse" data-target="#collapseShowUser">
+            <button type="button" class="btn btn-primary my-2 mr-4"  title="имеющиеся данные" data-toggle="collapse" data-target="#collapseShowUser">
               <i class="fa fa-angle-double-down"></i>
             </button>
           </div>
@@ -132,7 +130,7 @@
         {{sError}}
         <div class="collapse" id="collapseUserFrame">
 
-          <h4 class="alert-primary mt-2 py-2 pl-2">Настройка пользователя</h4>
+          <h4 class="alert-primary mt-2 my-2 py-2 pl-2">Настройка пользователя</h4>
 
           <div class="card card-body">
             <ul class="list-group">
@@ -201,7 +199,7 @@
 
 
 
-            <button class="btn btn-outline-primary float-right" type="button"  data-toggle="collapse" data-target="#collapseChoiseBranch">Отвязать от филиала</button>
+            <button class="btn btn-outline-primary float-right" type="button"  data-toggle="collapse" data-target="#collapseChoiseBranch">Отвязать от отделения</button>
             <button class="btn btn-outline-primary float-right" type="button" data-toggle="collapse" data-target="#collapseDeleteUserAll">Удалить пользователя полностью</button>
             <button class="btn btn-outline-primary float-right" type="button" (click)="OnSaveAllUserBranch()">Сохранить</button>
             <button class="btn btn-outline-primary float-right" data-toggle="collapse" data-target="#collapseUserFrame" type="button">Отмена</button>

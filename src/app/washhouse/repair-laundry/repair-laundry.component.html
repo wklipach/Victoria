@@ -28,8 +28,8 @@
                 <label class="w-25 mt-1 font-weight-bold">50 x 70</label>
                 <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText('n1')}}</p>
                 <input class="w-25" type="text" [class]="getClassName('n1')" formControlName="n1" placeholder="шт" id="name1" name="name1">
-                <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-                <p class="btn btn-outline-primary" title="Минус"><i class="fa fa-minus"></i></p>
+                <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n1')"><i class="fa fa-plus"></i></p>
+                <p class="btn btn-outline-primary" title="Минус" (click)="globalOnClickMinus('n1')"><i class="fa fa-minus"></i></p>
 
               </div>
 
@@ -37,8 +37,8 @@
                 <label class="w-25 mt-1 font-weight-bold">70 x 70</label>
                 <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText('n2')}}</p>
                 <input class="w-25" type="text" [class]="getClassName('n2')" formControlName="n2" placeholder="шт" id="name3" name="name3">
-                <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-                <p class="btn btn-outline-primary" title="Минус"><i class="fa fa-minus"></i></p>
+                <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n2')"><i class="fa fa-plus"></i></p>
+                <p class="btn btn-outline-primary" title="Минус" (click)="globalOnClickMinus('n2')"><i class="fa fa-minus"></i></p>
               </div>
             </div>
           </div>
@@ -55,16 +55,16 @@
                 <label class="w-25 mt-1 font-weight-bold">1,5 сп</label>
                 <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText('n3')}}</p>
                 <p class="w-25"><input type="text" [class]="getClassName('n3')" formControlName="n3" placeholder="шт" id="name5" name="name5"></p>
-                <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-                <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+                <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n3')"><i class="fa fa-plus"></i></p>
+                <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n3')"><i class="fa fa-minus"></i></p>
               </div>
 
               <div class="d-flex justify-content-between mb-1">
                 <label class="w-25 mt-1 font-weight-bold">2 сп</label>
                 <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText('n4')}}</p>
                 <p class="w-25"><input type="text" [class]="getClassName('n4')" formControlName="n4" placeholder="шт" id="name7" name="name7"></p>
-                <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-                <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+                <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n4')"><i class="fa fa-plus"></i></p>
+                <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n4')"><i class="fa fa-minus"></i></p>
               </div>
             </div>
           </div>
@@ -81,16 +81,16 @@
                 <label class="w-25 mt-1 font-weight-bold">1,5 сп</label>
                 <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText('n5')}}</p>
                 <p class="w-25"><input type="text" [class]="getClassName('n5')" formControlName="n5" placeholder="шт" id="name9" name="name9"></p>
-                <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-                <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+                <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n5')"><i class="fa fa-plus"></i></p>
+                <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n5')"><i class="fa fa-minus"></i></p>
               </div>
 
               <div class="d-flex justify-content-between mb-1">
                 <label class="w-25 mt-1 font-weight-bold">2 сп</label>
                 <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText('n6')}}</p>
                 <p class="w-25"><input type="text" [class]="getClassName('n6')" formControlName="n6" placeholder="шт" id="name11" name="name11"></p>
-                <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-                <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+                <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n6')"><i class="fa fa-plus"></i></p>
+                <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n6')"><i class="fa fa-minus"></i></p>
               </div>
             </div>
           </div>
@@ -107,32 +107,32 @@
                 <label class="w-25 mt-1 font-weight-bold mb-1">30 x 60</label>
                 <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText('n7')}}</p>
                 <p class="w-25"><input type="text" [class]="getClassName('n7')" formControlName="n7" placeholder="шт" id="name13" name="name13"></p>
-                <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-                <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+                <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n7')"><i class="fa fa-plus"></i></p>
+                <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n7')"><i class="fa fa-minus"></i></p>
               </div>
 
               <div class="d-flex justify-content-between">
                 <label class="w-25 mt-1 font-weight-bold mb-1">70 x 70</label>
                 <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText('n8')}}</p>
                 <p class="w-25"><input type="text" [class]="getClassName('n8')" formControlName="n8" placeholder="шт" id="name15" name="name15"></p>
-                <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-                <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+                <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n8')"><i class="fa fa-plus"></i></p>
+                <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n8')"><i class="fa fa-minus"></i></p>
               </div>
 
               <div class="d-flex justify-content-between mb-1">
                 <label class="w-25 mt-1 font-weight-bold">70 x 140</label>
                 <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText('n9')}}</p>
                 <p class="w-25"><input type="text" [class]="getClassName('n9')" formControlName="n9" placeholder="шт" id="name17" name="name17"></p>
-                <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-                <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+                <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n9')"><i class="fa fa-plus"></i></p>
+                <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n9')"><i class="fa fa-minus"></i></p>
               </div>
 
               <div class="d-flex justify-content-between mb-1">
                 <label class="w-25 mt-1 font-weight-bold">Кухонные</label>
                 <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText('n10')}}</p>
                 <p class="w-25"><input type="text" [class]="getClassName('n10')" formControlName="n10" placeholder="шт" id="name19" name="name19"></p>
-                <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-                <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+                <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n10')"><i class="fa fa-plus"></i></p>
+                <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n10')"><i class="fa fa-minus"></i></p>
               </div>
             </div>
           </div>
@@ -141,8 +141,8 @@
             <label class="w-50 font-weight-bold">Общий вес белья:</label>
             <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getMassaText('massa')}}</p>
             <p class="w-25"><input type="text" [class]="getClassName('massa')"  formControlName="massa" placeholder="кг" id="elMassa" name="elMassa"></p>
-            <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-            <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+            <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('massa')"><i class="fa fa-plus"></i></p>
+            <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('massa')"><i class="fa fa-minus"></i></p>
           </div>
 
         </div> <!-- end col -6 -->
@@ -163,16 +163,16 @@
                 <label class="w-25 mt-1 font-weight-bold">Для ванны</label>
                 <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText('n11')}}</p>
                 <p class="w-25"><input type="text" [class]="getClassName('n11')" formControlName="n11" placeholder="шт" id="name21" name="name21"></p>
-                <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-                <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+                <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n11')"><i class="fa fa-plus"></i></p>
+                <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n11')"><i class="fa fa-minus"></i></p>
               </div>
 
               <div class="d-flex justify-content-between">
                 <label class="w-25 mt-1 font-weight-bold">Придверный</label>
                 <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText('n12')}}</p>
                 <p class="w-25"><input type="text" [class]="getClassName('n12')" formControlName="n12" placeholder="шт" id="name23" name="name23"></p>
-                <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-                <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+                <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n12')"><i class="fa fa-plus"></i></p>
+                <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n12')"><i class="fa fa-minus"></i></p>
               </div>
             </div>
           </div>
@@ -189,16 +189,16 @@
                 <label class="w-25 mt-1 font-weight-bold">1,5 сп</label>
                 <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText('n13')}}</p>
                 <p class="w-25"><input type="text" [class]="getClassName('n13')" formControlName="n13" placeholder="шт" id="name25" name="name25"></p>
-                <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-                <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+                <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n13')"><i class="fa fa-plus"></i></p>
+                <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n13')"><i class="fa fa-minus"></i></p>
               </div>
 
               <div class="d-flex justify-content-between">
                 <label class="w-25 mt-1 font-weight-bold">2 сп</label>
                 <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText('n14')}}</p>
                 <p class="w-25"><input type="text" [class]="getClassName('n14')" formControlName="n14" placeholder="шт" id="name27" name="name27"></p>
-                <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-                <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+                <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n14')"><i class="fa fa-plus"></i></p>
+                <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n14')"><i class="fa fa-minus"></i></p>
               </div>
             </div>
           </div>
@@ -215,16 +215,16 @@
                 <label class="w-25 mt-1 font-weight-bold">50 x 70</label>
                 <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText('n15')}}</p>
                 <p class="w-25"><input type="text" [class]="getClassName('n15')" formControlName="n15" placeholder="шт" id="name29" name="name29"></p>
-                <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-                <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+                <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n15')"><i class="fa fa-plus"></i></p>
+                <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n15')"><i class="fa fa-minus"></i></p>
               </div>
 
               <div class="d-flex justify-content-between">
                 <label class="w-25 mt-1 font-weight-bold">70 x 70</label>
                 <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText('n16')}}</p>
                 <p class="w-25"><input type="text" [class]="getClassName('n16')" formControlName="n16" placeholder="шт" id="name31" name="name31"></p>
-                <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-                <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+                <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n16')"><i class="fa fa-plus"></i></p>
+                <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n16')"><i class="fa fa-minus"></i></p>
               </div>
             </div>
           </div>
@@ -241,16 +241,16 @@
                 <label class="w-25 mt-1 font-weight-bold">1,5 сп</label>
                 <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText('n17')}}</p>
                 <p class="w-25"><input type="text" [class]="getClassName('n17')" formControlName="n17" placeholder="шт" id="name33" name="name33"></p>
-                <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-                <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+                <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n17')"><i class="fa fa-plus"></i></p>
+                <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n17')"><i class="fa fa-minus"></i></p>
               </div>
 
               <div class="d-flex justify-content-between">
                 <label class="w-25 mt-1 font-weight-bold">2 сп</label>
                 <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText('n18')}}</p>
                 <p class="w-25"><input type="text" [class]="getClassName('n18')" formControlName="n18" placeholder="шт" id="name35" name="name36"></p>
-                <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-                <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+                <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n18')"><i class="fa fa-plus"></i></p>
+                <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n18')"><i class="fa fa-minus"></i></p>
               </div>
             </div>
           </div>
@@ -267,8 +267,8 @@
                 <label class="w-25 mt-1 font-weight-bold">Шторы</label>
                 <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText('n19')}}</p>
                 <p class="w-25"><input type="text" [class]="getClassName('n19')" formControlName="n19" placeholder="шт" id="name38" name="name38"></p>
-                <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-                <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+                <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n19')"><i class="fa fa-plus"></i></p>
+                <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n19')"><i class="fa fa-minus"></i></p>
               </div>
             </div>
           </div>
@@ -276,243 +276,7 @@
         </div> <!-- end col -6 -->
       </div> <!-- end row -->
 
-      <!--
 
-      <table class="table table-borderless">
-        <thead>
-        <tr>
-          <th rowspan="3">Наволочка</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td></td>
-          <td>Починено</td>
-        </tr>
-        <tr>
-          <td>50x70</td>
-          <td>{{getErrorAndText('n1')}}<input type="text" [class]="getClassName('n1')" formControlName="n1" placeholder="шт" id="name1" name="name1"></td>
-
-        </tr>
-        <tr>
-          <td>70x70</td>
-          <td>{{getErrorAndText('n2')}}<input type="text" [class]="getClassName('n2')" formControlName="n2" placeholder="шт" id="name3" name="name3"></td>
-
-        </tr>
-        </tbody>
-      </table>
-
-      <table class="table table-borderless">
-        <thead>
-        <tr>
-          <th rowspan="3">Простынь</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td></td>
-          <td>Починено</td>
-        </tr>
-        <tr>
-          <td>1,5 сп</td>
-          <td>{{getErrorAndText('n3')}}<input type="text" [class]="getClassName('n3')" formControlName="n3" placeholder="шт" id="name5" name="name5"></td>
-
-        </tr>
-        <tr>
-          <td>2 сп</td>
-          <td>{{getErrorAndText('n4')}}<input type="text" [class]="getClassName('n4')" formControlName="n4" placeholder="шт" id="name7" name="name7"></td>
-
-        </tr>
-        </tbody>
-      </table>
-
-      <table class="table table-borderless">
-        <thead>
-        <tr>
-          <th rowspan="3">Пододеяльник</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td></td>
-          <td>Починено</td>
-
-        </tr>
-        <tr>
-          <td>1,5 сп</td>
-          <td>{{getErrorAndText('n5')}}<input type="text" [class]="getClassName('n5')" formControlName="n5" placeholder="шт" id="name9" name="name9"></td>
-
-        </tr>
-        <tr>
-          <td>2 сп</td>
-          <td>{{getErrorAndText('n6')}}<input type="text" [class]="getClassName('n6')" formControlName="n6" placeholder="шт" id="name11" name="name11"></td>
-
-        </tr>
-        </tbody>
-      </table>
-
-      <table class="table table-borderless">
-        <thead>
-        <tr>
-          <th rowspan="3">Полотенце</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td></td>
-          <td>Починено</td>
-
-        </tr>
-        <tr>
-          <td>30x60</td>
-          <td>{{getErrorAndText('n7')}}<input type="text" [class]="getClassName('n7')" formControlName="n7" placeholder="шт" id="name13" name="name13"></td>
-
-        </tr>
-        <tr>
-          <td>70x70</td>
-          <td>{{getErrorAndText('n8')}}<input type="text" [class]="getClassName('n8')" formControlName="n8" placeholder="шт" id="name15" name="name15"></td>
-
-        </tr>
-        <tr>
-          <td>70x140</td>
-          <td>{{getErrorAndText('n9')}}<input type="text" [class]="getClassName('n9')" formControlName="n9" placeholder="шт" id="name17" name="name17"></td>
-
-        </tr>
-        <tr>
-          <td>Кухонные</td>
-          <td>{{getErrorAndText('n10')}}<input type="text" [class]="getClassName('n10')" formControlName="n10" placeholder="шт" id="name19" name="name19"></td>
-
-        </tr>
-        </tbody>
-      </table>
-
-      <h3 class="alert alert-dark">Не профильное</h3>
-
-      <table class="table table-borderless">
-        <thead>
-        <tr>
-          <th rowspan="3">Коврик</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td></td>
-          <td>Починено</td>
-
-        </tr>
-        <tr>
-          <td>Для ванны</td>
-          <td>{{getErrorAndText('n11')}}<input type="text" [class]="getClassName('n11')" formControlName="n11" placeholder="шт" id="name21" name="name21"></td>
-
-        </tr>
-        <tr>
-          <td>Придверный</td>
-          <td>{{getErrorAndText('n12')}}<input type="text" [class]="getClassName('n12')" formControlName="n12" placeholder="шт" id="name23" name="name23"></td>
-
-        </tr>
-        </tbody>
-      </table>
-
-      <table class="table table-borderless">
-        <thead>
-        <tr>
-          <th rowspan="3">Одеяло</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td></td>
-          <td>Починено</td>
-
-        </tr>
-        <tr>
-          <td>1,5 сп</td>
-          <td>{{getErrorAndText('n13')}}<input type="text" [class]="getClassName('n13')" formControlName="n13" placeholder="шт" id="name25" name="name25"></td>
-
-        </tr>
-        <tr>
-          <td>2 сп</td>
-          <td>{{getErrorAndText('n14')}}<input type="text" [class]="getClassName('n14')" formControlName="n14" placeholder="шт" id="name27" name="name27"></td>
-
-        </tr>
-        </tbody>
-      </table>
-
-      <table class="table table-borderless">
-        <thead>
-        <tr>
-          <th rowspan="3">Подушка</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td></td>
-          <td>Починено</td>
-
-        </tr>
-        <tr>
-          <td>50x70</td>
-          <td>{{getErrorAndText('n15')}}<input type="text" [class]="getClassName('n15')" formControlName="n15" placeholder="шт" id="name29" name="name29"></td>
-
-        </tr>
-        <tr>
-          <td>70x70</td>
-          <td>{{getErrorAndText('n16')}}<input type="text" [class]="getClassName('n16')" formControlName="n16" placeholder="шт" id="name31" name="name31"></td>
-
-        </tr>
-        </tbody>
-      </table>
-
-    <table class="table table-borderless">
-      <thead>
-      <tr>
-        <th rowspan="3">Наматрасник</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td></td>
-        <td>Починено</td>
-
-      </tr>
-      <tr>
-        <td>1,5 сп</td>
-        <td>{{getErrorAndText('n17')}}<input type="text" [class]="getClassName('n17')" formControlName="n17" placeholder="шт" id="name33" name="name33"></td>
-
-      </tr>
-      <tr>
-        <td>2 сп</td>
-        <td>{{getErrorAndText('n18')}}<input type="text" [class]="getClassName('n18')" formControlName="n18" placeholder="шт" id="name35" name="name36"></td>
-
-      </tr>
-      </tbody>
-    </table>
-
-    <table class="table table-borderless">
-      <thead>
-      <tr>
-        <th rowspan="3">Шторы</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td></td>
-        <td>Починено</td>
-
-      </tr>
-      <tr>
-        <td>Шторы</td>
-        <td>{{getErrorAndText('n19')}}<input type="text" [class]="getClassName('n19')" formControlName="n19" placeholder="шт" id="name38" name="name38"></td>
-      </tr>
-
-      <tr>
-        <th>Общий вес белья:</th>
-        <td>{{getMassaText('massa')}}<input type="text" [class]="getClassName('massa')"  formControlName="massa" placeholder="кг" id="elMassa" name="elMassa"></td>
-      </tr>
-
-
-      </tbody>
-    </table>-->
       <button type="button" class="btn btn-primary" (click)="send_data()"
               [disabled]="repairForm.value.n1=='' &&
                       repairForm.value.n2=='' &&

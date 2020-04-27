@@ -29,13 +29,13 @@
 
               <p class="w-25">{{getErrorText('n1')}}
                 <input type="text" [class]="getClassName('n1')" formControlName="n1" placeholder="шт" id="n1" name="name1"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n1')" ><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n1')"><i class="fa fa-plus"></i></p>
               <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n1')"><i class="fa fa-minus"></i></p>
 
               <p class="w-25">{{getErrorText('n1_spoiled')}}
                 <input type="text" [class]="getClassName('n1_spoiled')" formControlName="n1_spoiled" placeholder="шт" id="name2" name="name2"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n1_spoiled')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n1_spoiled')"><i class="fa fa-minus"></i></p>
 
 
             </div>
@@ -45,13 +45,13 @@
 
               <p class="w-25">{{getErrorText('n2')}}
                 <input type="text" [class]="getClassName('n2')" formControlName="n2" placeholder="шт" id="n101" name="name1"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n2')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n2')"><i class="fa fa-minus"></i></p>
 
               <p class="w-25">{{getErrorText('n2_spoiled')}}
                 <input type="text" [class]="getClassName('n2_spoiled')" formControlName="n2_spoiled" placeholder="шт" id="name202" name="name2"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n2_spoiled')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n2_spoiled')"><i class="fa fa-minus"></i></p>
             </div>
 
           </div>
@@ -70,24 +70,24 @@
               <label class="w-25 font-weight-bold">1,5 сп</label>
               <p class="w-25">{{getErrorText('n3')}}
                 <input type="text" [class]="getClassName('n3')" formControlName="n3" placeholder="шт" id="name5" name="name5"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n3')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n3')"><i class="fa fa-minus"></i></p>
               <p class="w-25">{{getErrorText('n3_spoiled')}}
                 <input type="text" [class]="getClassName('n3_spoiled')" formControlName="n3_spoiled" placeholder="шт" id="name6" name="name6"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n3_spoiled')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n3_spoiled')"><i class="fa fa-minus"></i></p>
             </div>
 
             <div class="d-flex justify-content-between">
               <label class="w-25 font-weight-bold">2 сп</label>
               <p class="w-25">{{getErrorText('n4')}}
                 <input type="text" [class]="getClassName('n4')" formControlName="n4" placeholder="шт" id="name7" name="name7"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n4')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n4')"><i class="fa fa-minus"></i></p>
               <p class="w-25">{{getErrorText('n4_spoiled')}}
                 <input type="text" [class]="getClassName('n4_spoiled')" formControlName="n4_spoiled" placeholder="шт" id="name8" name="name8"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n4_spoiled')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n4_spoiled')"><i class="fa fa-minus"></i></p>
             </div>
 
           </div>
@@ -106,24 +106,24 @@
               <label class="w-25 font-weight-bold">1,5 сп</label>
               <p class="w-25">{{getErrorText('n5')}}
                 <input type="text" [class]="getClassName('n5')" formControlName="n5" placeholder="шт" id="name9" name="name9"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n5')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n5')"><i class="fa fa-minus"></i></p>
               <p class="w-25">{{getErrorText('n5_spoiled')}}
                 <input type="text" [class]="getClassName('n5_spoiled')" formControlName="n5_spoiled" placeholder="шт" id="name10" name="name10"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n5_spoiled')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n5_spoiled')"><i class="fa fa-minus"></i></p>
             </div>
 
             <div class="d-flex justify-content-between">
               <label class="w-25 font-weight-bold">2 сп</label>
               <p class="w-25">{{getErrorText('n6')}}
                 <input type="text" [class]="getClassName('n6')" formControlName="n6" placeholder="шт" id="name11" name="name11"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n6')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n6')"><i class="fa fa-minus"></i></p>
               <p class="w-25">{{getErrorText('n6_spoiled')}}
                 <input type="text" [class]="getClassName('n6_spoiled')" formControlName="n6_spoiled" placeholder="шт" id="name12" name="name12"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n6_spoiled')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n6_spoiled')"><i class="fa fa-minus"></i></p>
             </div>
 
           </div>
@@ -142,48 +142,48 @@
               <label class="w-25 font-weight-bold">30 x 60</label>
               <p class="w-25">{{getErrorText('n7')}}
                 <input type="text" [class]="getClassName('n7')" formControlName="n7" placeholder="шт" id="name13" name="name13"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n7')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n7')"><i class="fa fa-minus"></i></p>
               <p class="w-25">{{getErrorText('n7_spoiled')}}
                 <input type="text" [class]="getClassName('n7_spoiled')" formControlName="n7_spoiled" placeholder="шт" id="name14" name="name14"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n7_spoiled')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n7_spoiled')"><i class="fa fa-minus"></i></p>
             </div>
 
             <div class="d-flex justify-content-between">
               <label class="w-25 font-weight-bold">70 x 70</label>
               <p class="w-25">{{getErrorText('n8')}}
                 <input type="text" [class]="getClassName('n8')" formControlName="n8" placeholder="шт" id="name15" name="name15"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n8')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n8')"><i class="fa fa-minus"></i></p>
               <p class="w-25">{{getErrorText('n8_spoiled')}}
                 <input type="text" [class]="getClassName('n8_spoiled')" formControlName="n8_spoiled" placeholder="шт" id="name16" name="name16"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n8_spoiled')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n8_spoiled')"><i class="fa fa-minus"></i></p>
             </div>
 
             <div class="d-flex justify-content-between">
               <label class="w-25 font-weight-bold">70 x 140</label>
               <p class="w-25">{{getErrorText('n9')}}
                 <input type="text" [class]="getClassName('n9')" formControlName="n9" placeholder="шт" id="name17" name="name17"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n9')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n9')"><i class="fa fa-minus"></i></p>
               <p class="w-25">{{getErrorText('n9_spoiled')}}
                 <input type="text" [class]="getClassName('n9_spoiled')" formControlName="n9_spoiled" placeholder="шт" id="name18" name="name18"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n9_spoiled')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n9_spoiled')"><i class="fa fa-minus"></i></p>
             </div>
 
             <div class="d-flex justify-content-between">
               <label class="w-25 font-weight-bold">Кухонные</label>
               <p class="w-25">{{getErrorText('n10')}}
                 <input type="text" [class]="getClassName('n10')" formControlName="n10" placeholder="шт" id="name19" name="name19"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n10')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n10')"><i class="fa fa-minus"></i></p>
               <p class="w-25">{{getErrorText('n10_spoiled')}}
                 <input type="text" [class]="getClassName('n10_spoiled')" formControlName="n10_spoiled" placeholder="шт" id="name20" name="name20"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n10_spoiled')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n10_spoiled')"><i class="fa fa-minus"></i></p>
             </div>
 
           </div>
@@ -208,24 +208,24 @@
               <label class="w-25 font-weight-bold">Для ванны</label>
               <p class="w-25">{{getErrorText('n11')}}
                 <input type="text" [class]="getClassName('n11')" formControlName="n11" placeholder="шт" id="name21" name="name21"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n11')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n11')"><i class="fa fa-minus"></i></p>
               <p class="w-25">{{getErrorText('n11_spoiled')}}
                 <input type="text" [class]="getClassName('n11_spoiled')" formControlName="n11_spoiled" placeholder="шт" id="name22" name="name22"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n11_spoiled')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n11_spoiled')"><i class="fa fa-minus"></i></p>
             </div>
 
             <div class="d-flex justify-content-between">
               <label class="w-25 font-weight-bold">Придверный</label>
               <p class="w-25">{{getErrorText('n12')}}
                 <input type="text" [class]="getClassName('n12')" formControlName="n12" placeholder="шт" id="name23" name="name23"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n12')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n12')"><i class="fa fa-minus"></i></p>
               <p class="w-25">{{getErrorText('n12_spoiled')}}
                 <input type="text" [class]="getClassName('n12_spoiled')" formControlName="n12_spoiled" placeholder="шт" id="name24" name="name24"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n12_spoiled')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n12_spoiled')"><i class="fa fa-minus"></i></p>
             </div>
 
           </div>
@@ -244,24 +244,24 @@
               <label class="w-25 font-weight-bold">1,5 сп</label>
               <p class="w-25">{{getErrorText('n13')}}
                 <input type="text" [class]="getClassName('n13')" formControlName="n13" placeholder="шт" id="name25" name="name25"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n13')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n13')"><i class="fa fa-minus"></i></p>
               <p class="w-25">{{getErrorText('n13_spoiled')}}
                 <input type="text" [class]="getClassName('n13_spoiled')" formControlName="n13_spoiled" placeholder="шт" id="name26" name="name26"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n13_spoiled')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n13_spoiled')"><i class="fa fa-minus"></i></p>
             </div>
 
             <div class="d-flex justify-content-between">
               <label class="w-25 font-weight-bold">2 сп</label>
               <p class="w-25">{{getErrorText('n14')}}
                 <input type="text" [class]="getClassName('n14')" formControlName="n14" placeholder="шт" id="name27" name="name27"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n14')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n14')"><i class="fa fa-minus"></i></p>
               <p class="w-25">{{getErrorText('n14_spoiled')}}
                 <input type="text" [class]="getClassName('n14_spoiled')" formControlName="n14_spoiled" placeholder="шт" id="name28" name="name28"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n14_spoiled')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n14_spoiled')"><i class="fa fa-minus"></i></p>
             </div>
 
           </div>
@@ -280,24 +280,24 @@
               <label class="w-25 font-weight-bold">50 x 70</label>
               <p class="w-25">{{getErrorText('n15')}}
                 <input type="text" [class]="getClassName('n15')" formControlName="n15" placeholder="шт" id="name29" name="name29"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n15')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n15')"><i class="fa fa-minus"></i></p>
               <p class="w-25">{{getErrorText('n15_spoiled')}}
                 <input type="text" [class]="getClassName('n15_spoiled')" formControlName="n15_spoiled" placeholder="шт" id="name30" name="name30"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n15_spoiled')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n15_spoiled')"><i class="fa fa-minus"></i></p>
             </div>
 
             <div class="d-flex justify-content-between">
               <label class="w-25 font-weight-bold">70 x 70</label>
               <p class="w-25">{{getErrorText('n16')}}
                 <input type="text" [class]="getClassName('n16')" formControlName="n16" placeholder="шт" id="name31" name="name31"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n16')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n16')"><i class="fa fa-minus"></i></p>
               <p class="w-25">{{getErrorText('n16_spoiled')}}
                 <input type="text" [class]="getClassName('n16_spoiled')" formControlName="n16_spoiled" placeholder="шт" id="name32" name="name32"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n16_spoiled')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n16_spoiled')"><i class="fa fa-minus"></i></p>
             </div>
 
           </div>
@@ -316,24 +316,24 @@
               <label class="w-25 font-weight-bold">1,5 сп</label>
               <p class="w-25">{{getErrorText('n17')}}
                 <input type="text" [class]="getClassName('n17')" formControlName="n17" placeholder="шт" id="name33" name="name33"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n17')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n17')"><i class="fa fa-minus"></i></p>
               <p class="w-25">{{getErrorText('n17_spoiled')}}
                 <input type="text" [class]="getClassName('n17_spoiled')" formControlName="n17_spoiled" placeholder="шт" id="name34" name="name34"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n17_spoiled')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n17_spoiled')"><i class="fa fa-minus"></i></p>
             </div>
 
             <div class="d-flex justify-content-between">
               <label class="w-25 font-weight-bold">2 сп</label>
               <p class="w-25">{{getErrorText('n18')}}
                 <input type="text" [class]="getClassName('n18')" formControlName="n18" placeholder="шт" id="name35" name="name36"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n18')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n18')"><i class="fa fa-minus"></i></p>
               <p class="w-25">{{getErrorText('n18_spoiled')}}
                 <input type="text" [class]="getClassName('n18_spoiled')" formControlName="n18_spoiled" placeholder="шт" id="name37" name="name37"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n18_spoiled')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n18_spoiled')"><i class="fa fa-minus"></i></p>
             </div>
 
           </div>
@@ -352,12 +352,12 @@
               <label class="w-25 font-weight-bold">Шторы</label>
               <p class="w-25">{{getErrorText('n19')}}
                 <input type="text" [class]="getClassName('n19')" formControlName="n19" placeholder="шт" id="name38" name="name38"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n19')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n19')"><i class="fa fa-minus"></i></p>
               <p class="w-25">{{getErrorText('n19_spoiled')}}
                 <input type="text" [class]="getClassName('n19_spoiled')" formControlName="n19_spoiled" placeholder="шт" id="name39" name="name39"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n19_spoiled')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n19_spoiled')"><i class="fa fa-minus"></i></p>
             </div>
 
           </div>
@@ -371,8 +371,8 @@
       <label class="font-weight-bold">Общий вес белья:</label>
       <p class="w-25 ml-3">{{getErrorText('massa')}}
         <input type="text" [class]="getClassName('massa')" formControlName="massa" placeholder="кг" id="name40" name="name40"></p>
-      <p class="btn btn-outline-primary mx-1" title="Прибавить"><i class="fa fa-plus"></i></p>
-      <p class="btn btn-outline-primary mr-1" title="Минус"><i class="fa fa-minus"></i></p>
+      <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('massa')"><i class="fa fa-plus"></i></p>
+      <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('massa')"><i class="fa fa-minus"></i></p>
     </div>
 
     <div class="alert alert-info">

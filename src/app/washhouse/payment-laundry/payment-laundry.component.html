@@ -2,9 +2,9 @@
 <div class="container">
   <app-mainmenu></app-mainmenu>
   <div class="d-flex justify-content-between">
-<label [style]="'background-color:#87CEEB'"> одобрено </label>
- <label [style]="'background-color:#FFFFE0'"> не подтверждено </label>
-  <label [style]="'background-color:#DCDCDC'"> не рабочий </label>
+<label class="p-2" [style]="'background-color:#87CEEB'"> одобрено </label>
+ <label class="p-2" [style]="'background-color:#FFFFE0'"> не подтверждено </label>
+  <label class="p-2" [style]="'background-color:#DCDCDC'"> не рабочий </label>
   </div>
 
 <form [formGroup]="paymentForm">
@@ -46,11 +46,11 @@
 
         <th scope="row">{{i+1}}</th>
         <td>{{this.arrayPay[p-1][1] | date:'dd.MM.yyyy' }}</td>
-        <td><input type="checkbox" disabled [checked]="this.arrayPay[p-1][6]" ></td>
-        <td><input type="text"  formControlName="PayPerHour{{p}}"></td>
-        <td><input type="text"  formControlName="Hour{{p}}"></td>
-        <td><input type="text"  formControlName="Koeff{{p}}"></td>
-        <td><input type="text"  formControlName="AddWork{{p}}"></td>
+        <td><input  class="custom-control custom-checkbox" type="checkbox" disabled [checked]="this.arrayPay[p-1][6]" ></td>
+        <td><input class="form-control" type="text"  formControlName="PayPerHour{{p}}"></td>
+        <td><input class="form-control" type="text"  formControlName="Hour{{p}}"></td>
+        <td><input class="form-control" type="text"  formControlName="Koeff{{p}}"></td>
+        <td><input class="form-control" type="text"  formControlName="AddWork{{p}}"></td>
       </tr>
 
       </tbody>
