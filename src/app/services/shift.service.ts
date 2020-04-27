@@ -47,5 +47,4 @@ export class ShiftService {
     return this.http.get(this.gr.sUrlGlobal + 'shift', {params: params});
   }
 
-
 }

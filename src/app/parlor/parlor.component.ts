@@ -208,7 +208,6 @@ export class ParlorComponent implements OnInit {
         }
       }
     });
-
   }
 
   private prepareSave(): FormData {

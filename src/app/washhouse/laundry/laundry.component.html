@@ -4,9 +4,18 @@
   <div class="jumbotron p-2 m-0">
     <div class="d-flex flex-row justify-content-between">
       <h1 class="my-4 ml-5">{{this.userName+' '+this.userSurname}}</h1>
-      <img src="http://127.0.0.1:3000/images/useravatar/2_1586812358772.jpg" class="rounded float-left" alt="Фото">
+
+      <div *ngIf="this.sAvatarPath.length>0;then contentLoadAvatar else contentDefault">Фото</div>
+      <ng-template #contentLoadAvatar>
+        <img [src]="this.sAvatarPath" class="rounded float-left" alt="Фото" id="img">
+      </ng-template>
+      <ng-template #contentDefault>
+        <img src="/assets/img/usernull.png" class="rounded float-left" alt="Фото">
+      </ng-template>
+
     </div>
   </div>
+
 
   <div class="d-flex justify-content-end">
 
@@ -20,15 +29,44 @@
     <div class="col-12">
 
       <ul class="list-group">
+        <li class="list-group-item">Неделя<span class="startDate float-right">{{this.titleDB | date:'dd.MM.yyyy' }} -
+                                          {{ this.titleDE | date:'dd.MM.yyyy'}}</span>
+        </li>
         <li class="list-group-item">Дата начала смены<span class="startDate float-right">{{this.titleShiftDate | date:'dd.MM.yyyy'}}</span></li>
         <li class="list-group-item">Время начала смены<span class="startTime float-right">{{this.titleShiftDate | date:'HH:mm'}}</span></li>
-        <li class="list-group-item">Выработка за неделю<span class="weeklyOutput float-right">500</span></li>
-        <li class="list-group-item">Часов за неделю<span class="hoursWeek float-right">42</span></li>
-        <li class="list-group-item">З/п за неделю<span class="wagesWeek float-right">6500</span></li>
-        <li class="list-group-item">Бонусы за неделю<span class="weeklyBonus float-right">30</span></li>
-        <li class="list-group-item">Итого, руб.<span class="totalRuble float-right">5410</span></li>
-        <li class="list-group-item">З/п за смену<span class="wagesShift float-right">650</span></li>
-        <li class="list-group-item">Рейтинг сотрудника<span class="employeeRating float-right">20</span></li>
+        <li class="list-group-item">Выработка за неделю<span class="weeklyOutput float-right">{{Productivity}}</span></li>
+        <li class="list-group-item">Часов за неделю<span class="hoursWeek float-right">
+                                                     <label class="alert alert-primary">часы {{RoundedTime}}</label>
+                                                     <label class="alert alert-warning">точно {{ExactTime}}</label>
+                                                    </span>
+        </li>
+        <li class="list-group-item">З/п за неделю<span class="wagesWeek float-right">
+                                                  <div class="alert alert-primary" role="alert">
+                                                      {{RealBasicPayment}}
+                                                  </div>
+                                                  <div class="alert alert-warning" role="alert">
+                                                      {{VirtualBasicPayment}}
+                                                  </div>
+                                                  </span>
+        </li>
+        <li class="list-group-item">Бонусы за неделю<span class="weeklyBonus float-right">
+                                                  <div class="alert alert-primary" role="alert">
+                                                      {{RealAddwork}}
+                                                  </div>
+                                                  <div class="alert alert-warning" role="alert">
+                                                      {{VirtualAddwork}}
+                                                  </div>
+                                                  </span>
+        </li>
+
+        <li class="list-group-item">Итого, руб.<span class="totalRuble float-right">
+                                                 {{RealBasicPayment+VirtualBasicPayment+RealAddwork+VirtualAddwork}}
+        </span></li>
+        <li class="list-group-item">З/п за смену<span class="wagesShift float-right">
+                                                {{LastShiftItogo}}
+                                                </span>
+        </li>
+        <li class="list-group-item">Недельный рейтинг<span class="employeeRating float-right">{{rating}}</span></li>
       </ul>
 
     </div>

@@ -19,6 +19,14 @@ export class ReportService {
     return this.http.get(this.gr.sUrlGlobal + 'report', {params: params});
   }
 
+  // получить незакрытые смены
+  getSelectFace(id_user, id_branch) {
+    const params = new HttpParams()
+      .set('select_report_face', 'select_report_face')
+      .set('id_user', id_user.toString())
+      .set('id_branch', id_branch.toString());
+    return this.http.get(this.gr.sUrlGlobal + 'report', {params: params});
+  }
 
   getAddress(id_address) {
     const params = new HttpParams()

@@ -1,4 +1,4 @@
-import {AfterViewChecked, AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import {FullCalendarComponent} from '@fullcalendar/angular';
 import {Calendar} from '@fullcalendar/core/Calendar';
@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth-service.service';
 import {PaymentService} from '../services/payment.service';
 import {ReportService} from '../services/report.service';
+declare var jQuery: any;
 
 @Component({
   selector: 'app-summary-laundry',
@@ -22,6 +23,7 @@ export class SummaryLaundryComponent implements OnInit, AfterViewInit {
   calendarPlugins = [dayGridPlugin]; // important!
 
   @ViewChild('calendar') public calendarComponent: FullCalendarComponent;
+  @ViewChild('summaryLaundryModal') public summaryLaundryModal: ElementRef;
 
   public calendarApi: Calendar;
   weekDateBegin: Date;
@@ -217,7 +219,7 @@ export class SummaryLaundryComponent implements OnInit, AfterViewInit {
 
   myClick(info: any) {
     this.resultPay = info.event.extendedProps;
-    console.log(this.resultPay);
+    jQuery(this.summaryLaundryModal.nativeElement).modal('show');
   }
 
   LoadNewItog(id_user: number, id_branch: number, date_begin, date_end) {
