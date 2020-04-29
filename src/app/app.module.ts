@@ -52,6 +52,7 @@ import {FullCalendarModule} from '@fullcalendar/angular';
 import { SummaryLaundryComponent } from './washhouse/summary-laundry/summary-laundry.component';
 import { SummaryWeekComponent } from './washhouse/summary-laundry/summary-week/summary-week.component';
 import { PaymentLaundryComponent } from './washhouse/payment-laundry/payment-laundry.component';
+import { GraphComponent } from './washhouse/graph/graph.component';
 
 registerLocaleData(localeRu);
 
@@ -82,6 +83,7 @@ const appRoutes: Routes = [
   {path: 'addwork_laundry_last', component: AddworkLaundryLastComponent},
   {path: 'summary-laundry', component: SummaryLaundryComponent},
   {path: 'payment-laundry', component: PaymentLaundryComponent},
+  {path: 'graph-laundry', component: GraphComponent},
   {path: 'test', component: TestComponent},
   {path: '**', component: NotFoundComponent }
 ];
@@ -126,7 +128,8 @@ const appRoutes: Routes = [
     PositionComponent,
     SummaryLaundryComponent,
     SummaryWeekComponent,
-    PaymentLaundryComponent
+    PaymentLaundryComponent,
+    GraphComponent
   ],
   imports: [
     BrowserModule,

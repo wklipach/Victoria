@@ -340,6 +340,13 @@ export class RepairLaundryComponent implements OnInit {
   globalOnClickMinus(el: string) {
     if (this.repairForm) {
       if (this.repairForm.controls[el]) {
+
+        if (this.getClassName(el) === 'form-control is-invalid' ||
+          this.repairForm.controls[el].disabled) {
+          this.repairForm.controls[el].setValue('');
+          return;
+        }
+
         let sVal = this.repairForm.controls[el].value.toString().trim();
         if (Check.ZeroOrPositive(sVal)) {
           if (sVal === '0' || sVal === '1') {
@@ -359,6 +366,13 @@ export class RepairLaundryComponent implements OnInit {
   globalOnClickPlus(el: string) {
     if (this.repairForm) {
       if (this.repairForm.controls[el]) {
+
+        if (this.getClassName(el) === 'form-control is-invalid' ||
+          this.repairForm.controls[el].disabled) {
+          this.repairForm.controls[el].setValue('');
+          return;
+        }
+
         let sVal = this.repairForm.controls[el].value.toString().trim();
         if (Check.ZeroOrPositive(sVal)) {
           if (sVal === '0') {

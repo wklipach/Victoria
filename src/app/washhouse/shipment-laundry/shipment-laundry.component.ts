@@ -273,6 +273,14 @@ export class ShipmentLaundryComponent implements OnInit {
   globalOnClickMinus(el: string) {
     if (this.shipmentForm) {
       if (this.shipmentForm.controls[el]) {
+
+        if (this.getClassName(el) === 'form-control is-invalid' ||
+          this.shipmentForm.controls[el].disabled) {
+          this.shipmentForm.controls[el].setValue('');
+          return;
+        }
+
+
         let sVal = this.shipmentForm.controls[el].value.toString().trim();
         if (Check.ZeroOrPositive(sVal)) {
           if (sVal === '0' || sVal === '1') {
@@ -292,6 +300,12 @@ export class ShipmentLaundryComponent implements OnInit {
   globalOnClickPlus(el: string) {
     if (this.shipmentForm) {
       if (this.shipmentForm.controls[el]) {
+        if (this.getClassName(el) === 'form-control is-invalid' ||
+          this.shipmentForm.controls[el].disabled) {
+          this.shipmentForm.controls[el].setValue('');
+          return;
+        }
+
         let sVal = this.shipmentForm.controls[el].value.toString().trim();
         if (Check.ZeroOrPositive(sVal)) {
           if (sVal === '0') {

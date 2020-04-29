@@ -31,6 +31,7 @@
     "bootstrap": "^4.4.1",
     "core-js": "^2.6.11",
     "crypto-js": "^4.0.0",
+    "dygraphs": "^2.1.0",
     "exceljs": "^3.8.2",
     "file-saver": "^2.0.2",
     "font-awesome": "^4.7.0",

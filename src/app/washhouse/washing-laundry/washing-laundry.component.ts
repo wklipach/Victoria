@@ -274,6 +274,13 @@ export class WashingLaundryComponent implements OnInit {
   globalOnClickMinus(el: string) {
     if (this.washingForm) {
       if (this.washingForm.controls[el]) {
+
+        if (this.getClassName(el) === 'form-control is-invalid' ||
+          this.washingForm.controls[el].disabled) {
+          this.washingForm.controls[el].setValue('');
+          return;
+        }
+
         let sVal = this.washingForm.controls[el].value.toString().trim();
         if (Check.ZeroOrPositive(sVal)) {
           if (sVal === '0' || sVal === '1') {
@@ -293,6 +300,13 @@ export class WashingLaundryComponent implements OnInit {
   globalOnClickPlus(el: string) {
     if (this.washingForm) {
       if (this.washingForm.controls[el]) {
+
+        if (this.getClassName(el) === 'form-control is-invalid' ||
+          this.washingForm.controls[el].disabled) {
+          this.washingForm.controls[el].setValue('');
+          return;
+        }
+
         let sVal = this.washingForm.controls[el].value.toString().trim();
         if (Check.ZeroOrPositive(sVal)) {
           if (sVal === '0') {

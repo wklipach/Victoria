@@ -270,6 +270,13 @@ export class WarehouseLaundryComponent implements OnInit {
   globalOnClickMinus(el: string) {
     if (this.warehouseForm) {
       if (this.warehouseForm.controls[el]) {
+
+        if (this.getClassName(el) === 'form-control is-invalid' ||
+          this.warehouseForm.controls[el].disabled) {
+          this.warehouseForm.controls[el].setValue('');
+          return;
+        }
+
         let sVal = this.warehouseForm.controls[el].value.toString().trim();
         if (Check.ZeroOrPositive(sVal)) {
           if (sVal === '0' || sVal === '1') {
@@ -289,6 +296,13 @@ export class WarehouseLaundryComponent implements OnInit {
   globalOnClickPlus(el: string) {
     if (this.warehouseForm) {
       if (this.warehouseForm.controls[el]) {
+
+        if (this.getClassName(el) === 'form-control is-invalid' ||
+          this.warehouseForm.controls[el].disabled) {
+          this.warehouseForm.controls[el].setValue('');
+          return;
+        }
+
         let sVal = this.warehouseForm.controls[el].value.toString().trim();
         if (Check.ZeroOrPositive(sVal)) {
           if (sVal === '0') {
