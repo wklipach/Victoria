@@ -53,6 +53,7 @@ import { SummaryLaundryComponent } from './washhouse/summary-laundry/summary-lau
 import { SummaryWeekComponent } from './washhouse/summary-laundry/summary-week/summary-week.component';
 import { PaymentLaundryComponent } from './washhouse/payment-laundry/payment-laundry.component';
 import { GraphComponent } from './washhouse/graph/graph.component';
+import { BranchSelectionComponent } from './branch-selection/branch-selection.component';
 
 registerLocaleData(localeRu);
 
@@ -85,6 +86,7 @@ const appRoutes: Routes = [
   {path: 'payment-laundry', component: PaymentLaundryComponent},
   {path: 'graph-laundry', component: GraphComponent},
   {path: 'test', component: TestComponent},
+  {path: 'branch-selection', component: BranchSelectionComponent},
   {path: '**', component: NotFoundComponent }
 ];
 
@@ -129,7 +131,8 @@ const appRoutes: Routes = [
     SummaryLaundryComponent,
     SummaryWeekComponent,
     PaymentLaundryComponent,
-    GraphComponent
+    GraphComponent,
+    BranchSelectionComponent
   ],
   imports: [
     BrowserModule,

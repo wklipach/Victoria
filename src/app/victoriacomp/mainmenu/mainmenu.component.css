@@ -1,5 +1,10 @@
+a {color: #9b9a9e ; padding: 0;}
 a:hover{
   font-weight: bold;
-  color: white !important;
   background-color: #3399ff;
+  color: white;
+}
+
+.nav-link .dropdown-toggle:hover {
+  background-color: white;
 }

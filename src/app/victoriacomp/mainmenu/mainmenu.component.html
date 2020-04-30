@@ -1,49 +1,148 @@
-  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3 p-0">
-    <a class="navbar-brand" href="#">Прачечная</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="acceptance-laundry">Приемка</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="repair-laundry">Ремонт</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="washing-laundry">Стирка</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="warehouse-laundry">Склад</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="shipment-laundry">Отгрузка</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="add-work">Доп. работы</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="comment-laundry">Комментарий</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="parlor">Инфо</a>
-        </li>
-
-        <li class="nav-item" *ngIf="id_user_vict === 1">
-          <a class="nav-link" href="admin">Администрирование</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="summary-laundry">Результаты</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="payment-laundry">Оплата</a>
-        </li>
+<!--
+<nav class="navbar navbar-expand mt-3 p-0">
+   <ul class="nav nav flex-column">
+     <li class="nav-item dropdown">
+       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+         <img src="http://127.0.0.1:3000/images/useravatar/1_1588010601381.jpg" alt="Света" class="rounded-circle" style="width: 48px;height: 48px;" title="Света">
+       </a>
+       <div class="dropdown-menu" style="width: 230px">
+         <a class="nav-link py-3 pl-2" href="parlor"><i class="fa fa-info fa-lg ml-2 mr-3" aria-hidden="true"></i>Инфо</a>
+         <a class="nav-link py-3 pl-3" href="admin"><i class="fa fa-user-secret fa-lg mr-2" aria-hidden="true"></i>Администрирование</a>
+         <a class="nav-link py-3 pl-3" href="summary-laundry"><i class="fa fa-bar-chart fa-lg mr-2" aria-hidden="true"></i>Результаты</a>
+         <a class="nav-link py-3 pl-3" href="payment-laundry"><i class="fa fa-money fa-lg mr-2" aria-hidden="true"></i>Оплата</a>
+       </div>
 
 
-      </ul>
-    </div>
-  </nav>
+     <li class="nav-item mt-4 justify-content-center">
+     <a class="nav-link" href="#">
+       <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+       <p class="mx-auto">Главная</p>
+     </a>
+     </li>
+
+     <li class="nav-item">
+       <a class="nav-link" href="acceptance-laundry">
+         <i class="fa fa-gift fa-2x" aria-hidden="true"></i>
+         <p>Приемка</p>
+       </a>
+     </li>
+
+     <li class="nav-item">
+       <a class="nav-link" href="repair-laundry">
+         <i class="fa fa-cut fa-2x" aria-hidden="true"></i>
+         <p>Ремонт</p>
+       </a>
+     </li>
+
+     <li class="nav-item">
+       <a class="nav-link" href="washing-laundry">
+         <i class="fa fa-life-ring fa-2x" aria-hidden="true"></i>
+         <p>Стирка</p>
+       </a>
+     </li>
+
+     <li class="nav-item">
+       <a class="nav-link" href="warehouse-laundry">
+         <i class="fa fa-suitcase fa-2x" aria-hidden="true"></i>
+         <p>Склад</p>
+       </a>
+     </li>
+
+     <li class="nav-item">
+       <a class="nav-link" href="shipment-laundry">
+         <i class="fa fa-truck fa-2x" aria-hidden="true"></i>
+         <p>Отгрузка</p>
+       </a>
+     </li>
+
+     <li class="nav-item">
+       <a class="nav-link" href="add-work">
+         <i class="fa fa-cog fa-2x" aria-hidden="true"></i>
+         <p>Доп. работы</p>
+       </a>
+     </li>
+
+     <li class="nav-item">
+       <a class="nav-link" href="comment-laundry">
+         <i class="fa fa-commenting fa-2x" aria-hidden="true"></i>
+         <p class="mx-auto">Комментарий</p>
+       </a>
+     </li>
+
+   </ul>
+ </nav>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <nav class="navbar navbar-expand-lg navbar-light bg-t mb-3 p-0">
+   <a class="navbar-brand" href="#">Прачечная</a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse" id="navbarNav">
+     <ul class="navbar-nav">
+       <li class="nav-item">
+         <a class="nav-link" href="acceptance-laundry">Приемка</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="repair-laundry">Ремонт</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="washing-laundry">Стирка</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="warehouse-laundry">Склад</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="shipment-laundry">Отгрузка</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="add-work">Доп. работы</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="comment-laundry">Комментарий</a>
+       </li>
+
+       <li class="nav-item">
+         <a class="nav-link" href="parlor">Инфо</a>
+       </li>
+
+       <li class="nav-item" *ngIf="id_user_vict === 1">
+         <a class="nav-link" href="admin">Администрирование</a>
+       </li>
+
+       <li class="nav-item">
+         <a class="nav-link" href="summary-laundry">Результаты</a>
+       </li>
+
+       <li class="nav-item">
+         <a class="nav-link" href="payment-laundry">Оплата</a>
+       </li>
+
+
+     </ul>
+   </div>
+ </nav>
+
+

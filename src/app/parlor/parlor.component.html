@@ -1,6 +1,4 @@
 <div class="container">
-  <app-mainmenu></app-mainmenu>
-
 
   <h3 class="alert-primary mb-3 d-flex justify-content-between my-3 px-3">
     <p>Личный кабинет</p>
@@ -10,47 +8,28 @@
   <div style="opacity:0; position: absolute;">{{id_user_vict}}</div>
 
   <div class="row">
-    <div class="col-4 pl-4">
 
-      <form [formGroup]="form">
-
-        <div *ngIf="this.sAvatarPath.length>0;then contentLoadAvatar else contentDefault">Профиль</div>
-        <ng-template #contentLoadAvatar>
-          <img class="rounded" [src]="this.sAvatarPath" alt="Профиль" id="img" onclick="document.getElementById('avatar').click()">
-        </ng-template>
-
-        <ng-template #contentDefault>
-          <img src="/assets/img/usernull.png" class="rounded" onclick="document.getElementById('avatar').click()">
-        </ng-template>
-
-        <div>
-
-          <input type="file" id="avatar" (change)="onFileChange($event)" #fileInput style="display:none">
-          <label class="text-muted ml-1 mt-3" style="display: block; cursor: pointer; text-decoration: underline;" onclick="document.getElementById('avatar').click()">Загрузить фото</label>
-          <label class="text-muted ml-1" style="display: block; cursor: pointer; text-decoration: underline;" (click)="clearFile()">Очистить</label>
-        </div>
-
-      </form>
-
+    <div class="col-2">
+      <app-mainmenu></app-mainmenu>
     </div>
 
-    <div class="col-8">
+    <div class="col-7">
 
       <!-- ВТОРАЯ ФОРМА НЕ СВЯЗАННАЯ С ФОТО class="rounded float-left" alt="Фото" -->
 
       <form [formGroup]="parlorForm">
 
-        <div class="d-flex justify-content my-3">
+        <div class="d-flex justify-content-center my-3">
           <label class="w-25 pt-2 text-muted" for="inputUserName">Имя пользователя</label>
           <input type="text" class="form-control w-50" id="inputUserName" formControlName="inputUserName" placeholder="введите имя пользователя" maxlength="100" title="Не редактируется">
         </div>
 
-        <div class="d-flex justify-content my-3">
+        <div class="d-flex justify-content-center my-3">
           <label class="w-25 pt-2 text-muted" for="inputEmail">Email</label>
           <input type="text" class="form-control w-50" id="inputEmail" formControlName="inputEmail" placeholder="введите Email">
         </div>
 
-        <div class="d-flex justify-content my-3">
+        <div class="d-flex justify-content-center my-3">
           <label class="w-25 pt-2 text-muted" for="inputGender">Выбрать пол</label>
           <select class="form-control w-50" id="inputGender" formControlName="inputGender" title="Выбрать пол">
             <option  *ngFor="let gl of genderList" [value]="gl.name">
@@ -59,44 +38,44 @@
           </select>
         </div>
 
-        <div class="d-flex justify-content my-3">
+        <div class="d-flex justify-content-center my-3">
           <label class="w-25 pt-2 text-muted" for="inputBirth">Дата рождения</label>
           <input  class="form-control w-50" type="date" id="inputBirth" name="inputBirth" formControlName="inputBirth">
         </div>
 
-        <div class="d-flex justify-content my-3">
+        <div class="d-flex justify-content-center my-3">
           <label class="w-25 pt-2 text-muted" for="inputLastname">Фамилия</label>
           <input type="text" class="form-control w-50" id="inputLastname" formControlName="inputLastName" placeholder="Фамилия">
         </div>
 
 
-        <div class="d-flex justify-content my-3">
+        <div class="d-flex justify-content-center my-3">
           <label class="w-25 pt-2 text-muted" for="inputName">Имя</label>
           <input type="text" class="form-control w-50" id="inputName" formControlName="inputName" placeholder="Имя">
         </div>
 
 
-        <div class="d-flex justify-content my-3">
+        <div class="d-flex justify-content-center my-3">
           <label class="w-25 pt-2 text-muted" for="inputPatronymic">Отчество</label>
           <input type="text" class="form-control w-50"  id="inputPatronymic" formControlName="inputPatronymic" placeholder="Отчество">
         </div>
 
-        <div class="d-flex justify-content my-3">
+        <div class="d-flex justify-content-center my-3">
           <label class="w-25 pt-2 text-muted" for="inputZip">Почтовый индекс</label>
           <input type="text" class="form-control w-50" id="inputZip" formControlName="inputZip" placeholder="почтовый индекс">
         </div>
 
-        <div class="d-flex justify-content my-3">
+        <div class="d-flex justify-content-center my-3">
           <label class="w-25 pt-2 text-muted" for="inputAddress">Домашний адрес</label>
           <input type="text" class="form-control w-50" id="inputAddress" formControlName="inputAddress" placeholder="Домашний адрес" maxlength="100">
         </div>
 
-        <div class="d-flex justify-content my-3">
+        <div class="d-flex justify-content-center my-3">
           <label class="w-25 pt-2 text-muted" for="inputPhone">Телефон</label>
           <input type="text" class="form-control w-50" id="inputPhone" formControlName="inputPhone" placeholder="Телефон">
         </div>
 
-        <div class="d-flex justify-content my-3">
+        <div class="d-flex justify-content-center my-3">
           <label class="w-25 pt-2 text-muted" for="inputPhone2">Телефон 2</label>
           <input type="text" class="form-control w-50" id="inputPhone2" formControlName="inputPhone2" placeholder="Телефон 2">
         </div>
@@ -138,11 +117,10 @@
 
         <!-- закончили обработку почтовых ошибок -->
 
-
-
-
-        <img class="img-lock" src="/assets/img/lock.png" alt="Смена пароля" title="Смена пароля">
-        <label class="ml-3 text-muted" style="cursor: pointer; text-decoration: underline;" (click)="accessPassword()">Изменить пароль</label>
+        <p style="margin-left: 13%;">
+          <img class="img-lock" src="/assets/img/lock.png" alt="Смена пароля" title="Смена пароля">
+          <label class="ml-3 text-muted" style="cursor: pointer; text-decoration: underline;" (click)="accessPassword()">Изменить пароль</label>
+        </p>
 
         <ng-container *ngIf="bShowChangePassword">
           <div class="changepassBox">
@@ -175,13 +153,40 @@
 
       </form>
 
-      <br>
-      <button type="submit" class="btn btn-primary my-3 mr-3" (click)="savecv()" [disabled]="parlorForm.invalid" style="width:120px">Сохранить</button>
-      <button type="submit" class="btn btn-primary my-3" (click)="back()" style="width:120px">Отмена</button>
 
+      <button type="submit" class="btn btn-outline-primary my-3 mr-3" (click)="savecv()" [disabled]="parlorForm.invalid" style="width:120px">Сохранить</button>
+      <button type="submit" class="btn btn-outline-primary my-3" (click)="back()" style="width:120px">Отмена</button>
     </div>
 
+    <div class="col-3">
+      <div class="d-flex justify-content-end mt-3">
 
-  </div>
+
+
+      <form [formGroup]="form">
+
+        <div *ngIf="this.sAvatarPath.length>0;then contentLoadAvatar else contentDefault">Профиль</div>
+        <ng-template #contentLoadAvatar>
+          <img class="rounded" [src]="this.sAvatarPath" alt="Профиль" id="img" onclick="document.getElementById('avatar').click()">
+        </ng-template>
+
+        <ng-template #contentDefault>
+          <img src="/assets/img/usernull.png" class="rounded" onclick="document.getElementById('avatar').click()">
+        </ng-template>
+
+        <div>
+
+          <input type="file" id="avatar" (change)="onFileChange($event)" #fileInput style="display:none">
+          <label class="text-muted ml-1 mt-3" style="display: block; cursor: pointer; text-decoration: underline;" onclick="document.getElementById('avatar').click()">Загрузить фото</label>
+          <label class="text-muted ml-1" style="display: block; cursor: pointer; text-decoration: underline;" (click)="clearFile()">Очистить</label>
+        </div>
+
+      </form>
+
+   </div>
+    </div> <!-- col -->
+
 </div>
+  </div>
+
 

@@ -1,31 +1,32 @@
 <div class="container">
-  <app-mainmenu></app-mainmenu>
-
-  <div class="jumbotron p-2 m-0">
-    <div class="d-flex flex-row justify-content-between">
-      <h1 class="my-4 ml-5">{{this.userName+' '+this.userSurname}}</h1>
-
-      <div *ngIf="this.sAvatarPath.length>0;then contentLoadAvatar else contentDefault">Фото</div>
-      <ng-template #contentLoadAvatar>
-        <img [src]="this.sAvatarPath" class="rounded float-left" alt="Фото" id="img">
-      </ng-template>
-      <ng-template #contentDefault>
-        <img src="/assets/img/usernull.png" class="rounded float-left" alt="Фото">
-      </ng-template>
-
-    </div>
-  </div>
-
-
-  <div class="d-flex justify-content-end">
-    <div class="btn-group float-right">
-      <button type="button" class="btn btn-primary my-3" (click)="onShift()">{{titleShift}}</button>
-      <button type="button" class="btn btn-primary my-3 ml-2" (click)="logout()">Выход из системы</button>
-    </div>
-  </div>
-
   <div class="row">
-    <div class="col-12">
+    <div class="col-sm-2">
+     <app-mainmenu></app-mainmenu>
+   </div>
+
+    <div class="col">
+
+      <div class="jumbotron p-2 m-0">
+        <div class="d-flex flex-row justify-content-between">
+          <h1 class="my-4 ml-5">{{this.userName+' '+this.userSurname}}</h1>
+
+          <div *ngIf="this.sAvatarPath.length>0;then contentLoadAvatar else contentDefault">Фото</div>
+          <ng-template #contentLoadAvatar>
+            <img [src]="this.sAvatarPath" class="rounded float-left" alt="Фото" id="img">
+          </ng-template>
+          <ng-template #contentDefault>
+            <img src="/assets/img/usernull.png" class="rounded float-left" alt="Фото">
+          </ng-template>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end">
+        <div class="btn-group float-right">
+          <button type="button" class="btn btn-outline-primary my-3" (click)="onShift()">{{titleShift}}</button>
+          <button type="button" class="btn btn-outline-primary my-3 ml-2" (click)="logout()">Выход из системы</button>
+        </div>
+      </div>
+
 
       <ul class="list-group text-muted font-weight-bold">
         <li class="list-group-item"><span>Неделя</span><span class="alert alert-primary float-right my-0 mx-1">{{this.titleDB | date:'dd.MM.yyyy' }} - {{ this.titleDE | date:'dd.MM.yyyy'}}</span></li>
@@ -62,6 +63,7 @@
 
         <li class="list-group-item"><span>Недельный рейтинг</span><span class="alert alert-primary float-right my-0 mx-1">{{rating}}</span></li>
       </ul>
+
 
     </div>
   </div>
