@@ -1,10 +1,16 @@
 a {color: #9b9a9e ; padding: 0;}
-a:hover{
-  font-weight: bold;
-  background-color: #3399ff;
-  color: white;
-}
+a:hover{  font-weight: bold;  background-color: #3399ff;  color: white;}
+li{  width: 130px;}
 
-.nav-link .dropdown-toggle:hover {
-  background-color: white;
+
+
+/*
+p:hover{
+
 }
+i:hover{
+  color: palevioletred;
+}
+*/
+
+

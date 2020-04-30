@@ -1,37 +1,39 @@
 <div class="container">
 
-  <app-mainmenu></app-mainmenu>
+  <div class="row">
+
+    <div class="col-1">
+      <app-mainmenu></app-mainmenu>
+    </div>
 
 
+    <div class="col-10">
 
-    <div class="row">
-      <div class="col-6">
+      <h4 class="alert-primary my-2 py-2 pl-2">Редактирование отделений</h4>
 
-        <h4 class="alert-primary my-2 py-2 pl-2">Редактирование отделений</h4>
+      <div class="card card-body mt-4 p-3">
 
-        <div class="card card-body mt-4 p-3">
-
-          <form [formGroup]="adminForm">
+        <form [formGroup]="adminForm">
 
           <div class="d-flex justify-content-start">
 
             <!-- Кнопка добавления отделения -->
-            <button class="btn btn-primary my-2 mr-4" data-toggle="collapse" title="Добавить отделение" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
+            <button class="btn btn-outline-primary my-2 mr-4" data-toggle="collapse" title="Добавить отделение" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
               <i class="fa fa-plus"></i>
             </button>
 
             <!-- Кнопка редактирования отделения -->
-            <button class="btn btn-primary my-2 mr-4" (click)="changeBranch()"  data-toggle="collapse"  title="Изменить название" href="#collapseCH" aria-expanded="false" aria-controls="collapse1">
+            <button class="btn btn-outline-primary my-2 mr-4" (click)="changeBranch()"  data-toggle="collapse"  title="Изменить название" href="#collapseCH" aria-expanded="false" aria-controls="collapse1">
               <i class="fa fa-edit"></i>
             </button>
 
             <!-- Кнопка модального окна удаления отделения -->
-            <button type="button" class="btn btn-danger my-2 mr-4"  title="Удалить отделение" data-toggle="modal" data-target="#collapseDeleteBranch">
+            <button type="button" class="btn btn-outline-danger my-2 mr-4"  title="Удалить отделение" data-toggle="modal" data-target="#collapseDeleteBranch">
               <i class="fa fa-trash"></i>
             </button>
 
             <!-- Кнопка раскрытия таблицы -->
-           <button type="button" class="btn btn-outline-primary my-2 ml-auto"  title="Список отделений" data-toggle="collapse" data-target="#collapseShowBranch">
+            <button type="button" class="btn btn-outline-primary my-2 ml-auto"  title="Список отделений" data-toggle="collapse" data-target="#collapseShowBranch">
               <i class="fa fa-angle-double-down"></i>
             </button>
 
@@ -43,7 +45,7 @@
               <div class="input-group">
                 <input formControlName="inputNewBranch" type="text" class="form-control" placeholder="Введите название нового отделения" aria-label="" aria-describedby="basic-addon1">
                 <div class="input-group-append">
-                  <button class="btn btn-success" (click)="newBranch()" type="button">Сохранить</button>
+                  <button class="btn btn-outline-success" (click)="newBranch()" type="button">Сохранить</button>
                 </div>
               </div>
             </div>
@@ -59,7 +61,7 @@
 
                 <div class="input-group-append">
 
-                  <button class="btn btn-success" (click)="OnChangeBranch()" type="button">Изменить</button>
+                  <button class="btn btn-outline-success" (click)="OnChangeBranch()" type="button">Изменить</button>
 
                 </div>
 
@@ -70,186 +72,186 @@
           </div>
 
 
-</form>
+        </form>
 
 
-          <div class="collapse" id="collapseShowBranch">
-            <ul class="list-group mt-2">
-              <li [class.active] = "bl === selectedBL" class="list-group-item"  (click)="mu(bl)"  *ngFor="let bl of branchList">{{bl.name }}</li>
-            </ul>
-          </div>
-
-          <!-- Модальное окно удаления отделения -->
-          <div class="modal fade" id="collapseDeleteBranch" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="modalLongTitle">Удаление отделения</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  Вы уверены что желаете удалить отделение<span class="font-weight-bold"> "{{sBranchName}}"</span>?
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
-                  <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="OnDeleteBranch()">Да</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
+        <div class="collapse" id="collapseShowBranch">
+          <ul class="list-group mt-2">
+            <li [class.active] = "bl === selectedBL" class="list-group-item"  (click)="mu(bl)"  *ngFor="let bl of branchList">{{bl.name }}</li>
+          </ul>
         </div>
-      </div>
 
-
-<!--
-            <button type="button" class="btn btn-primary my-2 mr-4"  title="имеющиеся данные" data-toggle="collapse" data-target="#collapseShowUser">
-              <i class="fa fa-angle-double-down"></i>
-            </button>
-          </div>
-
-
-          <div class="collapse" id="collapseShowUser">
-            <ul class="list-group">
-              <li [class.active] = "uElem === selectedUser" class="list-group-item"  (click)="muUser(uElem)" *ngFor="let uElem of usersList">
-                <span class="badge badge-secondary" *ngIf="uElem.filial===0">!</span>
-                {{uElem.nick}}
-                <button data-toggle="collapse" data-target="#collapseUserFrame" class="btn btn-primary float-right" type="button" title="задать права пользователю" (click)="changeUserRight(uElem)">
-                  <i class="fa fa-edit"></i>
+        <!-- Модальное окно удаления отделения -->
+        <div class="modal fade" id="collapseDeleteBranch" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalLongTitle">Удаление отделения</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
                 </button>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-
-
-        {{sError}}
-
-
-       <form [formGroup]="adminFormUser">
-
-        <div class="collapse" id="collapseUserFrame">
-
-          <h4 class="alert-primary mt-2 my-2 py-2 pl-2">Настройка пользователя</h4>
-
-          <div class="card card-body">
-            <ul class="list-group">
-
-
-              <li class="list-group-item">
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon3">Ник</span>
-                  </div>
-                  <input type="text" formControlName="nick"  class="form-control" placeholder="ник" aria-describedby="basic-addon3">
-                </div>
-              </li>
-
-
-              <li class="list-group-item" *ngFor="let Info of branchList">
-
-                        <div class="alert alert-primary" role="alert">
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="checkBranch{{Info.id}}" formControlName="checkBranch{{Info.id}}">
-                            <label class="custom-control-label" for="checkBranch{{Info.id}}">{{Info.branch_name}}</label>
-                          </div>
-                        </div>
-
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="checkIP{{Info.id}}" formControlName="checkIP{{Info.id}}">
-                            <label class="custom-control-label" for="checkIP{{Info.id}}">Проверять IP адрес</label>
-                        </div>
-
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1{{Info.id}}">IP</span>
-                          </div>
-                          <input type="text" formControlName="ip{{Info.id}}" class="form-control" placeholder="127.0.0.1" aria-label="IP пользователя" aria-describedby="basic-addon1">
-                        </div>
-
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">Должность</span>
-                          </div>
-                          <input type="text"  formControlName="textPosition{{Info.id}}" class="form-control" placeholder="Не назначен" aria-label="Не назначен" aria-describedby="basic-position">
-                          <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownPosition{{Info.id}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownPosition{{Info.id}}">
-                              <a class="dropdown-item" *ngFor="let chPosition of positionList">{{chPosition.name }}</a>
-                            </div>
-                          </div>
-                        </div>
-              </li>
-
-
-            </ul>
-
-
-
-            <button class="btn btn-outline-primary float-right" type="button"  data-toggle="collapse" data-target="#collapseChoiseBranch">Отвязать от отделения</button>
-            <button class="btn btn-outline-primary float-right" type="button" data-toggle="collapse" data-target="#collapseDeleteUserAll">Удалить пользователя полностью</button>
-            <button class="btn btn-outline-primary float-right" type="button" (click)="OnSaveAllUserBranch()">Сохранить</button>
-            <button class="btn btn-outline-primary float-right" data-toggle="collapse" data-target="#collapseUserFrame" type="button">Отмена</button>
-
-
-          </div>
-
-        </div>
-
-     </form>
-
-        <div *ngIf="this.chBranchU"  class="collapse" id="collapseChoiseBranch">
-          <div class="card card-body">
-            <div class="alert alert-primary" role="alert">
-              Вы уверены что желаете удалить связь с выбранным отделением {{this.chBranchU.name}}?
-            </div>
-            <div class="input-group-append">
-              <button class="btn btn-outline-primary float-right" type="button" (click)="OnDeleteUserBranch()">Да</button>
-              <button class="btn btn-outline-primary float-right" data-toggle="collapse" data-target="#collapseChoiseBranch" type="button">Нет</button>
+              </div>
+              <div class="modal-body">
+                Вы уверены что желаете удалить отделение<span class="font-weight-bold"> "{{sBranchName}}"</span>?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Нет</button>
+                <button type="button" class="btn btn-outline-primary" data-dismiss="modal" (click)="OnDeleteBranch()">Да</button>
+              </div>
             </div>
           </div>
         </div>
 
-        <div *ngIf="this.selectedUser"  class="collapse" id="collapseDeleteUserAll">
-          <div class="card card-body">
-            <div class="alert alert-primary" role="alert">
-              Вы уверены что желаете полностью удалить пользователя {{this.selectedUser.nick}}?
-            </div>
-
-            <div class="input-group-append">
-              <button class="btn btn-outline-primary float-right" type="button" (click)="OnDeleteUserFull()">Да</button>
-              <button class="btn btn-outline-primary float-right" data-toggle="collapse" data-target="#collapseDeleteUserAll" type="button">Нет</button>
-            </div>
-
-          </div>
-        </div>
 
       </div>
-
--->
-      <div class="col-6">
-      <app-users-admin [id_branch]="1"></app-users-admin>
-      </div>
-
     </div>
+
+
+    <!--
+                <button type="button" class="btn btn-primary my-2 mr-4"  title="имеющиеся данные" data-toggle="collapse" data-target="#collapseShowUser">
+                  <i class="fa fa-angle-double-down"></i>
+                </button>
+              </div>
+
+
+              <div class="collapse" id="collapseShowUser">
+                <ul class="list-group">
+                  <li [class.active] = "uElem === selectedUser" class="list-group-item"  (click)="muUser(uElem)" *ngFor="let uElem of usersList">
+                    <span class="badge badge-secondary" *ngIf="uElem.filial===0">!</span>
+                    {{uElem.nick}}
+                    <button data-toggle="collapse" data-target="#collapseUserFrame" class="btn btn-primary float-right" type="button" title="задать права пользователю" (click)="changeUserRight(uElem)">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+
+
+            {{sError}}
+
+
+           <form [formGroup]="adminFormUser">
+
+            <div class="collapse" id="collapseUserFrame">
+
+              <h4 class="alert-primary mt-2 my-2 py-2 pl-2">Настройка пользователя</h4>
+
+              <div class="card card-body">
+                <ul class="list-group">
+
+
+                  <li class="list-group-item">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">Ник</span>
+                      </div>
+                      <input type="text" formControlName="nick"  class="form-control" placeholder="ник" aria-describedby="basic-addon3">
+                    </div>
+                  </li>
+
+
+                  <li class="list-group-item" *ngFor="let Info of branchList">
+
+                            <div class="alert alert-primary" role="alert">
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="checkBranch{{Info.id}}" formControlName="checkBranch{{Info.id}}">
+                                <label class="custom-control-label" for="checkBranch{{Info.id}}">{{Info.branch_name}}</label>
+                              </div>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="checkIP{{Info.id}}" formControlName="checkIP{{Info.id}}">
+                                <label class="custom-control-label" for="checkIP{{Info.id}}">Проверять IP адрес</label>
+                            </div>
+
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1{{Info.id}}">IP</span>
+                              </div>
+                              <input type="text" formControlName="ip{{Info.id}}" class="form-control" placeholder="127.0.0.1" aria-label="IP пользователя" aria-describedby="basic-addon1">
+                            </div>
+
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">Должность</span>
+                              </div>
+                              <input type="text"  formControlName="textPosition{{Info.id}}" class="form-control" placeholder="Не назначен" aria-label="Не назначен" aria-describedby="basic-position">
+                              <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownPosition{{Info.id}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownPosition{{Info.id}}">
+                                  <a class="dropdown-item" *ngFor="let chPosition of positionList">{{chPosition.name }}</a>
+                                </div>
+                              </div>
+                            </div>
+                  </li>
+
+
+                </ul>
+
+
+
+                <button class="btn btn-outline-primary float-right" type="button"  data-toggle="collapse" data-target="#collapseChoiseBranch">Отвязать от отделения</button>
+                <button class="btn btn-outline-primary float-right" type="button" data-toggle="collapse" data-target="#collapseDeleteUserAll">Удалить пользователя полностью</button>
+                <button class="btn btn-outline-primary float-right" type="button" (click)="OnSaveAllUserBranch()">Сохранить</button>
+                <button class="btn btn-outline-primary float-right" data-toggle="collapse" data-target="#collapseUserFrame" type="button">Отмена</button>
+
+
+              </div>
+
+            </div>
+
+         </form>
+
+            <div *ngIf="this.chBranchU"  class="collapse" id="collapseChoiseBranch">
+              <div class="card card-body">
+                <div class="alert alert-primary" role="alert">
+                  Вы уверены что желаете удалить связь с выбранным отделением {{this.chBranchU.name}}?
+                </div>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-primary float-right" type="button" (click)="OnDeleteUserBranch()">Да</button>
+                  <button class="btn btn-outline-primary float-right" data-toggle="collapse" data-target="#collapseChoiseBranch" type="button">Нет</button>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="this.selectedUser"  class="collapse" id="collapseDeleteUserAll">
+              <div class="card card-body">
+                <div class="alert alert-primary" role="alert">
+                  Вы уверены что желаете полностью удалить пользователя {{this.selectedUser.nick}}?
+                </div>
+
+                <div class="input-group-append">
+                  <button class="btn btn-outline-primary float-right" type="button" (click)="OnDeleteUserFull()">Да</button>
+                  <button class="btn btn-outline-primary float-right" data-toggle="collapse" data-target="#collapseDeleteUserAll" type="button">Нет</button>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+    -->
+    <div class="col-5">
+      <app-users-admin [id_branch]="1"></app-users-admin>
+    </div>
+
+  </div>
 
 
   <div class="row">
-    <div class="col-6">
+    <div class="col-5">
       <app-addwork-admin></app-addwork-admin>
     </div>
-    <div class="col-6">
+    <div class="col-5">
       <app-address-admin></app-address-admin>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-6">
+    <div class="col-5">
       <app-position></app-position>
     </div>
   </div>

@@ -1,11 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-2">
-     <app-mainmenu></app-mainmenu>
-   </div>
-
-    <div class="col">
-
+    <div class="col-12">
       <div class="jumbotron p-2 m-0">
         <div class="d-flex flex-row justify-content-between">
           <h1 class="my-4 ml-5">{{this.userName+' '+this.userSurname}}</h1>
@@ -19,6 +14,18 @@
           </ng-template>
         </div>
       </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-xs-4 col-sm-3 col-md-2 col-lg-2 text-center">
+      <app-mainmenu></app-mainmenu>
+    </div>
+
+    <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10">
+
+
 
       <div class="d-flex justify-content-end">
         <div class="btn-group float-right">
@@ -36,29 +43,29 @@
         <li class="list-group-item"><span>Время начала смены</span> <span class="alert alert-primary float-right my-0 mx-1">{{this.titleShiftDate | date:'HH:mm'}}</span></li>
 
         <li class="list-group-item"><span>Выработка за неделю</span>
-                                                     <span class="alert alert-primary float-right my-0 mx-1">{{Productivity}}</span></li>
+          <span class="alert alert-primary float-right my-0 mx-1">{{Productivity}}</span></li>
 
         <li class="list-group-item"> <span>Часов за неделю</span>
-                                                     <span class="alert alert-primary float-right my-0 mx-1">Часы {{RoundedTime}}</span>
-                                                     <span class="alert alert-warning float-right my-0 mx-1">Точно {{ExactTime}}</span>
+          <span class="alert alert-primary float-right my-0 mx-1">Часы {{RoundedTime}}</span>
+          <span class="alert alert-warning float-right my-0 mx-1">Точно {{ExactTime}}</span>
         </li>
         <li class="list-group-item align-content-end"><span>З/п за неделю</span>
-              <span class="alert alert-primary float-right my-0 mx-1" role="alert">{{RealBasicPayment}}</span>
-              <span class="alert alert-warning float-right my-0 mx-1" role="alert">{{VirtualBasicPayment}}</span>
+          <span class="alert alert-primary float-right my-0 mx-1" role="alert">{{RealBasicPayment}}</span>
+          <span class="alert alert-warning float-right my-0 mx-1" role="alert">{{VirtualBasicPayment}}</span>
         </li>
 
 
 
         <li class="list-group-item"><span>Бонусы за неделю</span>
-                                                  <span class="alert alert-primary float-right my-0 mx-1" role="alert">{{RealAddwork}}</span>
-                                                  <span class="alert alert-warning float-right my-0 mx-1" role="alert">{{VirtualAddwork}}</span>
+          <span class="alert alert-primary float-right my-0 mx-1" role="alert">{{RealAddwork}}</span>
+          <span class="alert alert-warning float-right my-0 mx-1" role="alert">{{VirtualAddwork}}</span>
         </li>
 
         <li class="list-group-item"><span>Итого, руб.</span>
           <span class="alert alert-primary float-right my-0 mx-1">{{RealBasicPayment+VirtualBasicPayment+RealAddwork+VirtualAddwork}}</span></li>
 
         <li class="list-group-item"><span>З/п за смену</span>
-                         <span class="alert alert-primary float-right my-0 mx-1">{{LastShiftItogo}}</span>
+          <span class="alert alert-primary float-right my-0 mx-1">{{LastShiftItogo}}</span>
         </li>
 
         <li class="list-group-item"><span>Недельный рейтинг</span><span class="alert alert-primary float-right my-0 mx-1">{{rating}}</span></li>
@@ -70,28 +77,3 @@
 </div>
 
 
-<!--  OLD
-<div class="container">
-  <app-mainmenu></app-mainmenu>
-
-      <h3 class="my-4">{{this.userName+' '+this.userSurname}}</h3>
-
-      <ul class="list-group">
-        <li class="list-group-item">Дата начала смены<span class="startDate float-right">{{this.titleShiftDate | date:'dd.MM.yyyy'}}</span></li>
-        <li class="list-group-item">Время начала смены<span class="startTime float-right">{{this.titleShiftDate | date:'HH:mm'}}</span></li>
-        <li class="list-group-item">Выработка за неделю<span class="weeklyOutput float-right">500</span></li>
-        <li class="list-group-item">Часов за неделю<span class="hoursWeek float-right">42</span></li>
-        <li class="list-group-item">З/п за неделю<span class="wagesWeek float-right">6500</span></li>
-        <li class="list-group-item">Бонусы за неделю<span class="weeklyBonus float-right">30</span></li>
-        <li class="list-group-item">Итого, руб.<span class="totalRuble float-right">5410</span></li>
-        <li class="list-group-item">З/п за смену<span class="wagesShift float-right">650</span></li>
-        <li class="list-group-item">Рейтинг сотрудника<span class="employeeRating float-right">20</span></li>
-      </ul>
-
-  <div class="btn-group float-right">
-      <button type="button" class="btn btn-primary my-3 float-left" (click)="onShift()">{{titleShift}}</button>
-  &nbsp;   <button type="button" class="btn btn-primary my-3" (click)="logout()">Выход из системы</button>
-   </div>
-</div>
-
--->
