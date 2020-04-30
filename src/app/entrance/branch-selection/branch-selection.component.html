@@ -1,0 +1,11 @@
+<div class="container mt-3" id="BranchSelection">
+<h3>Выберите отделение</h3>
+
+<ul class="nav">
+  <li class="nav-item font-weight-bold" *ngFor="let branch of arrayBranch" (click)="curBranch(branch)">
+    <span>{{branch.name}}</span>
+  </li><br>
+</ul>
+  <p>Дизайн будет потом, когда посмотрим где это будет выводиться</p>
+
+</div>

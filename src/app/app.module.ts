@@ -53,7 +53,7 @@ import { SummaryLaundryComponent } from './washhouse/summary-laundry/summary-lau
 import { SummaryWeekComponent } from './washhouse/summary-laundry/summary-week/summary-week.component';
 import { PaymentLaundryComponent } from './washhouse/payment-laundry/payment-laundry.component';
 import { GraphComponent } from './washhouse/graph/graph.component';
-import { BranchSelectionComponent } from './branch-selection/branch-selection.component';
+import { BranchSelectionComponent } from './entrance/branch-selection/branch-selection.component';
 
 registerLocaleData(localeRu);
 

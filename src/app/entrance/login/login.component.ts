@@ -6,6 +6,8 @@ import * as CryptoJS from 'crypto-js';
 import {timer} from 'rxjs';
 import {Subscription} from 'rxjs';
 import {AuthService} from '../../services/auth-service.service';
+import {AdminService} from '../../services/admin.service';
+import {BranchSelectionComponent} from '../branch-selection/branch-selection.component';
 
 
 @Component({
@@ -24,6 +26,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   private subscribeTimer:  Subscription;
 
   public loginForm: FormGroup;
+  selector_id_user = -1;
+  selector_nick = '';
+  arrayBranch: Array<any>;
 
   constructor(private router: Router, private authService: AuthService) {
 
@@ -90,11 +95,11 @@ export class LoginComponent implements OnInit, OnDestroy {
       (value: Array<any>) => {
 
         if (value[0].length > 1) {
-        this.showErr = true;
+          this.showErr = true;
           this.showSucc = false;
-        this.sResTrouble = 'С такими данными больше одного пользователя.';
-        this.authService.clearStorage();
-        this.block_button(this.nStopMs);
+          this.sResTrouble = 'С такими данными больше одного пользователя.';
+          this.authService.clearStorage();
+          this.block_button(this.nStopMs);
         }
 
         if (!value[0][0].id) {
@@ -131,34 +136,73 @@ export class LoginComponent implements OnInit, OnDestroy {
           }
 
           if (dbPassword === sFormPassword) {
-            // если все верно ввели проверяем IP
-            const id_branch1 = this.authService.getBranch(value[0][0].id);
-            this.authService.getIpAddress(value[0][0].id, id_branch1).subscribe(valueIP => {
-              console.log('valueIP', valueIP);
-              if (!valueIP) {
-                this.showErr = true;
-                this.showSucc = false;
-                this.sResTrouble = 'Вход под таким IP запрещен.';
-                this.authService.clearStorage();
-                this.block_button(this.nStopMs);
-              }
-              if (valueIP) {
-                this.showErr = false;
-                this.showSucc = true;
-                this.sResTrouble = '';
-                this.authService.setStorage(value[0][0].nick, true, value[0][0].id);
-                // переходим на главную страницу
-                console.log('');
-                this.router.navigate(['/laundry']);
+
+            // показываем бранчи и тормозим до выбора
+            this.authService.getUserLink(value[0][0].id).subscribe((valueBranchUser: Array<any>) => {
+              if (valueBranchUser.length > 1) {
+                // это покажет компонент, из которого сработает событие выбора филиала
+                 this.selector_id_user = value[0][0].id;
+                 this.selector_nick = value[0][0].nick;
+                 this.arrayBranch = valueBranchUser;
+
+              } else {
+                 this.accessIP(valueBranchUser[0].id_branch,
+                               value[0][0].id,
+                               valueBranchUser[0].ip,
+                               Boolean(valueBranchUser[0].check_ip.data[0]),
+                               value[0][0].nick);
               }
             });
+
           } // if dbPassword === sFormPassword
         } // value[0].length === 1
-        });
-
+    });
   }
 
 
+  accessIP (id_branch, id_user, ip, checkIP, nick) {
+    // если все верно ввели проверяем IP
+
+    // если не надо проыерять IP
+    if (checkIP === false) {
+      console.log('не проверяем checkIP', checkIP);
+      this.successLogin (nick, id_user, id_branch);
+      return;
+    }
+
+    console.log('проверяем checkIP', checkIP);
+
+      // иначе проверяеm IP
+      this.authService.getIpEasy(ip).subscribe(valueIP => {
+        if (valueIP === false) {
+          this.showErr = true;
+          this.showSucc = false;
+          this.sResTrouble = 'Вход под таким IP запрещен.';
+          this.authService.clearStorage();
+          this.block_button(this.nStopMs);
+        }
+        if (valueIP) {
+          this.successLogin (nick, id_user, id_branch);
+        }
+      });
+    }
+
+
+  // успешный вход
+  successLogin (nick, id_user, id_branch) {
+    this.showErr = false;
+    this.showSucc = true;
+    this.sResTrouble = '';
+    console.log('записали в хранилище', nick, true, id_user, id_branch)
+    this.authService.setStorage(nick, true, id_user, id_branch);
+    // переходим на главную страницу
+    this.router.navigate(['/laundry']);
+  }
+
+  getBranchMessage(res: any) {
+    this.accessIP(res.id_branch, this.selector_id_user, res.ip, Boolean(res.check_ip.data[0]), this.selector_nick);
+
+  }
 }
 
 

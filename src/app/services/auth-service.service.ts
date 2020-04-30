@@ -12,10 +12,11 @@ export class AuthService {
   }
 
 // заносим текущего пользователя в локальное хранилище
-  public setStorage(victUserName: string, bVictConnected: boolean, id_user_vict: number) {
+  public setStorage(victUserName: string, bVictConnected: boolean, id_user_vict: number, id_branch_vict: number) {
     window.localStorage.setItem('victUserName', victUserName);
     window.localStorage.setItem('bVictConnected', JSON.stringify(bVictConnected));
     window.localStorage.setItem('id_user_vict', JSON.stringify(id_user_vict));
+    window.localStorage.setItem('id_branch_vict', JSON.stringify(id_branch_vict));
   }
 
   // стираем текущего пользователя из локального хранилища
@@ -42,6 +43,7 @@ export class AuthService {
 
   let id_user_vict = -1;
   if (window.localStorage.getItem('id_user_vict')) {
+    console.log('window.localStorage.getItem(id_user_vict)', window.localStorage.getItem('id_user_vict'));
     id_user_vict = JSON.parse(window.localStorage.getItem('id_user_vict'));
   }
   return {victUserName: victUserName, bVictConnected: bVictConnected, id_user_vict: id_user_vict};
@@ -61,6 +63,17 @@ export class AuthService {
   }
     return Observable.of(bAdmin);
   }
+
+  // получаем пользователя, поиск по 2 полям - его почте и нику одновременно
+  getUserLink(id_user) {
+    const params = new HttpParams()
+      .set('get_user_link', 'get_user_link')
+      .set('id_user', id_user);
+    return this.http.get(this.gr.sUrlGlobal + 'users', {params: params});
+  }
+
+
+
   // получаем пользователя, поиск по 2 полям - его почте и нику одновременно
   getUserFromBase(UserName: string) {
      const params = new HttpParams()
@@ -83,6 +96,13 @@ export class AuthService {
     return this.http.get(this.gr.sUrlGlobal + 'users', {params: params});
   }
 
+
+  getIpEasy(ip) {
+    const params = new HttpParams()
+      .set('get_ip_easy', 'get_ip_easy')
+      .set('ip', ip);
+    return this.http.get(this.gr.sUrlGlobal + 'users', {params: params});
+  }
 
   getUserFromId(id_user) {
     const params = new HttpParams()

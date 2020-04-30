@@ -57,3 +57,8 @@
 
 </div>
 
+<div *ngIf="this.arrayBranch !== undefined">
+    <div *ngIf="this.arrayBranch.length > 1">
+        <app-branch-selection [id_user]="this.selector_id_user" [arrayBranch]="this.arrayBranch" (messageToEmit)="getBranchMessage($event)" ></app-branch-selection>
+    </div>
+</div>
