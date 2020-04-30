@@ -1,0 +1,9 @@
+.list-group-item:hover {
+  background-color: #a1ccfb;
+  font-weight: bold;
+}
+
+li.active{
+  background-color: #a1ccfb;
+  font-weight: bold;
+}
