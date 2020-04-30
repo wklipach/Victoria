@@ -1,1 +1,120 @@
-!!!!!!!!!!!!!!!!!
+<form [formGroup]="adminFormUser">
+
+        <h4 class="alert-primary my-2 py-2 pl-2">Редактирование пользователей</h4>
+
+        <div class="card card-body mt-4 p-3">
+          <div class="d-flex justify-content-end">
+
+            <!-- Кнопка раскрытия таблицы -->
+<button type="button" class="btn btn-primary my-2 mr-4"  title="имеющиеся данные" data-toggle="collapse" data-target="#collapseShowUser">
+  <i class="fa fa-angle-double-down"></i>
+</button>
+</div>
+
+
+<div class="collapse" id="collapseShowUser">
+  <ul class="list-group">
+    <li [class.active] = "uElem === selectedUser" class="list-group-item"  (click)="muUser(uElem)" *ngFor="let uElem of usersList">
+      <span class="badge badge-secondary" *ngIf="uElem.filial===0">!</span>
+      {{uElem.nick}}
+      <button data-toggle="collapse" data-target="#collapseUserFrame" class="btn btn-primary float-right" type="button" title="задать права пользователю" (click)="showInfo(uElem.id)">
+        <i class="fa fa-edit"></i>
+      </button>
+    </li>
+  </ul>
+</div>
+
+</div>
+
+<!--
+//TODO !!!!
+-->
+{{sError}}
+
+
+  <div class="collapse" id="collapseUserFrame">
+
+    <h4 class="alert-primary mt-2 my-2 py-2 pl-2">Настройка пользователя</h4>
+
+    <div class="card card-body">
+      <ul class="list-group">
+
+
+        <li class="list-group-item">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon3">Ник</span>
+            </div>
+            <input type="text" formControlName="nick"  class="form-control" placeholder="ник" aria-describedby="basic-addon3">
+          </div>
+        </li>
+
+
+        <li class="list-group-item" *ngFor="let Info of branchList">
+
+          <div class = "alert alert-primary" role="alert">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="checkBranch{{Info.id}}" formControlName="checkBranch{{Info.id}}">
+              <label class="custom-control-label" for="checkBranch{{Info.id}}">{{Info.branch_name}}</label>
+            </div>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="checkIP{{Info.id}}" formControlName="checkIP{{Info.id}}">
+            <label class="custom-control-label" for="checkIP{{Info.id}}">Проверять IP адрес</label>
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1{{Info.id}}">IP</span>
+            </div>
+            <input type="text" formControlName="ip{{Info.id}}" class="form-control" placeholder="127.0.0.1" aria-label="IP пользователя" aria-describedby="basic-addon1">
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Должность</span>
+            </div>
+            <input type="text" #textPosition id="textPosition{{Info.id}}" formControlName="textPosition{{Info.id}}" class="form-control" placeholder="Не назначен" aria-label="Не назначен" aria-describedby="basic-position">
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownPosition{{Info.id}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" (click)="changePosition(chPosition, textPosition)" *ngFor="let chPosition of positionList"> {{chPosition.name}}</a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+
+      </ul>
+
+
+
+      <button class="btn btn-outline-primary float-right" type="button" data-toggle="collapse" data-target="#collapseDeleteUserAll">Удалить пользователя полностью</button>
+      <button class="btn btn-outline-primary float-right" type="button" (click)="OnSaveAllUserBranch()">Сохранить</button>
+      <button class="btn btn-outline-primary float-right" data-toggle="collapse" data-target="#collapseUserFrame" type="button">Отмена</button>
+
+
+    </div>
+
+  </div>
+
+
+
+<div *ngIf="this.selectedUser"  class="collapse" id="collapseDeleteUserAll">
+  <div class="card card-body">
+    <div class="alert alert-primary" role="alert">
+      Вы уверены что желаете полностью удалить пользователя {{this.selectedUser.nick}}?
+    </div>
+
+    <div class="input-group-append">
+      <button class="btn btn-outline-primary float-right" type="button" (click)="OnDeleteUserFull()">Да</button>
+      <button class="btn btn-outline-primary float-right" data-toggle="collapse" data-target="#collapseDeleteUserAll" type="button">Нет</button>
+    </div>
+
+  </div>
+</div>
+
+
+</form>

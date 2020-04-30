@@ -3,13 +3,16 @@
   <app-mainmenu></app-mainmenu>
 
 
-  <form [formGroup]="adminForm">
+
     <div class="row">
       <div class="col-6">
 
         <h4 class="alert-primary my-2 py-2 pl-2">Редактирование отделений</h4>
 
         <div class="card card-body mt-4 p-3">
+
+          <form [formGroup]="adminForm">
+
           <div class="d-flex justify-content-start">
 
             <!-- Кнопка добавления отделения -->
@@ -66,6 +69,10 @@
 
           </div>
 
+
+</form>
+
+
           <div class="collapse" id="collapseShowBranch">
             <ul class="list-group mt-2">
               <li [class.active] = "bl === selectedBL" class="list-group-item"  (click)="mu(bl)"  *ngFor="let bl of branchList">{{bl.name }}</li>
@@ -97,13 +104,8 @@
         </div>
       </div>
 
-      <div class="col-6">
-        <h4 class="alert-primary my-2 py-2 pl-2">Редактирование пользователей</h4>
 
-        <div class="card card-body mt-4 p-3">
-          <div class="d-flex justify-content-end">
-
-            <!-- Кнопка раскрытия таблицы -->
+<!--
             <button type="button" class="btn btn-primary my-2 mr-4"  title="имеющиеся данные" data-toggle="collapse" data-target="#collapseShowUser">
               <i class="fa fa-angle-double-down"></i>
             </button>
@@ -124,77 +126,67 @@
 
         </div>
 
-        <!--
-        //TODO !!!!
-        -->
+
         {{sError}}
+
+
+       <form [formGroup]="adminFormUser">
+
         <div class="collapse" id="collapseUserFrame">
 
           <h4 class="alert-primary mt-2 my-2 py-2 pl-2">Настройка пользователя</h4>
 
           <div class="card card-body">
             <ul class="list-group">
-              <li class="list-group-item">
-
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="checkIP" formControlName="checkIP">
-                  <label class="custom-control-label" for="checkIP">Проверять IP адрес</label>
-                </div>
-
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">IP</span>
-                  </div>
-                  <input type="text" formControlName="ip" class="form-control" placeholder="127.0.0.1" aria-label="IP пользователя" aria-describedby="basic-addon1">
-                </div>
-              </li>
-              <li class="list-group-item">
-
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon2">Филиал</span>
-                  </div>
-                  <input type="text"  formControlName="chbranch" class="form-control" placeholder="Не назначен" aria-label="Не назначен" aria-describedby="basic-addon2">
-                  <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" (click)="choiseBranchForUser(chBranch)" *ngFor="let chBranch of branchList">{{chBranch.name }}</a>
-                    </div>
-                  </div>
-                </div>
-
-              </li>
-
-              <li class="list-group-item">
-
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-position">Должность</span>
-                  </div>
-                  <input type="text"  formControlName="chPosition" class="form-control" placeholder="Не назначен" aria-label="Не назначен" aria-describedby="basic-position">
-                  <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownPosition" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownPosition">
-                      <a class="dropdown-item" (click)="choisePositionForUser(chPosition)" *ngFor="let chPosition of positionList">{{chPosition.name }}</a>
-                    </div>
-                  </div>
-                </div>
-
-              </li>
 
 
               <li class="list-group-item">
-
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon3">Ник</span>
                   </div>
-                  <input type="text" formControlName="nick"  class="form-control" placeholder="Еще что забыл" aria-label="Еще что забыл" aria-describedby="basic-addon3">
+                  <input type="text" formControlName="nick"  class="form-control" placeholder="ник" aria-describedby="basic-addon3">
                 </div>
-
               </li>
+
+
+              <li class="list-group-item" *ngFor="let Info of branchList">
+
+                        <div class="alert alert-primary" role="alert">
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="checkBranch{{Info.id}}" formControlName="checkBranch{{Info.id}}">
+                            <label class="custom-control-label" for="checkBranch{{Info.id}}">{{Info.branch_name}}</label>
+                          </div>
+                        </div>
+
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="checkIP{{Info.id}}" formControlName="checkIP{{Info.id}}">
+                            <label class="custom-control-label" for="checkIP{{Info.id}}">Проверять IP адрес</label>
+                        </div>
+
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1{{Info.id}}">IP</span>
+                          </div>
+                          <input type="text" formControlName="ip{{Info.id}}" class="form-control" placeholder="127.0.0.1" aria-label="IP пользователя" aria-describedby="basic-addon1">
+                        </div>
+
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">Должность</span>
+                          </div>
+                          <input type="text"  formControlName="textPosition{{Info.id}}" class="form-control" placeholder="Не назначен" aria-label="Не назначен" aria-describedby="basic-position">
+                          <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownPosition{{Info.id}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownPosition{{Info.id}}">
+                              <a class="dropdown-item" *ngFor="let chPosition of positionList">{{chPosition.name }}</a>
+                            </div>
+                          </div>
+                        </div>
+              </li>
+
+
             </ul>
 
 
@@ -208,6 +200,8 @@
           </div>
 
         </div>
+
+     </form>
 
         <div *ngIf="this.chBranchU"  class="collapse" id="collapseChoiseBranch">
           <div class="card card-body">
@@ -236,8 +230,14 @@
         </div>
 
       </div>
+
+-->
+      <div class="col-6">
+      <app-users-admin [id_branch]="1"></app-users-admin>
+      </div>
+
     </div>
-  </form>
+
 
   <div class="row">
     <div class="col-6">

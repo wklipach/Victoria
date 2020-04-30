@@ -90,11 +90,10 @@ export class AdminService {
 
   }
 
-  setUpdateLinkBranchUser(id_user, chbranch, ip, checkIP, id_position) {
+  setUpdateLinkBranchUser(id_user, mas_res) {
     const sUrl = this.gr.sUrlGlobal + 'admin';
     const data_branch = { 'linkbranchuser': 'linkbranchuser', 'id_user': id_user,
-                           'chbranch': chbranch, 'ip': ip, 'checkIP' : checkIP,
-                           'id_position': id_position};
+                           'mas_res': mas_res};
     return this.http.post(sUrl, data_branch);
   }
 
@@ -165,11 +164,10 @@ export class AdminService {
     return this.http.get(this.gr.sUrlGlobal + 'admin', {params: params});
   }
 
-  getBranchUser(id_user, id_branch) {
+  getBranchUser(id_user) {
     const params = new HttpParams()
       .set('get_branch_user', 'get_branch_user')
-      .set('id_user', id_user)
-      .set('id_branch', id_branch);
+      .set('id_user', id_user);
     return this.http.get(this.gr.sUrlGlobal + 'admin', {params: params});
   }
 

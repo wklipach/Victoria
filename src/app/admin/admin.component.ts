@@ -15,6 +15,7 @@ export class AdminComponent implements OnInit {
   sError = '';
   id_city = 1;
   adminForm: FormGroup;
+  adminFormUser: FormGroup;
   branchList = [];
   positionList = [];
   usersList = [];
@@ -32,10 +33,13 @@ export class AdminComponent implements OnInit {
       'inputNewBranch': new FormControl({}, []),
       'checkIP': new FormControl({}, []),
       'ip': new FormControl({}, []),
-      'nick': new FormControl({}, []),
-      'chPosition': new FormControl({}, []),
+       'chPosition': new FormControl({}, []),
       'chbranch': new FormControl({}, [])
     });
+
+
+    this.adminFormUser = new FormGroup({});
+
   }
 
   ngOnInit(): void {
@@ -45,9 +49,18 @@ export class AdminComponent implements OnInit {
 
   loadBranchList(id_city) {
     //
+
+    Object.keys(this.adminFormUser.controls).forEach(key => {
+      this.adminFormUser.removeControl(key);
+    });
+    this.adminFormUser.addControl('nick', new FormControl(''));
     this.adminserv.getBranch(id_city).subscribe( (value: Array<any>) => {
       value.forEach((element, ih) => {
         this.branchList.push(element);
+        this.adminFormUser.addControl('checkBranch' + element.id, new FormControl(''));
+        this.adminFormUser.addControl('checkIP' + element.id, new FormControl(''));
+        this.adminFormUser.addControl('ip' + element.id, new FormControl(''));
+        this.adminFormUser.addControl('textPosition' + element.id, new FormControl(''));
       });
       this.CheckFirstBranch();
       this.LoadUserFromBranch();
@@ -193,10 +206,8 @@ DeleteBranch() {
   }
 
   changeUserRight(uElem) {
-
+/*
     console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-
-
     this.selectedUser = uElem;
 
     this.adminForm.controls['checkIP'].setValue(Boolean(uElem.check_ip));
@@ -222,16 +233,18 @@ DeleteBranch() {
     } else {
       this.adminForm.controls['chPosition'].setValue('');
     }
-
+*/
 
   }
 
-  choiseBranchForUser(chBranch: any) {
-    this.chBranchU = chBranch;
-    this.adminForm.controls['chbranch'].setValue(this.chBranchU.name);
+  choiseBranchForUser(id_user) {
+    // this.chBranchU = chBranch;
+    // this.adminForm.controls['chbranch'].setValue(this.chBranchU.name);
+    // //adminFormUser
 
-    this.adminserv.getBranchUser(this.selectedUser.id, this.chBranchU.id).subscribe((value: Array<any>) => {
+    this.adminserv.getBranchUser(id_user).subscribe((value: Array<any>) => {
 
+/*
       if (value.length === 0 ) {
         this.adminForm.controls['ip'].setValue('');
         this.adminForm.controls['checkIP'].setValue(Boolean(false));
@@ -247,6 +260,7 @@ DeleteBranch() {
           this.adminForm.controls['checkIP'].setValue(Boolean(false));
         }
       }
+*/
 
     });
     //
@@ -277,14 +291,13 @@ DeleteBranch() {
   }
 
   // сохраняем все что можем
+/*
   OnSaveAllUserBranch() {
 
     if (this.adminForm.controls['nick'].value.toString().trim().length < 3 ) {
       this.sError = 'Никнейм не должен быть короче 3 символов';
       return;
     }
-
-
 
     const strPosition = this.adminForm.controls['chPosition'].value.toString().trim();
     let id_position = 0;
@@ -336,4 +349,6 @@ DeleteBranch() {
 
 
   }
+*/
+
 }
