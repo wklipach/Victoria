@@ -1,8 +1,13 @@
 <div class="container">
 
+  <div class="row">
+    <div class="col-2">
+      <app-mainmenu></app-mainmenu>
+    </div>
 
+    <div class="col-10">
 
-  <form [formGroup]="acclaundform">
+    <form [formGroup]="acclaundform">
 
     <app-customer-address  [beginString] = "'Белье, которое вы принмаете с адреса'"
                            [endString]="'(выберите размер и укажите количество):'"
@@ -10,16 +15,10 @@
                            (ChangedPage)="clickPage($event)">
     </app-customer-address>
 
-    <div class="row">
-      <div class="col-2">
-        <app-mainmenu></app-mainmenu>
-      </div>
 
-      <div class="col-xs-10 col-sm-1 col-md-10 col-lg-5">
+         <div class="row">
 
-
-
-
+      <div class="col-6">
 
         <h3 class="alert alert-dark">Прямое белье</h3>
 
@@ -197,9 +196,18 @@
           </div>
         </div>
 
+
+        <div class="d-flex justify-content-end">
+          <label class="font-weight-bold">Общий вес белья:</label>
+          <p class="w-25 ml-3">{{getErrorText('massa')}}
+            <input type="text" [class]="getClassName('massa')" formControlName="massa" placeholder="кг" id="name40" name="name40"></p>
+          <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('massa')"><i class="fa fa-plus"></i></p>
+          <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('massa')"><i class="fa fa-minus"></i></p>
+        </div>
+
       </div> <!-- end col -6 -->
 
-      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-5">
+      <div class="col-6">
 
         <h3 class="alert alert-dark">Не профильное</h3>
 
@@ -371,19 +379,13 @@
           </div>
         </div>
 
-      </div> <!-- end col -6 -->
-    </div> <!-- end row -->
+      </div>
 
-
-    <div class="d-flex justify-content-start">
-      <label class="font-weight-bold">Общий вес белья:</label>
-      <p class="w-25 ml-3">{{getErrorText('massa')}}
-        <input type="text" [class]="getClassName('massa')" formControlName="massa" placeholder="кг" id="name40" name="name40"></p>
-      <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('massa')"><i class="fa fa-plus"></i></p>
-      <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('massa')"><i class="fa fa-minus"></i></p>
-    </div>
-
+  </div> <!-- end col -6 -->
     <div class="alert alert-info">
+
+      <h4 class="text-danger">{{this.sError}}</h4>
+
       <button (click)="send_data()"
               [disabled]="acclaundform.value.n1=='' && acclaundform.value.n1_spoiled=='' &&
                       acclaundform.value.n2=='' && acclaundform.value.n2_spoiled=='' &&
@@ -405,29 +407,23 @@
                       acclaundform.value.n18=='' && acclaundform.value.n18_spoiled=='' &&
                       acclaundform.value.n19=='' && acclaundform.value.n19_spoiled=='' &&
                       acclaundform.value.massa==''"
-              type="button" class="btn btn-outline-primary mt-2">Отправить</button>
-
-
-
+              type="button" class="btn btn-outline-primary mt-2 font-weight-bold" style="background-color: white; color:#797575;">Отправить</button>
 
       <p class="text-info">После нажатия кнопки Отправить изменить данные будет нельзя!</p>
-      <p class="text-info">{{this.sError}}</p>
-    </div>
+
+  </div>
 
   </form>
-
-  <div class="row">
-    <div class="col-12">
-
-      <a class="btn btn-outline-primary my-4 ml-4" data-toggle="collapse"
-         href="#collapseAcceptanceWarehouse" role="button" aria-expanded="false" aria-controls="collapseAcceptanceWarehouse">
-        Уже принято
-      </a>
-      <div class="collapse" id="collapseAcceptanceWarehouse">
-        <app-report-acceptance [intAddress]="this.intAddress"></app-report-acceptance>
-      </div>
-
-
-    </div>
   </div>
+
+    <a class="btn btn-outline-primary my-4 ml-4" data-toggle="collapse"
+       href="#collapseAcceptanceWarehouse" role="button" aria-expanded="false" aria-controls="collapseAcceptanceWarehouse">
+      Уже принято
+    </a>
+    <div class="collapse" id="collapseAcceptanceWarehouse">
+      <app-report-acceptance [intAddress]="this.intAddress"></app-report-acceptance>
+    </div>
+
+</div> <!-- end row -->
+
 </div>

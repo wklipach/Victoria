@@ -1,23 +1,23 @@
 <form [formGroup]="addworkForm">
 
 
-  <h4 class="alert-primary mt-2 my-2 py-2 pl-2">Редактирование дополнительных работ</h4>
+  <h4 class="alert-primary mt-2 my-2 py-2 pl-2">Дополнительные работы</h4>
 
   <div class="card card-body mt-4 p-3">
     <div class="d-flex justify-content-start">
 
       <!-- Кнопка добавления -->
-      <button class="btn btn-primary my-2 mr-4" data-toggle="collapse" title="Добавить дополнительную работу" href="#collapseNewAW" aria-expanded="false" aria-controls="collapse1">
+      <button class="btn btn-outline-primary my-2 mr-4" data-toggle="collapse" title="Добавить дополнительную работу" href="#collapseNewAW" aria-expanded="false" aria-controls="collapse1">
         <i class="fa fa-plus"></i>
       </button>
 
       <!-- Кнопка редактирования -->
-      <button class="btn btn-primary my-2 mr-4" (click)="changeAW()"  data-toggle="collapse"  title="Изменить дополнительную работу" href="#collapseChangeAW" aria-expanded="false" aria-controls="collapse1">
+      <button class="btn btn-outline-primary my-2 mr-4" (click)="changeAW()"  data-toggle="collapse"  title="Изменить дополнительную работу" href="#collapseChangeAW" aria-expanded="false" aria-controls="collapse1">
         <i class="fa fa-edit"></i>
       </button>
 
       <!-- Кнопка модального окна удаления -->
-      <button type="button" class="btn btn-danger my-2 mr-4"  title="Удалить дополнительную работу" data-toggle="modal" data-target="#collapseDeleteAW">
+      <button type="button" class="btn btn-outline-danger my-2 mr-4"  title="Удалить дополнительную работу" data-toggle="modal" data-target="#collapseDeleteAW">
         <i class="fa fa-trash"></i>
       </button>
 
@@ -81,8 +81,8 @@
             Вы уверены что желаете удалить дополнительную работу <span class="font-weight-bold"> "{{sAwName}}"</span>?
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="OnDeleteAW()">Да</button>
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Нет</button>
+            <button type="button" class="btn btn-outline-primary" data-dismiss="modal" (click)="OnDeleteAW()">Да</button>
           </div>
         </div>
       </div>
