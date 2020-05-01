@@ -177,7 +177,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         if (valueIP === false) {
           this.showErr = true;
           this.showSucc = false;
-          this.sResTrouble = 'Вход под таким IP запрещен.';
+          this.sResTrouble = 'Войдите с разрешенного IP-адреса.';
           this.authService.clearStorage();
           this.block_button(this.nStopMs);
         }

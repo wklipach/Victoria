@@ -1,11 +1,29 @@
-<div class="container mt-3" id="BranchSelection">
-<h3>Выберите отделение</h3>
+<div class="container mt-3 p-0" id="BranchSelection">
+<h4 class="text-muted font-weight-bold mb-4">Выберите отделение</h4>
 
-<ul class="nav">
-  <li class="nav-item font-weight-bold" *ngFor="let branch of arrayBranch" (click)="curBranch(branch)">
-    <span>{{branch.name}}</span>
-  </li><br>
+  <ul class="nav flex-column">
+  <li class="nav-item font-weight-bold mb-4 pl-3" *ngFor="let branch of arrayBranch" (click)="curBranch(branch)">
+    <a class="forgot-password" routerLink>{{branch.name}}</a>
+  </li>
 </ul>
-  <p>Дизайн будет потом, когда посмотрим где это будет выводиться</p>
+
 
 </div>
+
+
+<!--
+
+<a class="forgot-password" routerLink="{{branch.name}}" routerLinkActive="active">{{branch.name}}</a>
+
+<div class="container mt-3 p-0" id="BranchSelection">
+  <h4 class="text-muted font-weight-bold">Выберите отделение</h4>
+
+  <ul class="nav flex-column">
+    <li class="nav-item mt-4" *ngFor="let branch of arrayBranch" (click)="curBranch(branch)">
+      <a class="nav-link" href="#">{{branch.name}}</a>
+    </li>
+  </ul>
+
+</div>
+
+-->

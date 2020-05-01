@@ -1,37 +1,38 @@
-
 <div class="container">
 
-  <div class="wrapper">
-
-  <div class="top">Войти</div>
-
-
+  <div class="row">
+    <div class="col-6">
 <!--
    начали модель
    [disabled]="loginForm.invalid"
    <button type="submit" class="btn-signin" id="btnPwd" formControlName="btnPwd">Войти</button>
 -->
 
+      <div class="card my-4">
+        <div class="card-body py-2">
+          <h3 class="text-muted font-weight-bold">Вход</h3>
 
-<div class="box">
-  <form [formGroup]="loginForm" novalidate (ngSubmit)="submit()">
 
-      <label class="login" for="inputLogin">Логин или E-Mail</label>
-      <input type="text" class="inputLogin" id="inputLogin" formControlName="nameOrEmail" placeholder="Логин или E-Mail"
+    <form [formGroup]="loginForm" novalidate (ngSubmit)="submit()">
+
+    <div class="d-flex justify-content-start mb-3">
+      <label class="w-25 font-weight-bold text-muted pt-2" for="inputLogin">Логин</label>
+      <input type="text" class="form-control w-50" id="inputLogin" formControlName="nameOrEmail" placeholder="Логин"
              [ngClass]="{
                           succesfullvalidator: this.loginForm.controls['nameOrEmail'].value.length >= 3,
                           troublevalidator: loginForm.controls['nameOrEmail'].value.length >= 1 && loginForm.controls['nameOrEmail'].value.length <= 2  }">
+    </div>
 
-  <label class="password" for="inputPassword">Пароль</label>
-  <input type="password" class="inputPassword" id="inputPassword" formControlName="password"  placeholder="Пароль">
+    <div class="d-flex justify-content-start mb-3">
+  <label class="w-25 font-weight-bold text-muted pt-2" for="inputPassword">Пароль</label>
+  <input type="password" class="form-control w-50" id="inputPassword" formControlName="password"  placeholder="Пароль">
+    </div>
 
-   <button type="submit" class="btn-signin" role="button" id="btnpwd" [disabled]="loginForm.invalid || stopCondition">Войти</button>
+    <p><button type="submit" class="btn btn-outline-primary my-3" role="button" id="btnpwd" [disabled]="loginForm.invalid || stopCondition" style="width: 100px;">Войти</button></p>
 
+    <p><a class="forgot-password" routerLink="/forgot-password" routerLinkActive="active">Забыли пароль или логин?</a></p>
 
-    <br>
-
-    <a class="forgot-password" routerLink="/forgot-password" routerLinkActive="active">Забыли пароль или логин?</a>
-    <a class="register" routerLink="/register" routerLinkActive="active">Зарегистрироваться</a>
+    <p><a class="register" routerLink="/register" routerLinkActive="active">Зарегистрироваться</a></p>
 
 
   <ng-container *ngIf="showErr">
@@ -46,19 +47,26 @@
     <a routerLink="/smain" routerLinkActive="active"></a>
   </ng-container>
 
-</form>
-  <!--
-     занончили модель
-  -->
-</div>
+    </form>
+
+  <!--    закончили модель   -->
 
 
- </div>
 
-</div>
 
-<div *ngIf="this.arrayBranch !== undefined">
+    <div *ngIf="this.arrayBranch !== undefined">
     <div *ngIf="this.arrayBranch.length > 1">
         <app-branch-selection [id_user]="this.selector_id_user" [arrayBranch]="this.arrayBranch" (messageToEmit)="getBranchMessage($event)" ></app-branch-selection>
     </div>
+
+
+    </div>
+
+</div>
+</div>
+
+
+
+</div>
+  </div>
 </div>
