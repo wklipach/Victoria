@@ -171,11 +171,18 @@ export class AdminService {
     return this.http.get(this.gr.sUrlGlobal + 'admin', {params: params});
   }
 
-  getPosition(id_branch) {
+  getPosition() {
     const params = new HttpParams()
-      .set('get_position', 'get_position')
-      .set('id_branch', id_branch.toString());
+      .set('get_position', 'get_position');
     return this.http.get(this.gr.sUrlGlobal + 'admin', {params: params});
   }
+
+  getPositionBranch(id_branch) {
+    const params = new HttpParams()
+      .set('get_position_branch', 'get_position_branch')
+      .set('id_branch', id_branch);
+    return this.http.get(this.gr.sUrlGlobal + 'admin', {params: params});
+  }
+
 
 }

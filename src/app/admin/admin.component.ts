@@ -79,7 +79,7 @@ export class AdminComponent implements OnInit {
     }
 
     const id_branch = this.authService.getBranch(id_user_vict);
-    this.adminserv.getPosition(id_branch).subscribe((value: Array<any>) => {
+    this.adminserv.getPosition().subscribe((value: Array<any>) => {
       value.forEach((element, ih) => {
         this.positionList.push(element);
       });

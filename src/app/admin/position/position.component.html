@@ -32,8 +32,6 @@
         {{sErrorNewPosition}}
         <div class="input-group">
           <input formControlName="inputNewPosition" type="text" class="form-control" placeholder="Должность" aria-label="" aria-describedby="basic-addon1">
-          <input formControlName="inputNewPositionPrice" type="text" class="form-control" placeholder="Стоимость часа" aria-label="" aria-describedby="basic-addon1">
-          <input formControlName="inputNewPositionBranch" type="text" class="form-control" placeholder="Филиал" aria-label="" aria-describedby="basic-addon1">
           <div class="input-group-append">
             <button class="btn btn-success" (click)="newPosition()" type="button">Сохранить</button>
           </div>
@@ -47,8 +45,6 @@
         {{sErrorChangePosition}}
         <div class="input-group">
           <input formControlName="inputChangePosition" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-          <input formControlName="inputChangePositionPrice" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-          <input formControlName="inputChangePositionBranch" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
 
           <div class="input-group-append">
             <button class="btn btn-success" (click)="OnChangePosition()" type="button">Изменить</button>
@@ -60,10 +56,39 @@
 
     </div>
 
-    <div class="collapse" id="collapseShowPosition">
+    <div class="collapse" id="collapseShowPosition" #summaryPosition>
+
+
+      <div class="input-group my-2 mr-4">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputBranch">Отделение</label>
+        </div>
+        <select class="custom-select" id="inputBranch" formControlName="inputBranch" (change)="onChangeBranch($event)" >
+          <option [value]="branch.id" *ngFor="let branch of branchList">{{branch.name}}</option>
+        </select>
+      </div>
+
+
       <ul class="list-group mt-2">
-        <li [class.active] = "position === selectedPosition" class="list-group-item" (click)="mu(position)"  *ngFor="let position of positionList">{{position['name']}},&nbsp;{{position['branch_name']}}, {{position['price']}}</li>
+        <li [class.active] = "position === selectedPosition" class="list-group-item" (click)="mu(position)"  *ngFor="let position of positionList">
+
+          <div class="input-group-prepend">
+                <div class="input-group-text">
+                   <input type="checkbox" class="input-group-text" id="checkPosition{{position.id}}" formControlName="checkPosition{{position.id}}">
+                </div>
+
+                <span class="input-group-text">{{position['name']}}</span>&nbsp;
+                <span class="input-group-text">$</span>
+
+              <div class="col-xs-1">
+                <input type="text" class="form-control" id="price{{position.id}}" formControlName="price{{position.id}}">
+              </div>
+          </div>
+        </li>
       </ul>
+
+      <button class="form-control" (click)="savePrice()">Сохранить</button>
+
     </div>
 
     <!-- Модальное окно удаления -->

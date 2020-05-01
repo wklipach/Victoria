@@ -68,4 +68,12 @@ export class ReportService {
     return this.http.get(this.gr.sUrlGlobal + 'report', {params: params});
   }
 
+  getShipmentReport(id_address, id_branch) {
+    const params = new HttpParams()
+      .set('report_shipment', 'report_shipment')
+      .set('id_address', id_address)
+      .set('id_branch', id_branch);
+    return this.http.get(this.gr.sUrlGlobal + 'report', {params: params});
+  }
+
 }

@@ -1,1 +1,21 @@
-<p>report-shipment works!</p>
+<table class="table">
+  <thead class="thead-light">
+  <tr>
+    <th>#</th>
+    <th>Отправить, {{sAddress}}</th>
+    <th>Белье, шт.</th>
+    <th>Масса</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr *ngFor="let dl of shipmentList; let i = index; ">
+
+    <th scope="row">{{i+1}}</th>
+    <td>{{dl.name}} {{dl.type}}</td>
+    <td>{{dl.summa}}</td>
+    <td>{{dl.massa}}</td>
+  </tr>
+
+  </tbody>
+</table>

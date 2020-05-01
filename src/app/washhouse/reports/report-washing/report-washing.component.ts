@@ -10,7 +10,6 @@ import {AuthService} from '../../../services/auth-service.service';
 export class ReportWashingComponent implements OnInit, OnChanges {
 
   @Input() intAddress = -1;
-
   washingList = [];
   sAddress = 'Наименование';
 
@@ -31,6 +30,5 @@ export class ReportWashingComponent implements OnInit, OnChanges {
         this.washingList = value[0];
       });
     });
-
   }
 }

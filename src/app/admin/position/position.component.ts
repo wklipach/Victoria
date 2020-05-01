@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AdminService} from '../../services/admin.service';
 import {LaundryService} from '../../washhouse/services/laundry.service';
@@ -6,6 +6,7 @@ import {Location} from '@angular/common';
 import {AuthService} from '../../services/auth-service.service';
 import {Router} from '@angular/router';
 import {Check} from '../../static/check';
+declare var jQuery: any;
 
 @Component({
   selector: 'app-position',
@@ -14,8 +15,11 @@ import {Check} from '../../static/check';
 })
 export class PositionComponent implements OnInit {
 
+
+  @ViewChild('summaryPosition') public summaryPosition: ElementRef;
   sPositionName = '';
   positionList = [];
+  branchList = [];
   selectedPosition: any;
   positionForm: FormGroup;
   sErrorChangePosition = '';
@@ -29,46 +33,70 @@ export class PositionComponent implements OnInit {
               private router: Router) {
     this.positionForm = new FormGroup({
       'inputNewPosition': new FormControl('', []),
-      'inputNewPositionPrice': new FormControl('', []),
-      'inputNewPositionBranch': new FormControl('', []),
       'inputChangePosition': new FormControl('', []),
-      'inputChangePositionPrice': new FormControl('', []),
-      'inputChangePositionBranch': new FormControl('', [])
+      'inputBranch': new FormControl('', [])
     });
-    this.positionForm.controls['inputNewPositionBranch'].disable();
-    this.positionForm.controls['inputChangePositionBranch'].disable();
+    // this.positionForm.controls['inputNewPositionBranch'].disable();
   }
 
   ngOnInit(): void {
-    this.loadPositionList();
+   this.destroyElement();
+   this.loadPositionList();
   }
 
-  loadPositionList() {
-    //
-
-    const Res = this.authService.loginStorage();
-    let id_user_vict = -1;
-    if (Res.bVictConnected) {
-      id_user_vict = Res.id_user_vict;
-    }
-
-    this.id_branch = this.authService.getBranch(id_user_vict);
-    this.adminserv.getPosition(this.id_branch).subscribe( (value: Array<any>) => {
-      value.forEach((element, ih) => {
-        this.positionList.push(element);
-      });
-      this.CheckFirstPosition();
-    });
-
-    this.adminserv.getBranchInfo(this.id_branch).subscribe( value => {
-      if (value[0]) {
-        this.positionForm.controls['inputNewPositionBranch'].setValue(value[0].name);
+  destroyElement() {
+    Object.keys(this.positionForm.controls).forEach(key => {
+      if (this.positionForm.controls[key] !== this.positionForm.controls['inputNewPosition'] &&
+        this.positionForm.controls[key] !== this.positionForm.controls['inputChangePosition'] &&
+        this.positionForm.controls[key] !== this.positionForm.controls['inputBranch']) {
+        this.positionForm.removeControl(key);
       }
     });
-
-
-    //
   }
+
+  // целиком нужно только пр ипервой загрузке
+  loadPositionList() {
+    //
+    const Res = this.authService.loginStorage();
+    this.id_branch =  Res.id_branch_vict;
+
+    this.adminserv.getBranch(1).subscribe( (arrBranch: Array<any>) => {
+      this.branchList = arrBranch;
+      this.positionForm.controls['inputBranch'].setValue(this.id_branch);
+        // после получения филиалов строим позиции
+      this.loadPositionBranch(this.positionForm.controls['inputBranch'].value);
+
+    });
+ }
+
+
+  loadPositionBranch(id_branch) {
+        this.adminserv.getPositionBranch(id_branch).subscribe( (value: Array<any>) => {
+
+        this.positionList = [];
+        value.forEach((element, ih) => {
+
+
+            if (!this.positionForm.controls['checkPosition' + element.id]) {
+                  this.positionForm.addControl('checkPosition' + element.id, new FormControl(''));
+            }
+
+            if (!this.positionForm.controls['price' + element.id]) {
+                 this.positionForm.addControl('price' + element.id, new FormControl(''));
+            }
+
+         this.positionList.push(element);
+        });
+        this.LoadInfo();
+     });
+  }
+
+    LoadInfo() {
+        this.positionList.forEach((element, ih) => {
+          this.positionForm.controls['checkPosition' + element.id].setValue(Boolean(element.flagdelete.data[0]));
+          this.positionForm.controls['price' + element.id].setValue(element.price);
+      });
+    }
 
   CheckFirstPosition() {
     if (!this.selectedPosition) {
@@ -77,14 +105,15 @@ export class PositionComponent implements OnInit {
         this.sPositionName = this.selectedPosition.name;
       }
     }
-
   }
 
+/*
+////////////////////////////////////////////////
+*/
+
   reloadAllInput() {
-    this.sPositionName = this.selectedPosition.name;
-    this.positionForm.controls['inputChangePosition'].setValue(this.selectedPosition.name);
-    this.positionForm.controls['inputChangePositionPrice'].setValue(this.selectedPosition.price);
-    this.positionForm.controls['inputChangePositionBranch'].setValue(this.selectedPosition.branch_name);
+
+
     this.sErrorChangePosition = '';
     this.sErrorNewPosition = '';
   }
@@ -185,4 +214,26 @@ export class PositionComponent implements OnInit {
     this.router.navigate([this.router.url]);
   }
 
+  onChangeBranch($event: Event) {
+    this.loadPositionBranch(this.positionForm.controls['inputBranch'].value);
+  }
+
+  savePrice() {
+
+    const res_mas = [];
+    this.positionList.forEach((element, ih) => {
+//      this.positionForm.controls['checkPosition' + element.id]
+//      this.positionForm.controls['price' + element.id]
+      let price = 0;
+      if (Check.ZeroOrPositive(this.positionForm.controls['price' + element.id].value)) {
+         price = this.positionForm.controls['price' + element.id].value;
+      }
+      res_mas.push({id_position: element.id, price: price, check_position: this.positionForm.controls['checkPosition' + element.id].value});
+     // console.log('==>', element);
+    });
+    console.log('res_mas==>', res_mas);
+    jQuery(this.summaryPosition.nativeElement).collapse('hide');
+
+
+  }
 }

@@ -95,7 +95,7 @@ export class UsersAdminComponent implements OnInit {
   }
 
   LoadPositionList(id_branch) {
-    this.adminserv.getPosition(id_branch).subscribe((value: Array<any>) => {
+    this.adminserv.getPosition().subscribe((value: Array<any>) => {
       value.forEach((element, ih) => {
         this.positionList.push(element);
       });

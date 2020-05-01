@@ -305,5 +305,19 @@
 
   </form>
 
+  <div class="row">
+    <div class="col-12">
+
+      <a class="btn btn-outline-primary my-4 ml-4" data-toggle="collapse"
+         href="#collapseWarehouseReport" role="button" aria-expanded="false" aria-controls="collapseWarehouseReport">
+        К отправке
+      </a>
+      <div class="collapse" id="collapseWarehouseReport">
+        <app-report-shipment [intAddress]="this.intAddress"></app-report-shipment>
+      </div>
+
+    </div>
+  </div>
+
 </div>
 
