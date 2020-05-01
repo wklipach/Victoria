@@ -6,22 +6,22 @@
     <div class="d-flex justify-content-start">
 
         <!-- Кнопка добавления -->
-        <button class="btn btn-primary my-2 mr-4" data-toggle="collapse" title="добавить адрес" href="#collapseNewAD" aria-expanded="false" aria-controls="collapse1">
+        <button class="btn btn-outline-primary my-2 mr-4" data-toggle="collapse" title="добавить адрес" href="#collapseNewAD" aria-expanded="false" aria-controls="collapse1">
           <i class="fa fa-plus"></i>
         </button>
 
         <!-- Кнопка редактирования -->
-        <button class="btn btn-primary my-2 mr-4" (click)="changeAD()"  data-toggle="collapse"  title="изменить адрес" href="#collapseChangeAD" aria-expanded="false" aria-controls="collapse1">
+        <button class="btn btn-outline-primary my-2 mr-4" (click)="changeAD()"  data-toggle="collapse"  title="изменить адрес" href="#collapseChangeAD" aria-expanded="false" aria-controls="collapse1">
           <i class="fa fa-edit"></i>
         </button>
 
         <!-- Кнопка модального окна удаления -->
-        <button type="button" class="btn btn-danger my-2 mr-4"  title="удалить адрес" data-toggle="modal" data-target="#collapseDeleteAD">
+        <button type="button" class="btn btn-outline-danger my-2 mr-4"  title="удалить адрес" data-toggle="modal" data-target="#collapseDeleteAD">
           <i class="fa fa-trash"></i>
         </button>
 
       <!-- Кнопка раскрытия таблицы -->
-      <button type="button" class="btn btn-primary my-2 ml-auto"  title="имеющиеся данные" data-toggle="collapse" data-target="#collapseShowAD">
+      <button type="button" class="btn btn-outline-primary my-2 ml-auto"  title="имеющиеся данные" data-toggle="collapse" data-target="#collapseShowAD">
         <i class="fa fa-angle-double-down"></i>
       </button>
 
@@ -78,7 +78,7 @@
               Вы уверены что желаете удалить адрес <span class="font-weight-bold"> "{{sAdName}}"</span>?
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
+              <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Нет</button>
              <button type="button" class="btn btn-outline-primary" data-dismiss="modal" (click)="OnDeleteAD()">Да</button>
             </div>
           </div>

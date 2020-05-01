@@ -6,22 +6,22 @@
     <div class="d-flex justify-content-start">
 
      <!-- Кнопка добавления -->
-      <button class="btn btn-primary my-2 mr-4" data-toggle="collapse" title="Добавить должность" href="#collapseNewPosition" aria-expanded="false" aria-controls="collapse1">
+      <button class="btn btn-outline-primary my-2 mr-4" data-toggle="collapse" title="Добавить должность" href="#collapseNewPosition" aria-expanded="false" aria-controls="collapse1">
         <i class="fa fa-plus"></i>
       </button>
 
       <!-- Кнопка редактирования -->
-      <button class="btn btn-primary my-2 mr-4" (click)="changePosition()"  data-toggle="collapse"  title="Изменить должность" href="#collapseChangePosition" aria-expanded="false" aria-controls="collapse1">
+      <button class="btn btn-outline-primary my-2 mr-4" (click)="changePosition()"  data-toggle="collapse"  title="Изменить должность" href="#collapseChangePosition" aria-expanded="false" aria-controls="collapse1">
         <i class="fa fa-edit"></i>
       </button>
 
       <!-- Кнопка модального окна удаления -->
-      <button type="button" class="btn btn-danger my-2 mr-4"  title="Удалить должность" data-toggle="modal" data-target="#collapseDeletePosition">
+      <button type="button" class="btn btn-outline-danger my-2 mr-4"  title="Удалить должность" data-toggle="modal" data-target="#collapseDeletePosition">
         <i class="fa fa-trash"></i>
       </button>
 
       <!-- Кнопка раскрытия таблицы -->
-      <button type="button" class="btn btn-primary my-2 ml-auto"  title="Список должностей" data-toggle="collapse" data-target="#collapseShowPosition">
+      <button type="button" class="btn btn-outline-primary my-2 ml-auto"  title="Список должностей" data-toggle="collapse" data-target="#collapseShowPosition">
         <i class="fa fa-angle-double-down"></i>
       </button>
 
@@ -80,8 +80,8 @@
             Вы уверены что желаете удалить должность <span class="font-weight-bold"> "{{sPositionName}}"</span>?
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="OnDeletePosition()">Да</button>
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Нет</button>
+            <button type="button" class="btn btn-outline-primary" data-dismiss="modal" (click)="OnDeletePosition()">Да</button>
           </div>
         </div>
       </div>
