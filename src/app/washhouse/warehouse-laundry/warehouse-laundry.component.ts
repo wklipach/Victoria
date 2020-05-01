@@ -107,7 +107,7 @@ export class WarehouseLaundryComponent implements OnInit {
     const arrRes = this.arrayFlag.find(element => element[1] === el);
     if (!this.warehouseForm.controls[el].errors) {
       if (arrRes[2] > 0) {
-        return 'В наличии ' + arrRes[2]; } else {
+        return arrRes[2]; } else {
         return '';
       }
     }
@@ -116,7 +116,7 @@ export class WarehouseLaundryComponent implements OnInit {
       return this.warehouseForm.controls[el].errors['victoriaValidator'];
     } else {
       if (arrRes[2] > 0) {
-        return 'В наличии ' + arrRes[2]; } else {
+        return arrRes[2]; } else {
         return '';
       }
     }

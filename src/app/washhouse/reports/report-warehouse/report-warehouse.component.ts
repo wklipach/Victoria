@@ -1,5 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ReportService} from '../../services/report.service';
+import {AuthService} from '../../../services/auth-service.service';
 
 @Component({
   selector: 'app-report-warehouse',
@@ -13,7 +14,7 @@ export class ReportWarehouseComponent implements OnInit, OnChanges {
   warehouseList = [];
   sAddress = 'Наименование';
 
-  constructor(private rs: ReportService) { }
+  constructor(private rs: ReportService, private auth: AuthService) { }
 
 
   ngOnChanges(changes: SimpleChanges) {
@@ -27,8 +28,9 @@ export class ReportWarehouseComponent implements OnInit, OnChanges {
   Load() {
     this.rs.getAddress(this.intAddress).subscribe(arrAddr => {
       this.sAddress = arrAddr[0].address;
-      this.rs.getWarehouseReport(this.intAddress).subscribe((value: Array<Object>) => {
-        this.warehouseList = value;
+      const Res = this.auth.loginStorage();
+      this.rs.getWarehouseReport(this.intAddress, Res.id_branch_vict).subscribe((value) => {
+        this.warehouseList = value[0];
       });
     });
   }

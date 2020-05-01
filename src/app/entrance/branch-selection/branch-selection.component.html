@@ -2,8 +2,8 @@
 <h4 class="text-muted font-weight-bold mb-4">Выберите отделение</h4>
 
   <ul class="nav flex-column">
-  <li class="nav-item font-weight-bold mb-4 pl-3" *ngFor="let branch of arrayBranch" (click)="curBranch(branch)">
-    <a class="forgot-password" routerLink>{{branch.name}}</a>
+  <li class="nav-item font-weight-bold mb-4 pl-3" *ngFor="let branch of arrayBranch">
+    <a lass="nav-link" routerLink (click)="curBranch(branch)">{{branch.name}}</a>
   </li>
 </ul>
 

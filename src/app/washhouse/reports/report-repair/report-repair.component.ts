@@ -1,5 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ReportService} from '../../services/report.service';
+import {AuthService} from '../../../services/auth-service.service';
+import {any} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-report-repair',
@@ -16,7 +18,7 @@ export class ReportRepairComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     this.Load();
   }
-  constructor(private rs: ReportService) { }
+  constructor(private rs: ReportService, private auth: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -24,8 +26,11 @@ export class ReportRepairComponent implements OnInit, OnChanges {
   Load() {
     this.rs.getAddress(this.intAddress).subscribe(arrAddr => {
       this.sAddress = arrAddr[0].address;
-      this.rs.getRepairReport(this.intAddress).subscribe((value: Array<Object>) => {
-        this.warehouseList = value;
+
+      const Res = this.auth.loginStorage();
+      this.rs.getRepairReport(this.intAddress, Res.id_branch_vict).subscribe((value) => {
+        this.warehouseList = value[0];
+        console.log(this.warehouseList);
       });
     });
   }

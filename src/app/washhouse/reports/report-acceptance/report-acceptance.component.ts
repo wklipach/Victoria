@@ -1,5 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ReportService} from '../../services/report.service';
+import {AuthService} from '../../../services/auth-service.service';
 
 @Component({
   selector: 'app-report-acceptance',
@@ -13,7 +14,7 @@ export class ReportAcceptanceComponent implements OnInit, OnChanges {
   acceptanceList = [];
   sAddress = 'Наименование';
 
-  constructor(private rs: ReportService) { }
+  constructor(private rs: ReportService, private auth: AuthService) { }
 
 
   ngOnChanges(changes: SimpleChanges) {
@@ -27,8 +28,9 @@ export class ReportAcceptanceComponent implements OnInit, OnChanges {
   Load() {
     this.rs.getAddress(this.intAddress).subscribe(arrAddr => {
       this.sAddress = arrAddr[0].address;
-      this.rs.getAcceptanceReport(this.intAddress).subscribe((value: Array<Object>) => {
-        this.acceptanceList = value;
+      const Res = this.auth.loginStorage();
+      this.rs.getAcceptanceReport(this.intAddress, Res.id_branch_vict).subscribe((value) => {
+        this.acceptanceList = value[0];
       });
     });
 

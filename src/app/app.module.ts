@@ -54,6 +54,7 @@ import { SummaryWeekComponent } from './washhouse/summary-laundry/summary-week/s
 import { PaymentLaundryComponent } from './washhouse/payment-laundry/payment-laundry.component';
 import { GraphComponent } from './washhouse/graph/graph.component';
 import { BranchSelectionComponent } from './entrance/branch-selection/branch-selection.component';
+import { ReportShipmentComponent } from './washhouse/reports/report-shipment/report-shipment.component';
 
 registerLocaleData(localeRu);
 
@@ -132,7 +133,8 @@ const appRoutes: Routes = [
     SummaryWeekComponent,
     PaymentLaundryComponent,
     GraphComponent,
-    BranchSelectionComponent
+    BranchSelectionComponent,
+    ReportShipmentComponent
   ],
   imports: [
     BrowserModule,

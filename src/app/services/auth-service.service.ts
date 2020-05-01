@@ -25,11 +25,12 @@ export class AuthService {
      window.localStorage.setItem('bVictConnected', JSON.stringify(false));
      window.localStorage.setItem('id_user_vict', JSON.stringify(-1));
      window.localStorage.setItem('bShiftBegin', JSON.stringify(false));
+    window.localStorage.setItem('id_branch_vict', JSON.stringify(-1));
   }
 
 
   // получаем текущего пользователя из хранилища
-  public loginStorage(): {victUserName: string; bVictConnected: boolean; id_user_vict: number} {
+  public loginStorage(): {victUserName: string; bVictConnected: boolean; id_user_vict: number; id_branch_vict: number} {
 
     let victUserName = '';
     if (window.localStorage.getItem('victUserName')) {
@@ -43,14 +44,23 @@ export class AuthService {
 
   let id_user_vict = -1;
   if (window.localStorage.getItem('id_user_vict')) {
-    console.log('window.localStorage.getItem(id_user_vict)', window.localStorage.getItem('id_user_vict'));
     id_user_vict = JSON.parse(window.localStorage.getItem('id_user_vict'));
   }
-  return {victUserName: victUserName, bVictConnected: bVictConnected, id_user_vict: id_user_vict};
+
+   let id_branch_vict = -1;
+    if (window.localStorage.getItem('id_branch_vict')) {
+      id_branch_vict = JSON.parse(window.localStorage.getItem('id_branch_vict'));
+    }
+
+  return {victUserName: victUserName, bVictConnected: bVictConnected, id_user_vict: id_user_vict, id_branch_vict: id_branch_vict};
   }
 
   getBranch (id_user_vict: number) {
-        return 1;
+    if (window.localStorage.getItem('id_branch_vict')) {
+      return JSON.parse(window.localStorage.getItem('id_branch_vict'));
+    } else {
+      return -1;
+    }
   }
 
 

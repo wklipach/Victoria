@@ -36,32 +36,35 @@ export class ReportService {
     return this.http.get(this.gr.sUrlGlobal + 'report', {params: params});
   }
 
-  getAcceptanceReport(id_address) {
+  getAcceptanceReport(id_address, id_branch) {
     const params = new HttpParams()
       .set('report_acceptance', 'report_acceptance')
-      .set('id_address', id_address);
-
+      .set('id_address', id_address)
+      .set('id_branch', id_branch);
     return this.http.get(this.gr.sUrlGlobal + 'report', {params: params});
   }
 
-  getWarehouseReport(id_address) {
+  getWarehouseReport(id_address, id_branch)  {
     const params = new HttpParams()
       .set('report_warehouse', 'report_warehouse')
-      .set('id_address', id_address);
+      .set('id_address', id_address)
+      .set('id_branch', id_branch);
     return this.http.get(this.gr.sUrlGlobal + 'report', {params: params});
   }
 
-  getRepairReport(id_address) {
+  getRepairReport(id_address, id_branch) {
     const params = new HttpParams()
       .set('report_repair', 'report_repair')
-      .set('id_address', id_address);
+      .set('id_address', id_address)
+      .set('id_branch', id_branch);
     return this.http.get(this.gr.sUrlGlobal + 'report', {params: params});
   }
 
-  getWashingReport(id_address) {
+  getWashingReport(id_address, id_branch) {
     const params = new HttpParams()
       .set('report_washing', 'report_washing')
-      .set('id_address', id_address);
+      .set('id_address', id_address)
+      .set('id_branch', id_branch);
     return this.http.get(this.gr.sUrlGlobal + 'report', {params: params});
   }
 

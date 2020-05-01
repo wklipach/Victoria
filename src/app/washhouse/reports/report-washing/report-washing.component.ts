@@ -1,5 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ReportService} from '../../services/report.service';
+import {AuthService} from '../../../services/auth-service.service';
 
 @Component({
   selector: 'app-report-washing',
@@ -13,7 +14,7 @@ export class ReportWashingComponent implements OnInit, OnChanges {
   washingList = [];
   sAddress = 'Наименование';
 
-  constructor(private rs: ReportService) { }
+  constructor(private rs: ReportService, private auth: AuthService) { }
 
   ngOnChanges(changes: SimpleChanges) {
     this.Load();
@@ -24,9 +25,10 @@ export class ReportWashingComponent implements OnInit, OnChanges {
 
   Load() {
     this.rs.getAddress(this.intAddress).subscribe(arrAddr => {
+      const Res = this.auth.loginStorage();
       this.sAddress = arrAddr[0].address;
-      this.rs.getWarehouseReport(this.intAddress).subscribe((value: Array<Object>) => {
-        this.washingList = value;
+      this.rs.getWashingReport(this.intAddress, Res.id_branch_vict).subscribe((value) => {
+        this.washingList = value[0];
       });
     });
 
