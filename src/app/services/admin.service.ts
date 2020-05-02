@@ -49,9 +49,9 @@ export class AdminService {
   }
 
   // добавляем новую должность
-  insertPosition(newName, newPrice, id_branch) {
+  insertPosition(newName) {
     const sUrl = this.gr.sUrlGlobal + 'admin';
-    const data_address = { 'insert_position': 'insert_position', 'name': newName, 'price': newPrice, 'id_branch': id_branch };
+    const data_address = { 'insert_position': 'insert_position', 'name': newName};
     return this.http.post(sUrl, data_address);
   }
 
@@ -120,9 +120,9 @@ export class AdminService {
   }
 
   // изменяем должность
-  setChangePosition(id, name, price, id_branch) {
+  setChangePosition(id, name) {
     const sUrl = this.gr.sUrlGlobal + 'admin';
-    const data_position = { 'update_position': 'update_position', 'id': id, 'name': name, 'price': price, 'id_branch': id_branch};
+    const data_position = { 'update_position': 'update_position', 'id': id, 'name': name};
     return this.http.post(sUrl, data_position);
   }
 
@@ -140,6 +140,13 @@ export class AdminService {
     return this.http.post(sUrl, data_address);
   }
 
+
+  // добавляем связи должности и фидиала и стоимость нормочасов
+   setPositionBranchPrice(id_branch, mas_result) {
+    const sUrl = this.gr.sUrlGlobal + 'admin';
+    const data_position = {set_branch_position_price: 'set_branch_position_price', id_branch: id_branch, mas_res: mas_result};
+    return this.http.post(sUrl, data_position);
+  }
 
   // удаляем адрес должность
   setPositionDelete(id) {

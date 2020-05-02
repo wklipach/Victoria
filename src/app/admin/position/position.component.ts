@@ -17,10 +17,10 @@ export class PositionComponent implements OnInit {
 
 
   @ViewChild('summaryPosition') public summaryPosition: ElementRef;
-  sPositionName = '';
   positionList = [];
   branchList = [];
   selectedPosition: any;
+  sPosition = '';
   positionForm: FormGroup;
   sErrorChangePosition = '';
   sErrorNewPosition = '';
@@ -87,6 +87,7 @@ export class PositionComponent implements OnInit {
 
          this.positionList.push(element);
         });
+        this.CheckFirstPosition();
         this.LoadInfo();
      });
   }
@@ -102,7 +103,8 @@ export class PositionComponent implements OnInit {
     if (!this.selectedPosition) {
       if (this.positionList[0]) {
         this.selectedPosition = this.positionList[0];
-        this.sPositionName = this.selectedPosition.name;
+        this.sPosition = this.selectedPosition.name;
+        this.positionForm.controls['inputChangePosition'].setValue(this.sPosition);
       }
     }
   }
@@ -111,9 +113,7 @@ export class PositionComponent implements OnInit {
 ////////////////////////////////////////////////
 */
 
-  reloadAllInput() {
-
-
+  crearError() {
     this.sErrorChangePosition = '';
     this.sErrorNewPosition = '';
   }
@@ -121,7 +121,7 @@ export class PositionComponent implements OnInit {
   changePosition() {
     this.CheckFirstPosition();
     if (this.selectedPosition) {
-      this.reloadAllInput();
+      this.crearError();
     }
 
     if (!this.selectedPosition) {
@@ -141,20 +141,7 @@ export class PositionComponent implements OnInit {
       return;
     }
 
-    const sPrice = this.positionForm.controls['inputNewPositionPrice'].value.toString().trim();
-    if (!Check.checkPositiveNumber(sPrice)) {
-      this.sErrorNewPosition = 'Стоимость часа - положительное целое число';
-      return;
-    }
-
-    const sBranch = this.positionForm.controls['inputNewPositionBranch'].value.toString().trim();
-
-    if (sBranch.length === 0) {
-      this.sErrorNewPosition = 'вы ввели пустую строку';
-      return;
-    }
-
-    this.adminserv.insertPosition(sName, sPrice, this.id_branch).subscribe( value => {
+    this.adminserv.insertPosition(sName).subscribe( value => {
       this.RouterReload();
     });
     //
@@ -174,20 +161,7 @@ export class PositionComponent implements OnInit {
       return;
     }
 
-    const sPrice = this.positionForm.controls['inputChangePositionPrice'].value.toString().trim();
-    if (!Check.checkPositiveNumber(sPrice)) {
-      this.sErrorNewPosition = 'Стоимость часа - положительное целое число';
-      return;
-    }
-
-    const sBranch = this.positionForm.controls['inputChangePositionBranch'].value.toString().trim();
-
-    if (sBranch.length === 0) {
-      this.sErrorChangePosition = 'вы ввели пустую строку';
-      return;
-    }
-
-    this.adminserv.setChangePosition(this.selectedPosition.id, sName, sPrice, this.id_branch).subscribe(value => {
+    this.adminserv.setChangePosition(this.selectedPosition.id, sName).subscribe(value => {
       this.RouterReload();
     });
 
@@ -202,7 +176,9 @@ export class PositionComponent implements OnInit {
 
   mu(ad: any) {
     this.selectedPosition = ad;
-    this.reloadAllInput();
+    this.sPosition = this.selectedPosition.name;
+    this.positionForm.controls['inputChangePosition'].setValue(this.sPosition);
+    this.crearError();
   }
 
   RouterReload() {
@@ -220,19 +196,20 @@ export class PositionComponent implements OnInit {
 
   savePrice() {
 
+    const id_branch = this.positionForm.controls['inputBranch'].value;
     const res_mas = [];
     this.positionList.forEach((element, ih) => {
-//      this.positionForm.controls['checkPosition' + element.id]
-//      this.positionForm.controls['price' + element.id]
       let price = 0;
       if (Check.ZeroOrPositive(this.positionForm.controls['price' + element.id].value)) {
          price = this.positionForm.controls['price' + element.id].value;
       }
       res_mas.push({id_position: element.id, price: price, check_position: this.positionForm.controls['checkPosition' + element.id].value});
-     // console.log('==>', element);
     });
-    console.log('res_mas==>', res_mas);
-    jQuery(this.summaryPosition.nativeElement).collapse('hide');
+
+    this.adminserv.setPositionBranchPrice(id_branch, res_mas).subscribe(value => {
+        jQuery(this.summaryPosition.nativeElement).collapse('hide');
+      }
+    );
 
 
   }
