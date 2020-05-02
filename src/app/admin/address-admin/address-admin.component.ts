@@ -56,6 +56,9 @@ export class AddressAdminComponent implements OnInit {
       value.forEach((element, ih) => {
         this.addressList.push(element);
       });
+
+      console.log('this.addressList', this.addressList);
+
       this.CheckFirstAD();
     });
 
@@ -64,7 +67,6 @@ export class AddressAdminComponent implements OnInit {
         this.addressForm.controls['inputNewADBranch'].setValue(value[0].name);
       }
     });
-
 
     //
   }

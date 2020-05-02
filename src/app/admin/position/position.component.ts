@@ -94,7 +94,7 @@ export class PositionComponent implements OnInit {
 
     LoadInfo() {
         this.positionList.forEach((element, ih) => {
-          this.positionForm.controls['checkPosition' + element.id].setValue(Boolean(element.flagdelete.data[0]));
+          this.positionForm.controls['checkPosition' + element.id].setValue(Boolean(element.check_price));
           this.positionForm.controls['price' + element.id].setValue(element.price);
       });
     }
@@ -195,7 +195,6 @@ export class PositionComponent implements OnInit {
   }
 
   savePrice() {
-
     const id_branch = this.positionForm.controls['inputBranch'].value;
     const res_mas = [];
     this.positionList.forEach((element, ih) => {
@@ -210,7 +209,5 @@ export class PositionComponent implements OnInit {
         jQuery(this.summaryPosition.nativeElement).collapse('hide');
       }
     );
-
-
   }
 }

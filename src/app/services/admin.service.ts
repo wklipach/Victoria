@@ -35,9 +35,9 @@ export class AdminService {
   }
 
   // добавдяем новую допработу
-  setAddWork(newName, price) {
+  setAddWork(newName) {
     const sUrl = this.gr.sUrlGlobal + 'admin';
-    const data_addwork = { 'insert_addwork': 'insert_addwork', 'name': newName, 'price': price };
+    const data_addwork = { 'insert_addwork': 'insert_addwork', 'name': newName};
     return this.http.post(sUrl, data_addwork);
   }
 
@@ -106,9 +106,9 @@ export class AdminService {
   }
 
 // изменяем допуслугу
-  setChangeAddWork(id, newName, newPrice) {
+  setChangeAddWork(id, newName) {
     const sUrl = this.gr.sUrlGlobal + 'admin';
-    const data_addwork = { 'update_addwork': 'update_addwork', 'id': id, 'work_name': newName, 'price': newPrice};
+    const data_addwork = { 'update_addwork': 'update_addwork', 'id': id, 'work_name': newName};
     return this.http.post(sUrl, data_addwork);
   }
 
@@ -141,12 +141,20 @@ export class AdminService {
   }
 
 
-  // добавляем связи должности и фидиала и стоимость нормочасов
+  // добавляем связи должности и филиала и стоимость нормочасов
    setPositionBranchPrice(id_branch, mas_result) {
     const sUrl = this.gr.sUrlGlobal + 'admin';
     const data_position = {set_branch_position_price: 'set_branch_position_price', id_branch: id_branch, mas_res: mas_result};
     return this.http.post(sUrl, data_position);
   }
+
+  // добавляем связи допработы и филиала и стоимость нормочасов
+  setAddworkBranchPrice(id_branch, mas_result) {
+    const sUrl = this.gr.sUrlGlobal + 'admin';
+    const data_addwork = {set_branch_addwork_price: 'set_branch_addwork_price', id_branch: id_branch, mas_res: mas_result};
+    return this.http.post(sUrl, data_addwork);
+  }
+
 
   // удаляем адрес должность
   setPositionDelete(id) {
@@ -187,6 +195,13 @@ export class AdminService {
   getPositionBranch(id_branch) {
     const params = new HttpParams()
       .set('get_position_branch', 'get_position_branch')
+      .set('id_branch', id_branch);
+    return this.http.get(this.gr.sUrlGlobal + 'admin', {params: params});
+  }
+
+  getAddWorkBranch(id_branch) {
+    const params = new HttpParams()
+      .set('get_addwork_branch', 'get_addwork_branch')
       .set('id_branch', id_branch);
     return this.http.get(this.gr.sUrlGlobal + 'admin', {params: params});
   }
