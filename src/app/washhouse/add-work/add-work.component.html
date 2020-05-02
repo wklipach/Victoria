@@ -11,13 +11,12 @@
 
 
 
-        <label class="font-weight-bold" [for]="'addWork' + dl.id">{{dl.work_name}}{{getAddWorkText(dl.id)}}</label>
-
-
-
-        <input class="ml-4" style="max-width: 90px" type="text" [formControlName]="dl.id" [class]="getClassName(dl.id)" [id]="'addWork' + dl.id" placeholder="0">
-
-
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <input type="checkbox" class="input-group-text" id="addWork{{dl.id}}" formControlName="{{dl.id}}">
+          </div>
+          <span class="input-group-text">{{dl.name}}</span>&nbsp;
+        </div>
 
       </form>
 

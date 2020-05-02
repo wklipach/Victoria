@@ -26,9 +26,9 @@ export class LaundryService {
     return this.http.post(sUrl, new_warehouse);
   }
 
-  setAddWork(value: any, id_shift) {
+  setAddWork(mas_res: any, id_shift) {
     const sUrl = this.gr.sUrlGlobal + 'laundry';
-    const new_addwork = { 'addwork_insert': value, 'id_shift' : id_shift};
+    const new_addwork = { 'addwork_insert': mas_res, 'id_shift' : id_shift};
     return this.http.post(sUrl, new_addwork);
   }
 

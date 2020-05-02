@@ -82,33 +82,37 @@ export class AddWorkComponent implements OnInit {
 
   send_data() {
     this.sError = '';
+    const mas_res = [];
+    let boolPositive = false;
+    Object.keys(this.addworkForm.controls).forEach(key => {
+      const  sVal = Boolean(this.addworkForm.controls[key].value);
+          if (sVal === true) {
+            boolPositive = true;
+            mas_res.push( {id: key});
+          }
+    });
 
-    // проверка переданной формы на хоть какие-то введенные значения, кроме массы
-    if (Check.getFormDirty(this.addworkForm)) {
-      this.sError = 'Найдены нецифровые значения.';
-      return;
-    }
-
-    if (!Check.getFormPositive(this.addworkForm)) {
+    if (!boolPositive) {
       this.sError = 'Не найдено передаваемых значений.';
       return;
     }
 
-    const id_branch = this.authService.getBranch(this.id_user_vict);
-    this.shiftservice.get_shiftuserbranch(this.id_user_vict, id_branch).subscribe( shift => {
-      if (shift[0]) {
-        // прием доп. работ  в проводку в базе применительно к смене
-        // console.log('shift[0]', shift[0]);
-        this.ls.setAddWork(this.addworkForm.value, shift[0].id).subscribe( value => {
-          console.log('value', value);
-           if (value === true) {
-            this.router.navigate(['/addwork_laundry_last']);
-           }
-        });
+    console.log('mas_res', mas_res);
+
+        const id_branch = this.authService.getBranch(this.id_user_vict);
+        this.shiftservice.get_shiftuserbranch(this.id_user_vict, id_branch).subscribe( shift => {
+          if (shift[0]) {
+
+            // прием доп. работ  в проводку в базе применительно к смене
+            // console.log('shift[0]', shift[0]);
+            this.ls.setAddWork(mas_res, shift[0].id).subscribe( value => {
+              console.log('value', value);
+               if (value === true) {
+                this.router.navigate(['/addwork_laundry_last']);
+               }
+            });
       }
     }); // shift subscribe
-
-
 
   }
 }
