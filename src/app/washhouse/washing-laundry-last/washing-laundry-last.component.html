@@ -1,52 +1,74 @@
 <div class="container">
 
-  <app-mainmenu></app-mainmenu>
+  <div class="row">
+    <div class="col-2">
+      <app-mainmenu></app-mainmenu>
+    </div>
+    <div class="col-10">
+      <h3 class="alert-info my-3 py-2 pl-1">Отправлено в стирку</h3>
 
-  <h3 class="alert-info mt-2 mb-3">Отправлено в стирку</h3>
+      <ul class="list-group">
+        <li class="list-group-item-borderless d-flex mb-1"><h5 class="text-muted w-25">Пользователь:</h5>
+          <a *ngIf="alTitle !== undefined">   <span class="badge badge-secondary p-2 badge-pill ml-5" style="font-size: medium">{{alTitle.nick}}</span></a>
+        </li>
 
-  <ul class="list-group">
-    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Пользователь:</h5>   <a *ngIf="alTitle !== undefined">   <span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.nick}}</span></a></li>
+        <li class="list-group-item-borderless d-flex mb-1"><h5 class="text-muted w-25">Адрес отправки:</h5>
+          <a *ngIf="alTitle !== undefined">   <span class="badge badge-secondary p-2 badge-pill ml-5" style="font-size: medium">{{alTitle.address}}</span></a>
+        </li>
 
-    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Адрес отправки:</h5>   <a *ngIf="alTitle !== undefined">   <span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.address}}</span></a></li>
+        <li class="list-group-item-borderless d-flex mb-1"><h5 class="text-muted w-25">Фамилия:</h5>
+          <a *ngIf="alTitle !== undefined"> <span class="badge badge-secondary p-2 badge-pill ml-5" style="font-size: medium">{{alTitle.surname}}</span></a>
+        </li>
 
-    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Фамилия:</h5> <a *ngIf="alTitle !== undefined"> <span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.surname}}</span></a></li>
+        <li class="list-group-item-borderless d-flex mb-1"><h5 class="text-muted w-25">Имя:</h5>
+          <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5" style="font-size: medium">{{alTitle.usernane}}</span></a>
+        </li>
 
-    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Имя:</h5> <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.usernane}}</span></a></li>
+        <li class="list-group-item-borderless d-flex mb-1"><h5 class="text-muted w-25">Отчество:</h5>
+          <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5" style="font-size: medium">{{alTitle.patronymic}}</span></a>
+        </li>
 
-    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Отчество:</h5> <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.patronymic}}</span></a></li>
+        <li class="list-group-item-borderless d-flex mb-1"><h5 class="text-muted w-25">Филиал:</h5>
+          <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5" style="font-size: medium">{{alTitle.branchname}}</span></a>
+        </li>
 
-    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Филиал:</h5><a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.branchname}}</span></a></li>
+        <li class="list-group-item-borderless d-flex mb-1"><h5 class="text-muted w-25">Смена от:</h5>
+          <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5" style="font-size: medium">{{alTitle.shiftdate | date:'dd.MM.yyyy   HH.mm'}}</span></a>
+        </li>
 
-    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Смена от:</h5> <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.shiftdate | date:'dd.MM.yyyy   HH.mm'}}</span></a></li>
+        <li class="list-group-item-borderless d-flex mb-1"><h5 class="text-muted w-25">Дата передачи:</h5>
+          <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5" style="font-size: medium">{{alTitle.date_oper | date:'dd.MM.yyyy   HH.mm' }}</span></a>
+        </li>
 
-    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Дата передачи:</h5><a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.date_oper | date:'dd.MM.yyyy   HH.mm' }}</span></a></li>
+        <li class="list-group-item-borderless d-flex mb-1"><h5 class="text-muted w-25">Масса переданнного:</h5>
+          <a *ngIf="alTitle !== undefined"> <span class="badge badge-secondary p-2 badge-pill ml-5"> {{alTitle.massa}}</span> кг.</a>
+        </li>
+      </ul>
 
-    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Масса переданнного:</h5> <a *ngIf="alTitle !== undefined"> <span class="badge badge-secondary p-2 badge-pill ml-5"> {{alTitle.massa}}</span> кг.</a></li>
-  </ul>
-
-  <h5 class="alert-info  mt-2 mb-3">Cписок</h5>
-
-
-  <ul class="list-group"  *ngFor="let dl of detailList">
-    <li class="list-group-item d-flex">
-      <div class="flex-fill">{{dl.name}}</div>
-      <div class="flex-fill mx-3">{{dl.type}}</div>
+      <h5 class="alert-info  my-2 py-2 pl-1 font-weight-bold">Cписок</h5>
 
 
-      <div class="flex-fill font-italic mx-2">  <a class="font-italic mx-2">целое</a></div>
+      <ul class="list-group"  *ngFor="let dl of detailList">
+        <li class="list-group-item d-flex">
+          <div class="flex-fill">{{dl.name}}</div>
+          <div class="flex-fill mx-3">{{dl.type}}</div>
 
-      <div class="float-right mw-10">
-        <span class="badge badge-primary p-2 badge-pill">{{dl.quant}}</span>
+
+          <div class="flex-fill font-italic mx-2">  <a class="font-italic mx-2">целое</a></div>
+
+          <div class="float-right mw-10">
+            <span class="badge badge-primary p-2 badge-pill">{{dl.quant}}</span>
+          </div>
+
+        </li>
+      </ul>
+
+      <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-outline-primary mr-3 mt-5" (click)="back()">Далее</button>
+        <button type="button" class="btn btn-outline-primary mt-5" (click)="toExcel()">Сохранить в Эксель</button>
       </div>
 
-    </li>
-  </ul>
+    </div>
 
-  <div class="d-flex justify-content-between">
- <button type="button" class="btn btn-outline-primary mr-3 mt-5" (click)="back()">Далее</button>
- <button type="button" class="btn btn-outline-primary mt-5" (click)="toExcel()">Сохранить в Эксель</button>
   </div>
-
 </div>
-
-
