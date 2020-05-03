@@ -17,8 +17,9 @@ export class SummaryLaundryComponent implements OnInit, AfterViewInit {
 
   idUser = -1;
   id_user_vict = -1;
-  bItIsAdmin = false;
   resultPay: any;
+  calendarEvents = [];
+
 
   calendarPlugins = [dayGridPlugin]; // important!
 
@@ -43,19 +44,13 @@ export class SummaryLaundryComponent implements OnInit, AfterViewInit {
       this.router.navigate(['/login']);
     }
 
-    if (Res.bVictConnected) {
-      this.id_user_vict = Res.id_user_vict;
-      this.authService.getItIsAdmin(Res.id_user_vict).subscribe( value => {
-        if (value === true) {
-          this.bItIsAdmin = true;
-        }
-      });
-    }
+    this.id_user_vict = Res.id_user_vict;
 
   }
 
 
   ngAfterViewInit() {
+
     this.calendarApi = this.calendarComponent.getApi();
     this.calendarApi.setOption('firstDay', 1);
     this.calendarApi.setOption('locale', 'ru');
@@ -80,7 +75,7 @@ export class SummaryLaundryComponent implements OnInit, AfterViewInit {
       const myDate = new Date(this.calendarApi.getDate());
       myDate.setDate(1);
       myDate.setHours(0, 0, 0, 0);
-    console.log(myDate.getDay());
+
       if (myDate.getDay() !== 1) {
         let dayCount = 6;
         if (myDate.getDay() !== 0) {
@@ -109,76 +104,28 @@ export class SummaryLaundryComponent implements OnInit, AfterViewInit {
   }
 
   getInfoPayment(id_user: number, id_branch: number, date_begin: Date, date_end: Date) {
-
-    this.pay.getPaymentReal(id_user, id_branch, date_begin.getTime(), date_end.getTime()).subscribe((pay_real: Array<any>) => {
-      this.pay.getPaymentVirtual(id_user, id_branch, date_begin.getTime(), date_end.getTime()).subscribe((pay_virtual: Array<any>) => {
-        // console.log('pay_real', pay_real);
-        // console.log('pay_virtual', pay_virtual);
-
-          const curDate = new Date(date_begin);
-
-          while (curDate <= date_end) {
-
-           // ищем реальные данные в данной итерации
-            const res_real = pay_real[0].filter( (pr) => {
-                // pay_year, pay_mm, pay_dd
-              const prDate = new Date (pr.pay_year, pr.pay_mm - 1, pr.pay_dd);
-              return prDate.getTime() === curDate.getTime();
-            });
-
-            // заносим реальные данные в данной итерации
-            if (res_real.length > 0) {
-              // заносим реальные данные
-              this.insert_real(res_real[0]);
-            }
-
-           // если нет реальных данных ищем и заносим вирт. данные в данной итерации
-           if (res_real.length === 0) {
+      this.pay.getPaymentVirtual(id_user, id_branch, date_begin.getTime(), date_end.getTime()).subscribe((pay_virtual) => {
+        console.log('pay_virtual', pay_virtual);
+       const curDate = new Date(date_begin);
+        while (curDate <= date_end) {
                  const res_virtual = pay_virtual[0].filter((pv) => {
                   const s = new Date(pv.date_shift);
                   return s.getTime() === curDate.getTime();
                   });
                   if (res_virtual.length > 0) {
                    // заносим виртуальные данные
+
+                    console.log('res_virtual[0]', res_virtual[0]);
+
                     this.insert_virtual(res_virtual[0]);
                   }
-           }
-
             curDate.setDate(curDate.getDate() + 1);
         }
-
         this.LoadNewItog(id_user, id_branch, date_begin, date_end);
-
       });
-    });
 
   }
 
-  insert_real(res_real) {
-
-    const prDate = new Date (res_real.pay_year, res_real.pay_mm - 1, res_real.pay_dd);
-
-    const myArrEvent = [];
-
-    const sPayDay = (res_real.pay * res_real.hour * res_real.koeff + res_real.addwork).toString();
-    const myEventReal = {title: sPayDay,
-      start: prDate, end: prDate,
-      allDay: true, backgroundColor: '#6495ED', textColor : '#FFFFFF',
-      extendedProps: {
-        payday: prDate,
-        payhour: res_real.hour,
-        paymentperhour: res_real.pay,
-        paykoeff: res_real.koeff,
-        payaddwork: res_real.addwork,
-        itogo: sPayDay
-     }
-    };
-
-    myArrEvent.push(myEventReal);
-
-    this.calendarApi.addEventSource(myArrEvent);
-
-  }
 
     insert_virtual(res_virtual) {
 
@@ -202,13 +149,16 @@ export class SummaryLaundryComponent implements OnInit, AfterViewInit {
 
     };
 
-    this.calendarApi.addEvent(myEventVirtual);
+      this.calendarEvents.push(myEventVirtual);
+      console.log('this.calendarEvents.push', myEventVirtual);
+      // this.calendarApi.addEvent(myEventVirtual);
   }
 
 
   onChange() {
     if (this.calendarApi) {
-      this.calendarApi.getEvents().forEach(event => event.remove());
+      this.calendarEvents = [];
+      // this.calendarApi.getEvents().forEach(event => event.remove());
       const date_begin = this.beginCalendarDate();
       const date_end = this.endCalendarDate();
       const id_branch = this.authService.getBranch(this.id_user_vict);
@@ -223,7 +173,7 @@ export class SummaryLaundryComponent implements OnInit, AfterViewInit {
   }
 
   LoadNewItog(id_user: number, id_branch: number, date_begin, date_end) {
-        this.weekDateBegin = date_begin;
+      this.weekDateBegin = date_begin;
       this.weekDateEnd = date_end;
       this.weekUser = id_user;
       this.weekBranch = id_branch;
