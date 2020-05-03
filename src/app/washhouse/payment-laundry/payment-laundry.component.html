@@ -1,67 +1,76 @@
-
 <div class="container">
-  <app-mainmenu></app-mainmenu>
-  <div class="d-flex justify-content-between">
-<label class="p-2" [style]="'background-color:#87CEEB'"> одобрено </label>
- <label class="p-2" [style]="'background-color:#FFFFE0'"> не подтверждено </label>
-  <label class="p-2" [style]="'background-color:#DCDCDC'"> не рабочий </label>
+  <div class="row">
+    <div class="col-2">
+      <app-mainmenu></app-mainmenu>
+    </div>
+    <div class="col-10">
+      <div class="d-flex justify-content-between mt-4">
+        <label class="p-2 font-weight-bold" style="background-color:#87CEEB;"> Одобрено </label>
+        <label class="p-2 font-weight-bold" style="background-color:#FFFFE0;"> Не подтверждено </label>
+        <label class="p-2 font-weight-bold" style="background-color:#DCDCDC;"> Не рабочий </label>
+      </div>
+
+      <form [formGroup]="paymentForm">
+        <li class="list-group-item">
+          <select class="custom-select" id="inputGroupSelect01" formControlName="cs1" (change)="userChange($event)">
+            <option value="{{chUser.id}}" *ngFor="let chUser of userList">{{chUser.nick}}</option>
+          </select>
+        </li>
+
+        <div class="card p-2 my-2">
+          {{this.sError}}
+          <div class="d-flex justify-content-between">
+            <input formControlName="dateBegin" type="date" class="form-control w-25">
+            <input formControlName="dateEnd" type="date" class="form-control w-25">
+            <button class="btn btn-outline-primary" (click)="showPay()">Показать</button>
+            <button class="btn btn-outline-primary" (click)="saveData()">Применить</button>
+          </div>
+        </div>
+
+        <form [formGroup]="payDynamForm">
+
+
+          <table class="table">
+            <thead class="thead-light">
+            <tr>
+              <th>#</th>
+              <th>Дата</th>
+              <th>Выплачено</th>
+              <th>Стоимость часа</th>
+              <th>Отработано, ч.</th>
+              <th>ЗСР</th>
+              <th>Доп. работы</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr
+              [style]="this.getCurStyle(p)" *ngFor="let p of this.showPayModel; let i = index; ">
+
+              <th scope="row">{{i+1}}</th>
+              <td>{{this.arrayPay[p-1][1] | date:'dd.MM.yyyy' }}</td>
+              <td><input  class="custom-control custom-checkbox" type="checkbox" disabled [checked]="this.arrayPay[p-1][6]" ></td>
+              <td><input class="form-control" type="text"  formControlName="PayPerHour{{p}}"></td>
+              <td><input class="form-control" type="text"  formControlName="Hour{{p}}"></td>
+              <td><input class="form-control" type="text"  formControlName="Koeff{{p}}"></td>
+              <td><input class="form-control" type="text"  formControlName="AddWork{{p}}"></td>
+            </tr>
+
+            </tbody>
+          </table>
+
+        </form>
+
+      </form>
+      <div class="input-append btn-group">
+        <button class="btn btn-outline-primary" (click)="Clear()">Очистить</button>
+      </div>
+
+    </div>
   </div>
 
-<form [formGroup]="paymentForm">
-    <li class="list-group-item">
-    <select class="custom-select" id="inputGroupSelect01" formControlName="cs1" (change)="userChange($event)">
-      <option value="{{chUser.id}}" *ngFor="let chUser of userList">{{chUser.nick}}</option>
-    </select>
-  </li>
-
-  <div class="card p-2 my-2">
-{{this.sError}}
-  <div class="d-flex justify-content-between">
-    <input formControlName="dateBegin" type="date" class="form-control w-25">
-    <input formControlName="dateEnd" type="date" class="form-control w-25">
-    <button class="btn btn-outline-primary" (click)="showPay()">Показать</button>
-    <button class="btn btn-outline-primary" (click)="saveData()">Применить</button>
-  </div>
-</div>
-
-  <form [formGroup]="payDynamForm">
 
 
-    <table class="table">
-      <thead class="thead-light">
-      <tr>
-        <th>#</th>
-        <th>Дата</th>
-        <th>Выплачено</th>
-        <th>Стоимость часа</th>
-        <th>Отработано, ч.</th>
-        <th>ЗСР</th>
-        <th>Доп. работы</th>
-      </tr>
-      </thead>
-      <tbody>
-
-      <tr
-        [style]="this.getCurStyle(p)" *ngFor="let p of this.showPayModel; let i = index; ">
-
-        <th scope="row">{{i+1}}</th>
-        <td>{{this.arrayPay[p-1][1] | date:'dd.MM.yyyy' }}</td>
-        <td><input  class="custom-control custom-checkbox" type="checkbox" disabled [checked]="this.arrayPay[p-1][6]" ></td>
-        <td><input class="form-control" type="text"  formControlName="PayPerHour{{p}}"></td>
-        <td><input class="form-control" type="text"  formControlName="Hour{{p}}"></td>
-        <td><input class="form-control" type="text"  formControlName="Koeff{{p}}"></td>
-        <td><input class="form-control" type="text"  formControlName="AddWork{{p}}"></td>
-      </tr>
-
-      </tbody>
-    </table>
-
-  </form>
-
-</form>
-<div class="input-append btn-group">
-  <button class="form-control" (click)="Clear()">Очистить</button>
-</div>
 
 
 </div>
