@@ -9,7 +9,15 @@
 
       <div class="row mb-4">
         <div class="col-12">
-          <full-calendar (datesRender)="onChange()" (eventClick)="myClick($event)"  #calendar [plugins]="calendarPlugins"></full-calendar>
+          <full-calendar (datesRender)="onChange()"
+                         (eventClick)="myClick($event)"
+                         [events]="calendarEvents"
+                         id="calendar"
+                         deepChangeDetection="true"
+                         #calendar
+                         [plugins]="calendarPlugins">
+
+          </full-calendar>
         </div>
       </div>
 
