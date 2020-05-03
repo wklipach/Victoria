@@ -28,8 +28,7 @@ export class LaundryComponent implements OnInit {
   RoundedTime = '';
   ExactTime = '';
   VirtualBasicPayment = 0;
-  RealBasicPayment = 0;
-  RealAddwork = 0;
+  VirtItogo = 0;
   VirtualAddwork = 0;
   LastShiftItogo = 0;
   rating = 0;
@@ -111,6 +110,17 @@ export class LaundryComponent implements OnInit {
               console.log(res_face);
               const face = res_face[0][0];
 
+              // db
+              // de
+              // rounded_time
+              // exact_time
+              // productivity
+              // virt_addwork
+              // virtual_basic
+             // virt_itogo
+              // last_shift_itogo
+              // rating
+
                 // this.titleShiftDate = value[0].
                 this.titleDB = face.db;
                 this.titleDE = face.de;
@@ -118,9 +128,8 @@ export class LaundryComponent implements OnInit {
                 this.RoundedTime = face.rounded_time;
                 this.ExactTime = face.exact_time;
                 this.VirtualBasicPayment = face.virtual_basic;
-                this.RealBasicPayment = face.real_basic_payment;
-                this.RealAddwork = face.real_addwork;
                 this.VirtualAddwork = face.virt_addwork;
+                this.VirtItogo  = face.virt_itogo;
                 this.LastShiftItogo = face.last_shift_itogo;
                 this.rating = face.rating;
                 console.log('');
@@ -155,5 +164,14 @@ export class LaundryComponent implements OnInit {
         }
       }
     });
+  }
+
+  graph() {
+    //
+    this.router.navigate(['/graph-laundry']);
+  }
+
+  calendar() {
+    this.router.navigate(['/summary-laundry']);
   }
 }

@@ -6,7 +6,22 @@
         <ul class="nav flex-column">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+
+
+
+              <!--
               <img src="http://127.0.0.1:3000/images/useravatar/1_1588500113668.jpg" alt="Света" class="rounded-circle" style="width: 48px;height: 48px;" title="Света">
+              -->
+
+              <div *ngIf="this.sAvatarPath.length>0;then contentLoadAvatar else contentDefault">{{this.sUserName}}</div>
+              <ng-template #contentLoadAvatar>
+                <img [src]="this.sAvatarPath" class="rounded-circle" style="width: 48px;height: 48px;" alt="{{this.sUserName}}" id="img">
+              </ng-template>
+              <ng-template #contentDefault>
+                <img src="/assets/img/usernull.png" class="rounded-circle" style="width: 48px;height: 48px;" alt="{{this.sUserName}}">
+              </ng-template>
+
+
             </a>
             <div class="dropdown-menu" style="width: 230px">
               <a class="nav-link py-3 pl-2" href="parlor"><i class="fa fa-info fa-lg ml-2 mr-3"></i>Инфо</a>

@@ -35,6 +35,13 @@
       </div>
 
 
+      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseMainFrame"
+              aria-expanded="false" aria-controls="collapseMainFrame">
+        статистика
+      </button>
+
+    <div class="collapse" id="collapseMainFrame">
+
       <ul class="list-group text-muted font-weight-bold">
         <li class="list-group-item"><span>Неделя</span><span class="alert alert-primary float-right my-0 mx-1">{{this.titleDB | date:'dd.MM.yyyy' }} - {{ this.titleDE | date:'dd.MM.yyyy'}}</span></li>
 
@@ -50,19 +57,17 @@
           <span class="alert alert-warning float-right my-0 mx-1">Точно {{ExactTime}}</span>
         </li>
         <li class="list-group-item align-content-end"><span>З/п за неделю</span>
-          <span class="alert alert-primary float-right my-0 mx-1" role="alert">{{RealBasicPayment}}</span>
           <span class="alert alert-warning float-right my-0 mx-1" role="alert">{{VirtualBasicPayment}}</span>
         </li>
 
 
 
         <li class="list-group-item"><span>Бонусы за неделю</span>
-          <span class="alert alert-primary float-right my-0 mx-1" role="alert">{{RealAddwork}}</span>
           <span class="alert alert-warning float-right my-0 mx-1" role="alert">{{VirtualAddwork}}</span>
         </li>
 
         <li class="list-group-item"><span>Итого, руб.</span>
-          <span class="alert alert-primary float-right my-0 mx-1">{{RealBasicPayment+VirtualBasicPayment+RealAddwork+VirtualAddwork}}</span></li>
+          <span class="alert alert-primary float-right my-0 mx-1">{{VirtItogo}}</span></li>
 
         <li class="list-group-item"><span>З/п за смену</span>
           <span class="alert alert-primary float-right my-0 mx-1">{{LastShiftItogo}}</span>
@@ -72,8 +77,15 @@
       </ul>
 
 
+      <button (click)="calendar()">Календарь</button>
+      <button (click)="graph()">График</button>
+
+
     </div>
+
   </div>
+
+</div>
 </div>
 
 
