@@ -9,11 +9,6 @@ export class LaundryService {
 
   constructor(private http: HttpClient, private gr: GlobalRef) {}
 
-  set_shift_begin(email: string, pwd: string, hash: string) {
-    const sUrl = this.gr.sUrlGlobal + 'shift';
-    return this.http.post(sUrl, {email, pwd, hash});
-  }
-
   setacceptance(value: any, id_shift, id_address) {
     const sUrl = this.gr.sUrlGlobal + 'laundry';
     const new_acceptance = { 'acceptance_insert': value, 'id_shift' : id_shift, 'id_address': id_address};

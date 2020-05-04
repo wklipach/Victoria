@@ -24,16 +24,16 @@ export class ShiftService {
   }
 
   // начать смену
-  set_shift_begin(id_user, id_branch, date_begin_int) {
+  set_shift_begin(id_user, id_branch) {
     const sUrl = this.gr.sUrlGlobal + 'shift';
-    const data_shift = { 'new_shift': 'new_shift', 'id_user' : id_user, 'id_branch': id_branch, 'date_begin_int': date_begin_int};
+    const data_shift = { 'new_shift': 'new_shift', 'id_user' : id_user, 'id_branch': id_branch};
     return this.http.post(sUrl, data_shift);
   }
 
   // закончить смену
-  set_shift_end(id_user, id_branch, date_end_int) {
+  set_shift_end(id_user, id_branch) {
     const sUrl = this.gr.sUrlGlobal + 'shift';
-    const data_shift = { 'end_shift': 'end_shift', 'id_user' : id_user, 'id_branch': id_branch, 'date_end_int': date_end_int};
+    const data_shift = { 'end_shift': 'end_shift', 'id_user' : id_user, 'id_branch': id_branch};
     return this.http.post(sUrl, data_shift);
   }
 

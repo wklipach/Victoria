@@ -143,7 +143,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     FullCalendarModule,
     CommonModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [ GlobalRef, AuthService, ForgotpasswordService, ExcelService, Check],
   bootstrap: [AppComponent]

@@ -9,6 +9,17 @@ export class ReportService {
 
   constructor(private http: HttpClient, private gr: GlobalRef) { }
 
+  getSelectGraph(id_user, id_branch, dateBegin, dateEnd, type) {
+    const params = new HttpParams()
+      .set('select_report_graph', 'select_report_graph')
+      .set('id_user', id_user)
+      .set('id_branch', id_branch)
+      .set('date_begin', dateBegin.getTime())
+      .set('date_end', dateEnd.getTime())
+      .set('type', type);
+    return this.http.get(this.gr.sUrlGlobal + 'report', {params: params});
+  }
+
   getSelectReportWeek(id_user, id_branch, date_begin, date_end) {
     const params = new HttpParams()
       .set('select_report_week', 'select_report_week')

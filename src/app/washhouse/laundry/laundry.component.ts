@@ -62,7 +62,6 @@ export class LaundryComponent implements OnInit {
   }
 
   onShift() {
-    console.log('onShift()', ShiftService.getShift());
 
     if (ShiftService.getShift()) {
       this.endShift();
@@ -75,7 +74,7 @@ export class LaundryComponent implements OnInit {
   endShift() {
     const dDate = new Date();
 
-    this.ss.set_shift_end(this.id_user_vict, this.authService.getBranch(this.id_user_vict), dDate.getTime()).subscribe(
+    this.ss.set_shift_end(this.id_user_vict, this.authService.getBranch(this.id_user_vict)).subscribe(
       value => {
         this.titleShiftDate = null;
         this.titleShift = this.sBeginShift;
@@ -86,7 +85,7 @@ export class LaundryComponent implements OnInit {
   // функция начала смены
   beginShift() {
     const dDate = new Date();
-    this.ss.set_shift_begin(this.id_user_vict, this.authService.getBranch(this.id_user_vict), dDate.getTime()).subscribe(
+    this.ss.set_shift_begin(this.id_user_vict, this.authService.getBranch(this.id_user_vict)).subscribe(
       value => {
         this.titleShiftDate = dDate;
         this.titleShift = this.sEndShift;
@@ -107,7 +106,6 @@ export class LaundryComponent implements OnInit {
             const id_branch = this.authService.getBranch(this.id_user_vict);
             this.repserv.getSelectFace(this.id_user_vict, id_branch).subscribe((res_face: Array<any>) => {
 
-              console.log(res_face);
               const face = res_face[0][0];
 
               // db
@@ -132,12 +130,10 @@ export class LaundryComponent implements OnInit {
                 this.VirtItogo  = face.virt_itogo;
                 this.LastShiftItogo = face.last_shift_itogo;
                 this.rating = face.rating;
-                console.log('');
             });
 
             this.ss.get_shiftuserbranch(this.id_user_vict, id_branch).subscribe((shift: Array<any>) => {
 
-              // console.log('shift[0]', shift[0], shift.length);
               if (shift.length > 0) {
                 this.titleShiftDate = shift[0].date_begin;
                 this.titleShift = this.sEndShift;
