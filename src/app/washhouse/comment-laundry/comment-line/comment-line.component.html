@@ -1,0 +1,131 @@
+<form [formGroup]="commentlineForm">
+
+<div class="row">
+  <div class="input-group mb-3">
+
+      <div class="input-group-prepend">
+        <span class="input-group-text">От</span>
+      </div>
+      <div class="input-group-prepend">
+        <span class="input-group-text">Иван Иванов</span>
+      </div>
+
+    <div class="input-group-prepend">
+      <span class="input-group-text"> Нет электричества, жильцы недовольны срочно!!!! </span>
+    </div>
+
+
+    <button #summaryPosition class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" (click)="onButtonCollapse($event)">
+      <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+
+    </button>
+
+  </div>
+</div>
+
+
+<!--
+id_user_from
+date_from
+id_position_to
+id_branch
+situation
+data_situation
+summa
+ok
+bit_response
+date_response
+id_user_response
+comment_response
+-->
+
+<div #summaryPosition2 class="collapse" id="collapseExample">
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Дата</span>
+    </div>
+    <div class="input-group-prepend">
+      <span class="input-group-text">01.10.2020 16:33</span>
+    </div>
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Получатель</span>
+    </div>
+    <div class="input-group-prepend">
+      <span class="input-group-text">Электрик</span>
+    </div>
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Отделение</span>
+    </div>
+    <div class="input-group-prepend">
+      <span class="input-group-text">Парковая, 72 </span>
+    </div>
+  </div>
+
+  <div class = "form-group">
+    <label for = "situation">Ситация</label>
+    <textarea formControlName="dateMessageFrom" id="situation" class = "form-control" rows = "3" placeholder="Описание ситуации"></textarea>
+  </div>
+
+  <div class = "form-group">
+    <label for = "data_situation">Данные</label>
+    <textarea id="data_situation" class = "form-control" rows = "3" placeholder="Данные о ситуации"></textarea>
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Сумма, руб</span>
+    </div>
+    <div class="input-group-prepend">
+      <input class="form-control" placeholder="сумма">
+    </div>
+  </div>
+
+   <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Резюме</span>
+      </div>
+     <div class="input-group-prepend">
+       <span class="input-group-text">Принять</span>
+     </div>
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <input  type="radio" value="1">
+        </div>
+      </div>
+     <div class="input-group-prepend">
+       <span class="input-group-text">Отказ</span>
+     </div>
+     <div class="input-group-prepend">
+       <div class="input-group-text">
+         <input type="radio" value="2">
+       </div>
+     </div>
+
+   </div>
+
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Причина</span>
+    </div>
+    <div class="input-group-prepend">
+      <input class="form-control" placeholder="ответ на записку">
+    </div>
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <button class="form-control">Принять</button>
+  </div>
+  </div>
+
+</div>
+
+</form>

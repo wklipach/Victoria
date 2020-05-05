@@ -1,0 +1,105 @@
+<form [formGroup]="commentnewForm">
+
+  <div class="row">
+    <div class="input-group mb-3">
+
+      <div class="input-group-prepend">
+        <span class="input-group-text">От</span>
+      </div>
+      <div class="input-group-prepend">
+        <span class="input-group-text">{{nick}}</span>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!--
+  id_user_from
+  date_from
+  id_position_to
+  id_branch
+  situation
+  data_situation
+  summa
+  ok
+  bit_response
+  date_response
+  id_user_response
+  comment_response
+  -->
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Дата</span>
+      </div>
+      <div class="input-group-prepend">
+        <span class="input-group-text">{{fromDate | date: 'dd.MM.yyyy hh:mm'}}</span>
+      </div>
+    </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Получатель</span>
+    </div>
+    <div class="input-group-prepend">
+    <input type="text" #textPosition id="textPosition" formControlName="textPosition" class="form-control" placeholder="Не назначен" aria-label="Не назначен" aria-describedby="basic-position">
+    </div>
+    <div class="dropdown">
+      <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownPosition" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" (click)="changePosition(chPosition, textPosition)" *ngFor="let chPosition of positionList"> {{chPosition.name}}</a>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Отделение</span>
+      </div>
+      <div class="input-group-prepend">
+        <span class="input-group-text">{{BranchName}}</span>
+      </div>
+    </div>
+
+    <div class = "form-group">
+      <label for = "situation">Ситация</label>
+      <textarea formControlName="situation" id="situation" class = "form-control" rows = "3" placeholder="Описание ситуации"></textarea>
+    </div>
+
+    <div class = "form-group">
+      <label for = "data_situation">Данные</label>
+      <textarea formControlName="data_situation" id="data_situation" class = "form-control" rows = "3" placeholder="Данные о ситуации"></textarea>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Сумма, руб</span>
+      </div>
+      <div class="input-group-prepend">
+        <input formControlName="summa" class="form-control" placeholder="сумма">
+      </div>
+    </div>
+
+
+  {{ sError }}
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <button class="form-control" (click)="saveMassage()">Принять</button>
+      </div>
+    </div>
+
+
+  <!-- загрузка изображений -->
+   <div>
+        <input type="file" accept="image/*" id="avatar" (change)="onFileChange($event)" #fileInput style="display:none">
+        <label class="text-muted ml-1 mt-3" style="display: block; cursor: pointer; text-decoration: underline;"
+                                 onclick="document.getElementById('avatar').click()">Загрузить фото</label>
+     <button type="button" class="btn btn-link" (click)="clearFile()">очистить</button>
+
+    </div>
+
+</form>
+

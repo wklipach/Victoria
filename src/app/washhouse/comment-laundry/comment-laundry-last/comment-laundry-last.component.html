@@ -1,0 +1,43 @@
+<div class="alert alert-primary" role="alert">
+  Вами отослана записка от {{date_from}}
+</div>
+
+<div class="card">
+  <div class="card-body">
+    отделение: {{branch_name}}
+  </div>
+</div>
+<div class="card">
+  <div class="card-body">
+    для: {{position_name}}
+  </div>
+</div>
+<div class="card">
+  <div class="card-body">
+    ситуация: {{situation}}
+  </div>
+</div>
+<div class="card">
+  <div class="card-body">
+    подробности: {{data_situation}}
+  </div>
+</div>
+<div class="card">
+  <div class="card-body">
+    сумма: {{summa}}
+  </div>
+</div>
+
+<div class="d-flex justify-content-between">
+  <button type="button" class="btn btn-outline-primary mr-3 mt-5" (click)="back()">Далее</button>
+  <button type="button" class="btn btn-outline-primary mt-5" (click)="toExcel()">Сохранить в Эксель</button>
+</div>
+
+<div *ngFor = "let sPath of imageResGlobal">
+  <div class="card">
+    <div class="card-body">
+      <img src="{{sPath}}" height = 200>
+    </div>
+  </div>
+
+</div>

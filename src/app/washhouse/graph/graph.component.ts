@@ -4,6 +4,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {ReportService} from '../services/report.service';
 import {AuthService} from '../../services/auth-service.service';
 import {Router} from '@angular/router';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-graph',

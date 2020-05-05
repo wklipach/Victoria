@@ -14,9 +14,6 @@ export class TestComponent implements OnInit, AfterViewInit  {
 
   idUser = -1;
 
-  calendarPlugins = [dayGridPlugin]; // important!
-
-  @ViewChild('calendar') public calendarComponent: FullCalendarComponent;
 
   constructor() {
 
@@ -28,16 +25,6 @@ export class TestComponent implements OnInit, AfterViewInit  {
   }
 
   ngAfterViewInit() {
-    const calendarApi = this.calendarComponent.getApi();
-    calendarApi.setOption('firstDay', 1);
-    calendarApi.setOption('locale', 'ru');
-    calendarApi.setOption('header', {
-        left: 'prev,next, today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-    });
-    calendarApi.setOption('buttonText', {today: 'Сегодня'});
-//    calendarApi.next();
 
   }
 

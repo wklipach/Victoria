@@ -137,6 +137,12 @@ export class AuthService {
     return this.http.post(this.gr.sUrlGlobal + 'users', data_avatar);
   }
 
+  updateImageMessageTable(curMessage: any, ext: string, id_message: number, id_prefix) {
+    const data_message = {'message_image': curMessage, 'id_message' : id_message, 'id_prefix': id_prefix, 'ext': ext};
+    return this.http.post(this.gr.sUrlGlobal + 'users', data_message);
+  }
+
+
   updatePassword(password: string, id_user: number) {
     const update_password = { 'update_password': password, 'id_user' : id_user};
     return this.http.post(this.gr.sUrlGlobal + 'users', update_password);
@@ -158,5 +164,13 @@ export class AuthService {
         .set('email_without_iduser', id_user.toString());
      return this.http.get(this.gr.sUrlGlobal + 'users', {params: params});
    }
+
+  getBranchName(id_branch) {
+    const params = new HttpParams()
+      .set('branch_name', 'branch_name')
+      .set('id_branch', id_branch);
+    return this.http.get(this.gr.sUrlGlobal + 'users', {params: params});
+
+  }
 
 }

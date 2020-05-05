@@ -55,6 +55,9 @@ import { PaymentLaundryComponent } from './washhouse/payment-laundry/payment-lau
 import { GraphComponent } from './washhouse/graph/graph.component';
 import { BranchSelectionComponent } from './entrance/branch-selection/branch-selection.component';
 import { ReportShipmentComponent } from './washhouse/reports/report-shipment/report-shipment.component';
+import { CommentLineComponent } from './washhouse/comment-laundry/comment-line/comment-line.component';
+import { CommentNewComponent } from './washhouse/comment-laundry/comment-new/comment-new.component';
+import { CommentLaundryLastComponent } from './washhouse/comment-laundry/comment-laundry-last/comment-laundry-last.component';
 
 registerLocaleData(localeRu);
 
@@ -88,6 +91,8 @@ const appRoutes: Routes = [
   {path: 'graph-laundry', component: GraphComponent},
   {path: 'test', component: TestComponent},
   {path: 'branch-selection', component: BranchSelectionComponent},
+  {path: 'comment-new', component: CommentNewComponent},
+  {path: 'comment_laundry_last', component: CommentLaundryLastComponent},
   {path: '**', component: NotFoundComponent }
 ];
 
@@ -134,7 +139,10 @@ const appRoutes: Routes = [
     PaymentLaundryComponent,
     GraphComponent,
     BranchSelectionComponent,
-    ReportShipmentComponent
+    ReportShipmentComponent,
+    CommentLineComponent,
+    CommentNewComponent,
+    CommentLaundryLastComponent
   ],
   imports: [
     BrowserModule,

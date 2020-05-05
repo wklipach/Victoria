@@ -154,4 +154,46 @@ export class ExcelService {
 
   }
 
+  excelMessageLaundryLast(nick, res) {
+
+    const title = 'Записка';
+    const workbook = new Excel.Workbook();
+    const worksheet = workbook.addWorksheet('Laundry');
+    const titleRow = worksheet.addRow([title]);
+    titleRow.font = { name: 'Comic Sans MS', family: 4, size: 16, underline: 'double', bold: true };
+    // const subTitleRow = worksheet.addRow(['Date : ' + '01-01-2010']);
+
+    const dPipe = new DatePipe('ru');
+
+    worksheet.addRow([dPipe.transform(new Date(), 'dd.MM.yyyy   HH.mm')]);
+
+    const tArray = [];
+    tArray.push(['Псевдоним:', nick]);
+    tArray.push(['Дата записки:', dPipe.transform(res.date_from, 'dd.MM.yyyy   HH.mm')]);
+    tArray.push(['Филиал:', res.branch_name]);
+    tArray.push(['Кому:', res.position_name]);
+    tArray.push(['Ситуация:', res.situation]);
+    tArray.push(['Данные:', res.data_situation]);
+    tArray.push(['Сумма:', res.summa]);
+
+    tArray.forEach(d => {
+      const row = worksheet.addRow(d);
+    });
+
+    const col1 = worksheet.getColumn(1);
+    col1.width = 20;
+    col1.alignment = { horizontal: 'left'};
+    const col2 = worksheet.getColumn(2);
+    col2.width = 20;
+    col2.alignment = { horizontal: 'left'};
+
+
+    workbook.xlsx.writeBuffer().then((data) => {
+      const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      fs.saveAs(blob, 'LaundryLastMessage.xlsx');
+    });
+
+  }
+
+
 }
