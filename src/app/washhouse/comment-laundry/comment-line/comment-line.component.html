@@ -4,18 +4,18 @@
   <div class="input-group mb-3">
 
       <div class="input-group-prepend">
-        <span class="input-group-text">От</span>
+        <span class="input-group-text">{{sDate}}</span>
       </div>
       <div class="input-group-prepend">
-        <span class="input-group-text">Иван Иванов</span>
+        <span class="input-group-text">{{sFrom}}</span>
       </div>
 
     <div class="input-group-prepend">
-      <span class="input-group-text"> Нет электричества, жильцы недовольны срочно!!!! </span>
+      <span class="input-group-text"> {{sSituationLittle}} {{sSituationSumma}}</span>
     </div>
 
 
-    <button #summaryPosition class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" (click)="onButtonCollapse($event)">
+    <button #openButton class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" (click)="onButtonCollapse($event)">
       <i class="fa fa-angle-double-down" aria-hidden="true"></i>
 
     </button>
@@ -39,7 +39,7 @@ id_user_response
 comment_response
 -->
 
-<div #summaryPosition2 class="collapse" id="collapseExample">
+<div #summaryPositionLine class="collapse" id="collapseExample">
 
   <div class="input-group mb-3">
     <div class="input-group-prepend">
@@ -52,7 +52,7 @@ comment_response
 
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <span class="input-group-text">Получатель</span>
+      <span class="input-group-text">Собеседник</span>
     </div>
     <div class="input-group-prepend">
       <span class="input-group-text">Электрик</span>
@@ -64,18 +64,18 @@ comment_response
       <span class="input-group-text">Отделение</span>
     </div>
     <div class="input-group-prepend">
-      <span class="input-group-text">Парковая, 72 </span>
+      <span class="input-group-text">Парковая, 72</span>
     </div>
   </div>
 
   <div class = "form-group">
     <label for = "situation">Ситация</label>
-    <textarea formControlName="dateMessageFrom" id="situation" class = "form-control" rows = "3" placeholder="Описание ситуации"></textarea>
+    <textarea formControlName="situation" id="situation" class = "form-control" rows = "3" placeholder="Описание ситуации"></textarea>
   </div>
 
   <div class = "form-group">
     <label for = "data_situation">Данные</label>
-    <textarea id="data_situation" class = "form-control" rows = "3" placeholder="Данные о ситуации"></textarea>
+    <textarea id="data_situation" formControlName="data_situation" class = "form-control" rows = "3" placeholder="Данные о ситуации"></textarea>
   </div>
 
   <div class="input-group mb-3">
@@ -83,7 +83,7 @@ comment_response
       <span class="input-group-text">Сумма, руб</span>
     </div>
     <div class="input-group-prepend">
-      <input class="form-control" placeholder="сумма">
+      <input class="form-control" formControlName="summa" placeholder="сумма">
     </div>
   </div>
 
@@ -96,7 +96,7 @@ comment_response
      </div>
       <div class="input-group-prepend">
         <div class="input-group-text">
-          <input  type="radio" value="1">
+          <input  formControlName="resume" value="1" type="radio">
         </div>
       </div>
      <div class="input-group-prepend">
@@ -104,7 +104,7 @@ comment_response
      </div>
      <div class="input-group-prepend">
        <div class="input-group-text">
-         <input type="radio" value="2">
+         <input formControlName="resume" value="2" type="radio">
        </div>
      </div>
 
@@ -116,7 +116,7 @@ comment_response
       <span class="input-group-text">Причина</span>
     </div>
     <div class="input-group-prepend">
-      <input class="form-control" placeholder="ответ на записку">
+      <input formControlName="respResume" class="form-control" placeholder="ответ на записку">
     </div>
   </div>
 
@@ -125,6 +125,16 @@ comment_response
       <button class="form-control">Принять</button>
   </div>
   </div>
+
+  <div *ngFor = "let sPath of imageResGlobal">
+    <div class="card">
+      <div class="card-body">
+        <img src="{{sPath}}" height = 200>
+      </div>
+    </div>
+
+  </div>
+
 
 </div>
 

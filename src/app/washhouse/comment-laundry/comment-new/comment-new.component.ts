@@ -21,6 +21,7 @@ export class CommentNewComponent implements OnInit {
   indexImg = 0;
   loading = false;
   sError = '';
+  id_position_from = 0;
 
   constructor(private cs: CommentService,
               private router: Router,
@@ -48,6 +49,13 @@ export class CommentNewComponent implements OnInit {
     }
 
     this.fromDate = new Date();
+
+    // this.id_position_from
+    this.cs.getPositionUser(this.id_user_vict, this.id_branch_vict).subscribe(value => {
+        if (value[0]) {
+          this.id_position_from = value[0].id_position;
+        }
+      });
 
     this.authService.getBranchName(this.id_branch_vict).subscribe(
       value => {
@@ -133,7 +141,7 @@ export class CommentNewComponent implements OnInit {
           this.loading = false;
 
           if (i === this.indexImg) {
-              console.log('приняли с картинками');
+            this.router.navigate(['/comment_laundry_last']);
           }
 
         });
@@ -173,7 +181,7 @@ export class CommentNewComponent implements OnInit {
       return;
     }
 
-    this.cs.setNewMessage(this.id_user_vict, curPosition.id, this.id_branch_vict,
+    this.cs.setNewMessage(this.id_user_vict, this.id_position_from, curPosition.id, this.id_branch_vict,
                           this.commentnewForm.controls['situation'].value,
                           this.commentnewForm.controls['data_situation'].value,
                           this.commentnewForm.controls['summa'].value).subscribe( value => {
@@ -181,7 +189,7 @@ export class CommentNewComponent implements OnInit {
       if (this.indexImg > 0) {
         this.onPostImageAvatar(value['insertId']);
       } else {
-          console.log('приняли без картинок');
+        this.router.navigate(['/comment_laundry_last']);
       }
 
       });

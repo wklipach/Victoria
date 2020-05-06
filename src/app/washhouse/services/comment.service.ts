@@ -9,12 +9,33 @@ export class CommentService {
 
   constructor(private http: HttpClient, private gr: GlobalRef) { }
 
+  getPositionUser(id_user, id_branch) {
+    const params = new HttpParams()
+      .set('get_position_user', 'get_position_user')
+      .set('id_user', id_user)
+      .set('id_branch', id_branch);
+    return this.http.get(this.gr.sUrlGlobal + 'comment', {params: params});
+
+  }
+
+  getMessageList(id_position_from, id_position_to, date_begin, date_end, id_branch) {
+    const params = new HttpParams()
+      .set('get_message_list', 'get_message_list')
+      .set('id_position_from', id_position_from)
+      .set('id_position_to', id_position_to)
+      .set('date_begin', date_begin.toISOString())
+      .set('date_end', date_end.toISOString())
+      .set('id_branch', id_branch);
+    return this.http.get(this.gr.sUrlGlobal + 'comment', {params: params});
+  }
+
+
+
   getMessageImageList(id_message) {
     const params = new HttpParams()
       .set('message_image_list', 'message_image_list')
       .set('id_message', id_message.toString());
     return this.http.get(this.gr.sUrlGlobal + 'comment', {params: params});
-
   }
 
   getCommentLine(id_message) {
@@ -32,6 +53,14 @@ export class CommentService {
     return this.http.get(this.gr.sUrlGlobal + 'comment', {params: params});
   }
 
+  getMessage(id_message) {
+    const params = new HttpParams()
+      .set('get_message', 'get_message')
+      .set('id_message', id_message);
+    return this.http.get(this.gr.sUrlGlobal + 'comment', {params: params});
+  }
+
+
 
   getCheckpositionBranch(id_branch) {
     const params = new HttpParams()
@@ -40,10 +69,11 @@ export class CommentService {
     return this.http.get(this.gr.sUrlGlobal + 'comment', {params: params});
   }
 
-  setNewMessage(id_user_from, id_position_to, id_branch, situation, data_situation, summa) {
+  setNewMessage(id_user_from, id_position_from, id_position_to, id_branch, situation, data_situation, summa) {
 
     const new_message = { 'insert_new_message': 'insert_new_message',
                           'id_user_from' : id_user_from,
+                          'id_position_from': id_position_from,
                           'id_position_to': id_position_to,
                           'id_branch': id_branch,
                           'situation': situation,
