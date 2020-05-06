@@ -24,64 +24,64 @@
 
             </a>
             <div class="dropdown-menu" style="width: 230px">
-              <a class="nav-link py-3 pl-2" href="parlor"><i class="fa fa-info fa-lg ml-2 mr-3"></i>Инфо</a>
-              <a class="nav-link py-3 pl-3" href="admin"><i class="fa fa-user-secret fa-lg mr-2"></i>Администрирование</a>
-              <a class="nav-link py-3 pl-3" href="summary-laundry"><i class="fa fa-bar-chart fa-lg mr-2"></i>Результаты</a>
-              <a class="nav-link py-3 pl-3" href="payment-laundry"><i class="fa fa-money fa-lg mr-2"></i>Оплата</a>
+              <a class="nav-link py-3 pl-2" href="parlor" [style] = "getStyleName(100)"><i class="fa fa-info fa-lg ml-2 mr-3"></i>Инфо</a>
+              <a class="nav-link py-3 pl-3" href="admin" [style] = "getStyleName(101)"><i class="fa fa-user-secret fa-lg mr-2"></i>Администрирование</a>
+              <a class="nav-link py-3 pl-3" href="summary-laundry" [style] = "getStyleName(102)"><i class="fa fa-bar-chart fa-lg mr-2"></i>Результаты</a>
+              <a class="nav-link py-3 pl-3" href="graph-laundry" [style] = "getStyleName(103)"><i class="fa fa-money fa-lg mr-2"></i>Графики</a>
             </div>
 
 
           <li class="nav-item mt-4">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="#" [style] ="getStyleName(1)">
               <i class="fa fa-home fa-lg"></i>
               <p>Главная</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="acceptance-laundry">
+            <a class="nav-link" href="acceptance-laundry" [style] ="getStyleName(2)">
               <i class="fa fa-gift fa-lg"></i>
               <p>Приемка</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="repair-laundry">
+            <a class="nav-link" href="repair-laundry" [style] ="getStyleName(3)">
               <i class="fa fa-cut fa-lg"></i>
               <p>Ремонт</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="washing-laundry" href="washing-laundry"  style="font-weight:bold; color: #ff623d;">
+            <a class="nav-link" href="washing-laundry" href="washing-laundry"  [style] = "getStyleName(4)">
               <i class="fa fa-life-ring fa-lg"></i>
               <p>Стирка</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="warehouse-laundry">
+            <a class="nav-link" href="warehouse-laundry" [style] ="getStyleName(5)">
               <i class="fa fa-suitcase fa-lg"></i>
               <p>Склад</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="shipment-laundry">
+            <a class="nav-link" href="shipment-laundry" [style] ="getStyleName(6)">
               <i class="fa fa-truck fa-lg"></i>
               <p>Отгрузка</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="add-work">
+            <a class="nav-link" href="add-work" [style] ="getStyleName(7)">
               <i class="fa fa-cog fa-lg"></i>
               <p>Доп. работы</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="comment-laundry">
+            <a class="nav-link" href="comment-laundry" [style] ="getStyleName(8)">
               <i class="fa fa-commenting fa-lg"></i>
               <p>Записки</p>
             </a>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth-service.service';
 import {GlobalRef} from '../../services/globalref';
 
@@ -9,6 +9,7 @@ import {GlobalRef} from '../../services/globalref';
 })
 export class MainmenuComponent implements OnInit {
 
+  @Input() numberPage = 0;
   id_user_vict = -1;
   public sAvatarPath  = '';
   sUserName = 'Фото';
@@ -29,6 +30,13 @@ export class MainmenuComponent implements OnInit {
       this.sUserName = Res.victUserName;
     }
 
+  }
+
+  getStyleName(el) {
+    // style="font-weight:bold; color: #ff623d;"
+    let Res = '';
+    if (el.toString() === this.numberPage.toString()) { Res = 'font-weight:bold; color: #ff623d;'; }
+    return Res;
   }
 
   onLoadFromBaseAvatar() {
