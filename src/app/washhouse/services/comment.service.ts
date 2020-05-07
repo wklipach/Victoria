@@ -29,7 +29,14 @@ export class CommentService {
     return this.http.get(this.gr.sUrlGlobal + 'comment', {params: params});
   }
 
-
+  getInstructionList(id_user, id_branch, id_position) {
+    const params = new HttpParams()
+      .set('get_instruction_list', 'get_instruction_list')
+      .set('id_user', id_user)
+      .set('id_branch', id_branch)
+      .set('id_position', id_position);
+    return this.http.get(this.gr.sUrlGlobal + 'comment', {params: params});
+  }
 
   getMessageImageList(id_message) {
     const params = new HttpParams()
