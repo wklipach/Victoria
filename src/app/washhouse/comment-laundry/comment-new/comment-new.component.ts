@@ -194,10 +194,15 @@ export class CommentNewComponent implements OnInit {
       return;
     }
 
+    if (curPosition.id.toString()  === this.id_position_from.toString() ) {
+      this.sError = 'Вы не можете посылать записки в рамках одной должности.';
+      return;
+    }
+
     this.cs.setNewMessage(this.id_user_vict, this.id_position_from, curPosition.id, this.id_branch_vict,
-                          this.commentnewForm.controls['situation'].value,
-                          this.commentnewForm.controls['data_situation'].value,
-                          this.commentnewForm.controls['summa'].value,
+                          this.commentnewForm.controls['situation'].value.toString().trim(),
+                          this.commentnewForm.controls['data_situation'].value.toString().trim(),
+                          this.commentnewForm.controls['summa'].value.toString().trim(),
                           this.intCheckInstructuion).subscribe( value => {
 
       if (this.indexImg > 0) {
