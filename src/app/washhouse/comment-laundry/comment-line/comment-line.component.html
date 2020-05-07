@@ -1,141 +1,123 @@
 <form [formGroup]="commentlineForm">
 
-<div class="row">
-  <div class="input-group mb-3">
 
-      <div class="input-group-prepend">
-        <span class="input-group-text">{{sDate}}</span>
-      </div>
-      <div class="input-group-prepend">
-        <span class="input-group-text">{{sFrom}}</span>
+  <div class="card my-2 p-2">
+    <div class="d-flex justify-content-between my-2">
+      <span class="text-muted">{{sDate}}</span>
+
+      <span class="text-muted">{{sFrom}}</span>
+
+      <div class="text-muted">
+        <span class="text-muted"> {{sSituationLittle}} {{sSituationSumma}}</span>
       </div>
 
-    <div class="input-group-prepend">
-      <span class="input-group-text"> {{sSituationLittle}} {{sSituationSumma}}</span>
+
+      <button #openButton class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+              (click)="onButtonCollapse($event)">        <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+
+      </button>
+
+
+    </div>
+  </div>
+
+
+
+  <!--
+  id_user_from
+  date_from
+  id_position_to
+  id_branch
+  situation
+  data_situation
+  summa
+  ok
+  bit_response
+  date_response
+  id_user_response
+  comment_response
+  -->
+
+  <div #summaryPositionLine class="collapse" id="collapseExample">
+
+    <div class="card my-3">
+      <div class="d-flex justify-content-between my-2">
+        <span class="text-muted">Дата</span>
+        <span class="text-muted">01.10.2020 16:33</span>
+      </div>
+    </div>
+
+    <div class="card my-3">
+      <div class="d-flex justify-content-between my-2">
+        <span class="text-muted">Собеседник</span>
+        <span class="text-muted">Электрик</span>
+      </div>
+    </div>
+
+    <div class="card my-3">
+      <div class="d-flex justify-content-between my-2">
+        <span class="text-muted">Отделение</span>
+        <span class="text-muted">Парковая, 72</span>
+      </div>
     </div>
 
 
-    <button #openButton class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" (click)="onButtonCollapse($event)">
-      <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+    <div class="card my-3">
+      <div class="card-title pl-2 pt-2 font-weight-bold">Ситуация</div>
 
-    </button>
+        <div class="d-flex justify-content-between my-2">
+      <textarea formControlName="situation" id="situation" class = "form-control" rows = "3" placeholder="Описание ситуации"></textarea>
+      </div>
+    </div>
 
-  </div>
+    <div class="card my-3">
+      <div class="card-title pl-2 pt-2 font-weight-bold">Данные</div>
+
+       <textarea id="data_situation" formControlName="data_situation" class ="form-control" rows = "3" placeholder="Данные о ситуации"></textarea>
+
+    </div>
+
+    <div class="card my-3">
+      <div class="d-flex justify-content-between my-2">
+        <span class="text-muted">Сумма, руб</span>
+        <input class="form-control w-25" formControlName="summa" placeholder="сумма">
+      </div>
+    </div>
+
+<div class="card my-3 p-3">
+  <div class="card-title pl-2 pt-2 font-weight-bold">Резюме</div>
+    <div class="d-flex justify-content-between my-2">
+
+      <div class="custom-control custom-radio">
+        <input type="radio" id="resume1" name="resume" class="custom-control-input" value="1">
+        <label class="custom-control-label font-weight-bold text-muted" for="resume1">Принять</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input type="radio"  id="resume2" name="resume" class="custom-control-input" value="2">
+        <label class="custom-control-label font-weight-bold text-muted" for="resume2">Отказ</label>
+      </div>
+
+    </div>
 </div>
 
-
-<!--
-id_user_from
-date_from
-id_position_to
-id_branch
-situation
-data_situation
-summa
-ok
-bit_response
-date_response
-id_user_response
-comment_response
--->
-
-<div #summaryPositionLine class="collapse" id="collapseExample">
-
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text">Дата</span>
-    </div>
-    <div class="input-group-prepend">
-      <span class="input-group-text">01.10.2020 16:33</span>
-    </div>
-  </div>
-
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text">Собеседник</span>
-    </div>
-    <div class="input-group-prepend">
-      <span class="input-group-text">Электрик</span>
-    </div>
-  </div>
-
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text">Отделение</span>
-    </div>
-    <div class="input-group-prepend">
-      <span class="input-group-text">Парковая, 72</span>
-    </div>
-  </div>
-
-  <div class = "form-group">
-    <label for = "situation">Ситация</label>
-    <textarea formControlName="situation" id="situation" class = "form-control" rows = "3" placeholder="Описание ситуации"></textarea>
-  </div>
-
-  <div class = "form-group">
-    <label for = "data_situation">Данные</label>
-    <textarea id="data_situation" formControlName="data_situation" class = "form-control" rows = "3" placeholder="Данные о ситуации"></textarea>
-  </div>
-
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text">Сумма, руб</span>
-    </div>
-    <div class="input-group-prepend">
-      <input class="form-control" formControlName="summa" placeholder="сумма">
-    </div>
-  </div>
-
-   <div class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Резюме</span>
-      </div>
-     <div class="input-group-prepend">
-       <span class="input-group-text">Принять</span>
+    <div class="card my-3 p-3">
+      <div class="card-title pl-2 pt-2 font-weight-bold">Причина</div>
+        <input formControlName="respResume" class="form-control" placeholder="ответ на записку">
      </div>
-      <div class="input-group-prepend">
-        <div class="input-group-text">
-          <input  formControlName="resume" value="1" type="radio">
+
+        <button class="btn btn-outline-primary my-4">Принять</button>
+
+
+    <div *ngFor = "let sPath of imageResGlobal">
+      <div class="card">
+        <div class="card-body">
+          <img src="{{sPath}}" height = 200>
         </div>
       </div>
-     <div class="input-group-prepend">
-       <span class="input-group-text">Отказ</span>
-     </div>
-     <div class="input-group-prepend">
-       <div class="input-group-text">
-         <input formControlName="resume" value="2" type="radio">
-       </div>
-     </div>
 
-   </div>
-
-
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text">Причина</span>
-    </div>
-    <div class="input-group-prepend">
-      <input formControlName="respResume" class="form-control" placeholder="ответ на записку">
-    </div>
-  </div>
-
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <button class="form-control">Принять</button>
-  </div>
-  </div>
-
-  <div *ngFor = "let sPath of imageResGlobal">
-    <div class="card">
-      <div class="card-body">
-        <img src="{{sPath}}" height = 200>
-      </div>
     </div>
 
+
   </div>
-
-
-</div>
 
 </form>

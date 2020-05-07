@@ -35,7 +35,7 @@ export class MainmenuComponent implements OnInit {
   getStyleName(el) {
     // style="font-weight:bold; color: #ff623d;"
     let Res = '';
-    if (el.toString() === this.numberPage.toString()) { Res = 'font-weight:bold; color: #ff623d;'; }
+    if (el.toString() === this.numberPage.toString()) { Res = 'font-weight:bold; color: red;'; }
     return Res;
   }
 

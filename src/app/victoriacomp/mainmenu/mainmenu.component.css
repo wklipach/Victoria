@@ -1,10 +1,19 @@
 a {color: #9b9a9e ; padding: 0;}
-a:hover{  font-weight: bold;  background-color: #3399ff;  color: white;}
+a:hover{  font-weight: bold;  background-color: #72cfff;  color: white;}
 li{  width: 130px;}
 li:first-child{
   background-color: white;
 }
+
+/*
 .nav-link:active{
   font-weight:bold;
   color: #ff623d;
 }
+:first-child:hover
+
+
+
+
+
+*/
