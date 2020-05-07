@@ -22,6 +22,7 @@ export class CommentNewComponent implements OnInit {
   loading = false;
   sError = '';
   id_position_from = 0;
+  intCheckInstructuion = 0;
 
   constructor(private cs: CommentService,
               private router: Router,
@@ -31,7 +32,8 @@ export class CommentNewComponent implements OnInit {
       'situation': new FormControl(''),
       'textPosition': new FormControl(''),
       'data_situation': new FormControl(''),
-      'summa': new FormControl('')
+      'summa': new FormControl(''),
+      'checkInstructuion': new FormControl('')
     });
 
   }
@@ -71,9 +73,11 @@ export class CommentNewComponent implements OnInit {
 
   }
 
-  changePosition(chPosition: any, elem: HTMLInputElement) {
-    this.commentnewForm.controls[elem.id].setValue(chPosition.name);
-  }
+//  changePosition(event) {
+//    const id_position =  this.commentnewForm.controls['dropdawnPosition'].value;
+//    const pos =  this.positionList.find(elem => elem.id === id_position);
+//    this.commentnewForm.controls['textPosition'].setValue(pos.name);
+//  }
 
 
   /* РАБОТА С ИЗОБРАЖЕНИЯМИ */
@@ -169,12 +173,21 @@ export class CommentNewComponent implements OnInit {
       return;
     }
 
-    if (!Number(this.commentnewForm.controls['summa'].value)) {
-      this.sError = 'Внесите сумму.';
-      return;
+    // если это не инструкция проверяем внесена ли сумма
+    if (this.intCheckInstructuion === 0) {
+      if (!Number(this.commentnewForm.controls['summa'].value)) {
+        this.sError = 'Внесите сумму.';
+        return;
+      }
     }
 
-    const curPosition =  this.positionList.find( el => el.name === this.commentnewForm.controls['textPosition'].value);
+    // если это инструкция проверяем вносим сумму 0
+    if (this.intCheckInstructuion === 1) {
+      this.commentnewForm.controls['summa'].setValue('0');
+    }
+
+
+    const curPosition =  this.positionList.find( el => el.id.toString() === this.commentnewForm.controls['textPosition'].value);
 
     if (!curPosition) {
       this.sError = 'Должность не найдена.';
@@ -184,7 +197,8 @@ export class CommentNewComponent implements OnInit {
     this.cs.setNewMessage(this.id_user_vict, this.id_position_from, curPosition.id, this.id_branch_vict,
                           this.commentnewForm.controls['situation'].value,
                           this.commentnewForm.controls['data_situation'].value,
-                          this.commentnewForm.controls['summa'].value).subscribe( value => {
+                          this.commentnewForm.controls['summa'].value,
+                          this.intCheckInstructuion).subscribe( value => {
 
       if (this.indexImg > 0) {
         this.onPostImageAvatar(value['insertId']);
@@ -193,6 +207,19 @@ export class CommentNewComponent implements OnInit {
       }
 
       });
+
+  }
+
+  OnCheckInstructuion() {
+    console.log('checkInstructuion', this.commentnewForm.controls['checkInstructuion'].value);
+    if (Boolean(this.commentnewForm.controls['checkInstructuion'].value) === true) {
+      this.intCheckInstructuion = 1;
+      this.commentnewForm.controls['summa'].setValue('0');
+      this.commentnewForm.controls['summa'].disable();
+    } else {
+      this.intCheckInstructuion = 0;
+      this.commentnewForm.controls['summa'].enable();
+    }
 
   }
 }

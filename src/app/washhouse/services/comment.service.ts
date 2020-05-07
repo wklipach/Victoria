@@ -18,14 +18,14 @@ export class CommentService {
 
   }
 
-  getMessageList(id_position_from, id_position_to, date_begin, date_end, id_branch) {
+  getMessageList(id_user, id_branch, id_position, date_begin, date_end) {
     const params = new HttpParams()
       .set('get_message_list', 'get_message_list')
-      .set('id_position_from', id_position_from)
-      .set('id_position_to', id_position_to)
+      .set('id_user', id_user)
+      .set('id_branch', id_branch)
+      .set('id_position', id_position)
       .set('date_begin', date_begin.toISOString())
-      .set('date_end', date_end.toISOString())
-      .set('id_branch', id_branch);
+      .set('date_end', date_end.toISOString());
     return this.http.get(this.gr.sUrlGlobal + 'comment', {params: params});
   }
 
@@ -69,7 +69,7 @@ export class CommentService {
     return this.http.get(this.gr.sUrlGlobal + 'comment', {params: params});
   }
 
-  setNewMessage(id_user_from, id_position_from, id_position_to, id_branch, situation, data_situation, summa) {
+  setNewMessage(id_user_from, id_position_from, id_position_to, id_branch, situation, data_situation, summa, int_instruction) {
 
     const new_message = { 'insert_new_message': 'insert_new_message',
                           'id_user_from' : id_user_from,
@@ -78,7 +78,8 @@ export class CommentService {
                           'id_branch': id_branch,
                           'situation': situation,
                           'data_situation': data_situation,
-                          'summa': summa };
+                          'summa': summa,
+                          'int_instruction': int_instruction };
     return this.http.post(this.gr.sUrlGlobal + 'comment', new_message);
   }
 

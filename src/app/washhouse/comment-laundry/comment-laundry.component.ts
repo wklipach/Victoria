@@ -45,22 +45,20 @@ export class CommentLaundryComponent implements OnInit {
     this.cs.getPositionUser(this.id_user_vict, this.id_branch_vict).subscribe(value => {
       if (value[0]) {
         this.id_position_from = value[0].id_position;
-        this.loadDate(this.id_position_from, this.id_position_from, this.id_branch_vict);
+        this.loadDate(this.id_user_vict, this.id_branch_vict, this.id_position_from);
       }
     });
 
 
   }
 
-  loadDate(id_position_from, id_position_to, id_branch) {
+  loadDate(id_user, id_branch, id_position) {
     const Res = this.getMonthBounds(this.currentDate);
     const dateBegin = Res[0];
     const dateEnd = Res[1];
-    this.cs.getMessageList(id_position_from, id_position_to, dateBegin, dateEnd, id_branch).subscribe((value: Array<any>) => {
-
+    this.cs.getMessageList(id_user, id_branch, id_position, dateBegin, dateEnd).subscribe((value: Array<any>) => {
       const arrLine = [];
-
-      value.forEach((elem, ih) => {
+      value[0].forEach((elem, ih) => {
         const dPipe = new DatePipe('ru'), date_from = dPipe.transform(elem.date_from, 'dd.MM.yyyy   HH.mm');
         const n = arrLine.push({id: elem.id, sFrom: elem.position_name, sDate: date_from,
                   sSituationLittle: elem.little_situation, sSituationSumma: elem.summa});
