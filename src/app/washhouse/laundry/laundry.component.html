@@ -27,18 +27,23 @@
 
 
 
-      <div class="d-flex justify-content-end">
-        <div class="btn-group float-right">
+      <div class="d-flex justify-content-between mt-3">
+
+        <button class="btn btn-outline-primary my-3 mr-auto" type="button" data-toggle="collapse" data-target="#collapseMainFrame"
+                aria-expanded="false" aria-controls="collapseMainFrame">
+          Статистика
+        </button>
+
           <button type="button" class="btn btn-outline-primary my-3" (click)="onShift()">{{titleShift}}</button>
           <button type="button" class="btn btn-outline-primary my-3 ml-2" (click)="logout()">Выход из системы</button>
-        </div>
+
+
+
+
       </div>
 
 
-      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseMainFrame"
-              aria-expanded="false" aria-controls="collapseMainFrame">
-        статистика
-      </button>
+
 
     <div class="collapse" id="collapseMainFrame">
 
@@ -77,9 +82,10 @@
       </ul>
 
 
-      <button (click)="calendar()">Календарь</button>
-      <button (click)="graph()">График</button>
-
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-outline-primary my-3" (click)="calendar()">Календарь</button>
+        <button class="btn btn-outline-primary my-3" (click)="graph()">График</button>
+      </div>
 
     </div>
 

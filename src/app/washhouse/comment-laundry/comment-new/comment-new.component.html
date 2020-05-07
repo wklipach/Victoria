@@ -1,17 +1,20 @@
-<form [formGroup]="commentnewForm">
+<div class="container">
 
   <div class="row">
-    <div class="input-group mb-3">
-
-      <div class="input-group-prepend">
-        <span class="input-group-text">От</span>
-      </div>
-      <div class="input-group-prepend">
-        <span class="input-group-text">{{nick}}</span>
-      </div>
-
+    <div class="col-2">
+      <app-mainmenu></app-mainmenu>
     </div>
-  </div>
+    <div class="col-10">
+      <h3 class="alert alert-dark mt-4">Новая записка</h3>
+
+
+<form [formGroup]="commentnewForm">
+
+
+      <div class="d-flex justify-content-between my-2">
+        <span class="p-0">От</span>
+        <span class="p-0">{{nick}}</span>
+      </div>
 
 
   <!--
@@ -29,77 +32,78 @@
   comment_response
   -->
 
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Дата</span>
-      </div>
-      <div class="input-group-prepend">
-        <span class="input-group-text">{{fromDate | date: 'dd.MM.yyyy hh:mm'}}</span>
-      </div>
-    </div>
 
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text">Получатель</span>
-    </div>
-    <div class="input-group-prepend">
-    <input type="text" #textPosition id="textPosition" formControlName="textPosition" class="form-control" placeholder="Не назначен" aria-label="Не назначен" aria-describedby="basic-position">
-    </div>
-    <div class="dropdown">
-      <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownPosition" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" (click)="changePosition(chPosition, textPosition)" *ngFor="let chPosition of positionList"> {{chPosition.name}}</a>
-      </div>
-    </div>
+  <div class="d-flex justify-content-between my-2">
+    <span class="p-0">Дата</span>
+    <span class="text-muted">{{fromDate | date: 'dd.MM.yyyy hh:mm'}}</span>
   </div>
 
+  <div class="d-flex justify-content-between my-2">
+      <span class="p-0">Получатель</span>
+    <input type="text" #textPosition id="textPosition" formControlName="textPosition"
+           class="form-control w-50" placeholder="Не назначен" aria-label="Не назначен" aria-describedby="basic-position">
 
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Отделение</span>
-      </div>
-      <div class="input-group-prepend">
-        <span class="input-group-text">{{BranchName}}</span>
-      </div>
-    </div>
+    <!--
+    Вставь вместо дропдауна на строке 58 по 65  вот этот селект, он удобнее и смотриться не так убого.
 
-    <div class = "form-group">
-      <label for = "situation">Ситация</label>
+     <div class="d-flex justify-content-between my-2">
+         <label class="input-group-text" for="inputBranch">Отделение</label>
+
+       <select class="custom-select" id="inputBranch" formControlName="inputBranch" (change)="onChangeBranch($event)" >
+         <option [value]="branch.id" *ngFor="let branch of branchList">{{branch.name}}</option>
+       </select>
+   -->
+
+
+     <div class="dropdown">
+       <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownPosition" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       </button>
+       <div class="dropdown-menu">
+         <a class="dropdown-item" (click)="changePosition(chPosition, textPosition)" *ngFor="let chPosition of positionList"> {{chPosition.name}}</a>
+       </div>
+     </div>
+   </div>
+
+
+  <div class="d-flex justify-content-between my-2">
+     <span class="text-muted">Отделение</span>
+     <span class="text-muted">{{BranchName}}</span>
+  </div>
+
+    <div class = "p-0">
+      <label for = "situation">Ситуация</label>
       <textarea formControlName="situation" id="situation" class = "form-control" rows = "3" placeholder="Описание ситуации"></textarea>
     </div>
 
-    <div class = "form-group">
+    <div class = "p-0">
       <label for = "data_situation">Данные</label>
       <textarea formControlName="data_situation" id="data_situation" class = "form-control" rows = "3" placeholder="Данные о ситуации"></textarea>
     </div>
 
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Сумма, руб</span>
-      </div>
-      <div class="input-group-prepend">
-        <input formControlName="summa" class="form-control" placeholder="сумма">
-      </div>
-    </div>
+  <div class="d-flex justify-content-between my-2">
+        <span class="text-muted">Сумма, руб</span>
+        <input formControlName="summa" class="form-control w-25" placeholder="Сумма">
+  </div>
 
 
   {{ sError }}
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <button class="form-control" (click)="saveMassage()">Принять</button>
-      </div>
-    </div>
 
 
+  <div class="d-flex justify-content-start my-2">
+        <button class="btn btn-outline-primary" (click)="saveMassage()">Отправить</button>
+  </div>
   <!-- загрузка изображений -->
    <div>
         <input type="file" accept="image/*" id="avatar" (change)="onFileChange($event)" #fileInput style="display:none">
-        <label class="text-muted ml-1 mt-3" style="display: block; cursor: pointer; text-decoration: underline;"
-                                 onclick="document.getElementById('avatar').click()">Загрузить фото</label>
-     <button type="button" class="btn btn-link" (click)="clearFile()">очистить</button>
+     <button type="button" class="btn btn-link" style="display: block; cursor: pointer; text-decoration: underline;"
+             onclick="document.getElementById('avatar').click()">Загрузить изображение</button>
+     <button type="button" class="btn btn-link" (click)="clearFile()" style="display: block; cursor: pointer; text-decoration: underline;">Очистить</button>
 
     </div>
 
 </form>
 
+    </div>
+  </div>
+
+</div>

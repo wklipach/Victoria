@@ -1,41 +1,51 @@
-<div class="col-2">
-  <app-mainmenu [numberPage]="103"></app-mainmenu>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <app-mainmenu [numberPage]="103"></app-mainmenu>
+    </div>
 
-<div id="graph"></div>
+    <div class="col-10">
 
+      <h3 class="alert alert-dark mt-3">График</h3>
+
+      <div class="card my-5 p-3">
+      <div id="graph"></div>
+      </div>
+
+      <div class="card my-5 p-3">
 
 <form [formGroup]="graphForm">
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <div class="input-group-text">
-          <input formControlName="groupYear" type="radio" value="1" (change)="onClick()">
-        </div>
-      </div>
-      <label class="form-control">мясяц</label>
-    </div>
 
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <div class="input-group-text">
-          <input formControlName="groupYear" type="radio" value="2" (change)="onClick()">
-        </div>
-      </div>
-      <label class="form-control">квартал</label>
-    </div>
+  <div class="d-flex justify-content-between my-2">
 
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <div class="input-group-text">
-          <input formControlName="groupYear" type="radio" value="3" (change)="onClick()">
-        </div>
-      </div>
-      <label class="form-control">год</label>
-    </div>
+  <div class="custom-control custom-radio">
+    <input type="radio" id="value1" name="groupYear" class="custom-control-input" value="1" (change)="onClick()">
+    <label class="custom-control-label font-weight-bold text-muted" for="value1">Месяц</label>
+  </div>
 
-    <button type="button" class="btn btn-light" (click)="onClickLeft()" > << </button>
-    <button type="button" class="btn btn-light" (click)="onClickRifht()"> >> </button>
-    <button type="button" class="btn btn-light" (click)="onNow()">сегодня</button>
-    <label>{{dateBegin | date:'dd.MM.yyyy'}} {{dateEnd | date:'dd.MM.yyyy'}}</label>
+  <div class="custom-control custom-radio">
+    <input type="radio"  id="value2" name="groupYear" class="custom-control-input" value="2" (change)="onClick()">
+    <label class="custom-control-label font-weight-bold text-muted" for="value2">Квартал</label>
+  </div>
+
+  <div class="custom-control custom-radio">
+    <input type="radio"  id="value3" name="groupYear" class="custom-control-input" value="3" (change)="onClick()">
+    <label class="custom-control-label font-weight-bold text-muted" for="value3">Год</label>
+  </div>
+
+
+  <button class="btn btn-outline-primary" (click)="onClickLeft()"><i class="fa fa-angle-double-left" aria-hidden="true"></i></button>
+  <p class="font-weight-bold text-muted" style="min-width: 15%;">{{dateBegin | date:'dd.MM.yyyy'}}-{{dateEnd | date:'dd.MM.yyyy'}}</p>
+  <button class="btn btn-outline-primary" (click)="onClickRifht()"><i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+  <button class="btn btn-outline-primary" (click)="onNow()" > Сегодня </button>
+
+  </div>
+
 </form>
 
+      </div>
+
+
+    </div>
+  </div>
+</div>
