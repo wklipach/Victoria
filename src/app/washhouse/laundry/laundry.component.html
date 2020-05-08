@@ -1,11 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <div class="jumbotron p-2 m-0">
+      <div class="jumbotron p-2 m-0" style="background-color: #eef1f2;">
         <div class="d-flex flex-row justify-content-between">
-          <h1 class="my-4 ml-5">{{this.userName+' '+this.userSurname}}</h1>
 
-          <div *ngIf="this.sAvatarPath.length>0;then contentLoadAvatar else contentDefault">Фото</div>
+          <div class="p-1 ml-5">
+          <h1 class="my-3">{{this.userName+' '+this.userSurname}}</h1>
+
+          <div class="mt-5 font-weight-bold text-muted" *ngIf="unreadMessageCount.toString() !== '0'">Непрочитанные сообщения:
+            <p class="badge badge-primary badge-pill p-2 ml-3">{{unreadMessageCount}}</p>
+          </div>
+        </div>
+
+          <div class="float-lg-right" *ngIf="this.sAvatarPath.length>0;then contentLoadAvatar else contentDefault">Фото</div>
           <ng-template #contentLoadAvatar>
             <img [src]="this.sAvatarPath" class="rounded float-left" alt="Фото" id="img">
           </ng-template>
@@ -13,11 +20,11 @@
             <img src="/assets/img/usernull.png" class="rounded float-left" alt="Фото">
           </ng-template>
         </div>
+
       </div>
     </div>
   </div>
 
-  <label *ngIf="unreadMessageCount.toString() !== '0'">Непрочитанные сообщения: {{unreadMessageCount}} </label>
 
   <div class="row">
     <div class="col-xs-4 col-sm-3 col-md-2 col-lg-2 text-center">
@@ -25,8 +32,6 @@
     </div>
 
     <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10">
-
-
 
       <div class="d-flex justify-content-between mt-3">
 
@@ -49,9 +54,16 @@
     <div class="collapse" id="collapseMainFrame">
 
       <ul class="list-group text-muted font-weight-bold">
-        <li class="list-group-item"><span>Неделя</span><span class="alert alert-primary float-right my-0 mx-1">{{this.titleDB | date:'dd.MM.yyyy' }} - {{ this.titleDE | date:'dd.MM.yyyy'}}</span></li>
 
-        <li class="list-group-item"><span>Дата начала смены</span> <span class="alert alert-primary float-right my-0 mx-1">{{this.titleShiftDate | date:'dd.MM.yyyy'}}</span></li>
+        <li class="list-group-item"><span>Неделя</span>
+          <span class="alert alert-primary float-right my-0 mx-1">{{this.titleDB | date:'dd.MM.yyyy' }} - {{ this.titleDE | date:'dd.MM.yyyy'}}
+          </span>
+        </li>
+
+        <li class="list-group-item"><span>Дата начала смены</span>
+          <span class="alert alert-primary float-right my-0 mx-1">{{this.titleShiftDate | date:'dd.MM.yyyy'}}
+          </span>
+        </li>
 
         <li class="list-group-item"><span>Время начала смены</span> <span class="alert alert-primary float-right my-0 mx-1">{{this.titleShiftDate | date:'HH:mm'}}</span></li>
 
@@ -83,8 +95,8 @@
       </ul>
 
 
-      <div class="d-flex justify-content-between">
-        <button class="btn btn-outline-primary my-3" (click)="calendar()">Календарь</button>
+      <div class="d-flex justify-content-start">
+        <button class="btn btn-outline-primary my-3 mr-5" (click)="calendar()">Календарь</button>
         <button class="btn btn-outline-primary my-3" (click)="graph()">График</button>
       </div>
 

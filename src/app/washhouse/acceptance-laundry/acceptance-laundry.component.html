@@ -9,7 +9,7 @@
 
       <form [formGroup]="acclaundform">
 
-        <app-customer-address  [beginString] = "'Белье, которое вы принмаете с адреса'"
+        <app-customer-address  [beginString] = "'Белье, которое вы принимаете с адреса'"
                                [endString]="'(выберите размер и укажите количество):'"
                                [titleString]="'Приемка - '"
                                (ChangedPage)="clickPage($event)">
@@ -20,7 +20,7 @@
 
           <div class="col-6">
 
-            <h3 class="alert alert-dark">Прямое белье</h3>
+            <h3 class="alert alert-dark" style="background-color: #eef1f2;">Прямое белье</h3>
 
             <div class="card mb-2">
               <div class="card-body py-2">
@@ -209,7 +209,7 @@
 
           <div class="col-6">
 
-            <h3 class="alert alert-dark">Не профильное</h3>
+            <h3 class="alert alert-dark" style="background-color: #eef1f2;">Не профильное</h3>
 
             <div class="card mb-2">
               <div class="card-body py-2">
@@ -409,7 +409,7 @@
                       acclaundform.value.massa==''"
                   type="button" class="btn btn-outline-primary mt-2 font-weight-bold" style="background-color: white; color:#797575;">Отправить</button>
 
-          <p class="text-info">После нажатия кнопки Отправить изменить данные будет нельзя!</p>
+          <p class="text-info">После нажатия кнопки <strong>Отправить</strong> изменить данные будет нельзя!</p>
 
         </div>
 

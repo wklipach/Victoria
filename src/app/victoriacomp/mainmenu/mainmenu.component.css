@@ -1,8 +1,9 @@
-a {color: #9b9a9e ; padding: 0;}
-a:hover{  font-weight: bold;  background-color: #72cfff;  color: white;}
+a {color: #9b9a9e; padding: 0;}
+a:hover{  font-weight: bold;  background-color: #c6c8ca;  color: white;}
 li{width: 130px;}
-li:first-child{
+li:first-child a:hover{
   background-color: white;
+  color: #9b9a9e;
 }
 
 /*
@@ -11,5 +12,7 @@ li:first-child{
   color: #ff623d;
 }
 :first-child:hover
-
+#d6d8d9;
 */
+
+
