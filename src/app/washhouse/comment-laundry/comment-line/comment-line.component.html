@@ -3,13 +3,23 @@
 
   <div class="card my-2 p-2">
     <div class="d-flex justify-content-between my-2">
+
+
+      <span *ngIf="unread == 0" class="text-muted"> <i class="fa fa-envelope-open-o" aria-hidden="true"></i> </span>
+      <span *ngIf="unread == 1" class="text-muted"> <i class="fa fa-envelope-open" aria-hidden="true">   </i> </span>
+
       <span class="text-muted">{{sDate}}</span>
 
       <span class="text-muted">{{sFrom}}</span>
 
       <div class="text-muted">
-        <span class="text-muted"> {{sSituationLittle}} {{sSituationSumma}}</span>
+        <span class="text-muted"> {{sSituationLittle}}</span>
       </div>
+
+      <div  class="text-muted">
+           <span *ngIf="sSituationSumma != 0" class="text-muted"> {{sSituationSumma}} </span>
+      </div>
+
 
 
       <button #openButton class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
@@ -23,41 +33,26 @@
 
 
 
-  <!--
-  id_user_from
-  date_from
-  id_position_to
-  id_branch
-  situation
-  data_situation
-  summa
-  ok
-  bit_response
-  date_response
-  id_user_response
-  comment_response
-  -->
-
   <div #summaryPositionLine class="collapse" id="collapseExample">
 
     <div class="card my-3">
       <div class="d-flex justify-content-between my-2">
         <span class="text-muted">Дата</span>
-        <span class="text-muted">01.10.2020 16:33</span>
+        <span class="text-muted">{{sDate}}</span>
       </div>
     </div>
 
     <div class="card my-3">
       <div class="d-flex justify-content-between my-2">
         <span class="text-muted">Собеседник</span>
-        <span class="text-muted">Электрик</span>
+        <span class="text-muted">{{sFrom}}</span>
       </div>
     </div>
 
     <div class="card my-3">
       <div class="d-flex justify-content-between my-2">
         <span class="text-muted">Отделение</span>
-        <span class="text-muted">Парковая, 72</span>
+        <span class="text-muted">{{sBranch}}</span>
       </div>
     </div>
 
@@ -65,47 +60,57 @@
     <div class="card my-3">
       <div class="card-title pl-2 pt-2 font-weight-bold">Ситуация</div>
 
-        <div class="d-flex justify-content-between my-2">
-      <textarea formControlName="situation" id="situation" class = "form-control" rows = "3" placeholder="Описание ситуации"></textarea>
+      <div class="d-flex justify-content-between my-2">
+         <textarea formControlName="situation{{id_message}}" id="situation" class = "form-control" rows = "3" placeholder="Описание ситуации"></textarea>
       </div>
     </div>
 
     <div class="card my-3">
       <div class="card-title pl-2 pt-2 font-weight-bold">Данные</div>
 
-       <textarea id="data_situation" formControlName="data_situation" class ="form-control" rows = "3" placeholder="Данные о ситуации"></textarea>
+       <textarea id="data_situation" formControlName="data_situation{{id_message}}" class ="form-control" rows = "3" placeholder="Данные о ситуации"></textarea>
 
     </div>
+
+
+
+<div *ngIf="intInstruction == 0">
+
 
     <div class="card my-3">
       <div class="d-flex justify-content-between my-2">
         <span class="text-muted">Сумма, руб</span>
-        <input class="form-control w-25" formControlName="summa" placeholder="сумма">
+        <input class="form-control w-25" formControlName="summa{{id_message}}" placeholder="сумма">
       </div>
     </div>
 
-<div class="card my-3 p-3">
-  <div class="card-title pl-2 pt-2 font-weight-bold">Резюме</div>
-    <div class="d-flex justify-content-between my-2">
 
-      <div class="custom-control custom-radio">
-        <input type="radio" id="resume1" name="resume" class="custom-control-input" value="1">
-        <label class="custom-control-label font-weight-bold text-muted" for="resume1">Принять</label>
-      </div>
-      <div class="custom-control custom-radio">
-        <input type="radio"  id="resume2" name="resume" class="custom-control-input" value="2">
-        <label class="custom-control-label font-weight-bold text-muted" for="resume2">Отказ</label>
-      </div>
+    <div class="card my-3 p-3">
+        <div class="card-title pl-2 pt-2 font-weight-bold">Резюме</div>
+          <div class="d-flex justify-content-between my-2">
+         <div class="custom-control custom-radio">
+            <input (change)="ocClickResumeCheck()" id="resume1" type="radio" formControlName="checkResume{{id_message}}" class="custom-control-input" value="1">
+            <label class="custom-control-label font-weight-bold text-muted" for="resume1">Принять</label>
+         </div>
+         <div class="custom-control custom-radio">
+            <input (change)="ocClickResumeCheck()" id="resume2" type="radio"  formControlName="checkResume{{id_message}}" class="custom-control-input" value="2">
+            <label class="custom-control-label font-weight-bold text-muted" for="resume2">Отказ</label>
+         </div>
+   </div>
+  </div>
 
-    </div>
-</div>
 
     <div class="card my-3 p-3">
       <div class="card-title pl-2 pt-2 font-weight-bold">Причина</div>
-        <input formControlName="respResume" class="form-control" placeholder="ответ на записку">
+        <input formControlName="respResume{{id_message}}" class="form-control" placeholder="ответ на записку">
      </div>
 
-        <button class="btn btn-outline-primary my-4">Принять</button>
+        {{sError}}
+        <button *ngIf="this.intResponseSucc == 0" (click)="onClickResume()"  class="btn btn-outline-primary my-4">Принять</button>
+
+
+</div>
+
 
 
     <div *ngFor = "let sPath of imageResGlobal">

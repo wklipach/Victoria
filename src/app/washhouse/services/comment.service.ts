@@ -18,6 +18,16 @@ export class CommentService {
 
   }
 
+  getMessageUnreadCount(id_user, id_branch, date_begin, date_end) {
+    const params = new HttpParams()
+      .set('get_unread_count', 'get_unread_count')
+      .set('id_user', id_user)
+      .set('id_branch', id_branch)
+      .set('date_begin', date_begin.toISOString())
+      .set('date_end', date_end.toISOString());
+    return this.http.get(this.gr.sUrlGlobal + 'comment', {params: params});
+  }
+
   getMessageList(id_user, id_branch, id_position, date_begin, date_end) {
     const params = new HttpParams()
       .set('get_message_list', 'get_message_list')
@@ -88,6 +98,25 @@ export class CommentService {
                           'summa': summa,
                           'int_instruction': int_instruction };
     return this.http.post(this.gr.sUrlGlobal + 'comment', new_message);
+  }
+
+   setMessageRead(id_message, id_user) {
+     const update_message = { 'read_message': 'read_message',
+       'id_message': id_message,
+       'id_user': id_user };
+     return this.http.post(this.gr.sUrlGlobal + 'comment', update_message);
+   }
+
+
+  setResponseMessage (id_message, id_user, summa, comment_response, int_resp) {
+    const update_message = { 'update_message': 'update_message',
+                             'id_message': id_message,
+                             'id_user': id_user,
+                             'summa': summa,
+                             'comment_response': comment_response,
+                             'int_resp': int_resp
+                        };
+    return this.http.post(this.gr.sUrlGlobal + 'comment', update_message);
   }
 
 }

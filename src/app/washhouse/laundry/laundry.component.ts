@@ -4,6 +4,7 @@ import {AuthService} from '../../services/auth-service.service';
 import {ShiftService} from '../../services/shift.service';
 import {ReportService} from '../services/report.service';
 import {GlobalRef} from '../../services/globalref';
+import {CommentService} from '../services/comment.service';
 
 @Component({
   selector: 'app-laundry',
@@ -33,8 +34,10 @@ export class LaundryComponent implements OnInit {
   LastShiftItogo = 0;
   rating = 0;
   public sAvatarPath  = '';
+  unreadMessageCount = 0;
 
   constructor(private router: Router, private authService: AuthService,
+                                      private cs: CommentService,
                                       private repserv: ReportService,
                                       private gr: GlobalRef,
                                       private ss: ShiftService) {
@@ -54,6 +57,25 @@ export class LaundryComponent implements OnInit {
 
     this.loadInfo();
     this.onLoadFromBaseAvatar();
+
+    const ResCountDate = this.getMonthBounds(new Date());
+
+    this.cs.getMessageUnreadCount(this.id_user_vict, Res.id_branch_vict, ResCountDate[0], ResCountDate[1]).subscribe( value => {
+      this.unreadMessageCount = value[0][0].unread_message;
+    });
+
+
+  }
+
+  // границы месяца
+  getMonthBounds(date) {
+
+    const dd = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+    // первый день месяца
+    const firstDayCurrMonth  = new Date(date.getFullYear(), date.getMonth(), 1);
+    // последний день месяца
+    const lastDayCurrMonth  = new Date(date.getFullYear(), date.getMonth(), dd);
+    return [firstDayCurrMonth, lastDayCurrMonth];
   }
 
   logout() {

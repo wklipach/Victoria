@@ -22,6 +22,7 @@ export class CommentLaundryComponent implements OnInit {
   id_position_from = -1;
   arrLine = [];
   intTypeMessage = 1;
+  unreadMessageCount = 0;
 
   commentLaundryForm: FormGroup;
 
@@ -53,12 +54,10 @@ export class CommentLaundryComponent implements OnInit {
     this.cs.getPositionUser(this.id_user_vict, this.id_branch_vict).subscribe(value => {
       if (value[0]) {
         this.id_position_from = value[0].id_position;
-        console.log('checkMessage', this.commentLaundryForm.controls['checkMessage'].value);
         this.intTypeMessage = this.commentLaundryForm.controls['checkMessage'].value;
         this.loadDateType(this.intTypeMessage);
       }
     });
-
 
   }
 
@@ -81,19 +80,10 @@ export class CommentLaundryComponent implements OnInit {
       value[0].forEach((elem, ih) => {
         const dPipe = new DatePipe('ru'), date_from = dPipe.transform(elem.date_from, 'dd.MM.yyyy   HH.mm');
         const n = arrLine.push({id: elem.id, sFrom: elem.position_name, sDate: date_from,
-          sSituationLittle: elem.little_situation, sSituationSumma: elem.summa});
+          sSituationLittle: elem.little_situation, sSituationSumma: elem.summa, unread: elem.unread});
       });
 
       this.arrLine = arrLine;
-
-//      InputOutput: 0
-//      date_from: "2020-05-06T11:55:19.000Z"
-//      id: 12
-//      id_position: 1
-//      elem.little_situation: "ситуация 3"
-//      position_name: "прачка"
-//      summa: 200
-//      arrLine
 
     });
 
@@ -104,23 +94,15 @@ export class CommentLaundryComponent implements OnInit {
     const dateBegin = Res[0];
     const dateEnd = Res[1];
     this.cs.getMessageList(id_user, id_branch, id_position, dateBegin, dateEnd).subscribe((value: Array<any>) => {
+
       const arrLine = [];
       value[0].forEach((elem, ih) => {
         const dPipe = new DatePipe('ru'), date_from = dPipe.transform(elem.date_from, 'dd.MM.yyyy   HH.mm');
         const n = arrLine.push({id: elem.id, sFrom: elem.position_name, sDate: date_from,
-                  sSituationLittle: elem.little_situation, sSituationSumma: elem.summa});
+                  sSituationLittle: elem.little_situation, sSituationSumma: elem.summa, unread: elem.unread});
       });
 
       this.arrLine = arrLine;
-
-//      InputOutput: 0
-//      date_from: "2020-05-06T11:55:19.000Z"
-//      id: 12
-//      id_position: 1
-//      elem.little_situation: "ситуация 3"
-//      position_name: "прачка"
-//      summa: 200
-//      arrLine
 
     });
 

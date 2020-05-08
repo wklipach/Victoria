@@ -2,6 +2,7 @@ import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@a
 import {FormControl, FormGroup} from '@angular/forms';
 import {CommentService} from '../../services/comment.service';
 import {GlobalRef} from '../../../services/globalref';
+import {AuthService} from '../../../services/auth-service.service';
 declare var jQuery: any;
 
 @Component({
@@ -12,41 +13,51 @@ declare var jQuery: any;
 export class CommentLineComponent implements OnInit, AfterViewInit {
 
   @Input() id_message = -1;
-  @Input() maslineShort = {sFrom: '', sDate: '', sSituationLittle: '', sSituationSumma: ''};
+  @Input() maslineShort = {sFrom: '', sDate: '', sSituationLittle: '', sSituationSumma: '', unread: 0};
 
   @ViewChild('summaryPositionLine') public summaryPositionLine: ElementRef;
   @ViewChild('openButton') public openButton: ElementRef;
 
-  commentlineForm: FormGroup;
+  id_user_vict = -1;
+  id_branch_vict = -1;
+  private commentlineForm: FormGroup;
   imageResGlobal = [];
   sSituationLittle = '';
   sSituationSumma = '';
   sFrom = '';
   sDate = '';
+  intInstruction = 0;
+  intResponseSucc = 0;
+  sBranch = '';
+  unread = 0;
+  sError = '';
 
-  constructor(private cs: CommentService,  private gr: GlobalRef) {
-    this.commentlineForm  = new FormGroup({
-      'situation': new FormControl(''),
-      'data_situation': new FormControl(''),
-      'resume': new FormControl(''),
-      'summa': new FormControl(''),
-      'respResume': new FormControl('')
-    });
 
-    this.commentlineForm.controls['situation'].disable();
-    this.commentlineForm.controls['data_situation'].disable();
-  }
+  constructor(private cs: CommentService,  private gr: GlobalRef, private authService: AuthService) {
+    this.commentlineForm  = new FormGroup({ });
+ }
 
   ngOnInit(): void {
 
+    this.commentlineForm.addControl('situation' + this.id_message.toString() , new FormControl(''));
+    this.commentlineForm.addControl('data_situation' + this.id_message, new FormControl(''));
+    this.commentlineForm.addControl('checkResume' + this.id_message, new FormControl(''));
+    this.commentlineForm.addControl('summa' + this.id_message, new FormControl(''));
+    this.commentlineForm.addControl('respResume' + this.id_message, new FormControl(''));
+    this.commentlineForm.controls['situation' + this.id_message].disable();
+    this.commentlineForm.controls['data_situation' + this.id_message].disable();
+
+
+    const Res = this.authService.loginStorage();
+      this.id_user_vict = Res.id_user_vict;
+      this.id_branch_vict = Res.id_branch_vict;
+
     this.sFrom = this.maslineShort.sFrom;
     this.sDate = this.maslineShort.sDate;
+    this.unread = this.maslineShort.unread;
 
     this.sSituationLittle = this.maslineShort.sSituationLittle;
     this.sSituationSumma = this.maslineShort.sSituationSumma;
-
-
-
   }
 
   ngAfterViewInit() {
@@ -63,6 +74,14 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
 
     // элемент был скрыт и как раз сейчас раскрывается
     if (element.offsetParent == null) {
+      // делаем прочитанным
+      if (this.unread === 1) {
+        this.unread = 0;
+        // добавляем в баз укак прочитанное
+        this.cs.setMessageRead(this.id_message, this.id_user_vict).subscribe();
+      }
+
+      // засасываем данные
        this.LoadDataFromBase(this.id_message);
     }
   }
@@ -74,11 +93,32 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
       if (value[0]) {
         // const dPipe = new DatePipe('ru');
         // this.date_from =  dPipe.transform(value[0].date_from, 'dd.MM.yyyy   HH.mm');
-        this.commentlineForm.controls['situation'].setValue(value[0].situation);
-        this.commentlineForm.controls['data_situation'].setValue(value[0].data_situation);
-        this.commentlineForm.controls['summa'].setValue(value[0].summa);
-        this.commentlineForm.controls['resume'].setValue(value[0].result_response);
-        this.commentlineForm.controls['respResume'].setValue(value[0].comment_response);
+        this.sBranch = value[0].branch_name;
+        this.commentlineForm.controls['situation' + this.id_message].setValue(value[0].situation);
+        this.commentlineForm.controls['data_situation' + this.id_message].setValue(value[0].data_situation);
+        this.commentlineForm.controls['summa' + this.id_message].setValue(value[0].summa);
+
+        this.commentlineForm.controls['checkResume' + this.id_message].setValue(value[0].result_response.toString());
+
+        this.commentlineForm.controls['respResume' + this.id_message].setValue(value[0].comment_response);
+        if (value[0].result_response.toString() === '3') {
+           this.intInstruction = 1;
+        }
+
+        if (value[0].result_response.toString() === '0') {
+          this.intResponseSucc = 0;
+          this.commentlineForm.controls['checkResume' + this.id_message].enable();
+          this.commentlineForm.controls['summa' + this.id_message].enable();
+          this.commentlineForm.controls['respResume' + this.id_message].enable();
+        }
+
+        if (value[0].result_response.toString() === '1') {
+          this.intResponseSucc = 1;
+          this.commentlineForm.controls['checkResume' + this.id_message].disable();
+          this.commentlineForm.controls['summa' + this.id_message].disable();
+          this.commentlineForm.controls['respResume' + this.id_message].disable();
+        }
+
         this.loadImageFromBase(id_message);
       }
     });
@@ -97,4 +137,34 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
       });
     }
 
+  onClickResume() {
+
+    if (!this.commentlineForm.controls['checkResume' + this.id_message].value) {
+      this.sError = 'Вы не выбрали результат ответа';
+      return;
+    } else {
+      console.log('value', this.commentlineForm.controls['checkResume' + this.id_message].value);
+    }
+
+    if (this.commentlineForm.controls['checkResume' + this.id_message].value.toString() === '0') {
+      this.sError = 'Вы не выбрали результат ответа';
+      return;
+    }
+
+    if (!Number(this.commentlineForm.controls['summa' + this.id_message].value.toString().trim())) {
+      this.commentlineForm.controls['summa' + this.id_message].setValue('0');
+    }
+
+    const summa =  this.commentlineForm.controls['summa' + this.id_message].value.toString().trim();
+    const intResp = this.commentlineForm.controls['checkResume' + this.id_message].value;
+    const comment_response = this.commentlineForm.controls['respResume' + this.id_message].value;
+     this.cs.setResponseMessage(this.id_message, this.id_user_vict, summa, comment_response, intResp).subscribe(value => {
+        jQuery(this.summaryPositionLine.nativeElement).collapse('hide');
+     }) ;
+
+  }
+
+  ocClickResumeCheck() {
+    this.sError = '';
+  }
 }
