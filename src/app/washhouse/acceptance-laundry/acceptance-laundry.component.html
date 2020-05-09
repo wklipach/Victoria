@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container-fluid">
 
   <div class="row">
-    <div class="col-2">
+    <div class="col-1">
       <app-mainmenu [numberPage]="2"></app-mainmenu>
     </div>
 
-    <div class="col-10">
+    <div class="col-11">
 
       <form [formGroup]="acclaundform">
 
@@ -233,7 +233,7 @@
                 </div>
 
                 <div class="d-flex justify-content-between">
-                  <label class="w-25 font-weight-bold">Придв.</label>
+                  <label class="w-25 font-weight-bold">Придверн.</label>
                   <p class="w-25">{{getErrorText('n12')}}
                     <input type="text" [class]="getClassName('n12')" formControlName="n12" placeholder="шт" id="name23" name="name23"></p>
                   <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n12')"><i class="fa fa-plus"></i></p>

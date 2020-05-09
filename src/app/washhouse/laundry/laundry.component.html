@@ -13,10 +13,11 @@
 
 
 <!-- ВСТАВИЛ ЭТО -->
-            <div class="mt-5 font-weight-bold text-muted" *ngIf="sErrorPageAccess.toString() !== ''">
-              Для этой операции начните смену
+            <div class="alert alert-danger" *ngIf="sErrorPageAccess.toString() !== ''"
+                 style="position: absolute; margin-top:20%; margin-left: 45%;">
+              Для перехода к пунктам меню следует нажать кнопку <strong>Начать смену</strong>
             </div>
-            <div class="mt-5 font-weight-bold text-muted" *ngIf="BranchName.toString() !== ''">
+            <div class="text-muted mb-3" *ngIf="BranchName.toString() !== ''" style="position: absolute; opacity: 0;">
               {{BranchName}}
             </div>
 <!-- закончил вставлять -->
