@@ -4,6 +4,7 @@
     <div class="col-2">
       <app-mainmenu></app-mainmenu>
     </div>
+
     <div class="col-10">
       <h3 class="alert alert-dark mt-4" style="background-color: #eef1f2;">Новая записка</h3>
 
@@ -11,10 +12,40 @@
 <form [formGroup]="commentnewForm">
 
 
-      <div class="d-flex justify-content-between my-2">
-        <span class="p-0">От</span>
-        <span class="p-0">{{nick}}</span>
-      </div>
+  <div class="d-flex justify-content-between my-2 ">
+
+    <p>
+      <span class="mr-4">Дата:</span>
+    <span class="mr-4 text-muted font-weight-bold">{{fromDate | date: 'dd.MM.yyyy hh:mm'}}</span>
+    </p>
+
+    <p>
+      <span class="mr-4">От:</span>
+      <span class="mr-4 text-muted font-weight-bold">{{nick}}</span>
+    </p>
+
+    <p>
+      <span class="mr-4">Отделение:</span>
+      <span class="mr-4 text-muted font-weight-bold">{{BranchName}}</span>
+    </p>
+
+
+  </div>
+
+  <!--
+  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+   -->
+
+  <div class="d-flex justify-content-start mt-2 mb-3">
+      <span class="font-weight-bold pt-2 mr-5">Кому</span>
+      <select class="custom-select w-50" #textPosition id="textPosition" formControlName="textPosition">
+        <option [value]="chPosition.id" *ngFor="let chPosition of positionList">{{chPosition.name}}</option>
+      </select>
+  </div>
+
+
+
+
 
 
   <!--
@@ -33,78 +64,60 @@
   -->
 
 
-  <div class="d-flex justify-content-between my-2">
-    <span class="p-0">Дата</span>
-    <span class="text-muted">{{fromDate | date: 'dd.MM.yyyy hh:mm'}}</span>
-  </div>
-
-  <div class="d-flex justify-content-between my-2">
-      <span class="p-0">Получатель</span>
-      <select class="custom-select" #textPosition id="textPosition" formControlName="textPosition">
-        <option [value]="chPosition.id" *ngFor="let chPosition of positionList">{{chPosition.name}}</option>
-      </select>
-   </div>
-
-
-  <!--
-  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-   -->
-
-  <div class="d-flex justify-content-between my-2">
-     <span class="text-muted">Отделение</span>
-     <span class="text-muted">{{BranchName}}</span>
-  </div>
-
-
-  <div class = "p-0">
-      <label for = "situation">Ситуация</label>
+    <div>
+      <div class="font-weight-bold">Ситуация</div>
       <textarea formControlName="situation" id="situation" class = "form-control" rows = "3" placeholder="Описание ситуации"></textarea>
     </div>
 
-    <div class = "p-0">
-      <label for = "data_situation">Данные</label>
+  <div class="my-3">
+    <span class="pl-2 pt-2 font-weight-bold">Данные</span>
       <textarea formControlName="data_situation" id="data_situation" class = "form-control" rows = "3" placeholder="Данные о ситуации"></textarea>
     </div>
 
-  <div class="d-flex justify-content-between my-2">
-        <span class="text-muted">Сумма, руб</span>
+  <div class="d-flex justify-content-start my-2">
+    <span class="font-weight-bold pt-2 mr-5">Сумма, &#8381;</span>
         <input formControlName="summa" class="form-control w-25" placeholder="Сумма">
-  </div>
 
 
+  <button class="btn btn-link font-weight-bold ml-auto" type="button" data-toggle="collapse" data-target="#collapseInstruction" aria-expanded="false" aria-controls="collapseInstruction">
+    Инструкция
+  </button>
+    </div>
   {{ sError }}
 
 
-  <div class="d-flex justify-content-start my-2">
-        <button class="btn btn-outline-primary" (click)="saveMassage()">Отправить</button>
-  </div>
-  <!-- загрузка изображений -->
-   <div>
-        <input type="file" accept="image/*" id="avatar" (change)="onFileChange($event)" #fileInput style="display:none">
-     <button type="button" class="btn btn-link" style="display: block; cursor: pointer; text-decoration: underline;"
-             onclick="document.getElementById('avatar').click()">Загрузить изображение</button>
-     <button type="button" class="btn btn-link" (click)="clearFile()" style="display: block; cursor: pointer; text-decoration: underline;">Очистить</button>
-
-    </div>
-
-
   <div class="d-flex justify-content-between my-2">
-    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseInstruction" aria-expanded="false" aria-controls="collapseInstruction">
-      Инструкция
-    </button>
+        <button class="btn btn-outline-primary my-5 mb-1 w-25" (click)="saveMassage()">Отправить</button>
+
     <div class="collapse" id="collapseInstruction">
       <div class="custom-control custom-checkbox">
         <input type="checkbox" class="custom-control-input" id="checkboxInstruction" formControlName="checkInstructuion" (change)="OnCheckInstructuion()">
-        <label class="custom-control-label" for="checkboxInstruction">Оформить как инструкцию</label>
+        <label class="custom-control-label text-muted font-weight-bold" for="checkboxInstruction">Оформить как инструкцию</label>
       </div>
-
     </div>
-  </div>
 
+  </div>
 
 </form>
 
+
+
+
+
+
     </div>
   </div>
+
+
+  <!-- загрузка изображений -->
+  <div class="card">
+    <input type="file" accept="image/*" id="avatar" (change)="onFileChange($event)" #fileInput style="display:none">
+    <button type="button" class="btn btn-link" style="display: block; cursor: pointer; text-decoration: underline;"
+            onclick="document.getElementById('avatar').click()">Прикрепить изображение</button>
+    <button type="button" class="btn btn-link" (click)="clearFile()" style="display: block; cursor: pointer; text-decoration: underline;">Очистить</button>
+  </div>
+
+
+
 
 </div>

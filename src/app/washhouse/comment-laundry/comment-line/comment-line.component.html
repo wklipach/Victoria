@@ -2,27 +2,22 @@
 
 
   <div class="card my-2 p-2">
-    <div class="d-flex justify-content-between my-2">
+    <div class="d-flex justify-content-start my-2">
 
 
-      <span *ngIf="unread == 0" class="text-muted mr-1"> <i class="fa fa-envelope-open-o fa-lg" aria-hidden="true"></i> </span>
-      <span *ngIf="unread == 1" class="text-muted mr-1"> <i class="fa fa-envelope-open fa-lg" aria-hidden="true">   </i> </span>
+      <span *ngIf="unread == 0" class="text-muted mr-3"> <i class="fa fa-envelope-open-o fa-lg" aria-hidden="true"></i> </span>
+      <span *ngIf="unread == 1" class="text-muted mr-3"> <i class="fa fa-envelope-open fa-lg" aria-hidden="true">   </i> </span>
 
-      <span class="text-muted">{{sDate}}</span>
-      <span class="text-muted">{{sFrom}}</span>
+      <span class="text-muted mr-3">{{sDate}}</span>
+      <span class="text-muted mr-3" style="width: 20%">{{sFrom}}</span>
 
-      <div class="text-muted">
-        <span class="text-muted"> {{sSituationLittle}}</span>
-      </div>
+      <span class="text-muted mr-3" style="width: 40%;"> {{sSituationLittle}}</span>
 
-      <div  class="text-muted">
-           <span *ngIf="sSituationSumma != 0" class="text-muted"> {{sSituationSumma}} </span>
-      </div>
+      <span *ngIf="sSituationSumma != 0" class="text-muted pl-4"> {{sSituationSumma}} </span>
 
 
-
-      <button #openButton class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
-              (click)="onButtonCollapse($event)">        <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+      <button #openButton class="btn btn-outline-primary ml-auto" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+             title="Прочитать" (click)="onButtonCollapse($event)">  <i class="fa fa-angle-double-down" aria-hidden="true"></i>
 
       </button>
 
@@ -34,59 +29,50 @@
 
   <div #summaryPositionLine class="collapse" id="collapseExample">
 
-    <div class="card my-3">
-      <div class="d-flex justify-content-between my-2">
-        <span class="text-muted">Дата</span>
-        <span class="text-muted">{{sDate}}</span>
-      </div>
+    <div class="card my-3 p-3 border-primary rounded">
+
+      <div class="d-flex justify-content-between my-2 ">
+
+       <p>
+        <span class="mr-4">Дата:</span>
+        <span class="mr-4 text-muted font-weight-bold">{{sDate}}</span>
+      </p>
+
+      <p>
+        <span class="mr-4">От:</span>
+        <span class="mr-4 text-muted font-weight-bold">{{sFrom}}</span>
+       </p>
+
+      <p>
+        <span class="mr-4">Отделение:</span>
+        <span class="mr-4 text-muted font-weight-bold">{{sBranch}}</span>
+      </p>
+
     </div>
 
-    <div class="card my-3">
-      <div class="d-flex justify-content-between my-2">
-        <span class="text-muted">Собеседник</span>
-        <span class="text-muted">{{sFrom}}</span>
+
+      <div>
+      <div class="font-weight-bold">Ситуация</div>
+      <textarea formControlName="situation{{id_message}}" id="situation" class = "form-control" rows = "3" placeholder="Описание ситуации"></textarea>
       </div>
-    </div>
-
-    <div class="card my-3">
-      <div class="d-flex justify-content-between my-2">
-        <span class="text-muted">Отделение</span>
-        <span class="text-muted">{{sBranch}}</span>
-      </div>
-    </div>
 
 
-    <div class="card my-3">
-      <div class="card-title pl-2 pt-2 font-weight-bold">Ситуация</div>
-
-      <div class="d-flex justify-content-between my-2">
-         <textarea formControlName="situation{{id_message}}" id="situation" class = "form-control" rows = "3" placeholder="Описание ситуации"></textarea>
-      </div>
-    </div>
-
-    <div class="card my-3">
-      <div class="card-title pl-2 pt-2 font-weight-bold">Данные</div>
-
+      <div class="my-3">
+       <span class="pl-2 pt-2 font-weight-bold">Данные</span>
        <textarea id="data_situation" formControlName="data_situation{{id_message}}" class ="form-control" rows = "3" placeholder="Данные о ситуации"></textarea>
-
-    </div>
+     </div>
 
 
 
 <div *ngIf="intInstruction == 0">
 
-
-    <div class="card my-3">
-      <div class="d-flex justify-content-between my-2">
-        <span class="text-muted">Сумма, руб</span>
+  <div class="d-flex justify-content my-2 ">
+        <span class="font-weight-bold pt-2 mr-5">Сумма, &#8381;</span>
         <input class="form-control w-25" formControlName="summa{{id_message}}" placeholder="сумма">
-      </div>
-    </div>
+  </div>
 
 
-    <div class="card my-3 p-3">
-        <div class="card-title pl-2 pt-2 font-weight-bold">Резюме</div>
-          <div class="d-flex justify-content-between my-2">
+    <div class="d-flex justify-content-between my-3 w-25">
          <div class="custom-control custom-radio">
             <input (change)="ocClickResumeCheck()" id="resume1" type="radio" formControlName="checkResume{{id_message}}" class="custom-control-input" value="1">
             <label class="custom-control-label font-weight-bold text-muted" for="resume1">Принять</label>
@@ -96,20 +82,14 @@
             <label class="custom-control-label font-weight-bold text-muted" for="resume2">Отказ</label>
          </div>
    </div>
-  </div>
 
 
-    <div class="card my-3 p-3">
-      <div class="card-title pl-2 pt-2 font-weight-bold">Причина</div>
-        <input formControlName="respResume{{id_message}}" class="form-control" placeholder="ответ на записку">
+      <div class="pl-2 pt-2 font-weight-bold">Резюме</div>
+        <input formControlName="respResume{{id_message}}" class="form-control mt-1" placeholder="Введите ответ">
      </div>
 
         {{sError}}
-        <button *ngIf="this.intResponseSucc == 0" (click)="onClickResume()"  class="btn btn-outline-primary my-4">Принять</button>
-
-
-</div>
-
+        <button *ngIf="this.intResponseSucc == 0" (click)="onClickResume()"  class="btn btn-outline-primary mt-3 mb-1 w-25">Отправить</button>
 
 
     <div *ngFor = "let sPath of imageResGlobal">
@@ -123,5 +103,5 @@
 
 
   </div>
-
+  </div>
 </form>

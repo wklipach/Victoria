@@ -1,0 +1,12 @@
+.nav-item:hover{
+  font-weight: bold;
+  background-color: #e8eaec;
+}
+
+/*
+
+серый для неяркого меню    #e8eaec
+text-muted #495057
+primary #007bff
+
+*/
