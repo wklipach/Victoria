@@ -280,12 +280,12 @@ export class WarehouseLaundryComponent implements OnInit {
         let sVal = this.warehouseForm.controls[el].value.toString().trim();
         if (Check.ZeroOrPositive(sVal)) {
           if (sVal === '0' || sVal === '1') {
-            sVal = 1;
+            sVal = '';
           } else {
             sVal = (Number(sVal) - 1).toString();
           }
         } else {
-          sVal = 1;
+          sVal = '';
         }
 
         this.warehouseForm.controls[el].setValue(sVal);

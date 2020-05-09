@@ -147,6 +147,7 @@ data.push([new Date(2020, 4, 6, 0, 0, 0, 0), 3]);
 
   onClick() {
     this.intPeriod = this.graphForm.controls['groupYear'].value;
+    console.log('this.intPeriod', this.intPeriod, this.currentDate);
     this.drawPeriod(Number(this.intPeriod), this.currentDate);
   }
 

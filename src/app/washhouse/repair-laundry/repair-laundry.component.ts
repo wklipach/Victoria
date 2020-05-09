@@ -350,12 +350,12 @@ export class RepairLaundryComponent implements OnInit {
         let sVal = this.repairForm.controls[el].value.toString().trim();
         if (Check.ZeroOrPositive(sVal)) {
           if (sVal === '0' || sVal === '1') {
-            sVal = 1;
+            sVal = '';
           } else {
             sVal = (Number(sVal) - 1).toString();
           }
         } else {
-          sVal = 1;
+          sVal = '';
         }
 
         this.repairForm.controls[el].setValue(sVal);
