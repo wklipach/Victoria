@@ -1,4 +1,4 @@
-    <ul class="nav nav-tabs mt-4">
+    <ul class="nav nav-tabs mt-3">
 
       <li *ngFor="let al of addressList" (click)="onElem(al.id_address)" class="nav-item">
         <a *ngIf="al.id_address === selectedID" class="nav-link active" style="font-weight: 700; color: #007bff" data-toggle="tab" [href]="'#address'+al.id_address" >{{al.address}}</a>
