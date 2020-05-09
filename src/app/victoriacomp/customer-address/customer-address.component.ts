@@ -33,6 +33,12 @@ export class CustomerAddressComponent implements OnInit {
       this.addressList = value;
     });
 
+    const i_addr = this.authService.getAddressShipment();
+    if (i_addr > 0) {
+      this.onElem(i_addr);
+    }
+
+
   }
 
   ngOnInit(): void {
@@ -41,6 +47,7 @@ export class CustomerAddressComponent implements OnInit {
 
   onElem(i: number) {
     this.selectedID = i;
-      this.ChangedPage.emit(i);
+    this.authService.setAddressShipment (this.selectedID);
+    this.ChangedPage.emit(i);
     }
 }

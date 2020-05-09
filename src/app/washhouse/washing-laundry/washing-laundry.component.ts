@@ -47,6 +47,13 @@ export class WashingLaundryComponent implements OnInit {
       'massa': new FormControl('', [Validators.required, Check.massaValidator('massa')])
     });
 
+     const i_addr = this.authService.getAddressShipment();
+     if (i_addr > 0) {
+         this.intAddress = i_addr;
+     }
+
+
+
     this.setColorArray();
     this.setAllFlagFromCicle();
   }
@@ -59,7 +66,7 @@ export class WashingLaundryComponent implements OnInit {
     }
 
     if (!ShiftService.getShift()) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/'], { state: { errorPageAccess : '1' }});
     }
 
     if (Res.bVictConnected) {
@@ -265,7 +272,7 @@ export class WashingLaundryComponent implements OnInit {
   }
 
   clickPage($event: number) {
-    console.log('intAddress=', $event);
+    console.log('--intAddress=', $event);
     this.intAddress = $event;
     this.setAllFlagFromCicle();
   }
@@ -318,6 +325,7 @@ export class WashingLaundryComponent implements OnInit {
           sVal = 1;
         }
 
+        this.washingForm.controls[el].markAsTouched();
         this.washingForm.controls[el].setValue(sVal);
       }
     }

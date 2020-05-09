@@ -11,6 +11,18 @@ export class AuthService {
 
   }
 
+  public setAddressShipment (id_address_vict: number) {
+    window.localStorage.setItem('id_address_vict', JSON.stringify(id_address_vict));
+  }
+
+  getAddressShipment () {
+    if (window.localStorage.getItem('id_address_vict')) {
+      return JSON.parse(window.localStorage.getItem('id_address_vict'));
+    } else {
+      return -1;
+    }
+  }
+
 // заносим текущего пользователя в локальное хранилище
   public setStorage(victUserName: string, bVictConnected: boolean, id_user_vict: number, id_branch_vict: number) {
     window.localStorage.setItem('victUserName', victUserName);

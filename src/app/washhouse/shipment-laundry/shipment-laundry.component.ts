@@ -48,6 +48,11 @@ export class ShipmentLaundryComponent implements OnInit {
       'massa': new FormControl('', [Validators.required, Check.massaValidator('massa')])
     });
 
+    const i_addr = this.authService.getAddressShipment();
+    if (i_addr > 0) {
+      this.intAddress = i_addr;
+    }
+
     this.setColorArray();
     this.setAllFlagFromCicle();
   }
@@ -59,7 +64,7 @@ export class ShipmentLaundryComponent implements OnInit {
     }
 
     if (!ShiftService.getShift()) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/'], { state: { errorPageAccess : '1' }});
     }
 
     if (Res.bVictConnected) {
@@ -316,7 +321,7 @@ export class ShipmentLaundryComponent implements OnInit {
         } else {
           sVal = 1;
         }
-
+        this.shipmentForm.controls[el].markAsTouched();
         this.shipmentForm.controls[el].setValue(sVal);
       }
     }

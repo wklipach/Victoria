@@ -69,6 +69,12 @@ export class AcceptanceLaundryComponent implements OnInit {
       'massa': new FormControl('', [Validators.required, this.flagValidator('massa')])
     });
 
+    const i_addr = this.authService.getAddressShipment();
+    if (i_addr > 0) {
+      this.intAddress = i_addr;
+    }
+
+
     this.setColorArray();
 
   }
@@ -152,7 +158,7 @@ export class AcceptanceLaundryComponent implements OnInit {
     });
     }
     if (!ShiftService.getShift()) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/'], { state: { errorPageAccess : '1' }});
     }
 
  }
@@ -209,7 +215,7 @@ export class AcceptanceLaundryComponent implements OnInit {
          } else {
            sVal = 1;
          }
-
+        this.acclaundform.controls[el].markAsTouched();
         this.acclaundform.controls[el].setValue(sVal);
       }
     }

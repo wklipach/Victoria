@@ -32,7 +32,10 @@
           {{sErrorNewAD}}
           <div class="input-group">
             <input formControlName="inputNewAD" type="text" class="form-control" placeholder="Адрес" aria-label="" aria-describedby="basic-addon1">
+<!--
             <input formControlName="inputNewADBranch" type="text" class="form-control" placeholder="Филиал" aria-label="" aria-describedby="basic-addon1">
+-->
+
             <div class="input-group-append">
               <button class="btn btn-success" (click)="newAD()" type="button">Сохранить</button>
             </div>
@@ -46,7 +49,11 @@
           {{sErrorChangeAD}}
           <div class="input-group">
             <input formControlName="inputChangeAD" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+
+<!--
             <input formControlName="inputChangeADBranch" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+-->
+
 
             <div class="input-group-append">
               <button class="btn btn-success" (click)="OnChangeAD()" type="button">Изменить</button>
@@ -60,7 +67,7 @@
 
       <div class="collapse" id="collapseShowAD">
         <ul class="list-group mt-2">
-          <li [class.active] = "ad === selectedAD" class="list-group-item" (click)="mu(ad)"  *ngFor="let ad of addressList">{{ad['address']}},&nbsp;{{ad['branch_name']}}</li>
+          <li [class.active] = "ad === selectedAD" class="list-group-item" (click)="mu(ad)"  *ngFor="let ad of addressList">{{ad['address']}}</li>
         </ul>
       </div>
 

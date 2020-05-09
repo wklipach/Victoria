@@ -33,6 +33,12 @@ export class AddWorkComponent implements OnInit {
     if (!Res.bVictConnected) {
       this.router.navigate(['/login']);
     }
+
+
+    if (!ShiftService.getShift()) {
+      this.router.navigate(['/'], { state: { errorPageAccess : '1' }});
+    }
+
     this.id_user_vict = Res.id_user_vict;
     // this.LoadInfo(this.id_user_vict);
 

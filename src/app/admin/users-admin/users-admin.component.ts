@@ -32,7 +32,7 @@ export class UsersAdminComponent implements OnInit {
 
   LoadUser(id_branch) {
 
-    this.adminserv.getUsers(id_branch).subscribe( (value: Array<any>) =>  {
+    this.adminserv.getAllUsers().subscribe( (value: Array<any>) =>  {
 
       // получаем всех пользователей
       this.usersList = [];

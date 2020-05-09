@@ -111,12 +111,14 @@ export class AddressAdminComponent implements OnInit {
       return;
     }
 
+/*
     const sBranch = this.addressForm.controls['inputNewADBranch'].value.toString().trim();
 
     if (sBranch.length === 0) {
       this.sErrorNewAD = 'вы ввели пустую строку';
       return;
     }
+*/
 
     this.adminserv.setAddress(sName, this.id_branch).subscribe( value => {
       this.RouterReload();
@@ -138,12 +140,14 @@ export class AddressAdminComponent implements OnInit {
       return;
     }
 
+/*
     const sBranch = this.addressForm.controls['inputChangeADBranch'].value.toString().trim();
 
     if (sBranch.length === 0) {
       this.sErrorChangeAD = 'вы ввели пустую строку';
       return;
     }
+ */
 
     this.adminserv.setChangeAddress(this.selectedAD.id_address, sName, this.id_branch).subscribe(value => {
       this.RouterReload();

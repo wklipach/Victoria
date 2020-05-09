@@ -35,16 +35,37 @@ export class LaundryComponent implements OnInit {
   rating = 0;
   public sAvatarPath  = '';
   unreadMessageCount = 0;
+  sErrorShift = '';
+  BranchName = '';
 
+  sErrorPageAccess = '';
   constructor(private router: Router, private authService: AuthService,
                                       private cs: CommentService,
                                       private repserv: ReportService,
                                       private gr: GlobalRef,
                                       private ss: ShiftService) {
+
+    this.sErrorPageAccess = '';
+    if (this.router.getCurrentNavigation()) {
+      if (this.router.getCurrentNavigation().extras) {
+        if (this.router.getCurrentNavigation().extras.state) {
+          if (this.router.getCurrentNavigation().extras.state['errorPageAccess']) {
+            this.sErrorPageAccess = this.router.getCurrentNavigation().extras.state['errorPageAccess'];
+          }
+        }
+      }
+    }
+
     this.titleShift = 'Начать смену';
   }
 
   ngOnInit(): void {
+
+    if (this.router.getCurrentNavigation()) {
+      console.log(this.router.getCurrentNavigation().extras);
+    }
+
+
     const Res = this.authService.loginStorage();
     if (!Res.bVictConnected) {
       this.router.navigate(['/login']);
@@ -64,6 +85,10 @@ export class LaundryComponent implements OnInit {
       this.unreadMessageCount = value[0][0].unread_message;
     });
 
+    this.authService.getBranchName(Res.id_branch_vict).subscribe(
+      value => {
+        this.BranchName = value[0].name;
+      });
 
   }
 

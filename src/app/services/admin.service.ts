@@ -171,7 +171,14 @@ export class AdminService {
     return this.http.post(sUrl, data_branch);
   }
 
-  // получаем полный список филиалов
+  // получаем список пользователей по филиалу филиалов
+  getAllUsers() {
+    const params = new HttpParams()
+      .set('get_all_users', 'get_all_users');
+    return this.http.get(this.gr.sUrlGlobal + 'admin', {params: params});
+  }
+
+  // получаем список пользователей по филиалу филиалов
   getUsers(id_branch) {
     const params = new HttpParams()
       .set('get_users', 'get_users')

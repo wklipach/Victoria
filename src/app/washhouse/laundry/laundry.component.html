@@ -10,6 +10,18 @@
           <div class="mt-5 font-weight-bold text-muted" *ngIf="unreadMessageCount.toString() !== '0'">Непрочитанные сообщения:
             <p class="badge badge-primary badge-pill p-2 ml-3">{{unreadMessageCount}}</p>
           </div>
+
+
+<!-- ВСТАВИЛ ЭТО -->
+            <div class="mt-5 font-weight-bold text-muted" *ngIf="sErrorPageAccess.toString() !== ''">
+              Для этой операции начните смену
+            </div>
+            <div class="mt-5 font-weight-bold text-muted" *ngIf="BranchName.toString() !== ''">
+              {{BranchName}}
+            </div>
+<!-- закончил вставлять -->
+
+
         </div>
 
           <div class="float-lg-right" *ngIf="this.sAvatarPath.length>0;then contentLoadAvatar else contentDefault">Фото</div>
