@@ -1,23 +1,47 @@
 <div class="container">
 
-  <app-mainmenu></app-mainmenu>
-
-  <h3 class="alert-info mt-2 mb-3">Дополнительные работы</h3>
+  <div class="row">
+    <div class="col-2">
+      <app-mainmenu></app-mainmenu>
+    </div>
+    <div class="col-10">
+      <h3 class="alert-info my-3 py-2 pl-1">Дополнительные работы</h3>
 
   <ul class="list-group">
-    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Пользователь:</h5>   <a *ngIf="alTitle !== undefined">   <span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.nick}}</span></a></li>
+    <li class="list-group-item-borderless d-flex mb-1"><h5 class="text-muted w-25">Пользователь:</h5>
+      <a *ngIf="alTitle !== undefined">   <span class="badge badge-secondary p-2 badge-pill ml-5" style="font-size: medium">
+        {{alTitle.nick}}</span></a>
+    </li>
 
-    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Фамилия:</h5> <a *ngIf="alTitle !== undefined"> <span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.surname}}</span></a></li>
+    <li class="list-group-item-borderless d-flex mb-1"><h5 class="text-muted w-25">Фамилия:</h5>
+      <a *ngIf="alTitle !== undefined"> <span class="badge badge-secondary p-2 badge-pill ml-5" style="font-size: medium">
+        {{alTitle.surname}}</span></a>
+    </li>
 
-    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Имя:</h5> <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.usernane}}</span></a></li>
+    <li class="list-group-item-borderless d-flex mb-1"><h5 class="text-muted w-25">Имя:</h5>
+      <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5" style="font-size: medium">
+        {{alTitle.usernane}}</span></a>
+    </li>
 
-    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Отчество:</h5> <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.patronymic}}</span></a></li>
+    <li class="list-group-item-borderless d-flex mb-1"><h5 class="text-muted w-25">Отчество:</h5>
+      <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5" style="font-size: medium">
+        {{alTitle.patronymic}}</span></a>
+    </li>
 
-    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Филиал:</h5><a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.branchname}}</span></a></li>
+    <li class="list-group-item-borderless d-flex mb-1"><h5 class="text-muted w-25">Филиал:</h5>
+      <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5" style="font-size: medium">
+        {{alTitle.branchname}}</span></a>
+    </li>
 
-    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Смена от:</h5> <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.shiftdate | date:'dd.MM.yyyy   HH.mm'}}</span></a></li>
+    <li class="list-group-item-borderless d-flex mb-1"><h5 class="text-muted w-25">Смена от:</h5>
+      <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5" style="font-size: medium">
+        {{alTitle.shiftdate | date:'dd.MM.yyyy   HH.mm'}}</span></a>
+    </li>
 
-    <li class="list-group-item-borderless d-flex"><h5 class="text-muted w-25">Дата передачи:</h5><a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">{{alTitle.date_oper | date:'dd.MM.yyyy   HH.mm' }}</span></a></li>
+    <li class="list-group-item-borderless d-flex mb-1"><h5 class="text-muted w-25">Дата передачи:</h5>
+      <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">
+        {{alTitle.date_oper | date:'dd.MM.yyyy   HH.mm' }}</span></a>
+    </li>
 
   </ul>
 
