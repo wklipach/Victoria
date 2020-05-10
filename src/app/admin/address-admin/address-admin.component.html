@@ -1,6 +1,6 @@
 <form [formGroup]="addressForm">
 
-  <h4 class="alert-primary mt-2 my-2 py-2 pl-2">Адреса доставки</h4>
+  <h4 class="alert mt-2 my-2 py-2 pl-2" style="background-color: #eef1f2;">Адреса доставки</h4>
 
   <div class="card card-body mt-4 p-3">
     <div class="d-flex justify-content-start">
@@ -30,15 +30,14 @@
       <div class="collapse" id="collapseNewAD">
         <div class="card card-body my-2">
           {{sErrorNewAD}}
-          <div class="input-group">
-            <input formControlName="inputNewAD" type="text" class="form-control" placeholder="Адрес" aria-label="" aria-describedby="basic-addon1">
-<!--
-            <input formControlName="inputNewADBranch" type="text" class="form-control" placeholder="Филиал" aria-label="" aria-describedby="basic-addon1">
--->
 
-            <div class="input-group-append">
-              <button class="btn btn-success" (click)="newAD()" type="button">Сохранить</button>
-            </div>
+          <div class="d-flex justify-content-between">
+
+            <input formControlName="inputNewAD" type="text" class="form-control" placeholder="Адрес" aria-label="" aria-describedby="basic-addon1">
+<!--  <input formControlName="inputNewADBranch" type="text" class="form-control" placeholder="Филиал" aria-label="" aria-describedby="basic-addon1">  -->
+
+            <button class="btn btn-outline-primary ml-2" (click)="newAD()" type="button">Сохранить</button>
+
           </div>
         </div>
       </div>
@@ -47,7 +46,8 @@
 
         <div class="card card-body">
           {{sErrorChangeAD}}
-          <div class="input-group">
+
+          <div class="d-flex justify-content-between">
             <input formControlName="inputChangeAD" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
 
 <!--
@@ -55,9 +55,9 @@
 -->
 
 
-            <div class="input-group-append">
-              <button class="btn btn-success" (click)="OnChangeAD()" type="button">Изменить</button>
-            </div>
+
+            <button class="btn btn-outline-primary ml-2" (click)="OnChangeAD()" type="button">Изменить</button>
+
 
           </div>
 

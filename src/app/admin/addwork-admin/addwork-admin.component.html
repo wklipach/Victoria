@@ -1,7 +1,7 @@
 <form [formGroup]="addworkForm">
 
 
-  <h4 class="alert-primary mt-2 my-2 py-2 pl-2">Дополнительные работы</h4>
+  <h4 class="alert mt-2 my-2 py-2 pl-2" style="background-color: #eef1f2;">Дополнительные работы</h4>
 
   <div class="card card-body mt-4 p-3">
     <div class="d-flex justify-content-start">
@@ -26,71 +26,54 @@
         <i class="fa fa-angle-double-down"></i>
       </button>
 
-
-
     </div>
 
     <div class="collapse" id="collapseNewAW">
       <div class="card card-body my-2">
         {{sErrorNewAW}}
-        <div class="input-group">
+
+
+        <div class=" d-flex justify-content-between my-3">
           <input formControlName="inputNewAW" type="text" class="form-control" placeholder="Работа" aria-label="" aria-describedby="basic-addon1">
-          <div class="input-group-append">
-            <button class="btn btn-success" (click)="newAW()" type="button">Сохранить</button>
-          </div>
+          <button class="btn btn-outline-primary ml-2" (click)="newAW()" type="button">Сохранить</button>
         </div>
-      </div>
-    </div>
+         </div>
+     </div>
 
     <div class="collapse" id="collapseChangeAW">
 
       <div class="card card-body">
         {{sErrorChangeAW}}
-        <div class="input-group">
+        <div class=" d-flex justify-content-between my-3">
           <input formControlName="inputChangeAW" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-
-          <div class="input-group-append">
-            <button class="btn btn-success" (click)="OnChangeAW()" type="button">Изменить</button>
-          </div>
-
+          <button class="btn btn-outline-primary ml-2" (click)="OnChangeAW()" type="button">Изменить</button>
         </div>
 
       </div>
-
     </div>
 
     <div class="collapse" id="collapseShowAW" #summaryAW>
 
-      <div class="input-group my-2 mr-4">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputBranch">Отделение</label>
-        </div>
-        <select class="custom-select" id="inputBranch" formControlName="inputBranch" (change)="onChangeBranch($event)" >
+      <div class="card my-2 px-3">
+        <div class="card-title p-2 m-0 font-weight-bold text-muted">Отделение</div>
+        <select class="custom-select mb-3 mr-5" id="inputBranch" formControlName="inputBranch" (change)="onChangeBranch($event)" >
           <option [value]="branch.id" *ngFor="let branch of branchList">{{branch.name}}</option>
         </select>
       </div>
 
-
     <ul class="list-group mt-2">
       <li [class.active] = "aw === selectedAW" class="list-group-item"  (click)="mu(aw)"  *ngFor="let aw of addworkList">
 
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <input type="checkbox" class="input-group-text" id="checkAddwork{{aw.id}}" formControlName="checkAddwork{{aw.id}}">
-          </div>
-
-          <span class="input-group-text">{{aw['name']}}</span>&nbsp;
-          <span class="input-group-text">мин</span>
-
-          <div class="col-xs-1">
-            <input type="text" class="form-control" id="price{{aw.id}}" formControlName="price{{aw.id}}">
-          </div>
+        <div class=" d-flex justify-content-between my-0">
+          <input type="checkbox" class="input-group-text" id="checkAddwork{{aw.id}}" formControlName="checkAddwork{{aw.id}}">
+          <span class="mx-2 pt-1">{{aw['name']}}</span>&nbsp;
+          <span class="mr-2 ml-auto pt-1">мин.</span>
+          <input type="text" class="form-control w-25" id="price{{aw.id}}" formControlName="price{{aw.id}}">
         </div>
-
       </li>
     </ul>
 
-      <button class="form-control" (click)="savePrice()">Сохранить</button>
+      <button class="btn btn-outline-primary mt-3" (click)="savePrice()">Сохранить</button>
 
     </div>
 

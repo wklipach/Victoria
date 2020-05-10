@@ -10,7 +10,7 @@
 
       <div class="row">
         <div class="col-6">
-          <h4 class="alert-primary my-2 py-2 pl-2">Редактирование отделений</h4>
+          <h4 class="alert my-2 py-2 pl-2" style="background-color: #eef1f2;">Редактирование отделений</h4>
 
           <div class="card card-body mt-4 p-3">
 
@@ -43,33 +43,23 @@
 
               <div class="collapse" id="collapse1">
                 <div class="card card-body my-2">
-                  <div class="input-group">
-                    <input formControlName="inputNewBranch" type="text" class="form-control" placeholder="Введите название нового отделения" aria-label="" aria-describedby="basic-addon1">
-                    <div class="input-group-append">
-                      <button class="btn btn-outline-success" (click)="newBranch()" type="button">Сохранить</button>
-                    </div>
+                  <div class="d-flex justify-content-between">
+                    <input formControlName="inputNewBranch" type="text" class="form-control" placeholder="Новое отделение" aria-label="" aria-describedby="basic-addon1">
+                    <button class="btn btn-outline-primary ml-2" (click)="newBranch()" type="button">Сохранить</button>
                   </div>
                 </div>
               </div>
 
               <div class="collapse" id="collapseCH">
-
                 <div class="card card-body">
 
-                  <div class="input-group">
 
-                    <input formControlName="inputChangeBranch" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-
-                    <div class="input-group-append">
-
-                      <button class="btn btn-outline-success" (click)="OnChangeBranch()" type="button">Изменить</button>
-
-                    </div>
-
-                  </div>
+              <div class="d-flex justify-content-between">
+                   <input formControlName="inputChangeBranch" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                   <button class="btn btn-outline-primary ml-2" (click)="OnChangeBranch()" type="button">Изменить</button>
+              </div>
 
                 </div>
-
               </div>
 
 

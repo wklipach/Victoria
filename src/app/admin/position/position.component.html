@@ -1,6 +1,6 @@
 <form [formGroup]="positionForm">
 
-  <h4 class="alert-primary mt-2 my-2 py-2 pl-2">Должности</h4>
+  <h4 class="alert mt-2 my-2 py-2 pl-2" style="background-color: #eef1f2;">Должности</h4>
 
   <div class="card card-body mt-4 p-3">
     <div class="d-flex justify-content-start">
@@ -30,12 +30,11 @@
     <div class="collapse" id="collapseNewPosition">
       <div class="card card-body my-2">
         {{sErrorNewPosition}}
-        <div class="input-group">
+
+        <div class="d-flex justify-content-between">
           <input formControlName="inputNewPosition" type="text" class="form-control" placeholder="Должность" aria-label="" aria-describedby="basic-addon1">
-          <div class="input-group-append">
-            <button class="btn btn-success" (click)="newPosition()" type="button">Сохранить</button>
-          </div>
-        </div>
+          <button class="btn btn-outline-primary ml-2" (click)="newPosition()" type="button">Сохранить</button>
+      </div>
       </div>
     </div>
 
@@ -43,13 +42,10 @@
 
       <div class="card card-body">
         {{sErrorChangePosition}}
-        <div class="input-group">
+
+        <div class="d-flex justify-content-between">
           <input formControlName="inputChangePosition" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-
-          <div class="input-group-append">
-            <button class="btn btn-success" (click)="OnChangePosition()" type="button">Изменить</button>
-          </div>
-
+          <button class="btn btn-outline-primary ml-2" (click)="OnChangePosition()" type="button">Изменить</button>
         </div>
 
       </div>
@@ -58,12 +54,11 @@
 
     <div class="collapse" id="collapseShowPosition" #summaryPosition>
 
-
-      <div class="input-group my-2 mr-4">
+      <div class="card my-2 px-3">
         <div class="input-group-prepend">
-          <label class="input-group-text" for="inputBranch">Отделение</label>
+          <div class="card-title p-2 m-0 font-weight-bold text-muted">Отделение</div>
         </div>
-        <select class="custom-select" id="inputBranch" formControlName="inputBranch" (change)="onChangeBranch($event)" >
+        <select class="custom-select mb-3 mr-5" id="inputBranch" formControlName="inputBranch" (change)="onChangeBranch($event)" >
           <option [value]="branch.id" *ngFor="let branch of branchList">{{branch.name}}</option>
         </select>
       </div>
@@ -72,22 +67,17 @@
       <ul class="list-group mt-2">
         <li [class.active] = "position === selectedPosition" class="list-group-item" (click)="mu(position)"  *ngFor="let position of positionList">
 
-          <div class="input-group-prepend">
-                <div class="input-group-text">
-                   <input type="checkbox" class="input-group-text" id="checkPosition{{position.id}}" formControlName="checkPosition{{position.id}}">
-                </div>
+          <div class=" d-flex justify-content-between my-0">
+              <input type="checkbox" class="input-group-text" id="checkPosition{{position.id}}" formControlName="checkPosition{{position.id}}">
+              <span class="mx-2 pt-1">{{position['name']}}</span>&nbsp;
+              <span class="mr-2 ml-auto pt-1">&#8381;</span>
+              <input type="text" class="form-control w-25" id="price{{position.id}}" formControlName="price{{position.id}}">
 
-                <span class="input-group-text">{{position['name']}}</span>&nbsp;
-                <span class="input-group-text">&#8381;</span>
-
-              <div class="col-xs-1">
-                <input type="text" class="form-control" id="price{{position.id}}" formControlName="price{{position.id}}">
-              </div>
           </div>
         </li>
       </ul>
 
-      <button class="form-control" (click)="savePrice()">Сохранить</button>
+      <button class="btn btn-outline-primary mt-3" (click)="savePrice()">Сохранить</button>
 
     </div>
 
