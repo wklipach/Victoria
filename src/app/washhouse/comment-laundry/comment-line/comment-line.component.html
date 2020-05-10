@@ -74,12 +74,12 @@
 
     <div class="d-flex justify-content-between my-3 w-25">
          <div class="custom-control custom-radio">
-            <input  class="custom-control-input"(change)="ocClickResumeCheck()" id="resume_1" type="radio" formControlName="checkResume{{id_message}}" value="1">
-            <label class="custom-control-label font-weight-bold text-muted" >Принять</label>
+            <input  class="custom-control-input"(change)="ocClickResumeCheck()" id="resume_1{{id_message}}" type="radio" formControlName="checkResume{{id_message}}" value="1">
+            <label class="custom-control-label font-weight-bold text-muted" for="resume_1{{id_message}}">Принять</label>
          </div>
          <div class="custom-control custom-radio">
-            <input class="custom-control-input" (change)="ocClickResumeCheck()" id="resume_2" type="radio"  formControlName="checkResume{{id_message}}" value="2">
-            <label class="custom-control-label font-weight-bold text-muted" for="resume_2">Отказ</label>
+            <input class="custom-control-input" (change)="ocClickResumeCheck()" id="resume_2{{id_message}}" type="radio"  formControlName="checkResume{{id_message}}" value="2">
+            <label class="custom-control-label font-weight-bold text-muted" for="resume_2{{id_message}}">Отказ</label>
          </div>
    </div>
 

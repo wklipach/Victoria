@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {CommentService} from '../../services/comment.service';
 import {Router} from '@angular/router';
@@ -10,6 +10,8 @@ import {AuthService} from '../../../services/auth-service.service';
   styleUrls: ['./comment-new.component.css']
 })
 export class CommentNewComponent implements OnInit {
+
+  @ViewChild('imageloadCard') public imageloadCard: ElementRef;
 
   commentnewForm: FormGroup;
   id_user_vict = -1;
@@ -103,6 +105,9 @@ export class CommentNewComponent implements OnInit {
 
 
   onFileChange(fileInput)  {
+
+    const elementFather = <HTMLElement>this.imageloadCard.nativeElement;
+
     const files = fileInput.target.files;
     if (files.length === 0) {
       console.log('No files selected');
@@ -110,6 +115,8 @@ export class CommentNewComponent implements OnInit {
     }
     this.indexImg = this.indexImg + 1;
     const indexImg = this.indexImg;
+
+
     const reader = new FileReader();
     reader.onload = function(event) {
       const img = new Image();
@@ -122,9 +129,13 @@ export class CommentNewComponent implements OnInit {
       }
       img.title = ext;
       console.log(files[0].name, ext);
-      img.height = 200;
+      // img.height = 200;
       img.onload = function() {
-        document.body.appendChild(img);
+
+
+        elementFather.appendChild(img);
+        // document.body.appendChild(img);
+
       };
       img.src = <string>event.target.result;
     };
