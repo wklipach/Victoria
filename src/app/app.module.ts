@@ -58,6 +58,8 @@ import { ReportShipmentComponent } from './washhouse/reports/report-shipment/rep
 import { CommentLineComponent } from './washhouse/comment-laundry/comment-line/comment-line.component';
 import { CommentNewComponent } from './washhouse/comment-laundry/comment-new/comment-new.component';
 import { CommentLaundryLastComponent } from './washhouse/comment-laundry/comment-laundry-last/comment-laundry-last.component';
+import { CommentImageComponent } from './washhouse/comment-laundry/comment-image/comment-image.component';
+import {NgxGalleryModule} from '@kolkov/ngx-gallery';
 
 registerLocaleData(localeRu);
 
@@ -142,7 +144,8 @@ const appRoutes: Routes = [
     ReportShipmentComponent,
     CommentLineComponent,
     CommentNewComponent,
-    CommentLaundryLastComponent
+    CommentLaundryLastComponent,
+    CommentImageComponent
   ],
   imports: [
     BrowserModule,
@@ -151,6 +154,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     FullCalendarModule,
     CommonModule,
+    NgxGalleryModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [ GlobalRef, AuthService, ForgotpasswordService, ExcelService, Check],

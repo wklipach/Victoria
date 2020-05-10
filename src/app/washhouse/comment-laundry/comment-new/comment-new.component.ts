@@ -132,7 +132,7 @@ export class CommentNewComponent implements OnInit {
   }
 
   onPostImageAvatar(id_message) {
-    console.log('onPostImageAvatar');
+
     this.loading = true;
     // tslint:disable-next-line:max-line-length
 
@@ -145,6 +145,9 @@ export class CommentNewComponent implements OnInit {
           this.loading = false;
 
           if (i === this.indexImg) {
+
+            this.clerAllImage(i);
+
             this.router.navigate(['/comment_laundry_last']);
           }
 
@@ -152,6 +155,13 @@ export class CommentNewComponent implements OnInit {
       }
     }
   } // onPostImageAvatar() {
+
+  clerAllImage(indexImage) {
+    for (let i = 1;  i <= indexImage; i++) {
+      this.deleteImgElemet(i);
+    }
+  }
+
   /* КОНЕЦ РАБОТЫ С ИЗОБРАЖЕНИЯМИ */
 
   saveMassage() {

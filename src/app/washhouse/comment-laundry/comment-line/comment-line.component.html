@@ -39,7 +39,7 @@
       </p>
 
       <p>
-        <span class="mr-4">От:</span>
+        <span class="mr-4">{{TextFromTo}}:</span>
         <span class="mr-4 text-muted font-weight-bold">{{sFrom}}</span>
        </p>
 
@@ -88,18 +88,23 @@
         <input formControlName="respResume{{id_message}}" class="form-control mt-1" placeholder="Введите ответ">
      </div>
 
+
         {{sError}}
-        <button *ngIf="this.intResponseSucc == 0" (click)="onClickResume()"  class="btn btn-outline-primary mt-3 mb-1 w-25">Отправить</button>
+        <button *ngIf="this.intResponseSucc == 0 && this.intInstruction == 0" (click)="onClickResume()"  class="btn btn-outline-primary mt-3 mb-1 w-25">Отправить</button>
 
 
+<!--
     <div *ngFor = "let sPath of imageResGlobal">
       <div class="card">
         <div class="card-body">
           <img src="{{sPath}}" height = 200>
         </div>
       </div>
-
     </div>
+-->
+      <div *ngIf = "imageResGlobal.length > 0">
+      <app-comment-image [imageResGlobal]="imageResGlobal"></app-comment-image>
+      </div>
 
 
   </div>

@@ -1,7 +1,5 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import {FullCalendarComponent} from '@fullcalendar/angular';
-import bootstrapPlugin from '@fullcalendar/bootstrap';
+
 
 
 @Component({

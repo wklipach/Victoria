@@ -13,7 +13,7 @@ declare var jQuery: any;
 export class CommentLineComponent implements OnInit, AfterViewInit {
 
   @Input() id_message = -1;
-  @Input() maslineShort = {sFrom: '', sDate: '', sSituationLittle: '', sSituationSumma: '', unread: 0};
+  @Input() maslineShort = {sFrom: '', sDate: '', sSituationLittle: '', sSituationSumma: '', unread: 0, InputOutput: 0};
 
   @ViewChild('summaryPositionLine') public summaryPositionLine: ElementRef;
   @ViewChild('openButton') public openButton: ElementRef;
@@ -25,6 +25,7 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
   sSituationLittle = '';
   sSituationSumma = '';
   sFrom = '';
+  TextFromTo = 'Собеседник';
   sDate = '';
   intInstruction = 0;
   intResponseSucc = 0;
@@ -51,6 +52,14 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
     const Res = this.authService.loginStorage();
       this.id_user_vict = Res.id_user_vict;
       this.id_branch_vict = Res.id_branch_vict;
+
+
+     console.log('InputOutput', this.maslineShort.InputOutput);
+     if (this.maslineShort.InputOutput === 0) {
+        this.TextFromTo = 'Собеседник';
+     } else {
+        this.TextFromTo = 'Собеседник';
+     }
 
     this.sFrom = this.maslineShort.sFrom;
     this.sDate = this.maslineShort.sDate;
@@ -88,6 +97,7 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
 
 
   LoadDataFromBase(id_message) {
+
     this.cs.getMessage(id_message).subscribe(value => {
 
       if (value[0]) {
@@ -119,6 +129,15 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
           this.commentlineForm.controls['respResume' + this.id_message].disable();
         }
 
+        if (value[0].result_response.toString() === '2') {
+          this.intResponseSucc = 1;
+          this.commentlineForm.controls['checkResume' + this.id_message].disable();
+          this.commentlineForm.controls['summa' + this.id_message].disable();
+          this.commentlineForm.controls['respResume' + this.id_message].disable();
+        }
+
+        console.log('value[0].result_response', value[0].result_response);
+
         this.loadImageFromBase(id_message);
       }
     });
@@ -128,7 +147,6 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
       const imageRes = [];
       this.cs.getMessageImageList(id_message).subscribe((aRes: Array<any>) => {
         if (aRes[0]) {
-
           aRes.forEach((element, ih) => {
             imageRes.push(this.gr.sUrlImageGlobal + element.name);
           });
@@ -157,7 +175,16 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
 
     const summa =  this.commentlineForm.controls['summa' + this.id_message].value.toString().trim();
     const intResp = this.commentlineForm.controls['checkResume' + this.id_message].value;
-    const comment_response = this.commentlineForm.controls['respResume' + this.id_message].value;
+
+    if  (this.commentlineForm.controls['respResume' + this.id_message].value === undefined) {
+      console.log('undefined');
+    }
+
+    let comment_response = '';
+    if  (this.commentlineForm.controls['respResume' + this.id_message].value !== null) {
+      comment_response = this.commentlineForm.controls['respResume' + this.id_message].value.toString().trim();
+    }
+
      this.cs.setResponseMessage(this.id_message, this.id_user_vict, summa, comment_response, intResp).subscribe(value => {
         jQuery(this.summaryPositionLine.nativeElement).collapse('hide');
      }) ;

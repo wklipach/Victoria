@@ -61,6 +61,7 @@ export class CommentLaundryLastComponent implements OnInit {
 
 
   loadImageFromBase(id_message) {
+    this.imageResGlobal = [];
     const imageRes = [];
     this.cs.getMessageImageList(id_message).subscribe((aRes: Array<any>) => {
       if (aRes[0]) {
