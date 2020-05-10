@@ -34,8 +34,8 @@
                 <div class="d-flex justify-content-between">
                   <label class="w-25 font-weight-bold">50 x 70</label>
 
-                  <p class="w-25">{{getErrorText('n1')}}
-                    <input type="text" [class]="getClassName('n1')" formControlName="n1" placeholder="шт" id="n1" name="name1"></p>
+                  <p>{{getErrorText('n1')}}</p>
+                  <p class="w-25"> <input type="text" [class]="getClassName('n1')" formControlName="n1" placeholder="шт" id="n1" name="name1"></p>
                   <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n1')"><i class="fa fa-plus"></i></p>
                   <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n1')"><i class="fa fa-minus"></i></p>
 

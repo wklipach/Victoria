@@ -17,7 +17,7 @@
 
 
       <button #openButton class="btn btn-outline-primary ml-auto" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
-             title="Прочитать" (click)="onButtonCollapse($event)">  <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+             title="Прочитать" (click)="onButtonCollapse($event)" style="max-height: 38px">  <i class="fa fa-angle-double-down" aria-hidden="true"></i>
 
       </button>
 
@@ -74,12 +74,12 @@
 
     <div class="d-flex justify-content-between my-3 w-25">
          <div class="custom-control custom-radio">
-            <input (change)="ocClickResumeCheck()" id="resume1" type="radio" formControlName="checkResume{{id_message}}" class="custom-control-input" value="1">
-            <label class="custom-control-label font-weight-bold text-muted" for="resume1">Принять</label>
+            <input  class="custom-control-input"(change)="ocClickResumeCheck()" id="resume_1" type="radio" formControlName="checkResume{{id_message}}" value="1">
+            <label class="custom-control-label font-weight-bold text-muted" >Принять</label>
          </div>
          <div class="custom-control custom-radio">
-            <input (change)="ocClickResumeCheck()" id="resume2" type="radio"  formControlName="checkResume{{id_message}}" class="custom-control-input" value="2">
-            <label class="custom-control-label font-weight-bold text-muted" for="resume2">Отказ</label>
+            <input class="custom-control-input" (change)="ocClickResumeCheck()" id="resume_2" type="radio"  formControlName="checkResume{{id_message}}" value="2">
+            <label class="custom-control-label font-weight-bold text-muted" for="resume_2">Отказ</label>
          </div>
    </div>
 
@@ -90,7 +90,7 @@
 
 
         {{sError}}
-        <button *ngIf="this.intResponseSucc == 0 && this.intInstruction == 0" (click)="onClickResume()"  class="btn btn-outline-primary mt-3 mb-1 w-25">Отправить</button>
+        <button *ngIf="this.intResponseSucc == 0 && this.intInstruction == 0" (click)="onClickResume()"  class="btn btn-outline-primary my-3 mb-1 w-25">Отправить</button>
 
 
 <!--
@@ -102,11 +102,11 @@
       </div>
     </div>
 -->
-      <div *ngIf = "imageResGlobal.length > 0">
+      <div class="my-2" *ngIf = "imageResGlobal.length > 0">
       <app-comment-image [imageResGlobal]="imageResGlobal"></app-comment-image>
       </div>
 
 
-  </div>
+    </div>
   </div>
 </form>

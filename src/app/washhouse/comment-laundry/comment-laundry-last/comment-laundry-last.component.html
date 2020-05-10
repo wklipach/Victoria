@@ -1,38 +1,55 @@
-<div class="alert alert-primary" role="alert">
-  Вами отослана записка от {{date_from}}
-</div>
+<div class="container">
+
+  <div class="row">
+    <div class="col-2">
+      <app-mainmenu></app-mainmenu>
+    </div>
+    <div class="col-10">
+      <h3 class="alert-info my-3 py-2 pl-1">Вами отослана записка от <strong>{{date_from}}</strong></h3>
+
+      <div class="d-flex justify-content-between my-2 ">
+
+        <p>
+          <span class="ml-2 mr-4">Дата:</span>
+          <span class="mr-4 text-muted font-weight-bold">{{date_from}}</span>
+        </p>
+
+        <p>
+          <span class="mr-4">Кому:</span>
+          <span class="mr-4 text-muted font-weight-bold">{{position_name}}</span>
+        </p>
+
+        <p>
+          <span class="mr-4">Отделение:</span>
+          <span class="mr-4 text-muted font-weight-bold">{{branch_name}}</span>
+        </p>
+      </div>
+
+     <div class="card p-2 mb-2">
+     <div class="card-title text-muted font-weight-bold mb-0">
+       Ситуация
+     </div>
+       {{situation}}
+     </div>
+
+      <div class="card p-2 mb-2">
+        <div class="card-title text-muted font-weight-bold mb-0">
+         Подробности
+        </div>
+        {{data_situation}}
+      </div>
+
 
 <div class="card">
-  <div class="card-body">
-    отделение: {{branch_name}}
-  </div>
-</div>
-<div class="card">
-  <div class="card-body">
-    для: {{position_name}}
-  </div>
-</div>
-<div class="card">
-  <div class="card-body">
-    ситуация: {{situation}}
-  </div>
-</div>
-<div class="card">
-  <div class="card-body">
-    подробности: {{data_situation}}
-  </div>
-</div>
-<div class="card">
-  <div class="card-body">
-    сумма: {{summa}}
+  <div class="card-body text-muted">
+    Cумма: <span class="font-weight-bold">{{summa}}</span>
   </div>
 </div>
 
-<div class="d-flex justify-content-between">
-  <button type="button" class="btn btn-outline-primary mr-3 mt-5" (click)="back()">Далее</button>
-  <button type="button" class="btn btn-outline-primary mt-5" (click)="toExcel()">Сохранить в Эксель</button>
+<div class="d-flex justify-content-between mb-5">
+  <button type="button" class="btn btn-outline-primary mr-3 my-3" (click)="back()">Ок</button>
+  <button type="button" class="btn btn-outline-primary my-3" (click)="toExcel()">Сохранить в Эксель</button>
 </div>
-
 
 
 <div *ngIf = "imageResGlobal.length > 0">
@@ -40,3 +57,7 @@
 </div>
 
 
+</div>
+  </div>
+
+</div>

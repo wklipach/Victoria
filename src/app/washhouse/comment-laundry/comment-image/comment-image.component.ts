@@ -19,8 +19,8 @@ export class CommentImageComponent implements OnInit {
   ngOnInit(): void {
     this.galleryOptions = [
       {
-        width: '600px',
-        height: '400px',
+        width: '100%',
+        height: '500px',
         thumbnailsColumns: 4,
         imageAnimation: NgxGalleryAnimation.Slide
       },
@@ -28,7 +28,7 @@ export class CommentImageComponent implements OnInit {
       {
         breakpoint: 800,
         width: '100%',
-        height: '600px',
+        height: '500px',
         imagePercent: 80,
         thumbnailsPercent: 20,
         thumbnailsMargin: 20,

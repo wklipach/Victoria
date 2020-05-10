@@ -101,23 +101,16 @@
 </form>
 
 
-
-
+      <!-- загрузка изображений -->
+      <div class="card">
+        <input type="file" accept="image/*" id="avatar" (change)="onFileChange($event)" #fileInput style="display:none">
+        <button type="button" class="btn btn-link" style="display: block; cursor: pointer; text-decoration: underline;"
+                onclick="document.getElementById('avatar').click()">Прикрепить изображение</button>
+        <button type="button" class="btn btn-link" (click)="clearFile()" style="display: block; cursor: pointer; text-decoration: underline;">Очистить</button>
+      </div>
 
 
     </div>
   </div>
-
-
-  <!-- загрузка изображений -->
-  <div class="card">
-    <input type="file" accept="image/*" id="avatar" (change)="onFileChange($event)" #fileInput style="display:none">
-    <button type="button" class="btn btn-link" style="display: block; cursor: pointer; text-decoration: underline;"
-            onclick="document.getElementById('avatar').click()">Прикрепить изображение</button>
-    <button type="button" class="btn btn-link" (click)="clearFile()" style="display: block; cursor: pointer; text-decoration: underline;">Очистить</button>
-  </div>
-
-
-
 
 </div>
