@@ -20,7 +20,7 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
 
   id_user_vict = -1;
   id_branch_vict = -1;
-  private commentlineForm: FormGroup;
+  commentlineForm: FormGroup;
   imageResGlobal = [];
   sSituationLittle = '';
   sSituationSumma = '';

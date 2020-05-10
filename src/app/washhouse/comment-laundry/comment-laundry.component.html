@@ -25,10 +25,10 @@
         <label class="custom-control-label font-weight-bold text-muted" for="value2">Инструкции</label>
       </div>
 
-    <button *ngIf="this.intTypeMessage == '1'" class="btn btn-outline-primary" (click)="onLeft()"><i class="fa fa-angle-double-left" aria-hidden="true"></i></button>
-    <p *ngIf="this.intTypeMessage == '1'" class="font-weight-bold text-muted" style="min-width: 15%;">{{this.sDate}}</p>
-    <button *ngIf="this.intTypeMessage == '1'" class="btn btn-outline-primary" (click)="onRight()"><i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
-    <button *ngIf="this.intTypeMessage == '1'" class="btn btn-outline-primary" (click)="onNow()" > Сегодня </button>
+    <button *ngIf="this.intTypeMessage.toString() == '1'" class="btn btn-outline-primary" (click)="onLeft()"><i class="fa fa-angle-double-left" aria-hidden="true"></i></button>
+    <p *ngIf="this.intTypeMessage.toString() == '1'" class="font-weight-bold text-muted" style="min-width: 15%;">{{this.sDate}}</p>
+    <button *ngIf="this.intTypeMessage.toString() == '1'" class="btn btn-outline-primary" (click)="onRight()"><i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+    <button *ngIf="this.intTypeMessage.toString() == '1'" class="btn btn-outline-primary" (click)="onNow()" > Сегодня </button>
 
 
 </div>
