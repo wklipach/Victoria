@@ -105,21 +105,34 @@ export class SummaryLaundryComponent implements OnInit, AfterViewInit {
 
   getInfoPayment(id_user: number, id_branch: number, date_begin: Date, date_end: Date) {
       this.pay.getPaymentVirtual(id_user, id_branch, date_begin.getTime(), date_end.getTime()).subscribe((pay_virtual) => {
-        console.log('pay_virtual', pay_virtual);
+
+      console.log('pay_virtual=', pay_virtual);
+       console.log('date_begin=', date_begin);
        const curDate = new Date(date_begin);
+
+       console.log('curDate=', curDate);
+        console.log('date_end=', date_end);
+
         while (curDate <= date_end) {
+          console.log('цикл', 'curDate=', curDate, 'date_end=', date_end);
+
                  const res_virtual = pay_virtual[0].filter((pv) => {
                   const s = new Date(pv.date_shift);
+                  console.log('внутри фильтра', 's.getTime()=', s.getTime(),
+                                                 'curDate.getTime()=', curDate.getTime(),
+                                                 'далее====', s.getTime() === curDate.getTime());
                   return s.getTime() === curDate.getTime();
                   });
+
+                 console.log('res_virtual=', res_virtual, 'res_virtual.length', res_virtual.length);
+
                   if (res_virtual.length > 0) {
                    // заносим виртуальные данные
-
                     console.log('res_virtual[0]', res_virtual[0]);
-
                     this.insert_virtual(res_virtual[0]);
                   }
             curDate.setDate(curDate.getDate() + 1);
+          console.log('следующая итерация цикла curDate=', curDate);
         }
         this.LoadNewItog(id_user, id_branch, date_begin, date_end);
       });
