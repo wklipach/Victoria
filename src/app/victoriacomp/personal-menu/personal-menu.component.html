@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand text-center">
+  <ul class="nav flex-column">
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+
+        <div *ngIf="this.sAvatarPath.length>0;then contentLoadAvatar else contentDefault">{{this.sUserName}}</div>
+        <ng-template #contentLoadAvatar>
+          <img [src]="this.sAvatarPath" class="rounded-circle" style="width: 64px;height: 64px;" alt="{{this.sUserName}}" id="img">
+        </ng-template>
+        <ng-template #contentDefault>
+          <img src="/assets/img/usernull.png" class="rounded-circle" style="width: 48px;height: 48px;" alt="{{this.sUserName}}">
+        </ng-template>
+
+
+      </a>
+
+      <div class="dropdown-menu" style="width: 230px">
+        <a class="nav-link py-3 pl-2" href="parlor" [style] = "getStyleName(100)"><i class="fa fa-info fa-lg ml-2 mr-3"></i>Кабинет</a>
+        <a class="nav-link py-3 pl-3" href="admin" [style] = "getStyleName(101)"><i class="fa fa-user-secret fa-lg mr-2"></i>Администрирование</a>
+        <a class="nav-link py-3 pl-3" href="summary-laundry" [style] = "getStyleName(102)"><i class="fa fa-bar-chart fa-lg mr-2"></i>Календарь</a>
+        <a class="nav-link py-3 pl-3" href="graph-laundry" [style] = "getStyleName(103)"><i class="fa fa-money fa-lg mr-2"></i>Графики</a>
+      </div>
+
+    </li>
+  </ul>
+</nav>
