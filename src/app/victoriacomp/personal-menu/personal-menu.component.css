@@ -1,0 +1,5 @@
+a {color: #9b9a9e; padding: 0;}
+a:hover{  font-weight: bold;  background-color: #c6c8ca; color: white;}
+.rounded-circle:hover{
+  background: white;
+}

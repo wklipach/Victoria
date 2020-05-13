@@ -1,21 +1,30 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12">
-      <div class="jumbotron p-2 m-0" style="background-color: #eef1f2;">
-        <h6 class="my-3 float-lg-right">{{this.userName+' '+this.userSurname}}</h6>
-
+    <div class="col-12 p-0">
+      <div class="jumbotron m-0 p-2" style="background-color: #f9f9f9;">
 
         <div class="d-flex flex-row justify-content-between">
 
+        <img class="img-fluid" src="/assets/img/viktoria-horizontal.png" alt="Victoria logotype" width="450" height="75">
 
-
-         <div class="p-0">
+          <div class="mt-2 ml-auto mr-5">
           <!-- Отделение -->
-          <h2 class="text-muted" *ngIf="BranchName.toString() !== ''"> {{BranchName}}  </h2>
+          <h1 class="text-muted" *ngIf="BranchName.toString() !== ''"> {{BranchName}}</h1>
          </div>
+
+          <div>
+            <app-personal-menu></app-personal-menu>
+          </div>
+
+
+
+        </div>
+      </div> <!-- Джумботрон -->
 
 
 <!--
+ style="background-color: f9f9f9;"
+#eef1f2
        <div class="float-lg-right" *ngIf="this.sAvatarPath.length>0;then contentLoadAvatar else contentDefault">Фото</div>
           <ng-template #contentLoadAvatar>
             <img [src]="this.sAvatarPath" class="rounded float-left" alt="Фото" id="img">
@@ -25,40 +34,34 @@
           </ng-template>
  -->
 
-          <app-personal-menu></app-personal-menu>
-
-
-          <div class="mt-5 font-weight-bold text-muted" *ngIf="unreadMessageCount.toString() !== '0'" style="position: absolute;">Непрочитанные сообщения:
-            <p class="badge badge-primary badge-pill p-2 ml-3">{{unreadMessageCount}}</p>
-          </div>
-
-        </div>
-      </div> <!-- Джумботрон -->
-
-
+      <div class="mt-5 font-weight-bold text-muted" *ngIf="unreadMessageCount.toString() !== '0'" style="position: absolute;">Непрочитанные сообщения:
+        <p class="badge badge-primary badge-pill p-2 ml-3">{{unreadMessageCount}}</p>
+      </div>
+      <h6 class="float-right mr-2" style="opacity: 0.2;">{{this.userName+' '+this.userSurname}}</h6>
 
     </div>
   </div>
 
 
   <div class="row">
-    <div class="col-2">
+    <div class="col-2 mt-n2">
       <app-mainmenu [numberPage]="1"></app-mainmenu>
     </div>
 
     <div class="col-10">
 
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-start">
 
-        <button class="btn btn-outline-primary my-3 mr-auto" type="button" data-toggle="collapse" data-target="#collapseMainFrame"
+        <button class="btn btn-outline-primary my-3 mr-2" type="button" data-toggle="collapse" data-target="#collapseMainFrame"
                 aria-expanded="false" aria-controls="collapseMainFrame">
           Статистика
         </button>
-
+        <button class="btn btn-outline-primary my-3 mr-2" (click)="calendar()">Календарь</button>
+        <button class="btn btn-outline-primary my-3 mr-auto" (click)="graph()" style="width: 8rem">График</button>
           <button type="button" class="btn btn-outline-primary my-3" (click)="onShift()">{{titleShift}}</button>
           <button type="button" class="btn btn-outline-primary my-3 ml-2" (click)="logout()">Выход из системы</button>
 
-    <!-- -->   <div class="alert alert-danger" *ngIf="sErrorPageAccess.toString() !== ''"
+    <div class="alert alert-danger" *ngIf="sErrorPageAccess.toString() !== ''"
              style="position: absolute; margin-top:20%; margin-left: 45%;">
           Для перехода к пунктам меню следует нажать кнопку <strong>Начать смену</strong>
         </div>
@@ -115,8 +118,7 @@
 
 
       <div class="d-flex justify-content-start">
-        <button class="btn btn-outline-primary my-3 mr-5" (click)="calendar()">Календарь</button>
-        <button class="btn btn-outline-primary my-3" (click)="graph()">График</button>
+
       </div>
 
     </div>
