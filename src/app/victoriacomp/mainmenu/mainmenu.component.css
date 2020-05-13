@@ -1,12 +1,23 @@
 a {color: #9b9a9e; padding: 0;}
-a:hover{  font-weight: bold;  background-color: #c6c8ca;  color: white;}
+a:hover{  font-weight: bold;  background-color: #c6c8ca; color: white;}
 li{width: 130px;}
+
+
+/*
+
+Фирменный серый - #A6BBC8
+
 li:first-child a:hover{
   background-color: white;
   color: #9b9a9e;
 }
 
-/*
+
+
+
+
+
+
 .nav-link:active{
   font-weight:bold;
   color: #ff623d;
