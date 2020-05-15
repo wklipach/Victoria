@@ -1,7 +1,19 @@
-a {color: #9b9a9e; padding: 0;}
-a:hover{  font-weight: bold;  background-color: #c6c8ca; color: white;}
-li{width: 90%;}
-
+a {
+  color: #9b9a9e;
+  padding: 0;
+}
+a:hover{
+  font-weight: bold;
+  background-color: #c6c8ca;
+  color: white;
+}
+li{
+  width: 120px;
+}
+.icon-menu{
+  width: 24px;
+  height:24px;
+}
 
 /*
 

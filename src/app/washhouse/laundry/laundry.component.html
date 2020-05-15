@@ -21,7 +21,8 @@
         </div>
       </div> <!-- Джумботрон -->
 
-
+    </div>
+  </div>
 <!--
  style="background-color: f9f9f9;"
 #eef1f2
@@ -34,14 +35,18 @@
           </ng-template>
  -->
 
-      <div class="mt-5 font-weight-bold text-muted" *ngIf="unreadMessageCount.toString() !== '0'" style="position: absolute;">Непрочитанные сообщения:
-        <p class="badge badge-primary badge-pill p-2 ml-3">{{unreadMessageCount}}</p>
+<div class="row mb-2">
+  <div class="col-12">
+  <div class="d-flex flex-row justify-content-between">
+      <div class="mx-2" *ngIf="unreadMessageCount.toString() !== '0'">Непрочитанные сообщения:
+        <span class="badge badge-primary badge-pill ml-3">{{unreadMessageCount}}</span>
       </div>
-      <h6 class="float-right mr-2" style="opacity: 0.2;">{{this.userName+' '+this.userSurname}}</h6>
 
-    </div>
+      <div class="mr-2" style="opacity: 0.4;">{{this.userName+' '+this.userSurname}}</div>
   </div>
 
+ </div>
+</div>
 
   <div class="row">
     <div class="col-2 mt-n2">
