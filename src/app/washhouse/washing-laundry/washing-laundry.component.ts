@@ -111,6 +111,36 @@ export class WashingLaundryComponent implements OnInit {
     }
   }
 
+
+  getErrorAndText2(el: string) {
+    const resS = {n: '', e: ''};
+
+    const arrRes = this.arrayFlag.find(element => element[1] === el);
+    if (!this.washingForm.controls[el].errors) {
+      if (arrRes[2] > 0) {
+        resS.n = arrRes[2].toString();
+        resS.e = '';
+        return resS;
+      } else {
+        return resS;
+      }
+    }
+
+    if (this.washingForm.controls[el].errors['victoriaValidator']) {
+      resS.n = arrRes[2].toString();
+      resS.e = this.washingForm.controls[el].errors['victoriaValidator'];
+      return resS;
+    } else {
+      if (arrRes[2] > 0) {
+        resS.n = arrRes[2].toString();
+        resS.e = '';
+        return resS;
+      } else {
+        return resS;
+      }
+    }
+  }
+
   getErrorAndText(el: string) {
     const arrRes = this.arrayFlag.find(element => element[1] === el);
     if (!this.washingForm.controls[el].errors) {
