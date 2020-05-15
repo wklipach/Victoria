@@ -32,6 +32,7 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
   sBranch = '';
   unread = 0;
   sError = '';
+  intResp = 1;
 
 
   constructor(private cs: CommentService,  private gr: GlobalRef, private authService: AuthService) {
@@ -42,12 +43,13 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
 
     this.commentlineForm.addControl('situation' + this.id_message.toString() , new FormControl(''));
     this.commentlineForm.addControl('data_situation' + this.id_message, new FormControl(''));
+    this.commentlineForm.addControl('data_solution' + this.id_message, new FormControl(''));
     this.commentlineForm.addControl('checkResume' + this.id_message, new FormControl(''));
     this.commentlineForm.addControl('summa' + this.id_message, new FormControl(''));
     this.commentlineForm.addControl('respResume' + this.id_message, new FormControl(''));
     this.commentlineForm.controls['situation' + this.id_message].disable();
     this.commentlineForm.controls['data_situation' + this.id_message].disable();
-
+    this.commentlineForm.controls['data_solution' + this.id_message].disable();
 
     const Res = this.authService.loginStorage();
       this.id_user_vict = Res.id_user_vict;
@@ -106,6 +108,7 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
         this.sBranch = value[0].branch_name;
         this.commentlineForm.controls['situation' + this.id_message].setValue(value[0].situation);
         this.commentlineForm.controls['data_situation' + this.id_message].setValue(value[0].data_situation);
+        this.commentlineForm.controls['data_solution' + this.id_message].setValue(value[0].data_solution);
         this.commentlineForm.controls['summa' + this.id_message].setValue(value[0].summa);
 
         this.commentlineForm.controls['checkResume' + this.id_message].setValue(value[0].result_response.toString());
@@ -134,6 +137,7 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
           this.commentlineForm.controls['checkResume' + this.id_message].disable();
           this.commentlineForm.controls['summa' + this.id_message].disable();
           this.commentlineForm.controls['respResume' + this.id_message].disable();
+          this.intResp = 2;
         }
 
         console.log('value[0].result_response', value[0].result_response);
@@ -193,5 +197,6 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
 
   ocClickResumeCheck() {
     this.sError = '';
+    this.intResp = this.commentlineForm.controls['checkResume' + this.id_message].value;
   }
 }

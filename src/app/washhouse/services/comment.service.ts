@@ -86,7 +86,7 @@ export class CommentService {
     return this.http.get(this.gr.sUrlGlobal + 'comment', {params: params});
   }
 
-  setNewMessage(id_user_from, id_position_from, id_position_to, id_branch, situation, data_situation, summa, int_instruction) {
+  setNewMessage(id_user_from, id_position_from, id_position_to, id_branch, situation, data_situation, data_solution, summa, int_instruction) {
 
     const new_message = { 'insert_new_message': 'insert_new_message',
                           'id_user_from' : id_user_from,
@@ -95,6 +95,7 @@ export class CommentService {
                           'id_branch': id_branch,
                           'situation': situation,
                           'data_situation': data_situation,
+                          'data_solution': data_solution,
                           'summa': summa,
                           'int_instruction': int_instruction };
     return this.http.post(this.gr.sUrlGlobal + 'comment', new_message);

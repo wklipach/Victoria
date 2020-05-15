@@ -1,0 +1,45 @@
+<ul class="list-group text-muted font-weight-bold">
+
+  <li class="list-group-item"><span>Неделя</span>
+    <span class="alert alert-primary float-right my-0 mx-1">{{this.titleDB | date:'dd.MM.yyyy' }} - {{ this.titleDE | date:'dd.MM.yyyy'}}
+          </span>
+  </li>
+
+  <li class="list-group-item"><span>Дата начала смены</span>
+    <span class="alert alert-primary float-right my-0 mx-1">{{this.titleShiftDate | date:'dd.MM.yyyy'}}
+          </span>
+  </li>
+
+  <li class="list-group-item"><span>Время начала смены</span> <span class="alert alert-primary float-right my-0 mx-1">{{this.titleShiftDate | date:'HH:mm'}}</span></li>
+
+  <li class="list-group-item"><span>Выработка за неделю</span>
+    <span class="alert alert-primary float-right my-0 mx-1">{{Productivity}}</span></li>
+
+  <li class="list-group-item"> <span>Часов за неделю</span>
+    <span class="alert alert-primary float-right my-0 mx-1">Часы {{RoundedTime}}</span>
+    <span class="alert alert-primary float-right my-0 mx-1">Точно {{ExactTime}}</span>
+  </li>
+  <li class="list-group-item align-content-end"><span>З/п за неделю</span>
+    <span class="alert alert-primary float-right my-0 mx-1" role="alert">{{VirtualBasicPayment}}</span>
+  </li>
+
+
+
+  <li class="list-group-item"><span>Бонусы за неделю</span>
+    <span class="alert alert-primary float-right my-0 mx-1" role="alert">{{VirtualAddwork}}</span>
+  </li>
+
+  <li class="list-group-item"><span>Итого, руб.</span>
+    <span class="alert alert-primary float-right my-0 mx-1">{{VirtItogo}}</span></li>
+
+  <li class="list-group-item"><span>З/п за смену</span>
+    <span class="alert alert-primary float-right my-0 mx-1">{{LastShiftItogo}}</span>
+  </li>
+
+  <li class="list-group-item"><span>Недельный рейтинг</span><span class="alert alert-primary float-right my-0 mx-1">{{rating}}</span></li>
+</ul>
+
+
+<div class="d-flex justify-content-start">
+
+</div>

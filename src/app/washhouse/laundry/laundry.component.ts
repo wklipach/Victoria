@@ -13,32 +13,26 @@ import {CommentService} from '../services/comment.service';
 })
 export class LaundryComponent implements OnInit {
 
-  titleShift = '';
   titleShiftDate: Date;
+
+  titleShift = '';
   id_user_vict = -1;
   userName = '';
   userSurname = '';
   sEndShift = 'Закончить смену';
   sBeginShift = 'Начать смену';
 
-  /* начало и окончание текущей недели */
-  titleDB = '';
-  titleDE = '';
-  /* выработка за неделю */
-  Productivity = 0;
-  RoundedTime = '';
-  ExactTime = '';
-  VirtualBasicPayment = 0;
-  VirtItogo = 0;
-  VirtualAddwork = 0;
-  LastShiftItogo = 0;
-  rating = 0;
   public sAvatarPath  = '';
   unreadMessageCount = 0;
   sErrorShift = '';
   BranchName = '';
+  masInputFace = {db: '', de: '', productivity: 0, rounded_time: '', exact_time: '',
+                  virtual_basic: 0, virt_addwork: 0, virt_itogo: 0,
+                  last_shift_itogo: 0, rating: 0};
 
   sErrorPageAccess = '';
+  showCalender = false;
+  showGraph = false;
   constructor(private router: Router, private authService: AuthService,
                                       private cs: CommentService,
                                       private repserv: ReportService,
@@ -155,41 +149,33 @@ export class LaundryComponent implements OnInit {
 
               const face = res_face[0][0];
 
-              // db
-              // de
-              // rounded_time
-              // exact_time
-              // productivity
-              // virt_addwork
-              // virtual_basic
-             // virt_itogo
-              // last_shift_itogo
-              // rating
 
-                // this.titleShiftDate = value[0].
-                this.titleDB = face.db;
-                this.titleDE = face.de;
-                this.Productivity = face.productivity;
-                this.RoundedTime = face.rounded_time;
-                this.ExactTime = face.exact_time;
-                this.VirtualBasicPayment = face.virtual_basic;
-                this.VirtualAddwork = face.virt_addwork;
-                this.VirtItogo  = face.virt_itogo;
-                this.LastShiftItogo = face.last_shift_itogo;
-                this.rating = face.rating;
+              this.ss.get_shiftuserbranch(this.id_user_vict, id_branch).subscribe((shift: Array<any>) => {
+
+                if (shift.length > 0) {
+                  this.titleShiftDate = shift[0].date_begin;
+                  this.titleShift = this.sEndShift;
+                  ShiftService.setShift(true);
+                } else {
+                  this.titleShift = this.sBeginShift;
+                  ShiftService.setShift(false);
+                }
+
+                this.masInputFace.db = face.db;
+                this.masInputFace.de = face.de;
+                this.masInputFace.productivity = face.productivity;
+                this.masInputFace.rounded_time = face.rounded_time;
+                this.masInputFace.exact_time = face.exact_time;
+                this.masInputFace.virtual_basic = face.virtual_basic;
+                this.masInputFace.virt_addwork = face.virt_addwork;
+                this.masInputFace.virt_itogo  = face.virt_itogo;
+                this.masInputFace.last_shift_itogo = face.last_shift_itogo;
+                this.masInputFace.rating = face.rating;
+
+              });
+
             });
 
-            this.ss.get_shiftuserbranch(this.id_user_vict, id_branch).subscribe((shift: Array<any>) => {
-
-              if (shift.length > 0) {
-                this.titleShiftDate = shift[0].date_begin;
-                this.titleShift = this.sEndShift;
-                ShiftService.setShift(true);
-              } else {
-                this.titleShift = this.sBeginShift;
-                ShiftService.setShift(false);
-              }
-            });
 
 
       });
@@ -211,10 +197,12 @@ export class LaundryComponent implements OnInit {
 
   graph() {
     //
-    this.router.navigate(['/graph-laundry']);
+    // this.router.navigate(['/graph-laundry']);
+    this.showGraph = !this.showGraph;
   }
 
   calendar() {
-    this.router.navigate(['/summary-laundry']);
+    this.showCalender =  !this.showCalender;
+  //  this.router.navigate(['/summary-laundry']);
   }
 }

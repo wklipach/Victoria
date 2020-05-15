@@ -34,6 +34,7 @@ export class CommentNewComponent implements OnInit {
       'situation': new FormControl(''),
       'textPosition': new FormControl(''),
       'data_situation': new FormControl(''),
+      'data_solution': new FormControl(''),
       'summa': new FormControl(''),
       'checkInstructuion': new FormControl('')
     });
@@ -74,12 +75,6 @@ export class CommentNewComponent implements OnInit {
     });
 
   }
-
-//  changePosition(event) {
-//    const id_position =  this.commentnewForm.controls['dropdawnPosition'].value;
-//    const pos =  this.positionList.find(elem => elem.id === id_position);
-//    this.commentnewForm.controls['textPosition'].setValue(pos.name);
-//  }
 
 
   /* РАБОТА С ИЗОБРАЖЕНИЯМИ */
@@ -185,7 +180,12 @@ export class CommentNewComponent implements OnInit {
     }
 
     if (this.commentnewForm.controls['data_situation'].value === '') {
-      this.sError = 'Добавьте данные по ситуации.';
+      this.sError = 'Добавьте данные о ситуации.';
+      return;
+    }
+
+    if (this.commentnewForm.controls['data_solution'].value === '') {
+      this.sError = 'Добавьте решение ситуации.';
       return;
     }
 
@@ -220,9 +220,13 @@ export class CommentNewComponent implements OnInit {
       return;
     }
 
+
+    console.log('!!!!!!!!!!!!!!!!!!');
+
     this.cs.setNewMessage(this.id_user_vict, this.id_position_from, curPosition.id, this.id_branch_vict,
                           this.commentnewForm.controls['situation'].value.toString().trim(),
                           this.commentnewForm.controls['data_situation'].value.toString().trim(),
+                          this.commentnewForm.controls['data_solution'].value.toString().trim(),
                           this.commentnewForm.controls['summa'].value.toString().trim(),
                           this.intCheckInstructuion).subscribe( value => {
 

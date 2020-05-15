@@ -174,6 +174,7 @@ export class ExcelService {
     tArray.push(['Кому:', res.position_name]);
     tArray.push(['Ситуация:', res.situation]);
     tArray.push(['Данные:', res.data_situation]);
+    tArray.push(['Решение:', res.data_solution]);
     tArray.push(['Сумма:', res.summa]);
 
     tArray.forEach(d => {

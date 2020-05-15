@@ -97,8 +97,8 @@ export class RepairLaundryComponent implements OnInit {
     const arrRes = this.arrayFlag.find(element => element[1] === el);
     if (!this.repairForm.controls[el].errors) {
       if (arrRes[2] > 0) {
-            return arrRes[2]; } else {
-            return '';
+        return arrRes[2]; } else {
+        return '';
       }
     }
 
@@ -108,6 +108,36 @@ export class RepairLaundryComponent implements OnInit {
       if (arrRes[2] > 0) {
         return arrRes[2]; } else {
         return '';
+      }
+    }
+  }
+
+
+  getErrorAndText2(el: string) {
+    const resS = {n: '', e: ''};
+
+    const arrRes = this.arrayFlag.find(element => element[1] === el);
+    if (!this.repairForm.controls[el].errors) {
+      if (arrRes[2] > 0) {
+            resS.n = arrRes[2].toString();
+            resS.e = '';
+            return resS;
+        } else {
+            return resS;
+        }
+    }
+
+    if (this.repairForm.controls[el].errors['victoriaValidator']) {
+      resS.n = arrRes[2].toString();
+      resS.e = this.repairForm.controls[el].errors['victoriaValidator'];
+      return resS;
+    } else {
+      if (arrRes[2] > 0) {
+        resS.n = arrRes[2].toString();
+        resS.e = '';
+        return resS;
+      } else {
+        return resS;
       }
     }
   }

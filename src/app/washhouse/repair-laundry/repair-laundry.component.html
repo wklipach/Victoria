@@ -28,7 +28,8 @@
                 </div>
                 <div class="d-flex justify-content-between mb-1">
                   <label class="w-25 mt-1 font-weight-bold">50 x 70</label>
-                  <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText('n1')}}</p>
+                  {{getErrorAndText2('n1').e}}
+                  <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText2('n1').n}}</p>
                   <input class="w-25" type="text" [class]="getClassName('n1')" formControlName="n1" placeholder="шт" id="name1" name="name1">
                   <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n1')"><i class="fa fa-plus"></i></p>
                   <p class="btn btn-outline-primary" title="Минус" (click)="globalOnClickMinus('n1')"><i class="fa fa-minus"></i></p>

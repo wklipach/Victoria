@@ -21,6 +21,7 @@ export class CommentLaundryLastComponent implements OnInit {
   date_from = '';
   situation = '';
   data_situation = '';
+  data_solution = '';
   summa = '0';
   res: any;
   imageResGlobal = [];
@@ -52,6 +53,7 @@ export class CommentLaundryLastComponent implements OnInit {
         this.position_name = value[0].position_name;
         this.situation = value[0].situation;
         this.data_situation = value[0].data_situation;
+        this.data_solution = value[0].data_solution;
         this.summa = value[0].summa;
         this.loadImageFromBase(value[0].id);
         this.res = value[0];

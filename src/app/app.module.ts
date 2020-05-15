@@ -61,6 +61,7 @@ import { CommentLaundryLastComponent } from './washhouse/comment-laundry/comment
 import { CommentImageComponent } from './washhouse/comment-laundry/comment-image/comment-image.component';
 import {NgxGalleryModule} from '@kolkov/ngx-gallery';
 import { PersonalMenuComponent } from './victoriacomp/personal-menu/personal-menu.component';
+import { LaundryFaceWeekComponent } from './washhouse/laundry/laundry-face-week/laundry-face-week.component';
 
 registerLocaleData(localeRu);
 
@@ -147,7 +148,8 @@ const appRoutes: Routes = [
     CommentNewComponent,
     CommentLaundryLastComponent,
     CommentImageComponent,
-    PersonalMenuComponent
+    PersonalMenuComponent,
+    LaundryFaceWeekComponent
   ],
   imports: [
     BrowserModule,

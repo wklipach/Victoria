@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth-service.service';
 import {GlobalRef} from '../../services/globalref';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-personal-menu',
@@ -14,7 +15,7 @@ export class PersonalMenuComponent implements OnInit {
   public sAvatarPath  = '';
   sUserName = 'Фото';
 
-  constructor(private authService: AuthService, private gr: GlobalRef) { }
+  constructor(private authService: AuthService, private gr: GlobalRef, private router: Router) { }
 
   ngOnInit(): void {
     const Res = this.authService.loginStorage();
@@ -28,6 +29,8 @@ export class PersonalMenuComponent implements OnInit {
     if (Res.victUserName !== '') {
       this.sUserName = Res.victUserName;
     }
+
+    console.log('this.id_user_vict =', this.id_user_vict);
 
   }
 
@@ -50,6 +53,11 @@ export class PersonalMenuComponent implements OnInit {
         }
       }
     });
+  }
+
+  logout() {
+    this.authService.clearStorage();
+    this.router.navigate(['/login']);
   }
 
 

@@ -57,10 +57,16 @@
       </div>
 
 
-      <div class="my-3">
+     <div class="my-3">
        <span class="pl-2 pt-2 font-weight-bold">Данные</span>
        <textarea id="data_situation" formControlName="data_situation{{id_message}}" class ="form-control" rows = "3" placeholder="Данные о ситуации"></textarea>
      </div>
+
+      <div class="my-3">
+        <span class="pl-2 pt-2 font-weight-bold">Решение</span>
+        <input id="data_solution" formControlName="data_solution{{id_message}}" class = "form-control" rows = "3" placeholder="Решение ситуации">
+      </div>
+
 
 
 
@@ -81,12 +87,15 @@
             <input class="custom-control-input" (change)="ocClickResumeCheck()" id="resume_2{{id_message}}" type="radio"  formControlName="checkResume{{id_message}}" value="2">
             <label class="custom-control-label font-weight-bold text-muted" for="resume_2{{id_message}}">Отказ</label>
          </div>
+
+         <input *ngIf="intResp.toString() === '2'" formControlName="respResume{{id_message}}" class="form-control w-25" placeholder="Введите ответ">
+
+
    </div>
 
 
-      <div class="pl-2 pt-2 font-weight-bold">Резюме</div>
-        <input formControlName="respResume{{id_message}}" class="form-control mt-1" placeholder="Введите ответ">
-     </div>
+
+</div>
 
 
         {{sError}}
