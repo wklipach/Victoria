@@ -1,20 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component, EventEmitter, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth-service.service';
 import {ShiftService} from '../../services/shift.service';
 import {ReportService} from '../services/report.service';
 import {GlobalRef} from '../../services/globalref';
 import {CommentService} from '../services/comment.service';
+import { timer } from 'rxjs/observable/timer';
+import {Observable} from 'rxjs';
+declare var jQuery: any;
 
 @Component({
   selector: 'app-laundry',
   templateUrl: './laundry.component.html',
   styleUrls: ['./laundry.component.css']
 })
-export class LaundryComponent implements OnInit {
+export class LaundryComponent implements OnInit, AfterViewChecked {
+
 
   titleShiftDate: Date;
-
   titleShift = '';
   id_user_vict = -1;
   userName = '';
@@ -24,15 +27,19 @@ export class LaundryComponent implements OnInit {
 
   public sAvatarPath  = '';
   unreadMessageCount = 0;
-  sErrorShift = '';
   BranchName = '';
   masInputFace = {db: '', de: '', productivity: 0, rounded_time: '', exact_time: '',
                   virtual_basic: 0, virt_addwork: 0, virt_itogo: 0,
                   last_shift_itogo: 0, rating: 0};
 
   sErrorPageAccess = '';
+
   showCalender = false;
   showGraph = false;
+  booleanNowGraph = false;
+  booleanNowCalendar = false;
+
+
   constructor(private router: Router, private authService: AuthService,
                                       private cs: CommentService,
                                       private repserv: ReportService,
@@ -52,6 +59,24 @@ export class LaundryComponent implements OnInit {
 
     this.titleShift = 'Начать смену';
   }
+
+  ngAfterViewChecked() {
+    if (this.booleanNowGraph) {
+      this.booleanNowGraph = false;
+      const graphEl = document.getElementById('collapseGraph');
+      setTimeout(() =>
+        graphEl.scrollIntoView(), 500);
+    }
+
+    if (this.booleanNowCalendar) {
+      this.booleanNowCalendar = false;
+      const calendarEl = document.getElementById('collapseCalendar');
+      setTimeout(() =>
+        calendarEl.scrollIntoView(), 500);
+    }
+
+  }
+
 
   ngOnInit(): void {
 
@@ -182,8 +207,10 @@ export class LaundryComponent implements OnInit {
   }
 
   onLoadFromBaseAvatar() {
+    console.log('laundry', 'onLoadFromBaseAvatar');
     this.sAvatarPath = '';
     this.authService.getUserFromId(this.id_user_vict).subscribe((aRes) => {
+      console.log('laundry', 'onLoadFromBaseAvatar', 'aRes=', aRes);
       const S = aRes[0].avatar_name;
       if (S !== '""' && (S)) {
         if (typeof S !== 'undefined') {
@@ -196,13 +223,17 @@ export class LaundryComponent implements OnInit {
   }
 
   graph() {
-    //
-    // this.router.navigate(['/graph-laundry']);
-    this.showGraph = !this.showGraph;
+     this.showGraph = !this.showGraph;
+     if (this.showGraph) {
+       this.booleanNowGraph = true;
+    }
   }
 
-  calendar() {
-    this.showCalender =  !this.showCalender;
-  //  this.router.navigate(['/summary-laundry']);
-  }
+    calendar() {
+     this.showCalender =  !this.showCalender;
+     if (this.showCalender) {
+        this.booleanNowCalendar = true;
+     }
+   }
+
 }

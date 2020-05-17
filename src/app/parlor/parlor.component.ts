@@ -197,8 +197,10 @@ export class ParlorComponent implements OnInit {
   }
 
   onLoadFromBaseAvatar() {
+    console.log('parlor', 'onLoadFromBaseAvatar');
     this.sAvatarPath = '';
     this.authService.getUserFromId(this.id_user_vict).subscribe((aRes) => {
+      console.log('parlor', 'onLoadFromBaseAvatar', 'aRes=', aRes);
       const S = aRes[0].avatar_name;
       if (S !== '""' && (S)) {
         if (typeof S !== 'undefined') {

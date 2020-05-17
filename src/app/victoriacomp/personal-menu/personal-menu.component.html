@@ -17,11 +17,11 @@
 
       <div class="dropdown-menu" style="width: 230px">
         <a class="nav-link py-3" href="parlor" [style] = "getStyleName(100)">
-          <img class="icon-menu ml-1 mr-3" src="/assets/img/editinguser.png">Кабинет
+          <span class="icon icon-profile" style="font-size: 25px;">Кабинет</span>
         </a>
 
         <a *ngIf="id_user_vict === 1" class="nav-link py-3" href="admin" [style] = "getStyleName(101)">
-          <img class="icon-menu ml-1 mr-3" src="/assets/img/administrator.png">Администрирование
+          <span class="icon icon-admin" style="font-size: 25px;">Администрирование</span>
         </a>
 
 <!--
@@ -30,7 +30,8 @@
 
 -->
         <a class="nav-link py-3" (click)="logout()" [style] = "getStyleName(104)">
-          <img class="icon-menu ml-1 mr-3" src="/assets/img/exit.png">Выход
+          <span class="icon icon-exit" style="font-size: 25px;">Выход</span>
+
         </a>
 
 

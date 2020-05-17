@@ -4,5 +4,7 @@
 @import "~font-awesome/css/font-awesome.min.css";
 @import '~@fullcalendar/core/main.css';
 @import '~@fullcalendar/daygrid/main.css';
+@import 'assets/style.css';
+
 /* @import "~bootstrap/dist/css/bootstrap.css"; */
 
