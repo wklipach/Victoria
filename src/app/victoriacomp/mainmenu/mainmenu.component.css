@@ -1,6 +1,6 @@
 a {
   color: #9b9a9e;
-  padding: 0;
+
 }
 a:hover{
   font-weight: bold;
@@ -8,11 +8,11 @@ a:hover{
   color: white;
 }
 li{
-  width: 120px;
+  width: 100%;
 }
 .icon-menu{
-  width: 24px;
-  height:24px;
+  width: 32px;
+  height: 32px;
 }
 
 /*

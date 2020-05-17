@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
 
   <div class="row">
     <div class="col-2">
@@ -11,28 +11,14 @@
 
 <form [formGroup]="commentnewForm">
 
+    <div class="row">
 
-  <div class="d-flex justify-content-between my-2 ">
+    <div class="col-sm-12 col-md-12 col-lg-4"><p class="p-0"><span class="mr-4">Дата:</span><span class="mr-4 text-muted font-weight-bold">{{fromDate | date: 'dd.MM.yyyy hh:mm'}}</span></p></div>
+    <div class="col-sm-12 col-md-12 col-lg-4"> <p class="p-0"><span class="mr-4">От:</span><span class="mr-4 text-muted font-weight-bold">{{nick}}</span></p></div>
+    <div class="col-sm-12 col-md-12 col-lg-4"><p class="p-0"><span class="mr-4">Отделение:</span><span class="mr-4 text-muted font-weight-bold">{{BranchName}}</span></p></div>
+    </div>
 
-    <p>
-      <span class="mr-4">Дата:</span>
-    <span class="mr-4 text-muted font-weight-bold">{{fromDate | date: 'dd.MM.yyyy hh:mm'}}</span>
-    </p>
-
-    <p>
-      <span class="mr-4">От:</span>
-      <span class="mr-4 text-muted font-weight-bold">{{nick}}</span>
-    </p>
-
-    <p>
-      <span class="mr-4">Отделение:</span>
-      <span class="mr-4 text-muted font-weight-bold">{{BranchName}}</span>
-    </p>
-
-
-  </div>
-
-  <!--
+      <!--
   <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
    -->
 
@@ -42,9 +28,6 @@
         <option [value]="chPosition.id" *ngFor="let chPosition of positionList">{{chPosition.name}}</option>
       </select>
   </div>
-
-
-
 
 
 
@@ -86,7 +69,6 @@
 
 
 
-
   <div class="d-flex justify-content-start my-2">
     <span class="font-weight-bold pt-2 mr-5">Сумма, &#8381;</span>
         <input formControlName="summa" class="form-control w-25" placeholder="Сумма">
@@ -100,7 +82,7 @@
 
 
   <div class="d-flex justify-content-between my-2">
-        <button class="btn btn-outline-primary my-5 mb-1 w-25" (click)="saveMassage()">Отправить</button>
+        <button class="btn btn-outline-primary my-5 mb-1" (click)="saveMassage()">Отправить</button>
 
     <div class="collapse" id="collapseInstruction">
       <div class="custom-control custom-checkbox">
@@ -115,7 +97,7 @@
 
 
       <!-- загрузка изображений -->
-      <div class="card">
+      <div class="card text-center">
         <input type="file" accept="image/*" id="avatar" (change)="onFileChange($event)" #fileInput style="display:none">
         <button type="button" class="btn btn-link" style="display: block; cursor: pointer; text-decoration: underline;"
                 onclick="document.getElementById('avatar').click()">Прикрепить изображение</button>

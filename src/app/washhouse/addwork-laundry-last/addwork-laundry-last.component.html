@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
 
   <div class="row">
     <div class="col-2">
@@ -39,7 +39,7 @@
     </li>
 
     <li class="list-group-item-borderless d-flex mb-1"><h5 class="text-muted w-25">Дата передачи:</h5>
-      <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5">
+      <a *ngIf="alTitle !== undefined"><span class="badge badge-secondary p-2 badge-pill ml-5" style="font-size: medium">
         {{alTitle.date_oper | date:'dd.MM.yyyy   HH.mm' }}</span></a>
     </li>
 
@@ -65,3 +65,5 @@
   </div>
 </div>
 
+  </div>
+</div>

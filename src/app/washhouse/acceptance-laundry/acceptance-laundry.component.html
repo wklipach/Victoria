@@ -1,11 +1,11 @@
 <div class="container-fluid">
 
   <div class="row">
-    <div class="col-2 pl-5">
+    <div class="col-2 col-sx-3 p-0">
       <app-mainmenu [numberPage]="2"></app-mainmenu>
     </div>
 
-    <div class="col-10">
+    <div class="col-10 pl-0">
 
       <form [formGroup]="acclaundform">
 
@@ -17,19 +17,18 @@
 
 
         <div class="row">
-
-          <div class="col-6">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-center">
 
             <h3 class="alert alert-dark" style="background-color: #eef1f2;">Прямое белье</h3>
 
             <div class="card mb-2">
               <div class="card-body py-2">
-                <h5 class="card-title">Наволочка</h5>
+                <h5 class="card-title text-left">Наволочка</h5>
 
                 <div class="d-flex justify-content-between">
-                  <span class="w-25"></span>
-                  <span class="w-25 ml-2">Целое</span>
-                  <span class="w-25">Повреждено</span>
+                  <span class="w-25">&nbsp;</span>
+                  <span class="w-25 mr-2 text-right">Целое</span>
+                  <span class="w-25 mr-2 text-right">Повреждено</span>
                 </div>
                 <div class="d-flex justify-content-between">
                   <label class="w-25 font-weight-bold">50 x 70</label>
@@ -66,12 +65,12 @@
 
             <div class="card mb-2">
               <div class="card-body py-2">
-                <h5 class="card-title">Простынь</h5>
+                <h5 class="card-title text-left">Простынь</h5>
 
                 <div class="d-flex justify-content-between">
                   <span class="w-25"></span>
-                  <span class="w-25 ml-2">Целое</span>
-                  <span class="w-25">Повреждено</span>
+                  <span class="w-25 mr-2 text-right">Целое</span>
+                  <span class="w-25 mr-2 text-right">Повреждено</span>
                 </div>
                 <div class="d-flex justify-content-between">
                   <label class="w-25 font-weight-bold">1,5 сп</label>
@@ -102,12 +101,12 @@
 
             <div class="card mb-2">
               <div class="card-body py-2">
-                <h5 class="card-title">Пододеяльник</h5>
+                <h5 class="card-title text-left">Пододеяльник</h5>
 
                 <div class="d-flex justify-content-between">
                   <span class="w-25"></span>
-                  <span class="w-25 ml-2">Целое</span>
-                  <span class="w-25">Повреждено</span>
+                  <span class="w-25 mr-2 text-right">Целое</span>
+                  <span class="w-25 mr-2 text-right">Повреждено</span>
                 </div>
                 <div class="d-flex justify-content-between">
                   <label class="w-25 font-weight-bold">1,5 сп</label>
@@ -138,12 +137,12 @@
 
             <div class="card mb-2">
               <div class="card-body py-2">
-                <h5 class="card-title">Полотенце</h5>
+                <h5 class="card-title text-left">Полотенце</h5>
 
                 <div class="d-flex justify-content-between">
                   <span class="w-25"></span>
-                  <span class="w-25 ml-2">Целое</span>
-                  <span class="w-25">Повреждено</span>
+                  <span class="w-25 mr-2 text-right">Целое</span>
+                  <span class="w-25 mr-2 text-right">Повреждено</span>
                 </div>
                 <div class="d-flex justify-content-between">
                   <label class="w-25 font-weight-bold">30 x 60</label>
@@ -197,28 +196,22 @@
             </div>
 
 
-            <div class="d-flex justify-content-end">
-              <label class="font-weight-bold">Общий вес белья:</label>
-              <p class="alert-danger">{{getErrorText('massa')}}</p>
-              <p class="w-25 ml-3"><input type="text" [class]="getClassName('massa')" formControlName="massa" placeholder="кг" id="name40" name="name40"></p>
-              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('massa')"><i class="fa fa-plus"></i></p>
-              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('massa')"><i class="fa fa-minus"></i></p>
-            </div>
+
 
           </div> <!-- end col -6 -->
 
-          <div class="col-6">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-center">
 
             <h3 class="alert alert-dark" style="background-color: #eef1f2;">Не профильное</h3>
 
             <div class="card mb-2">
               <div class="card-body py-2">
-                <h5 class="card-title">Коврик</h5>
+                <h5 class="card-title text-left">Коврик</h5>
 
                 <div class="d-flex justify-content-between">
                   <span class="w-25"></span>
-                  <span class="w-25 ml-2">Целое</span>
-                  <span class="w-25">Повреждено</span>
+                  <span class="w-25 mr-2 text-right">Целое</span>
+                  <span class="w-25 mr-2 text-right">Повреждено</span>
                 </div>
                 <div class="d-flex justify-content-between">
                   <label class="w-25 font-weight-bold">Для ванны</label>
@@ -249,12 +242,12 @@
 
             <div class="card mb-2">
               <div class="card-body py-2">
-                <h5 class="card-title">Одеяло</h5>
+                <h5 class="card-title text-left">Одеяло</h5>
 
                 <div class="d-flex justify-content-between">
                   <span class="w-25"></span>
-                  <span class="w-25 ml-2">Целое</span>
-                  <span class="w-25">Повреждено</span>
+                  <span class="w-25 mr-2 text-right">Целое</span>
+                  <span class="w-25 mr-2 text-right">Повреждено</span>
                 </div>
                 <div class="d-flex justify-content-between">
                   <label class="w-25 font-weight-bold">1,5 сп</label>
@@ -285,12 +278,12 @@
 
             <div class="card mb-2">
               <div class="card-body py-2">
-                <h5 class="card-title">Подушка</h5>
+                <h5 class="card-title text-left text-left">Подушка</h5>
 
                 <div class="d-flex justify-content-between">
                   <span class="w-25"></span>
-                  <span class="w-25 ml-2">Целое</span>
-                  <span class="w-25">Повреждено</span>
+                  <span class="w-25 mr-2 text-right">Целое</span>
+                  <span class="w-25 mr-2 text-right">Повреждено</span>
                 </div>
                 <div class="d-flex justify-content-between">
                   <label class="w-25 font-weight-bold">50 x 70</label>
@@ -321,12 +314,12 @@
 
             <div class="card mb-2">
               <div class="card-body py-2">
-                <h5 class="card-title">Наматрасник</h5>
+                <h5 class="card-title text-left text-left">Наматрасник</h5>
 
                 <div class="d-flex justify-content-between">
                   <span class="w-25"></span>
-                  <span class="w-25 ml-2">Целое</span>
-                  <span class="w-25">Повреждено</span>
+                  <span class="w-25 mr-2 text-right">Целое</span>
+                  <span class="w-25 mr-2 text-right">Повреждено</span>
                 </div>
                 <div class="d-flex justify-content-between">
                   <label class="w-25 font-weight-bold">1,5 сп</label>
@@ -357,12 +350,12 @@
 
             <div class="card mb-2">
               <div class="card-body py-2">
-                <h5 class="card-title">Шторы</h5>
+                <h5 class="card-title text-left">Шторы</h5>
 
                 <div class="d-flex justify-content-between">
                   <span class="w-25"></span>
-                  <span class="w-25 ml-2">Целое</span>
-                  <span class="w-25">Повреждено</span>
+                  <span class="w-25 mr-2 text-right">Целое</span>
+                  <span class="w-25 mr-2 text-right">Повреждено</span>
                 </div>
                 <div class="d-flex justify-content-between">
                   <label class="w-25 font-weight-bold">Шторы</label>
@@ -379,9 +372,21 @@
               </div>
             </div>
 
+          <div class="card mb-2 px-3">
+           <div class="card-body pt-2 p-0">
+            <div class="d-flex justify-content-between">
+              <label class="font-weight-bold pt-2 w-25">Общий вес:</label>
+              <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorText('massa')}}&nbsp;</p>
+              <p class="w-25 ml-3"><input type="text" [class]="getClassName('massa')" formControlName="massa" placeholder="кг" id="name40" name="name40"></p>
+              <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('massa')"><i class="fa fa-plus"></i></p>
+              <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('massa')"><i class="fa fa-minus"></i></p>
+            </div>
+           </div>
           </div>
 
-        </div> <!-- end col -6 -->
+
+          </div>    <!-- end col -6 -->
+        </div>   <!-- end row -->
         <div class="alert alert-info">
 
           <h4 class="text-danger">{{this.sError}}</h4>

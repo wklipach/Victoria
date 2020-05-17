@@ -1,0 +1,9 @@
+.badge{
+  min-width: 35px;
+}
+.alert-danger{
+  position: absolute;
+  top: 2px;
+  padding: 3px 0;
+  font-weight: 600;
+}

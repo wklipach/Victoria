@@ -1,13 +1,13 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-
+    <div class="col-12">
 <!--
     <div class="col-2">
       <app-mainmenu [numberPage]="103"></app-mainmenu>
     </div>
 -->
 
-    <div class="col-10">
+
 
       <h3 class="alert alert-dark mt-3" style="background-color: #eef1f2;">График</h3>
 
@@ -15,12 +15,16 @@
       <div id="graph"></div>
       </div>
 
+
       <div class="card my-5 p-3">
 
-<form [formGroup]="graphForm">
 
-  <div class="d-flex justify-content-between my-2">
+      <form [formGroup]="graphForm">
 
+      <div class="row">
+        <div class="col-md-12 col-lg-6">
+
+          <div class="d-flex justify-content-between my-4">
   <div class="custom-control custom-radio">
     <input type="radio" id="value1" formControlName="groupYear" class="custom-control-input" value="1" (change)="onClick()">
     <label class="custom-control-label font-weight-bold text-muted" for="value1">Месяц</label>
@@ -35,7 +39,11 @@
     <input type="radio"  id="value3" formControlName="groupYear" class="custom-control-input" value="3" (change)="onClick()">
     <label class="custom-control-label font-weight-bold text-muted" for="value3">Год</label>
   </div>
+          </div>
+      </div>
 
+        <div class="col-md-12 p-0 col-lg-6">
+  <div class="d-flex justify-content-between my-4">
 
   <button class="btn btn-outline-primary" (click)="onClickLeft()"><i class="fa fa-angle-double-left" aria-hidden="true"></i></button>
   <p class="font-weight-bold text-muted" style="min-width: 15%;">{{dateBegin | date:'dd.MM.yyyy'}}-{{dateEnd | date:'dd.MM.yyyy'}}</p>
@@ -43,12 +51,16 @@
   <button class="btn btn-outline-primary" (click)="onNow()" > Сегодня </button>
 
   </div>
-
-</form>
+      </div>
 
       </div>
 
 
+
+</form>
     </div>
+      </div>
+
+
   </div>
 </div>

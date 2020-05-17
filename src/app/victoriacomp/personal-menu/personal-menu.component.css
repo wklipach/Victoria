@@ -3,6 +3,10 @@ a:hover{  font-weight: bold;  background-color: #c6c8ca; color: white;}
 .rounded-circle:hover{
   background: white;
 }
+.photo:hover{
+  background-color: #f9f9f9;
+  color: #c6c8ca;
+}
 .nicon-menu{
   width: 32px;
   height:24px;

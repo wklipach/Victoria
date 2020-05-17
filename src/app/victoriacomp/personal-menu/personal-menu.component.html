@@ -2,14 +2,14 @@
   <ul class="nav" style="padding-left: 7.5rem">
 
     <li class="nav-item">
-      <a class="nav-link dropdown-toggle align-items-lg-end" data-toggle="dropdown" href="#">
+      <a class="nav-link photo dropdown-toggle align-items-lg-end" data-toggle="dropdown" href="#">
 
         <div class="mr-5" *ngIf="this.sAvatarPath.length>0;then contentLoadAvatar else contentDefault">{{this.sUserName}}</div>
         <ng-template #contentLoadAvatar>
-          <img [src]="this.sAvatarPath" class="rounded-circle" style="width: 64px;height: 64px;" alt="{{this.sUserName}}" id="img">
+          <img [src]="this.sAvatarPath" class="rounded-circle" style="width: 60px;height: 60px;" alt="{{this.sUserName}}" id="img">
         </ng-template>
         <ng-template #contentDefault>
-          <img src="/assets/img/usernull.png" class="rounded-circle" style="width: 64px;height: 64px;" alt="{{this.sUserName}}">
+          <img src="/assets/img/usernull.png" class="rounded-circle" style="width: 60px;height: 60px;" alt="{{this.sUserName}}">
         </ng-template>
       </a>
 
