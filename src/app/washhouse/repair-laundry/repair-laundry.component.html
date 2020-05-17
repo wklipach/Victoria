@@ -284,11 +284,9 @@
           </div> <!-- end col -6 -->
         </div> <!-- end row -->
 
-
-        <div class="alert alert-info">
           <h4 class="text-danger">{{this.sError}}</h4>
-
-          <button type="button" class="btn btn-outline-primary" (click)="send_data()"
+        <div class="d-flex justify-content-between">
+          <button type="button" class="btn btn-outline-primary my-4" (click)="send_data()"
                   [disabled]="repairForm.value.n1=='' &&
                       repairForm.value.n2=='' &&
                       repairForm.value.n3=='' &&
@@ -312,28 +310,22 @@
 
             Отправить</button>
 
-          <p class="text-info">После нажатия кнопки Отправить изменить данные будет нельзя!</p>
+          <a class="btn btn-outline-primary my-4 ml-4" data-toggle="collapse"
+             href="#collapseRepairReport" role="button" aria-expanded="false" aria-controls="collapseRepairReport">
+            Доступно к починке
+          </a>
+        </div>
 
+        <div class="alert mt-2 mb-4" style="background-color: #A6BBC8">
+          <p class="text-alert pt-2" style="color:#101820;">После нажатия кнопки <strong>Отправить</strong> изменить данные будет нельзя!</p>
         </div>
 
       </form>
 
-
-
-
-      <div class="row">
-        <div class="col-12">
-
-          <a class="btn btn-outline-primary my-4" data-toggle="collapse"
-             href="#collapseRepairReport" role="button" aria-expanded="false" aria-controls="collapseRepairReport">
-            Доступно к починке
-          </a>
-          <div class="collapse" id="collapseRepairReport">
+        <div class="collapse" id="collapseRepairReport">
             <app-report-repair [intAddress]="this.intAddress"></app-report-repair>
           </div>
-        </div>
 
-      </div>
 
 
     </div> <!-- end row 1 -->

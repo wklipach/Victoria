@@ -1,42 +1,44 @@
 <ul class="list-group text-muted font-weight-bold">
 
   <li class="list-group-item"><span>Неделя</span>
-    <span class="alert alert-primary float-right my-0 mx-1">{{this.titleDB | date:'dd.MM.yyyy' }} - {{ this.titleDE | date:'dd.MM.yyyy'}}
+    <span class="alert float-right my-0 mx-1" style="background-color: #A6BBC8; color: white;">{{this.titleDB | date:'dd.MM.yyyy' }} - {{ this.titleDE | date:'dd.MM.yyyy'}}
           </span>
   </li>
 
   <li class="list-group-item"><span>Дата начала смены</span>
-    <span class="alert alert-primary float-right my-0 mx-1">{{this.titleShiftDate | date:'dd.MM.yyyy'}}
+    <span class="alert float-right my-0 mx-1" style="background-color: #A6BBC8; color: white;">{{this.titleShiftDate | date:'dd.MM.yyyy'}}
           </span>
   </li>
 
-  <li class="list-group-item"><span>Время начала смены</span> <span class="alert alert-primary float-right my-0 mx-1">{{this.titleShiftDate | date:'HH:mm'}}</span></li>
+  <li class="list-group-item"><span>Время начала смены</span>
+    <span class="alert float-right my-0 mx-1" style="background-color: #A6BBC8; color: white;">{{this.titleShiftDate | date:'HH:mm'}}</span></li>
 
   <li class="list-group-item"><span>Выработка за неделю</span>
-    <span class="alert alert-primary float-right my-0 mx-1">{{Productivity}}</span></li>
+    <span class="alert float-right my-0 mx-1" style="background-color: #A6BBC8; color: white;">{{Productivity}}</span></li>
 
   <li class="list-group-item"> <span>Часов за неделю</span>
-    <span class="alert alert-primary float-right my-0 mx-1">Часы {{RoundedTime}}</span>
-    <span class="alert alert-primary float-right my-0 mx-1 d-none d-sm-block">Точно {{ExactTime}}</span>
+    <span class="alert float-right my-0 mx-1" style="background-color: #A6BBC8; color: white;">Часы {{RoundedTime}}</span>
+    <span class="alert float-right my-0 mx-1 d-none d-sm-block" style="background-color: #A6BBC8; color: white;">Точно {{ExactTime}}</span>
   </li>
   <li class="list-group-item align-content-end"><span>З/п за неделю</span>
-    <span class="alert alert-primary float-right my-0 mx-1" role="alert">{{VirtualBasicPayment}}</span>
+    <span class="alert float-right my-0 mx-1" style="background-color: #A6BBC8; color: white;" role="alert">{{VirtualBasicPayment}}</span>
   </li>
 
 
 
   <li class="list-group-item"><span>Бонусы за неделю</span>
-    <span class="alert alert-primary float-right my-0 mx-1" role="alert">{{VirtualAddwork}}</span>
+    <span class="alert float-right my-0 mx-1" style="background-color: #A6BBC8; color: white;" role="alert">{{VirtualAddwork}}</span>
   </li>
 
   <li class="list-group-item"><span>Итого, руб.</span>
-    <span class="alert alert-primary float-right my-0 mx-1">{{VirtItogo}}</span></li>
+    <span class="alert float-right my-0 mx-1" style="background-color: #A6BBC8; color: white;">{{VirtItogo}}</span></li>
 
   <li class="list-group-item"><span>З/п за смену</span>
-    <span class="alert alert-primary float-right my-0 mx-1">{{LastShiftItogo}}</span>
+    <span class="alert float-right my-0 mx-1" style="background-color: #A6BBC8; color: white;">{{LastShiftItogo}}</span>
   </li>
 
-  <li class="list-group-item"><span>Недельный рейтинг</span><span class="alert alert-primary float-right my-0 mx-1">{{rating}}</span></li>
+  <li class="list-group-item"><span>Недельный рейтинг</span>
+    <span class="alert float-right my-0 mx-1" style="background-color: #A6BBC8; color: white;">{{rating}}</span></li>
 </ul>
 
 

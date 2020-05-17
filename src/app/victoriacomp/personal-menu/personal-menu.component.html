@@ -1,5 +1,5 @@
 <nav class="navbar">
-  <ul class="nav" style="padding-left: 7.5rem">
+  <ul class="nav" style="padding-left: 9.5rem">
 
     <li class="nav-item">
       <a class="nav-link photo dropdown-toggle align-items-lg-end" data-toggle="dropdown" href="#">
@@ -13,15 +13,18 @@
         </ng-template>
       </a>
 
+      <div class="dropdown-menu" style="width: 260px">
 
-
-      <div class="dropdown-menu" style="width: 230px">
-        <a class="nav-link py-3" href="parlor" [style] = "getStyleName(100)">
-          <span class="icon icon-profile" style="font-size: 25px;">Кабинет</span>
+        <a class="nav-link py-2" href="parlor" [style] = "getStyleName(100)">
+          <p class="icon icon-profile mx-2 mt-2" style="font-size: 32px;">
+            <span class="ml-2" style="font-size: 20px;">Кабинет</span>
+          </p>
         </a>
 
-        <a *ngIf="id_user_vict === 1" class="nav-link py-3" href="admin" [style] = "getStyleName(101)">
-          <span class="icon icon-admin" style="font-size: 25px;">Администрирование</span>
+        <a *ngIf="id_user_vict === 1" class="nav-link py-2" href="admin" [style] = "getStyleName(101)">
+          <p class="icon icon-admin mx-2 mt-2" style="font-size: 32px;">
+            <span class="ml-2" style="font-size: 20px;">Администрирование</span>
+          </p>
         </a>
 
 <!--
@@ -29,12 +32,12 @@
         <a class="nav-link py-3 pl-3" href="graph-laundry" [style] = "getStyleName(103)"><i class="fa fa-money fa-lg mr-2"></i>Графики</a>
 
 -->
-        <a class="nav-link py-3" (click)="logout()" [style] = "getStyleName(104)">
-          <span class="icon icon-exit" style="font-size: 25px;">Выход</span>
+        <a class="nav-link py-2 mx-2 mt-2" (click)="logout()" [style] = "getStyleName(104)">
+          <p class="icon icon-exit" style="font-size: 30px;">
+            <span class="ml-2" style="font-size: 20px;">Выход</span>
+          </p>
 
         </a>
-
-
 
       </div>
 

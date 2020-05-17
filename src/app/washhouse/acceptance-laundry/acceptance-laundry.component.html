@@ -387,10 +387,9 @@
 
           </div>    <!-- end col -6 -->
         </div>   <!-- end row -->
-        <div class="alert alert-info">
 
-          <h4 class="text-danger">{{this.sError}}</h4>
-
+        <h4 class="text-danger">{{this.sError}}</h4>
+        <div class="d-flex justify-content-between">
           <button (click)="send_data()"
                   [disabled]="acclaundform.value.n1=='' && acclaundform.value.n1_spoiled=='' &&
                       acclaundform.value.n2=='' && acclaundform.value.n2_spoiled=='' &&
@@ -412,33 +411,29 @@
                       acclaundform.value.n18=='' && acclaundform.value.n18_spoiled=='' &&
                       acclaundform.value.n19=='' && acclaundform.value.n19_spoiled=='' &&
                       acclaundform.value.massa==''"
-                  type="button" class="btn btn-outline-primary mt-2 font-weight-bold" style="background-color: white; color:#797575;">Отправить</button>
-
-          <p class="text-info">После нажатия кнопки <strong>Отправить</strong> изменить данные будет нельзя!</p>
-
-        </div>
-
-      </form>
+                  type="button" class="btn btn-outline-primary my-4">Отправить</button>
 
 
-      <div class="row">
-        <div class="col-12">
           <a class="btn btn-outline-primary my-4 ml-4" data-toggle="collapse"
              href="#collapseAcceptanceWarehouse" role="button" aria-expanded="false" aria-controls="collapseAcceptanceWarehouse">
             Уже принято
           </a>
-          <div class="collapse" id="collapseAcceptanceWarehouse">
-            <app-report-acceptance [intAddress]="this.intAddress"></app-report-acceptance>
-          </div>
-        </div>
-      </div>
 
 
     </div>
+          <div class="alert mt-2 mb-4" style="background-color: #A6BBC8">
+            <p class="text-alert pt-2" style="color:#101820;">После нажатия кнопки <strong>Отправить</strong> изменить данные будет нельзя!</p>
+          </div>
+
+      </form>
 
 
+          <div class="collapse" id="collapseAcceptanceWarehouse">
+            <app-report-acceptance [intAddress]="this.intAddress"></app-report-acceptance>
+
+      </div>
+    </div>
 
 
   </div> <!-- end row -->
-
 </div>

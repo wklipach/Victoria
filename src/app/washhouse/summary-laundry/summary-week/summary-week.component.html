@@ -2,9 +2,9 @@
 <table class="table">
   <thead class="thead-light">
   <tr>
-    <th class="d-none d-sm-block">#</th>
+    <th>#</th>
     <th>Неделя</th>
-    <th class="d-none d-sm-block">Дата начала</th>
+    <th>Дата начала</th>
     <th class="d-none d-sm-block">Дата окончания</th>
     <th>Основная оплата</th>
     <th>Доп. работы</th>
@@ -15,9 +15,9 @@
 
   <tr *ngFor="let pl of payList; let i = index; ">
 
-    <th class="d-none d-sm-block" scope="row">{{i+1}}</th>
+    <th scope="row">{{i+1}}</th>
     <td>{{pl.week_number}}</td>
-    <td class="d-none d-sm-block">{{pl.date_begin | date:'dd.MM.yyyy'}}</td>
+    <td>{{pl.date_begin | date:'dd.MM.yyyy'}}</td>
     <td class="d-none d-sm-block">{{pl.date_end | date:'dd.MM.yyyy'}}</td>
     <td>{{pl.summa}}</td>
     <td>{{pl.summa_addwork}}</td>

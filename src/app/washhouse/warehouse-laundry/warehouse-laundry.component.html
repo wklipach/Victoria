@@ -284,11 +284,10 @@
           </div> <!-- end col -6 -->
         </div> <!-- end row -->
 
-          <div class="alert alert-info">
-            <h4 class="text-danger">{{this.sError}}</h4>
+             <h4 class="text-danger">{{this.sError}}</h4>
+        <div class="d-flex justify-content-between">
 
-
-            <button type="button" class="btn btn-outline-primary mt-2" (click)="send_data()"
+            <button type="button" class="btn btn-outline-primary my-4" (click)="send_data()"
                     [disabled]="warehouseForm.value.n1=='' &&
                       warehouseForm.value.n2=='' &&
                       warehouseForm.value.n3=='' &&
@@ -311,31 +310,23 @@
                       warehouseForm.value.massa==''">
               Отправить</button>
 
-            <p class="text-info">После нажатия кнопки Отправить изменить данные будет нельзя!</p>
-
-          </div>
-
-
-      </form>
-
-
-
-
-      <div class="row">
-        <div class="col-12">
-
           <a class="btn btn-outline-primary my-4 ml-4" data-toggle="collapse"
              href="#collapseWarehouseReport" role="button" aria-expanded="false" aria-controls="collapseWarehouseReport">
             На складе
           </a>
+
+          </div>
+
+        <div class="alert mt-2 mb-4" style="background-color: #A6BBC8">
+          <p class="text-alert pt-2" style="color:#101820;">После нажатия кнопки <strong>Отправить</strong> изменить данные будет нельзя!</p>
+        </div>
+
+      </form>
+
+
           <div class="collapse" id="collapseWarehouseReport">
             <app-report-warehouse [intAddress]="this.intAddress"></app-report-warehouse>
           </div>
-
-        </div>
-      </div>
-
-
 
     </div>
   </div>
