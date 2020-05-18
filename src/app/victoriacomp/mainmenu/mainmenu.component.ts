@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth-service.service';
 import {GlobalRef} from '../../services/globalref';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-mainmenu',
@@ -11,7 +12,7 @@ export class MainmenuComponent implements OnInit {
 
   @Input() numberPage = 0;
 
-  constructor(private authService: AuthService, private gr: GlobalRef) { }
+  constructor(private authService: AuthService, private gr: GlobalRef, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -25,4 +26,7 @@ export class MainmenuComponent implements OnInit {
   }
 
 
+  onHome() {
+    this.router.navigate(['/'], { state: { errorPageAccess : '' }});
+  }
 }

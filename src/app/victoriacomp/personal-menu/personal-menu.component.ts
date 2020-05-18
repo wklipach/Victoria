@@ -50,6 +50,10 @@ export class PersonalMenuComponent implements OnInit {
 
       console.log('personal-menu', 'onLoadFromBaseAvatar', 'aRes=', aRes);
 
+      if (!aRes[0]) {
+           return;
+      }
+
       const S = aRes[0].avatar_name;
       if (S !== '""' && (S)) {
         if (typeof S !== 'undefined') {

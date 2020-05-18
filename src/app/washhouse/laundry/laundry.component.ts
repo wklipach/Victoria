@@ -129,6 +129,8 @@ export class LaundryComponent implements OnInit, AfterViewChecked {
 
   onShift() {
 
+    this.sErrorPageAccess = '';
+
     if (ShiftService.getShift()) {
       this.endShift();
     } else {
