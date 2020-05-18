@@ -254,9 +254,9 @@ export class WarehouseLaundryComponent implements OnInit {
       arr[3] = '';
     });
 
-    // петегружаем данные в таблицу для валидации
+    // перегружаем данные в таблицу для валидации
     const id_branch = this.authService.getBranch(this.id_user_vict);
-    this.ls.getValidatorsWashing(this.intAddress, id_branch).subscribe(
+    this.ls.getValidatorsWarehouse(this.intAddress, id_branch).subscribe(
       resultSet => {
 
         for (const key of Object.keys(resultSet)) {

@@ -57,7 +57,6 @@ export class AddressAdminComponent implements OnInit {
         this.addressList.push(element);
       });
 
-      console.log('this.addressList', this.addressList);
 
       this.CheckFirstAD();
     });

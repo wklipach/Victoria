@@ -1,54 +1,6 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-12 p-0">
 
-      <div class="jumbotron m-0 p-2" style="background-color: #f9f9f9;">
-
-
-       <div class="row">
-        <div class="col-xs-12 col-lg-5">
-          <img class="img-fluid" src="/assets/img/viktoria-horizontal.png" alt="Victoria logotype" width="450" height="75">
-        </div>
-        <div class="col-xs-12 col-lg-7">
-          <div class="d-flex justify-content-between">
-          <p class="text-muted pt-3 ml-auto" *ngIf="BranchName.toString() !== ''" style="font-size: 2em; color: #A6BBC8"> {{BranchName}}</p>
-          <app-personal-menu></app-personal-menu>
-          </div>
-        </div>
-      </div>
-
-      </div> <!-- Джумботрон -->
-
-<!--
-       <div class="d-flex flex-row justify-content-between">
-        <img class="img-fluid" src="/assets/img/viktoria-horizontal.png" alt="Victoria logotype" width="450" height="75">
-
-          <div class="mt-2 ml-auto mr-5">
-
-          <h1 class="text-muted" *ngIf="BranchName.toString() !== ''"> {{BranchName}}</h1>
-         </div>
-
-          <div>
-            <app-personal-menu></app-personal-menu>
-          </div>
-        </div>
--->
-
-    </div>
-  </div>
-<!--
- style="background-color: f9f9f9;"
-#eef1f2
-       <div class="float-lg-right" *ngIf="this.sAvatarPath.length>0;then contentLoadAvatar else contentDefault">Фото</div>
-          <ng-template #contentLoadAvatar>
-            <img [src]="this.sAvatarPath" class="rounded float-left" alt="Фото" id="img">
-          </ng-template>
-          <ng-template #contentDefault>
-            <img src="/assets/img/usernull.png" class="rounded float-left" alt="Фото">
-          </ng-template>
- -->
-
-
+  <app-header-menu></app-header-menu>
 
 
 

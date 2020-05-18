@@ -56,11 +56,12 @@ export class UsersAdminComponent implements OnInit {
 
     this.adminserv.getBranchUser(id_user).subscribe((value: Array<any>) => {
       this.branchList = value;
+
       value.forEach((element, ih) => {
         this.adminFormUser.controls['checkBranch' + element.id].setValue(Boolean(element.branch_check));
         this.adminFormUser.controls['checkIP' + element.id].setValue(Boolean(element.check_ip));
         this.adminFormUser.controls['ip' + element.id].setValue(element.ip);
-        this.adminFormUser.controls['textPosition' + element.id].setValue(element.position_name);
+        this.adminFormUser.controls['textPosition' + element.id].setValue(element.id_position);
       });
 
     });
@@ -82,7 +83,8 @@ export class UsersAdminComponent implements OnInit {
         this.adminFormUser.addControl('checkBranch' + element.id, new FormControl(''));
         this.adminFormUser.addControl('checkIP' + element.id, new FormControl(''));
         this.adminFormUser.addControl('ip' + element.id, new FormControl(''));
-         this.adminFormUser.addControl('textPosition' + element.id, new FormControl({value: '', disabled: true}));
+        // this.adminFormUser.addControl('textPosition' + element.id, new FormControl({value: '', disabled: true}));
+        this.adminFormUser.addControl('textPosition' + element.id, new FormControl());
         // this.adminFormUser.addControl('textPosition' + element.id, new FormControl({value: ''}));
       });
 
@@ -143,16 +145,10 @@ export class UsersAdminComponent implements OnInit {
 
     this.branchList.forEach((element, ih) => {
 
-      let sPosition = '';
-      if (this.adminFormUser.controls['textPosition' + element.id].value.toString().trim() !== '') {
-        sPosition = this.adminFormUser.controls['textPosition' + element.id].value.toString().trim();
-      }
-
-
       let id_position = 0;
-      const position = this.positionList.find(elem => elem.name === sPosition);
-      if (position) {
-        id_position = position.id;
+
+      if (this.adminFormUser.controls['textPosition' + element.id].value) {
+        id_position = this.adminFormUser.controls['textPosition' + element.id].value;
       }
 
       let sIP = '';
@@ -191,5 +187,12 @@ export class UsersAdminComponent implements OnInit {
   changePosition(chPosition: any, elem: HTMLInputElement) {
             this.adminFormUser.controls[elem.id].setValue(chPosition.name);
   }
+
+  changePosition2(event: Event) {
+    // this.loadAddworkBranch(this.addworkForm.controls['inputBranch'].value);
+    // this.adminFormUser.controls[elem.id].setValue(chPosition.name);
+    console.log(event);
+  }
+
 
 }

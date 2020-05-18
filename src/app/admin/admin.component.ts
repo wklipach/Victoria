@@ -100,7 +100,6 @@ export class AdminComponent implements OnInit {
 
 
   LoadUserFromBranch() {
-    console.log('LoadUserFromBranch', this.selectedBL);
 
     this.adminserv.getUsers(this.selectedBL.id).subscribe( (value: Array<any>) =>  {
       this.usersList = [];

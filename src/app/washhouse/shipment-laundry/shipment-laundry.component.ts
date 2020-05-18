@@ -259,7 +259,7 @@ export class ShipmentLaundryComponent implements OnInit {
 
     // петегружаем данные в таблицу для валидации
     const id_branch = this.authService.getBranch(this.id_user_vict);
-    this.ls.getValidatorsWashing(this.intAddress, id_branch).subscribe(
+    this.ls.getValidatorsShipment(this.intAddress, id_branch).subscribe(
       resultSet => {
 
         for (const key of Object.keys(resultSet)) {
