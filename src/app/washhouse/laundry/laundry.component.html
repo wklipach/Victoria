@@ -59,12 +59,15 @@
 
     <div class="col-10">
 
+
       <div class="d-flex flex-row justify-content-between">
+
         <div class="mx-2 text-muted" *ngIf="unreadMessageCount.toString() !== '0'" style="color: #53565A">Сообщения:
           <span class="badge badge-pill ml-3" style="color: #ffffff; background-color: #A6BBC8;">{{unreadMessageCount}}</span>
         </div>
 
-        <div class="mr-2" style="color: #53565A">{{this.userName+' '+this.userSurname}}</div>
+        <div class="mr-2" style="color: #53565A; margin-left: auto;">{{this.userName+' '+this.userSurname}}</div>
+
       </div>
 
 
