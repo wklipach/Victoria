@@ -6,18 +6,19 @@ import {AuthService} from '../../../services/auth-service.service';
 import {DatePipe} from '@angular/common';
 
 @Component({
-  selector: 'app-comment-new',
-  templateUrl: './comment-new.component.html',
-  styleUrls: ['./comment-new.component.css']
+  selector: 'app-biblio-new',
+  templateUrl: './biblio-new.component.html',
+  styleUrls: ['./biblio-new.component.css']
 })
-export class CommentNewComponent implements OnInit {
+export class BiblioNewComponent implements OnInit {
 
   @ViewChild('imageloadCard') public imageloadCard: ElementRef;
 
-  commentnewForm: FormGroup;
+  biblionewForm: FormGroup;
   id_user_vict = -1;
   id_branch_vict = -1;
   fromDate: Date;
+  fromDateStr = '';
   nick = '';
   BranchName = '';
   positionList = [];
@@ -25,14 +26,11 @@ export class CommentNewComponent implements OnInit {
   loading = false;
   sError = '';
   id_position_from = 0;
-  fromDateStr = '';
-  // intCheckInstructuion = 0;
 
   constructor(private cs: CommentService,
               private router: Router,
               private authService: AuthService) {
-
-    this.commentnewForm  = new FormGroup({
+    this.biblionewForm  = new FormGroup({
       'situation': new FormControl(''),
       'textPosition': new FormControl(''),
       'data_situation': new FormControl(''),
@@ -40,10 +38,10 @@ export class CommentNewComponent implements OnInit {
       'summa': new FormControl('')
       // 'checkInstructuion': new FormControl('')
     });
-
   }
 
   ngOnInit(): void {
+
     const Res = this.authService.loginStorage();
     if (!Res.bVictConnected) {
       this.router.navigate(['/login']);
@@ -61,10 +59,10 @@ export class CommentNewComponent implements OnInit {
 
     // this.id_position_from
     this.cs.getPositionUser(this.id_user_vict, this.id_branch_vict).subscribe(value => {
-        if (value[0]) {
-          this.id_position_from = value[0].id_position;
-        }
-      });
+      if (value[0]) {
+        this.id_position_from = value[0].id_position;
+      }
+    });
 
     this.authService.getBranchName(this.id_branch_vict).subscribe(
       value => {
@@ -158,7 +156,7 @@ export class CommentNewComponent implements OnInit {
 
             this.clerAllImage(i);
 
-            this.router.navigate(['/comment_laundry_last']);
+            this.router.navigate(['/biblio-laundry']);
           }
 
         });
@@ -178,80 +176,50 @@ export class CommentNewComponent implements OnInit {
 
     this.sError = '';
 
-    if (this.commentnewForm.controls['situation'].value === '') {
+    if (this.biblionewForm.controls['situation'].value === '') {
       this.sError = 'Опишите ситуцию.';
       return;
     }
 
-    if (this.commentnewForm.controls['data_situation'].value === '') {
+    if (this.biblionewForm.controls['data_situation'].value === '') {
       this.sError = 'Добавьте данные о ситуации.';
       return;
     }
 
-    if (this.commentnewForm.controls['data_solution'].value === '') {
+    if (this.biblionewForm.controls['data_solution'].value === '') {
       this.sError = 'Добавьте решение ситуации.';
       return;
     }
 
-    if (this.commentnewForm.controls['textPosition'].value === '') {
+    if (this.biblionewForm.controls['textPosition'].value === '') {
       this.sError = 'Выберите должность получателя.';
       return;
     }
 
-    // если это не инструкция проверяем внесена ли сумма
-    // if (this.intCheckInstructuion === 0) {
-      if (!Number(this.commentnewForm.controls['summa'].value)) {
-        this.sError = 'Внесите сумму.';
-        return;
-      }
-    // }
 
-    // если это инструкция проверяем вносим сумму 0
-    // if (this.intCheckInstructuion === 1) {
-    //  this.commentnewForm.controls['summa'].setValue('0');
-    // }
-
-
-    const curPosition =  this.positionList.find( el => el.id.toString() === this.commentnewForm.controls['textPosition'].value);
+    const curPosition =  this.positionList.find( el => el.id.toString() === this.biblionewForm.controls['textPosition'].value);
 
     if (!curPosition) {
       this.sError = 'Должность не найдена.';
       return;
     }
 
-    if (curPosition.id.toString()  === this.id_position_from.toString() ) {
-      this.sError = 'Вы не можете посылать записки в рамках одной должности.';
-      return;
-    }
-
     this.cs.setNewMessage(this.id_user_vict, this.id_position_from, curPosition.id, this.id_branch_vict,
-                          this.commentnewForm.controls['situation'].value.toString().trim(),
-                          this.commentnewForm.controls['data_situation'].value.toString().trim(),
-                          this.commentnewForm.controls['data_solution'].value.toString().trim(),
-                          this.commentnewForm.controls['summa'].value.toString().trim(),
-                          0).subscribe( value => {
+      this.biblionewForm.controls['situation'].value.toString().trim(),
+      this.biblionewForm.controls['data_situation'].value.toString().trim(),
+      this.biblionewForm.controls['data_solution'].value.toString().trim(),
+      0,
+      1).subscribe( value => {
 
       if (this.indexImg > 0) {
         this.onPostImageAvatar(value['insertId']);
       } else {
-        this.router.navigate(['/comment_laundry_last']);
+        this.router.navigate(['/biblio-laundry']);
       }
 
-      });
+    });
 
   }
 
-/*
-  OnCheckInstructuion() {
-    console.log('checkInstructuion', this.commentnewForm.controls['checkInstructuion'].value);
-    if (Boolean(this.commentnewForm.controls['checkInstructuion'].value) === true) {
-      this.intCheckInstructuion = 1;
-      this.commentnewForm.controls['summa'].setValue('0');
-      this.commentnewForm.controls['summa'].disable();
-    } else {
-      this.intCheckInstructuion = 0;
-      this.commentnewForm.controls['summa'].enable();
-    }
-  }
- */
+
 }

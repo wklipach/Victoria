@@ -63,6 +63,8 @@ import {NgxGalleryModule} from '@kolkov/ngx-gallery';
 import { PersonalMenuComponent } from './victoriacomp/personal-menu/personal-menu.component';
 import { LaundryFaceWeekComponent } from './washhouse/laundry/laundry-face-week/laundry-face-week.component';
 import { HeaderMenuComponent } from './victoriacomp/header-menu/header-menu.component';
+import { BiblioLaundryComponent } from './washhouse/biblio-laundry/biblio-laundry.component';
+import { BiblioNewComponent } from './washhouse/biblio-laundry/biblio-new/biblio-new.component';
 
 registerLocaleData(localeRu);
 
@@ -98,6 +100,8 @@ const appRoutes: Routes = [
   {path: 'branch-selection', component: BranchSelectionComponent},
   {path: 'comment-new', component: CommentNewComponent},
   {path: 'comment_laundry_last', component: CommentLaundryLastComponent},
+  {path: 'biblio-laundry', component: BiblioLaundryComponent},
+  {path: 'biblio-new', component: BiblioNewComponent},
   {path: '**', component: NotFoundComponent }
 ];
 
@@ -151,7 +155,9 @@ const appRoutes: Routes = [
     CommentImageComponent,
     PersonalMenuComponent,
     LaundryFaceWeekComponent,
-    HeaderMenuComponent
+    HeaderMenuComponent,
+    BiblioLaundryComponent,
+    BiblioNewComponent
   ],
   imports: [
     BrowserModule,

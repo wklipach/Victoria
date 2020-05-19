@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ShiftService} from '../../services/shift.service';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth-service.service';
-import {LaundryService} from '../services/laundry.service';
-import { LOCALE_ID } from '@angular/core';
 import {DatePipe} from '@angular/common';
 import {CommentService} from '../services/comment.service';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-comment-laundry',
@@ -22,16 +19,13 @@ export class CommentLaundryComponent implements OnInit {
   id_position_from = -1;
   arrLine = [];
   intTypeMessage = 1;
-  unreadMessageCount = 0;
 
   commentLaundryForm: FormGroup;
 
   constructor(private router: Router,
               private cs: CommentService,
               private authService: AuthService) {
-    this.commentLaundryForm  = new FormGroup({
-      'checkMessage': new FormControl('1')
-    });
+              this.commentLaundryForm  = new FormGroup({});
   }
 
   ngOnInit(): void {
@@ -54,7 +48,7 @@ export class CommentLaundryComponent implements OnInit {
     this.cs.getPositionUser(this.id_user_vict, this.id_branch_vict).subscribe(value => {
       if (value[0]) {
         this.id_position_from = value[0].id_position;
-        this.intTypeMessage = this.commentLaundryForm.controls['checkMessage'].value;
+        // this.intTypeMessage = this.commentLaundryForm.controls['checkMessage'].value;
         this.loadDateType(this.intTypeMessage);
       }
     });
@@ -86,7 +80,6 @@ export class CommentLaundryComponent implements OnInit {
       this.arrLine = arrLine;
 
     });
-
   }
 
   loadDateMessage(id_user, id_branch, id_position) {
@@ -150,8 +143,10 @@ export class CommentLaundryComponent implements OnInit {
     this.router.navigate(['/comment-new']);
   }
 
-  onClickCheck() {
+/*
+onClickCheck() {
     this.intTypeMessage = this.commentLaundryForm.controls['checkMessage'].value;
     this.loadDateType(this.intTypeMessage);
   }
+ */
 }

@@ -54,6 +54,10 @@ export class PersonalMenuComponent implements OnInit {
            return;
       }
 
+      if (Array(aRes[0]).length === 0 ) {
+        return;
+      }
+
       const S = aRes[0].avatar_name;
       if (S !== '""' && (S)) {
         if (typeof S !== 'undefined') {

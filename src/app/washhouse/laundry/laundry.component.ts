@@ -7,6 +7,7 @@ import {GlobalRef} from '../../services/globalref';
 import {CommentService} from '../services/comment.service';
 import { timer } from 'rxjs/observable/timer';
 import {Observable} from 'rxjs';
+import {HttpParams} from '@angular/common/http';
 declare var jQuery: any;
 
 @Component({
@@ -20,6 +21,7 @@ export class LaundryComponent implements OnInit, AfterViewChecked {
   titleShiftDate: Date;
   titleShift = '';
   id_user_vict = -1;
+  id_branch_vict = -1;
   userName = '';
   userSurname = '';
   sEndShift = 'Закончить смену';
@@ -92,8 +94,8 @@ export class LaundryComponent implements OnInit, AfterViewChecked {
 
     if (Res.bVictConnected) {
       this.id_user_vict = Res.id_user_vict;
+      this.id_branch_vict = Res.id_branch_vict;
     }
-
 
     this.loadInfo();
     this.onLoadFromBaseAvatar();
@@ -213,6 +215,15 @@ export class LaundryComponent implements OnInit, AfterViewChecked {
     this.sAvatarPath = '';
     this.authService.getUserFromId(this.id_user_vict).subscribe((aRes) => {
       console.log('laundry', 'onLoadFromBaseAvatar', 'aRes=', aRes);
+
+      if (!aRes) {
+        return;
+      }
+
+      if (Array(aRes).length === 0) {
+        return;
+      }
+
       const S = aRes[0].avatar_name;
       if (S !== '""' && (S)) {
         if (typeof S !== 'undefined') {
@@ -238,4 +249,18 @@ export class LaundryComponent implements OnInit, AfterViewChecked {
      }
    }
 
+  onNavigateUnreadMessage() {
+    // смотрим что последнее непрочитанное - инструкция или письмо, к тому и переходим
+   this.cs.getLastUnreadMessage(this.id_user_vict, this.id_branch_vict).subscribe( value => {
+    if (value) {
+       if (value[0][0].result_response.toString() === '3') {
+         this.router.navigate(['/biblio-laundry']);
+       }
+
+      if (value[0][0].result_response.toString() !== '3') {
+        this.router.navigate(['/comment-laundry']);
+      }
+    }
+   });
+  }
 }

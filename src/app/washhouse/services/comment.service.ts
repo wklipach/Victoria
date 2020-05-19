@@ -18,6 +18,14 @@ export class CommentService {
 
   }
 
+  getLastUnreadMessage(id_user, id_branch) {
+    const params = new HttpParams()
+      .set('last_unread_message', 'last_unread_message')
+      .set('id_user', id_user)
+      .set('id_branch', id_branch);
+    return this.http.get(this.gr.sUrlGlobal + 'comment', {params: params});
+  }
+
   getMessageUnreadCount(id_user, id_branch, date_begin, date_end) {
     const params = new HttpParams()
       .set('get_unread_count', 'get_unread_count')
@@ -77,8 +85,6 @@ export class CommentService {
     return this.http.get(this.gr.sUrlGlobal + 'comment', {params: params});
   }
 
-
-
   getCheckpositionBranch(id_branch) {
     const params = new HttpParams()
       .set('get_checkposition_branch', 'get_checkposition_branch')
@@ -86,7 +92,8 @@ export class CommentService {
     return this.http.get(this.gr.sUrlGlobal + 'comment', {params: params});
   }
 
-  setNewMessage(id_user_from, id_position_from, id_position_to, id_branch, situation, data_situation, data_solution, summa, int_instruction) {
+  setNewMessage(id_user_from, id_position_from, id_position_to, id_branch, situation, data_situation,
+                data_solution, summa, int_instruction) {
 
     const new_message = { 'insert_new_message': 'insert_new_message',
                           'id_user_from' : id_user_from,

@@ -13,7 +13,7 @@
 
     <div class="row">
 
-    <div class="col-sm-12 col-md-12 col-lg-4"><p class="p-0"><span class="mr-4">Дата:</span><span class="mr-4 text-muted font-weight-bold">{{fromDate | date: 'dd.MM.yyyy hh:mm'}}</span></p></div>
+    <div class="col-sm-12 col-md-12 col-lg-4"><p class="p-0"><span class="mr-4">Дата:</span><span class="mr-4 text-muted font-weight-bold">{{fromDateStr}}</span></p></div>
     <div class="col-sm-12 col-md-12 col-lg-4"> <p class="p-0"><span class="mr-4">От:</span><span class="mr-4 text-muted font-weight-bold">{{nick}}</span></p></div>
     <div class="col-sm-12 col-md-12 col-lg-4"><p class="p-0"><span class="mr-4">Отделение:</span><span class="mr-4 text-muted font-weight-bold">{{BranchName}}</span></p></div>
     </div>
@@ -73,23 +73,27 @@
     <span class="font-weight-bold pt-2 mr-5">Сумма, &#8381;</span>
         <input formControlName="summa" class="form-control w-25" placeholder="Сумма">
 
-
+<!--
   <button class="btn btn-link font-weight-bold ml-auto" type="button" data-toggle="collapse" data-target="#collapseInstruction" aria-expanded="false" aria-controls="collapseInstruction">
     Инструкция
   </button>
-    </div>
+-->
+  </div>
+
   {{ sError }}
 
 
   <div class="d-flex justify-content-between my-2">
         <button class="btn btn-outline-primary my-5 mb-1" (click)="saveMassage()">Отправить</button>
 
+<!--
     <div class="collapse" id="collapseInstruction">
       <div class="custom-control custom-checkbox">
         <input type="checkbox" class="custom-control-input" id="checkboxInstruction" formControlName="checkInstructuion" (change)="OnCheckInstructuion()">
         <label class="custom-control-label text-muted font-weight-bold" for="checkboxInstruction">Оформить как инструкцию</label>
       </div>
     </div>
+-->
 
   </div>
 
