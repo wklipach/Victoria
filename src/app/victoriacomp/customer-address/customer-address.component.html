@@ -12,7 +12,7 @@
       <div *ngFor="let al2 of addressList; let i = index" [class]="al2.id_address === this.selectedID ? 'tab-pane fade active show' : 'tab-pane fade' " [id]="'address'+al2.id_address">
        <!--   <h2 class="h4 mb-3">{{titleString}} {{al2.address}}</h2> -->
           <div class="alert" role="alert" style="background-color: #A6BBC8">
-            {{beginString}} <strong>{{al2.address}}</strong> {{endString}}
+            {{beginString}} <span class="font-weight-bold h5">{{al2.address}}</span> {{endString}}
           </div>
         </div>
 

@@ -1,28 +1,28 @@
-<nav class="navbar">
-  <ul class="nav" style="padding-left: 9.5rem">
+<nav class="navbar py-1">
+  <ul class="nav" style="padding-left: 11rem">
 
     <li class="nav-item">
       <a class="nav-link photo dropdown-toggle align-items-lg-end" data-toggle="dropdown" href="#">
 
         <div class="mr-5" *ngIf="this.sAvatarPath.length>0;then contentLoadAvatar else contentDefault">{{this.sUserName}}</div>
         <ng-template #contentLoadAvatar>
-          <img [src]="this.sAvatarPath" class="rounded-circle" style="width: 60px;height: 60px;" alt="{{this.sUserName}}" id="img">
+          <img [src]="this.sAvatarPath" class="rounded-circle" style="width: 56px;height: 56px;" alt="{{this.sUserName}}" id="img">
         </ng-template>
         <ng-template #contentDefault>
-          <img src="/assets/img/usernull.png" class="rounded-circle" style="width: 60px;height: 60px;" alt="{{this.sUserName}}">
+          <img src="/assets/img/usernull.png" class="rounded-circle" style="width: 56px;height: 56px;" alt="{{this.sUserName}}">
         </ng-template>
       </a>
 
-      <div class="dropdown-menu" style="width: 260px">
+      <div class="dropdown-menu" style="width: 262px;">
 
         <a class="nav-link py-2" href="parlor" [style] = "getStyleName(100)">
-          <p class="icon icon-profile mx-2 mt-2" style="font-size: 32px;">
+          <p class="icon icon-profile mx-2 mt-1" style="font-size: 32px;">
             <span class="ml-2" style="font-size: 20px;">Кабинет</span>
           </p>
         </a>
 
         <a *ngIf="id_user_vict === 1" class="nav-link py-2" href="admin" [style] = "getStyleName(101)">
-          <p class="icon icon-admin mx-2 mt-2" style="font-size: 32px;">
+          <p class="icon icon-admin mx-2 mt-1" style="font-size: 32px;">
             <span class="ml-2" style="font-size: 20px;">Администрирование</span>
           </p>
         </a>
@@ -32,7 +32,7 @@
         <a class="nav-link py-3 pl-3" href="graph-laundry" [style] = "getStyleName(103)"><i class="fa fa-money fa-lg mr-2"></i>Графики</a>
 
 -->
-        <a class="nav-link py-2 mx-2 mt-2" (click)="logout()" [style] = "getStyleName(104)">
+        <a class="nav-link py-2 mx-2 mt-1" (click)="logout()" [style] = "getStyleName(104)">
           <p class="icon icon-exit" style="font-size: 30px;">
             <span class="ml-2" style="font-size: 20px;">Выход</span>
           </p>

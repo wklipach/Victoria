@@ -1,3 +1,4 @@
+<app-header-menu></app-header-menu>
 <div class="container-fluid">
 
   <div class="row">
@@ -290,8 +291,8 @@
               <div class="card-body pt-2 p-0">
                 <div class="d-flex justify-content-between">
                   <label class="font-weight-bold pt-2 w-25">Общий вес:</label>
-                  <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getMassaText('massa')}}&nbsp;</p>
-                  <p class="w-25"><input type="text" [class]="getClassName('massa')"  formControlName="massa" placeholder="кг" id="name40" name="name40"></p>
+                  <p class="alert-danger">{{getMassaText('massa')}}</p>
+                  <p class="w-25 ml-auto"><input type="text" [class]="getClassName('massa')"  formControlName="massa" placeholder="кг" id="name40" name="name40"></p>
                   <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('massa')"><i class="fa fa-plus"></i></p>
                   <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('massa')"><i class="fa fa-minus"></i></p>
                 </div>
