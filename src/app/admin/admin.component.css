@@ -1,9 +1,10 @@
 .list-group-item:hover {
-  background-color: #a1ccfb;
+  background-color: #eef1f2;
   font-weight: bold;
 }
 
 li.active{
-  background-color: #a1ccfb;
+  color: #1193ff;
+  background-color: #eef1f2;
   font-weight: bold;
 }
