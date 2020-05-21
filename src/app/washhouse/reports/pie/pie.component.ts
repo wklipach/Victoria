@@ -15,7 +15,16 @@ declare var google: any;
 export class PieComponent implements OnInit, DoCheck  {
 
   @Input() pieDatas = [];
+  @Input() pieIdAddress = [];
   differ: any;
+
+  colorAdress =  [{id: 1, color: 'Blue'},
+                 {id: 2, color: 'Crimson'},
+                 {id: 3, color: 'Orange'},
+                 {id: 4, color: 'Green'},
+                 {id: 5, color: 'Gold'},
+                 {id: 6, color: 'SkyBlue'},
+                 {id: 7, color: 'PeachPuff'}];
 
   constructor(differs: IterableDiffers) {
     this.differ = differs.find([]).create(null);
@@ -41,7 +50,7 @@ export class PieComponent implements OnInit, DoCheck  {
     let timeout;
     timeout = setInterval(() => {
       if (google.visualization !== undefined) {
-        drawChart(this.pieDatas);
+        drawChart(this.pieDatas, this.pieIdAddress, this.colorAdress);
         clearInterval(timeout);
       }
     }, 300);
@@ -49,15 +58,35 @@ export class PieComponent implements OnInit, DoCheck  {
 
     // google.charts.setOnLoadCallback(drawChart(this.datas));
 
-    function drawChart(chartData) {
+    function drawChart(chartData, chartAddress, colorAdress) {
       console.log('chartData', chartData);
       const data = new google.visualization.DataTable();
       data.addColumn('string', 'address');
       data.addColumn('number', 'count');
       data.addRows(chartData);
 
+      // Blue, Crimson, Orange, Green, SlateBlue, SkyBlue, PeachPuff
+      const mySlice = {};
+      if (chartAddress) {
+        Object.keys(chartAddress).forEach(key => {
+          console.log('this.pieIdAddress', key, chartAddress[key]);
+          const yColor  = colorAdress.find(a => a.id === chartAddress[key]);
+          if (yColor) {
+            mySlice[key] = {color: yColor.color};
+          }
+        });
+        console.log('mySlice', mySlice);
+      }
+
       // trigger: 'none'
       const options = {title: 'Выработка', is3D: 'true', pieSliceText: 'value', pieStartAngle: '0',  tooltip: { isHtml: true}};
+
+      if ('0' in mySlice) {
+        options['slices'] = mySlice;
+      }
+
+      console.log('options', options);
+
       const chart = new google.visualization.PieChart(document.getElementById('piechart'));
       chart.draw(data, options);
     }

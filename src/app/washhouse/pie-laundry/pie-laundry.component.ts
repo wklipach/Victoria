@@ -19,6 +19,7 @@ export class PieLaundryComponent implements OnInit {
   id_user_vict = -1;
   id_branch_vict = -1;
   dataPie = [];
+  dataIdAddress = [];
 
   constructor(private rs: ReportService,
               private authService: AuthService,
@@ -172,12 +173,16 @@ export class PieLaundryComponent implements OnInit {
       value => {
         if (value) {
           const currentPie = [];
+          const currentAddress = [];
           if (value[0]) {
               const res = value[0];
               Object.keys(res).forEach(key => {
                 currentPie.push([res[key].address, res[key].massa]);
+                currentAddress.push(res[key].id_address);
               });
           }
+
+          this.dataIdAddress = currentAddress;
           this.dataPie = currentPie;
         }
       });
