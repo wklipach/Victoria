@@ -1,30 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import Dygraph from 'dygraphs';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ReportService} from '../services/report.service';
 import {AuthService} from '../../services/auth-service.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-graph',
-  templateUrl: './graph.component.html',
-  styleUrls: ['./graph.component.css']
+  selector: 'app-pie-laundry',
+  templateUrl: './pie-laundry.component.html',
+  styleUrls: ['./pie-laundry.component.css']
 })
-export class GraphComponent implements OnInit {
+export class PieLaundryComponent implements OnInit {
   dateBegin: Date;
   dateEnd: Date;
   currentDate: Date;
 
-  graphForm: FormGroup;
+  pieForm: FormGroup;
   intPeriod = 0;
   id_user_vict = -1;
   id_branch_vict = -1;
+  dataPie = [];
 
   constructor(private rs: ReportService,
               private authService: AuthService,
               private router: Router) {
-    this.graphForm = new FormGroup({
-      'groupYear': new FormControl('')
+    this.pieForm = new FormGroup({
+      'groupYear': new FormControl(''),
+      'inputOper': new FormControl('')
     });
   }
 
@@ -40,9 +41,18 @@ export class GraphComponent implements OnInit {
 
     this.dateBegin = new Date();
     this.dateEnd = new Date();
-    this.graphForm.controls['groupYear'].setValue('1');
+    this.pieForm.controls['groupYear'].setValue('1');
 
-    this.intPeriod = this.graphForm.controls['groupYear'].value;
+    this.pieForm.controls['inputOper'].setValue('1');
+
+    this.intPeriod = this.pieForm.controls['groupYear'].value;
+    this.currentDate = new Date();
+    this.drawPeriod(Number(this.intPeriod), this.currentDate);
+
+  }
+
+  onNow() {
+    this.intPeriod = this.pieForm.controls['groupYear'].value;
     this.currentDate = new Date();
     this.drawPeriod(Number(this.intPeriod), this.currentDate);
   }
@@ -51,11 +61,11 @@ export class GraphComponent implements OnInit {
 
     let Res = [];
 
-   if (i === 1) {
-     Res = this.getMonthBounds(currentDate);
-     this.dateBegin = Res[0];
-     this.dateEnd = Res[1];
-   }
+    if (i === 1) {
+      Res = this.getMonthBounds(currentDate);
+      this.dateBegin = Res[0];
+      this.dateEnd = Res[1];
+    }
 
     if (i === 2) {
       Res = this.getQuarterBounds(currentDate);
@@ -69,53 +79,11 @@ export class GraphComponent implements OnInit {
       this.dateEnd = Res[1];
     }
 
-   this.graph_load(this.dateBegin, this.dateEnd);
+    this.pie_load(this.dateBegin, this.dateEnd);
 
   }
 
-  graph_load(dateBegin, dateEnd) {
-
-    this.rs.getSelectGraph(this.id_user_vict, this.id_branch_vict, this.dateBegin, this.dateEnd, this.intPeriod).subscribe(
-      (value: Array<any>) => {
-        const data = [];
-        value[0].forEach((element, ih) => {
-          const dd = new Date(element.date_shift);
-          const summa = element.summa;
-          data.push([dd, summa]);
-        });
-
-        if (data.length === 0) {
-          data.push([this.dateBegin, 0]);
-          data.push([this.dateEnd, 0]);
-        }
-
-        const g = new Dygraph(
-          document.getElementById('graph'),
-          data,
-          { fillGraph: true, drawAxis: true, showLabelsOnHighlight: false, color: '#87CEFA', labels: ['Date', 'Series1'] }
-        );
-
-      }
-    );
-  }
-
-
-/* ОБРАЗЕЦ
-  payment_graph() {
-
-const data = [];
-data.push([new Date(2020, 4, 3, 0, 0, 0, 0), 1]);
-data.push([new Date(2020, 4, 5, 0, 0, 0, 0), 2]);
-data.push([new Date(2020, 4, 6, 0, 0, 0, 0), 3]);
-    const g = new Dygraph(
-      document.getElementById('graph'),
-      data,
-      { fillGraph: true, drawAxis: true, showLabelsOnHighlight: false, color: '#87CEFA' }
-    );
-  }
- */
-
-// границы квартала
+  // границы квартала
   getQuarterBounds(date) {
 
     const qDate = new Date(date);
@@ -127,9 +95,9 @@ data.push([new Date(2020, 4, 6, 0, 0, 0, 0), 3]);
 // границы года
   getYearBounds(date) {
     // первый день года
-  const firstDayCurrYear  = new Date(date.getFullYear(), 0, 1);
-  // Аналогичным образом находим последний день текущего года как 31 число 11 месяца.
-  const lastDayCurrYear  = new Date(date.getFullYear(), 11, 31);
+    const firstDayCurrYear  = new Date(date.getFullYear(), 0, 1);
+    // Аналогичным образом находим последний день текущего года как 31 число 11 месяца.
+    const lastDayCurrYear  = new Date(date.getFullYear(), 11, 31);
     return [firstDayCurrYear, lastDayCurrYear];
   }
 
@@ -144,24 +112,12 @@ data.push([new Date(2020, 4, 6, 0, 0, 0, 0), 3]);
     return [firstDayCurrMonth, lastDayCurrMonth];
   }
 
-  onClick() {
-    this.intPeriod = this.graphForm.controls['groupYear'].value;
-    console.log('this.intPeriod', this.intPeriod, this.currentDate);
-    this.drawPeriod(Number(this.intPeriod), this.currentDate);
-  }
-
-  onNow() {
-    this.intPeriod = this.graphForm.controls['groupYear'].value;
-    this.currentDate = new Date();
-    this.drawPeriod(Number(this.intPeriod), this.currentDate);
-  }
-
   onClickLeft() {
 
     this.currentDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
     // уменьшаяем на 1 месяц
     if (Number(this.intPeriod) === 1) {
-       this.currentDate.setMonth(this.currentDate.getMonth() - 1);
+      this.currentDate.setMonth(this.currentDate.getMonth() - 1);
     }
 
     // уменьшаяем на 1 квартал
@@ -194,6 +150,37 @@ data.push([new Date(2020, 4, 6, 0, 0, 0, 0), 3]);
     }
 
     this.drawPeriod(Number(this.intPeriod), this.currentDate);
+  }
+
+  onClick() {
+    this.intPeriod = this.pieForm.controls['groupYear'].value;
+    this.drawPeriod(Number(this.intPeriod), this.currentDate);
+  }
+
+  onOperChange() {
+    this.intPeriod = this.pieForm.controls['groupYear'].value;
+    this.drawPeriod(Number(this.intPeriod), this.currentDate);
+  }
+
+
+
+  pie_load(dateBegin, dateEnd) {
+
+    const intType = this.pieForm.controls['inputOper'].value;
+
+    this.rs.getSelectPie(this.id_branch_vict, this.dateBegin.toISOString() , this.dateEnd.toISOString(), intType).subscribe(
+      value => {
+        if (value) {
+          const currentPie = [];
+          if (value[0]) {
+              const res = value[0];
+              Object.keys(res).forEach(key => {
+                currentPie.push([res[key].address, res[key].massa]);
+              });
+          }
+          this.dataPie = currentPie;
+        }
+      });
   }
 
 }

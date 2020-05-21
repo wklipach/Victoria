@@ -39,7 +39,7 @@
                   (click)="calendar()" >
             Календарь
           </button>
-          <button class="btn btn-outline-primary my-3 mr-auto"
+          <button class="btn btn-outline-primary my-3 mr-2"
                   data-toggle="collapse"
                   data-target="#collapseGraph"
                   aria-expanded="false"
@@ -48,15 +48,29 @@
                   style="width: 8rem">
             График
           </button>
+
+          <button class="btn btn-outline-primary my-3 mr-auto"
+                  data-toggle="collapse"
+                  data-target="#collapsePie"
+                  aria-expanded="false"
+                  aria-controls="collapsePie"
+                  (click)="pie()"
+                  style="width: 8rem">
+            Выработка
+          </button>
+
         </div>
 
         <div class="col-xs-12 col-lg-5">
           <div class="d-flex justify-content-end">
             <button type="button" class="btn btn-outline-primary my-3" (click)="onShift()">{{titleShift}}</button>
             <button type="button" class="btn btn-outline-primary my-3 ml-2" (click)="logout()">Выход из системы</button>
-
           </div>
         </div>
+
+
+
+
       </div>
 
       <!--   Кнопки
@@ -122,6 +136,13 @@
               <app-graph></app-graph>
             </div>
           </div>
+
+          <div class="collapse" id="collapsePie">
+            <div *ngIf="showPie">
+              <app-pie-laundry></app-pie-laundry>
+            </div>
+          </div>
+
 
 
         </div>

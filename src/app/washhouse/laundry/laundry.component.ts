@@ -38,8 +38,10 @@ export class LaundryComponent implements OnInit, AfterViewChecked {
 
   showCalender = false;
   showGraph = false;
+  showPie = false;
   booleanNowGraph = false;
   booleanNowCalendar = false;
+  booleanNowPie = false;
 
 
   constructor(private router: Router, private authService: AuthService,
@@ -234,6 +236,15 @@ export class LaundryComponent implements OnInit, AfterViewChecked {
       }
     });
   }
+
+
+  pie() {
+    this.showPie = !this.showPie;
+    if (this.showPie) {
+      this.booleanNowPie = true;
+    }
+  }
+
 
   graph() {
      this.showGraph = !this.showGraph;

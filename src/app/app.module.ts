@@ -65,6 +65,8 @@ import { LaundryFaceWeekComponent } from './washhouse/laundry/laundry-face-week/
 import { HeaderMenuComponent } from './victoriacomp/header-menu/header-menu.component';
 import { BiblioLaundryComponent } from './washhouse/biblio-laundry/biblio-laundry.component';
 import { BiblioNewComponent } from './washhouse/biblio-laundry/biblio-new/biblio-new.component';
+import { PieComponent } from './washhouse/reports/pie/pie.component';
+import { PieLaundryComponent } from './washhouse/pie-laundry/pie-laundry.component';
 
 registerLocaleData(localeRu);
 
@@ -157,7 +159,9 @@ const appRoutes: Routes = [
     LaundryFaceWeekComponent,
     HeaderMenuComponent,
     BiblioLaundryComponent,
-    BiblioNewComponent
+    BiblioNewComponent,
+    PieComponent,
+    PieLaundryComponent
   ],
   imports: [
     BrowserModule,
