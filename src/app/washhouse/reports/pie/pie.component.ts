@@ -79,16 +79,19 @@ export class PieComponent implements OnInit, DoCheck  {
       }
 
       // trigger: 'none'
-      const options = {title: 'Выработка', is3D: 'true', pieSliceText: 'value', pieStartAngle: '0',  tooltip: { isHtml: true}};
+      const options = {title: 'Выработка', is3D: 'true',
+                       pieSliceText: 'value', pieStartAngle: '0',
+                       chartArea: {left: 20, top: 0, width: '200%', height: '200%'},
+                       tooltip: { isHtml: true}};
 
       if ('0' in mySlice) {
         options['slices'] = mySlice;
       }
 
-      console.log('options', options);
 
       const chart = new google.visualization.PieChart(document.getElementById('piechart'));
       chart.draw(data, options);
+
     }
   }
 }
