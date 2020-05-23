@@ -110,6 +110,19 @@ export class LaundryComponent implements OnInit, AfterViewChecked {
 
     this.authService.getBranchName(Res.id_branch_vict).subscribe(
       value => {
+
+        if (!value) {
+          return;
+        }
+
+        if (!value[0]) {
+          return;
+        }
+
+        if (!value[0].name) {
+          return;
+        }
+
         this.BranchName = value[0].name;
       });
 
