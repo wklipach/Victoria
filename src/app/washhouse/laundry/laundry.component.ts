@@ -222,7 +222,11 @@ export class LaundryComponent implements OnInit, AfterViewChecked {
         return;
       }
 
-      if (Array(aRes).length === 0) {
+      if (!aRes[0]) {
+        return;
+      }
+
+      if (!aRes[0].avatar_name) {
         return;
       }
 
