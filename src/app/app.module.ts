@@ -67,6 +67,7 @@ import { BiblioLaundryComponent } from './washhouse/biblio-laundry/biblio-laundr
 import { BiblioNewComponent } from './washhouse/biblio-laundry/biblio-new/biblio-new.component';
 import { PieComponent } from './washhouse/reports/pie/pie.component';
 import { PieLaundryComponent } from './washhouse/pie-laundry/pie-laundry.component';
+import { C3pieComponent } from './add-library/c3pie/c3pie.component';
 
 registerLocaleData(localeRu);
 
@@ -161,7 +162,8 @@ const appRoutes: Routes = [
     BiblioLaundryComponent,
     BiblioNewComponent,
     PieComponent,
-    PieLaundryComponent
+    PieLaundryComponent,
+    C3pieComponent
   ],
   imports: [
     BrowserModule,
