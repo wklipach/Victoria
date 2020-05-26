@@ -1,23 +1,39 @@
-
 .panel-heading{
-  color: red;
+  color: #53565A;
   font-size:2em;
+  float: left;
+  margin-bottom: 5%;
 }
 
 
 #chart{
-  width:50%;
-  height:50%;
+  width:90%;
+  height:90%;
+  float: left;
+  margin-bottom: 30px;
 }
 
 .panel-default{
   width:100%;
-  margin-bottom: 300px;
+
 
 }
-  .legend2 {
-    font-size: 10px;
+ .legend2 {
+   width: 50%;
+    font-size: 24px;
+    font-weight: 600;
+
+    color: white;
  }
+
+
+
+
+
+
+/*
+
+ <div class="legend2" style="display: inline-flex">
 
 .legend {
   padding: 5px;
@@ -25,14 +41,11 @@
   background: yellow;
   box-shadow: 2px 2px 1px #888;
 }
-
-
 .legend-item{
-  margin-right:12px;
+  color: red;
 }
 
 
-/*
 li.list-group-item {
   background-color: red; }
 .legend span {
