@@ -49,8 +49,16 @@ export class C3pieComponent implements OnInit, AfterViewInit {
     }
 
     // d3.selectAll('.container').node().classList.add('legend2');
-    d3.select('.container').node().classList.add('legend2');
-    d3.select('.container').insert('div', '.chart').attr('class', 'legend').selectAll('span')
+    // d3.select('.container').node().classList.add('legend2');
+
+
+    const legend =
+    d3.select('.container')
+      .insert('div', '.chart')
+      .attr('class', 'legend col-md-2')
+      .insert('ul').attr('class', 'list-group');
+    legend
+      .selectAll('span')
       .data(['data1', 'data2', 'data3'])
       .enter().append('div')
       .attr('data-id', function (id) { return id; })
@@ -68,6 +76,7 @@ export class C3pieComponent implements OnInit, AfterViewInit {
       });
 
   }
+
 
 
 
