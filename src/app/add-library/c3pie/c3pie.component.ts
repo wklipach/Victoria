@@ -57,14 +57,13 @@ export class C3pieComponent implements OnInit, AfterViewInit {
 
 
      // вставоять тут вот так
-        .style('width', '250px')
-        .style('height', '100px')
-        .style('border', 'solid 1px black')
-        .style('color', 'red');
+        .style('width', '35%')
+        .style('font-size', '1.5em')
+        .style('color', 'white')
+        .style('font-weight', '600');
+
 
      // вставка закончена
-
-
 
 
     legend

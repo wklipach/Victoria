@@ -1,14 +1,14 @@
 .panel-heading{
   color: #53565A;
-  font-size:2em;
+  font-size:2.2em;
   float: left;
   margin-bottom: 5%;
 }
 
 
 #chart{
-  width:90%;
-  height:90%;
+  width: 90%;
+  height: 90%;
   float: left;
   margin-bottom: 30px;
 }
@@ -19,7 +19,7 @@
 
 }
  .legend2 {
-   width: 50%;
+   width: 100%;
     font-size: 24px;
     font-weight: 600;
 
