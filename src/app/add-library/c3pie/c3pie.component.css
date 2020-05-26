@@ -26,15 +26,18 @@
     color: white;
  }
 
-
-
+.legend div {
+  width: 33.333333%;
+  display: inline-flex;
+  text-align: left;
+  cursor: pointer;
+  color: white;
+}
 
 
 
 /*
-
  <div class="legend2" style="display: inline-flex">
-
 .legend {
   padding: 5px;
   font: 10px sans-serif;

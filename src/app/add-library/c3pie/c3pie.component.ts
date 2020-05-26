@@ -48,8 +48,45 @@ export class C3pieComponent implements OnInit, AfterViewInit {
       chart.toggle(id);
     }
 
-    // d3.selectAll('.container').node().classList.add('legend2');
-    d3.select('.container').node().classList.add('legend2');
+
+
+    const legend =
+      d3.select('.container')
+        .insert('div', '.chart')
+        .attr('class', 'legend')
+
+
+     // вставоять тут вот так
+        .style('width', '250px')
+        .style('height', '100px')
+        .style('border', 'solid 1px black')
+        .style('color', 'red');
+
+     // вставка закончена
+
+
+
+
+    legend
+      .selectAll('span')
+      .data(['data1', 'data2', 'data3'])
+      .enter().append('div')
+      .attr('data-id', function (id) { return id; })
+      .html(function (id) { return id; })
+      .each(function (id) {
+        d3.select(this).style('background-color', chart.color(id));
+      })
+      .on('mouseover', function (id) {
+      chart.focus(id);
+      })
+      .on('mouseout', function (id) {
+        chart.revert();
+      })
+      .on('click', function (id) {
+        chart.toggle(id);
+      });
+
+/*
     d3.select('.container').insert('div', '.chart').attr('class', 'legend').selectAll('span')
       .data(['data1', 'data2', 'data3'])
       .enter().append('div')
@@ -66,6 +103,7 @@ export class C3pieComponent implements OnInit, AfterViewInit {
       .on('click', function (id) {
         chart.toggle(id);
       });
+ */
 
   }
 
