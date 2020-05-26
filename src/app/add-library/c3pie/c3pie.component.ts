@@ -40,7 +40,7 @@ export class C3pieComponent implements OnInit, AfterViewInit {
         type: 'pie'
       },
       legend: {
-        show: false
+        show: true
       }
     });
 
