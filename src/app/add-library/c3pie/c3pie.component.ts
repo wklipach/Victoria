@@ -48,9 +48,11 @@ export class C3pieComponent implements OnInit, AfterViewInit {
       chart.toggle(id);
     }
 
+    // d3.selectAll('.container').node().classList.add('legend2');
+    d3.select('.container').node().classList.add('legend2');
     d3.select('.container').insert('div', '.chart').attr('class', 'legend').selectAll('span')
       .data(['data1', 'data2', 'data3'])
-      .enter().append('span')
+      .enter().append('div')
       .attr('data-id', function (id) { return id; })
       .html(function (id) { return id; })
       .each(function (id) {

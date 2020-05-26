@@ -1,3 +1,4 @@
+
 .panel-heading{
   color: red;
   font-size:2em;
@@ -14,12 +15,11 @@
   margin-bottom: 300px;
 
 }
+  .legend2 {
+    font-size: 10px;
+ }
 
-.legend {
-  display: inline-flex;
-  width: auto;
-  font-size: 18px;
-}
+
 .legend-item{
   margin-right:12px;
 }
