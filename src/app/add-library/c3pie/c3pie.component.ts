@@ -35,12 +35,25 @@ export class C3pieComponent implements OnInit, AfterViewInit {
         columns: [
           ['data1', 100],
           ['data2', 300],
-          ['data3', 200]
+          ['data3', 200],
+          ['data4', 200],
+          ['data5', 200],
+          ['data6', 200],
         ],
-        type: 'pie'
+        type: 'pie',
+        colors: {
+          data1: '#ff0000',
+          data2: '#00ff00',
+          data3: '#0000ff',
+          data4: '#ff0000',
+          data5: '#00ff00',
+          data6: '#0000ff'}
+
+
+
       },
       legend: {
-        show: false
+          position: 'bottom',
       }
     });
 
@@ -48,61 +61,9 @@ export class C3pieComponent implements OnInit, AfterViewInit {
       chart.toggle(id);
     }
 
-
-
-    const legend =
-      d3.select('.container')
-        .insert('div', '.chart')
-        .attr('class', 'legend')
-
-
-     // вставоять тут вот так
-        .style('width', '35%')
-        .style('font-size', '1.5em')
-        .style('color', 'white')
-        .style('font-weight', '600');
-
-
-     // вставка закончена
-
-
-    legend
-      .selectAll('span')
-      .data(['data1', 'data2', 'data3'])
-      .enter().append('div')
-      .attr('data-id', function (id) { return id; })
-      .html(function (id) { return id; })
-      .each(function (id) {
-        d3.select(this).style('background-color', chart.color(id));
-      })
-      .on('mouseover', function (id) {
-      chart.focus(id);
-      })
-      .on('mouseout', function (id) {
-        chart.revert();
-      })
-      .on('click', function (id) {
-        chart.toggle(id);
-      });
-
-/*
-    d3.select('.container').insert('div', '.chart').attr('class', 'legend').selectAll('span')
-      .data(['data1', 'data2', 'data3'])
-      .enter().append('div')
-      .attr('data-id', function (id) { return id; })
-      .html(function (id) { return id; })
-      .each(function (id) {
-        d3.select(this).style('background-color', chart.color(id));
-      }).on('mouseover', function (id) {
-          chart.focus(id);
-    })
-      .on('mouseout', function (id) {
-        chart.revert();
-      })
-      .on('click', function (id) {
-        chart.toggle(id);
-      });
- */
+    d3.selectAll('.c3-legend-item').each(function() {
+      d3.select(this).style('font-size', '14px');
+    });
 
   }
 
