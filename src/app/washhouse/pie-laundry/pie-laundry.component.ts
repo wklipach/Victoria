@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ReportService} from '../services/report.service';
 import {AuthService} from '../../services/auth-service.service';
@@ -18,15 +18,38 @@ export class PieLaundryComponent implements OnInit {
   intPeriod = 0;
   id_user_vict = -1;
   id_branch_vict = -1;
-  dataPie = [];
-  dataIdAddress = [];
+  bigArrayDate1 = [];
+  bigArrayColor1 = [];
+  bigArrayDate2 = [];
+  bigArrayColor2 = [];
+  bigArrayDate3 = [];
+  bigArrayColor3 = [];
+  bigArrayDate4 = [];
+  bigArrayColor4 = [];
+  bigArrayDate5 = [];
+  bigArrayColor5 = [];
+  bigArrayDate6 = [];
+  bigArrayColor6 = [];
+
+
+  colorAdress =  [{id: 1, color: '#597ba8'}, // Синий
+                  {id: 2, color: '#82a2cd'}, // Светло синий
+                  {id: 3, color: '#bf68a6'}, // Красный
+                  {id: 4, color: '#78b27c'}, // Зеленый
+                  {id: 5, color: '#c6a2bc'}, // Светло розовый
+                  {id: 6, color: '#b0ceb2'}, // Светло зеленый
+                  {id: 7, color: '#f3b200'}, // Желтый
+                  {id: 8, color: '#e7e271'}, // Светло желтый
+                  {id: 9, color: '#d2a544'}, // Оранжевый
+                  {id: 10, color: '#dbbf83'} // Светло оранжевый
+  ];
+
 
   constructor(private rs: ReportService,
               private authService: AuthService,
               private router: Router) {
     this.pieForm = new FormGroup({
-      'groupYear': new FormControl(''),
-      'inputOper': new FormControl('')
+      'groupYear': new FormControl('')
     });
   }
 
@@ -43,8 +66,6 @@ export class PieLaundryComponent implements OnInit {
     this.dateBegin = new Date();
     this.dateEnd = new Date();
     this.pieForm.controls['groupYear'].setValue('1');
-
-    this.pieForm.controls['inputOper'].setValue('1');
 
     this.intPeriod = this.pieForm.controls['groupYear'].value;
     this.currentDate = new Date();
@@ -80,7 +101,13 @@ export class PieLaundryComponent implements OnInit {
       this.dateEnd = Res[1];
     }
 
-    this.pie_load(this.dateBegin, this.dateEnd);
+
+    this.pie_load(this.id_branch_vict, this.dateBegin, this.dateEnd, 1);
+    this.pie_load(this.id_branch_vict, this.dateBegin, this.dateEnd, 2);
+    this.pie_load(this.id_branch_vict, this.dateBegin, this.dateEnd, 3);
+    this.pie_load(this.id_branch_vict, this.dateBegin, this.dateEnd, 4);
+    this.pie_load(this.id_branch_vict, this.dateBegin, this.dateEnd, 5);
+    this.pie_load(this.id_branch_vict, this.dateBegin, this.dateEnd, 6);
 
   }
 
@@ -164,7 +191,70 @@ export class PieLaundryComponent implements OnInit {
   }
 
 
+  pie_load(id_branch, date_begin, date_end, inttype) {
 
+    const currentPie = [];
+    const var_masColor = [];
+
+    this.rs.getSelectPie(id_branch, date_begin.toISOString(), date_end.toISOString(), inttype).subscribe(
+      value => {
+        if (value) {
+          if (value[0]) {
+            const res = value[0];
+            Object.keys(res).forEach( (key) => {
+              currentPie.push([res[key].address, res[key].massa]);
+              const curColor = this.colorAdress.find( arrAddr => arrAddr.id === Number(res[key].id_address)).color;
+              var_masColor.push([res[key].address, curColor]);
+            });
+          }
+
+          switch ( inttype ) {
+            case 1:
+              this.bigArrayDate1 = currentPie;
+              this.bigArrayColor1 = var_masColor;
+              break;
+            case 2:
+              this.bigArrayDate2 = currentPie;
+              this.bigArrayColor2 = var_masColor;
+              break;
+            case 3:
+              this.bigArrayDate3 = currentPie;
+              this.bigArrayColor3 = var_masColor;
+              break;
+            case 4:
+              this.bigArrayDate4 = currentPie;
+              this.bigArrayColor4 = var_masColor;
+              break;
+            case 5:
+              this.bigArrayDate5 = currentPie;
+              this.bigArrayColor5 = var_masColor;
+              break;
+            case 6:
+              this.bigArrayDate6 = currentPie;
+              this.bigArrayColor6 = var_masColor;
+              break;
+            default:
+              this.bigArrayDate1 = [];
+              this.bigArrayColor1 = [];
+              this.bigArrayDate2 = [];
+              this.bigArrayColor2 = [];
+              this.bigArrayDate3 = [];
+              this.bigArrayColor3 = [];
+              this.bigArrayDate4 = [];
+              this.bigArrayColor4 = [];
+              this.bigArrayDate5 = [];
+              this.bigArrayColor5 = [];
+              this.bigArrayDate6 = [];
+              this.bigArrayColor6 = [];
+              break;
+          }
+
+        }
+      });
+  }
+
+
+/*
   pie_load(dateBegin, dateEnd) {
 
     const intType = this.pieForm.controls['inputOper'].value;
@@ -187,5 +277,6 @@ export class PieLaundryComponent implements OnInit {
         }
       });
   }
+*/
 
 }

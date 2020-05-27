@@ -18,6 +18,8 @@ export class ReportService {
       .set('date_begin', date_begin)
       .set('date_end', date_end)
       .set('type', type);
+
+    console.log('getSelectPie=', type);
     return this.http.get(this.gr.sUrlGlobal + 'report', {params: params});
   }
 

@@ -5,7 +5,16 @@
       <h3 class="alert alert-dark mt-3" style="background-color: #eef1f2;">Выработка отделения</h3>
 
       <div class="card my-5 p-3">
+<!--
         <app-pie [pieDatas]='dataPie' [pieIdAddress]="dataIdAddress" ></app-pie>
+-->
+        <app-c3pie [pieId]="1" [pieData]="bigArrayDate1" [pieColor]="bigArrayColor1" ></app-c3pie>
+        <app-c3pie [pieId]="2" [pieData]="bigArrayDate2" [pieColor]="bigArrayColor2" ></app-c3pie>
+        <app-c3pie [pieId]="3" [pieData]="bigArrayDate3" [pieColor]="bigArrayColor3" ></app-c3pie>
+        <app-c3pie [pieId]="4" [pieData]="bigArrayDate4" [pieColor]="bigArrayColor4" ></app-c3pie>
+        <app-c3pie [pieId]="5" [pieData]="bigArrayDate5" [pieColor]="bigArrayColor5" ></app-c3pie>
+        <app-c3pie [pieId]="6" [pieData]="bigArrayDate6" [pieColor]="bigArrayColor6" ></app-c3pie>
+
       </div>
 
 
@@ -13,14 +22,6 @@
 
 
         <form [formGroup]="pieForm">
-
-          <select class="form-control" id="inputOper" formControlName="inputOper" title="Выбрать пол" (change)="onOperChange()">
-            <option [value]="1">Приемка</option>
-            <option [value]="2">Ремонт</option>
-            <option [value]="3">Стирка</option>
-            <option [value]="4">Склад</option>
-            <option [value]="5">Отгружено</option>
-          </select>
 
 
           <div class="row">
