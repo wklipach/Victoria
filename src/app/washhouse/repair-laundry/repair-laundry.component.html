@@ -288,6 +288,7 @@
             </div>
 
 
+            <div *ngIf="boolMassa">
             <div class="card mb-2 px-3">
               <div class="card-body pt-2 p-0">
                 <div class="d-flex justify-content-between">
@@ -299,6 +300,7 @@
                   <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('massa')"><i class="fa fa-minus"></i></p>
                 </div>
               </div>
+            </div>
             </div>
 
 
@@ -326,8 +328,7 @@
                       repairForm.value.n16=='' &&
                       repairForm.value.n17=='' &&
                       repairForm.value.n18=='' &&
-                      repairForm.value.n19=='' &&
-                      repairForm.value.massa==''">
+                      repairForm.value.n19=='' ">
 
             Отправить</button>
 

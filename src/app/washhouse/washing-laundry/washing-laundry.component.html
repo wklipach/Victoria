@@ -287,6 +287,7 @@
               </div>
             </div>
 
+            <div *ngIf="boolMassa">
             <div class="card mb-2 px-3">
               <div class="card-body pt-2 p-0">
                 <div class="d-flex justify-content-between">
@@ -297,6 +298,7 @@
                   <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('massa')"><i class="fa fa-minus"></i></p>
                 </div>
               </div>
+            </div>
             </div>
 
           </div> <!-- end col -6 -->
@@ -325,8 +327,7 @@
                       washingForm.value.n16=='' &&
                       washingForm.value.n17=='' &&
                       washingForm.value.n18=='' &&
-                      washingForm.value.n19=='' &&
-                      washingForm.value.massa==''">
+                      washingForm.value.n19==''">
 
             Отправить</button>
 

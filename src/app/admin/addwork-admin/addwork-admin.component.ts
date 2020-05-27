@@ -35,7 +35,9 @@ export class AddworkAdminComponent implements OnInit {
     this.addworkForm = new FormGroup({
       'inputNewAW': new FormControl('', []),
       'inputChangeAW': new FormControl('', []),
-      'inputBranch': new FormControl('', [])
+      'inputBranch': new FormControl('', []),
+      'checkNewSpend': new FormControl('', []),
+      'checkChangeSpend': new FormControl('', [])
     });
   }
 
@@ -48,6 +50,8 @@ export class AddworkAdminComponent implements OnInit {
     Object.keys(this.addworkForm.controls).forEach(key => {
       if (this.addworkForm.controls[key] !== this.addworkForm.controls['inputNewAW'] &&
         this.addworkForm.controls[key] !== this.addworkForm.controls['inputChangeAW'] &&
+        this.addworkForm.controls[key] !== this.addworkForm.controls['checkNewSpend'] &&
+        this.addworkForm.controls[key] !== this.addworkForm.controls['checkChangeSpend'] &&
         this.addworkForm.controls[key] !== this.addworkForm.controls['inputBranch']) {
         this.addworkForm.removeControl(key);
       }
@@ -127,6 +131,7 @@ export class AddworkAdminComponent implements OnInit {
   reloadAllInput() {
     this.sAwName = this.selectedAW.name;
     this.addworkForm.controls['inputChangeAW'].setValue(this.selectedAW.name);
+    this.addworkForm.controls['checkChangeSpend'].setValue(this.selectedAW.flagspend);
     this.sErrorChangeAW = '';
     this.sErrorNewAW = '';
   }
@@ -139,6 +144,7 @@ export class AddworkAdminComponent implements OnInit {
 
     if (!this.selectedAW) {
       this.addworkForm.controls['inputChangeAW'].setValue('');
+      this.addworkForm.controls['checkChangeSpend'].setValue('');
     }
   }
 
@@ -152,7 +158,8 @@ export class AddworkAdminComponent implements OnInit {
       return;
     }
 
-    this.adminserv.setAddWork(sName).subscribe( value => {
+    const bSpend = Boolean(this.addworkForm.controls['checkNewSpend'].value);
+    this.adminserv.setAddWork(sName, bSpend).subscribe( value => {
       this.RouterReload();
     });
     //
@@ -172,7 +179,10 @@ export class AddworkAdminComponent implements OnInit {
       return;
     }
 
-    this.adminserv.setChangeAddWork(this.selectedAW.id, sName,).subscribe(value => {
+
+    const bSpend = Boolean(this.addworkForm.controls['checkChangeSpend'].value);
+
+    this.adminserv.setChangeAddWork(this.selectedAW.id, sName, bSpend).subscribe(value => {
       this.RouterReload();
     });
 

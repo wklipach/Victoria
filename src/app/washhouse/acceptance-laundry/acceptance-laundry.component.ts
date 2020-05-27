@@ -21,6 +21,7 @@ export class AcceptanceLaundryComponent implements OnInit {
 
   // Цвет вадидации, элемент, разрешенное из базыколичество, показываемое на экране значение
   arrayFlag: [number, string, number, string][] = [[0, 'init', -1, 'init']];
+  bitMassa = false;
 
   constructor(private router: Router,
               private authService: AuthService,
@@ -179,10 +180,12 @@ export class AcceptanceLaundryComponent implements OnInit {
       return;
     }
 
+/*
     if (!Check.checkValueMassa(this.acclaundform)) {
       this.sError = 'Вы не указали массу белья.';
       return;
-    }
+   }
+ */
 
     const res_user = this.authService.loginStorage();
     const id_branch = this.authService.getBranch(res_user.id_user_vict);

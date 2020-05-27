@@ -35,9 +35,9 @@ export class AdminService {
   }
 
   // добавдяем новую допработу
-  setAddWork(newName) {
+  setAddWork(newName, bSpend) {
     const sUrl = this.gr.sUrlGlobal + 'admin';
-    const data_addwork = { 'insert_addwork': 'insert_addwork', 'name': newName};
+    const data_addwork = { 'insert_addwork': 'insert_addwork', 'name': newName, 'flagspend': bSpend};
     return this.http.post(sUrl, data_addwork);
   }
 
@@ -106,9 +106,9 @@ export class AdminService {
   }
 
 // изменяем допуслугу
-  setChangeAddWork(id, newName) {
+  setChangeAddWork(id, newName, bSpend) {
     const sUrl = this.gr.sUrlGlobal + 'admin';
-    const data_addwork = { 'update_addwork': 'update_addwork', 'id': id, 'work_name': newName};
+    const data_addwork = { 'update_addwork': 'update_addwork', 'id': id, 'work_name': newName, 'flagspend': bSpend};
     return this.http.post(sUrl, data_addwork);
   }
 

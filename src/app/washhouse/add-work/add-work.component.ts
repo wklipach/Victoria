@@ -15,8 +15,10 @@ import {ShiftService} from '../../services/shift.service';
 export class AddWorkComponent implements OnInit {
 
   public detailList: any;
+  public  detailSpendList: any;
   public id_user_vict = -1;
   addworkForm: FormGroup;
+  addworkSpendForm: FormGroup;
   sError = '';
 
   constructor(private router: Router,
@@ -25,6 +27,7 @@ export class AddWorkComponent implements OnInit {
               private shiftservice: ShiftService,
               private excel: ExcelService) {
     this.addworkForm  = new FormGroup({});
+    this.addworkSpendForm  = new FormGroup({});
   }
 
   ngOnInit(): void {
@@ -43,13 +46,23 @@ export class AddWorkComponent implements OnInit {
     // this.LoadInfo(this.id_user_vict);
 
     this.ls.getAddWork().subscribe( (value: Array<any>) => {
-      this.detailList = value;
-      console.log(value);
+      this.detailList = value.filter( v => !Boolean(v.flagspend) ) ;
+      this.detailSpendList = value.filter( v => Boolean(v.flagspend) ) ;
+      console.log('value', value);
 
       value.forEach(d => {
-        this.addworkForm.addControl(d.id, new FormControl('',
-                                  [Validators.required, Check.victNullValidator(d.id)]));
 
+        // если это простая допработа а не расходы
+        if (!Boolean(d.flagspend)) {
+          this.addworkForm.addControl(d.id, new FormControl('',
+            [Validators.required, Check.victNullValidator(d.id)]));
+        }
+
+        // если это расходы
+        if (Boolean(d.flagspend)) {
+          this.addworkSpendForm.addControl(d.id, new FormControl('',
+            [Validators.required, Check.victNullValidator(d.id)]));
+        }
       });
 //      this.addworkForm.addControl('1', new FormControl('', Validators.required));
     });
@@ -88,6 +101,8 @@ export class AddWorkComponent implements OnInit {
 
   send_data() {
     this.sError = '';
+
+    /* МАССИВ С ПРОСТЫМИ ДОПОЛНИТЕЛЬНЫМИ РАБОТАМИ */
     const mas_res = [];
     let boolPositive = false;
     Object.keys(this.addworkForm.controls).forEach(key => {
@@ -97,13 +112,28 @@ export class AddWorkComponent implements OnInit {
             mas_res.push( {id: key});
           }
     });
+   /* КОНЕЦ МАССИВА С ПРОСТЫМИ ДОПОЛНИТЕЛЬЫМИ РАБОТАМИ */
 
-    if (!boolPositive) {
+
+    /* МАССИВ С ДОПОЛНИТЕЛЬНЫМИ РАСХОДАМИ */
+    const mas_spend = [];
+    let boolSpend = false;
+    Object.keys(this.addworkSpendForm.controls).forEach(key => {
+      const  sVal = this.addworkSpendForm.controls[key].value;
+      if (Number(sVal))  {
+        if (Number(sVal) > 0) {
+          boolSpend = true;
+          mas_spend.push({id: key, quant: sVal});
+        }
+      }
+    });
+    /* КОНЕЦ МАССИВА С ДОПОЛНИТЕЛЬНЫМИ РАСХОДАМИ */
+
+    if (!boolPositive && !boolSpend) {
       this.sError = 'Не найдено передаваемых значений.';
       return;
     }
 
-    console.log('mas_res', mas_res);
 
         const id_branch = this.authService.getBranch(this.id_user_vict);
         this.shiftservice.get_shiftuserbranch(this.id_user_vict, id_branch).subscribe( shift => {
@@ -111,7 +141,7 @@ export class AddWorkComponent implements OnInit {
 
             // прием доп. работ  в проводку в базе применительно к смене
             // console.log('shift[0]', shift[0]);
-            this.ls.setAddWork(mas_res, shift[0].id).subscribe( value => {
+            this.ls.setAddWork(mas_res, mas_spend, shift[0].id).subscribe( value => {
               console.log('value', value);
                if (value === true) {
                 this.router.navigate(['/addwork_laundry_last']);

@@ -373,6 +373,7 @@
               </div>
             </div>
 
+            <div *ngIf="bitMassa">
             <div class="card mb-2 px-3">
               <div class="card-body pt-2 p-0">
                 <div class="d-flex justify-content-between">
@@ -383,6 +384,7 @@
                   <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('massa')"><i class="fa fa-minus"></i></p>
                 </div>
               </div>
+            </div>
             </div>
 
 
@@ -410,8 +412,7 @@
                       acclaundform.value.n16=='' && acclaundform.value.n16_spoiled=='' &&
                       acclaundform.value.n17=='' && acclaundform.value.n17_spoiled=='' &&
                       acclaundform.value.n18=='' && acclaundform.value.n18_spoiled=='' &&
-                      acclaundform.value.n19=='' && acclaundform.value.n19_spoiled=='' &&
-                      acclaundform.value.massa==''"
+                      acclaundform.value.n19=='' && acclaundform.value.n19_spoiled=='' "
                   type="button" class="btn btn-outline-primary my-4">Отправить</button>
 
 

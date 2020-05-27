@@ -20,6 +20,7 @@ export class ShipmentLaundryComponent implements OnInit {
 
   // Цвет вадидации, элемент, разрешенное из базы количество, показываемое на экране значение
   arrayFlag: [number, string, number, string][] = [[0, 'init', -1, 'init']];
+  boolMassa = false ;
 
   constructor(private router: Router,
               private authService: AuthService,
@@ -246,10 +247,12 @@ export class ShipmentLaundryComponent implements OnInit {
       return;
     }
 
+/*
     if (!Check.checkValueMassa(this.shipmentForm)) {
       this.sError = 'Вы не указали массу белья.';
       return;
     }
+ */
 
     // очистка старого массива с валидацией
     this.arrayFlag.forEach( arr => {

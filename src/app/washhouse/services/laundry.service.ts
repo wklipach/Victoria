@@ -21,9 +21,9 @@ export class LaundryService {
     return this.http.post(sUrl, new_warehouse);
   }
 
-  setAddWork(mas_res: any, id_shift) {
+  setAddWork(mas_res: any, mas_spend: any, id_shift) {
     const sUrl = this.gr.sUrlGlobal + 'laundry';
-    const new_addwork = { 'addwork_insert': mas_res, 'id_shift' : id_shift};
+    const new_addwork = { 'addwork_insert': mas_res, 'addspend_insert': mas_spend, 'id_shift' : id_shift};
     return this.http.post(sUrl, new_addwork);
   }
 
@@ -97,6 +97,14 @@ export class LaundryService {
       .set('id_addwork', id_addwork.toString());
     return this.http.get(this.gr.sUrlGlobal + 'laundry', {params: params});
   }
+
+  getDetailAddworkAndSpend(id_addwork) {
+    const params = new HttpParams()
+      .set('detail_addwork_and_spend', 'detail_addwork_and_spend')
+      .set('id_addwork', id_addwork.toString());
+    return this.http.get(this.gr.sUrlGlobal + 'laundry', {params: params});
+  }
+
 
   getLastRepair(id_user, id_branch) {
     const params = new HttpParams()

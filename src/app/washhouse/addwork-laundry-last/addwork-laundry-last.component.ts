@@ -39,7 +39,7 @@ export class AddworkLaundryLastComponent implements OnInit {
       }
 
       // shipment - этооттдача со склада, поэтому детализация та же что и для склада
-      this.ls.getDetailAddwork(value[0].id).subscribe( detail => {
+      this.ls.getDetailAddworkAndSpend(value[0].id).subscribe( detail => {
         // console.log(detail);
         this.detailList = detail;
       });
