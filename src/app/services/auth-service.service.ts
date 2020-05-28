@@ -24,11 +24,12 @@ export class AuthService {
   }
 
 // заносим текущего пользователя в локальное хранилище
-  public setStorage(victUserName: string, bVictConnected: boolean, id_user_vict: number, id_branch_vict: number) {
+  public setStorage(victUserName: string, bVictConnected: boolean, id_user_vict: number, id_branch_vict: number, editor: number) {
     window.localStorage.setItem('victUserName', victUserName);
     window.localStorage.setItem('bVictConnected', JSON.stringify(bVictConnected));
     window.localStorage.setItem('id_user_vict', JSON.stringify(id_user_vict));
     window.localStorage.setItem('id_branch_vict', JSON.stringify(id_branch_vict));
+    window.localStorage.setItem('editor', JSON.stringify(editor));
   }
 
   // стираем текущего пользователя из локального хранилища
@@ -37,7 +38,8 @@ export class AuthService {
      window.localStorage.setItem('bVictConnected', JSON.stringify(false));
      window.localStorage.setItem('id_user_vict', JSON.stringify(-1));
      window.localStorage.setItem('bShiftBegin', JSON.stringify(false));
-    window.localStorage.setItem('id_branch_vict', JSON.stringify(-1));
+     window.localStorage.setItem('id_branch_vict', JSON.stringify(-1));
+    window.localStorage.setItem('editor', JSON.stringify(-1));
   }
 
 
@@ -75,14 +77,23 @@ export class AuthService {
     }
   }
 
-
+   getEditorStorage() {
+     if (window.localStorage.getItem('editor')) {
+        return  JSON.parse(window.localStorage.getItem('editor'));
+      } else  {
+        return -1;
+      }
+   }
 
   getItIsAdmin(id_user) {
-
+    let ed = 0;
     let bAdmin = false;
-    if (id_user === 1) {
+    if (window.localStorage.getItem('editor')) {
+      ed = JSON.parse(window.localStorage.getItem('editor'));
+    }
+    if (ed.toString() === '1'.toString()) {
       bAdmin = true;
-  }
+    }
     return Observable.of(bAdmin);
   }
 

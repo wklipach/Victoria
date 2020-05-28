@@ -1,9 +1,10 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {CommentService} from '../../services/comment.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../../services/auth-service.service';
 import {DatePipe} from '@angular/common';
+import {GlobalRef} from '../../../services/globalref';
 
 @Component({
   selector: 'app-comment-new',
@@ -15,6 +16,7 @@ export class CommentNewComponent implements OnInit {
   @ViewChild('imageloadCard') public imageloadCard: ElementRef;
 
   commentnewForm: FormGroup;
+  imageResGlobal = [];
   id_user_vict = -1;
   id_branch_vict = -1;
   fromDate: Date;
@@ -26,10 +28,12 @@ export class CommentNewComponent implements OnInit {
   sError = '';
   id_position_from = 0;
   fromDateStr = '';
+  numberOldZsr = -1;
   // intCheckInstructuion = 0;
 
   constructor(private cs: CommentService,
               private router: Router,
+              private gr: GlobalRef,
               private authService: AuthService) {
 
     this.commentnewForm  = new FormGroup({
@@ -40,6 +44,14 @@ export class CommentNewComponent implements OnInit {
       'summa': new FormControl('')
       // 'checkInstructuion': new FormControl('')
     });
+
+    if (this.router.getCurrentNavigation() &&
+      this.router.getCurrentNavigation().extras &&
+      this.router.getCurrentNavigation().extras.state &&
+      this.router.getCurrentNavigation().extras.state['numberOldZsr']) {
+      this.numberOldZsr =  Number(this.router.getCurrentNavigation().extras.state['numberOldZsr']);
+    }
+
 
   }
 
@@ -78,8 +90,42 @@ export class CommentNewComponent implements OnInit {
       });
     });
 
+
+    if (this.numberOldZsr > 0 ) {
+      this.LoadDataFromBase(this.numberOldZsr);
+    }
+
   }
 
+
+  LoadDataFromBase(id_message) {
+
+    this.cs.getMessage(id_message).subscribe(value => {
+
+      if (value[0]) {
+        // const dPipe = new DatePipe('ru');
+        // this.date_from =  dPipe.transform(value[0].date_from, 'dd.MM.yyyy   HH.mm');
+        this.BranchName = value[0].branch_name;
+        this.commentnewForm.controls['situation'].setValue(value[0].situation);
+        this.commentnewForm.controls['data_situation'].setValue(value[0].data_situation);
+        this.commentnewForm.controls['data_solution'].setValue(value[0].data_solution);
+        this.commentnewForm.controls['summa'].setValue(value[0].summa);
+        this.loadImageFromBase(id_message);
+      }
+    });
+  }
+
+  loadImageFromBase(id_message) {
+    const imageRes = [];
+    this.cs.getMessageImageList(id_message).subscribe((aRes: Array<any>) => {
+      if (aRes[0]) {
+        aRes.forEach((element, ih) => {
+          this.onFileFormOld(this.gr.sUrlImageGlobal + element.name);
+        });
+
+      }
+    });
+  }
 
   /* РАБОТА С ИЗОБРАЖЕНИЯМИ */
 
@@ -150,6 +196,7 @@ export class CommentNewComponent implements OnInit {
       const image = <HTMLImageElement>document.getElementById('img' + i.toString());
       console.log('image', image);
       console.log('image.src', image.src);
+      console.log('image.title', image.title);
       if (image !== undefined) {
         this.authService.updateImageMessageTable(image.src, image.title, id_message, i).subscribe(() => {
           this.loading = false;
@@ -201,8 +248,7 @@ export class CommentNewComponent implements OnInit {
     // если это не инструкция проверяем внесена ли сумма
     // if (this.intCheckInstructuion === 0) {
       if (!Number(this.commentnewForm.controls['summa'].value)) {
-        this.sError = 'Внесите сумму.';
-        return;
+        this.commentnewForm.controls['summa'].setValue('0');
       }
     // }
 
@@ -229,7 +275,14 @@ export class CommentNewComponent implements OnInit {
                           this.commentnewForm.controls['data_situation'].value.toString().trim(),
                           this.commentnewForm.controls['data_solution'].value.toString().trim(),
                           this.commentnewForm.controls['summa'].value.toString().trim(),
-                          0).subscribe( value => {
+                          0,
+                           this.numberOldZsr).subscribe( value => {
+
+      this.cs.sendTelegramm(this.nick, this.commentnewForm.controls['situation'].value.toString().trim()).subscribe(
+        () => {
+              console.log('send to telegramm');
+        }
+      );
 
       if (this.indexImg > 0) {
         this.onPostImageAvatar(value['insertId']);
@@ -241,17 +294,48 @@ export class CommentNewComponent implements OnInit {
 
   }
 
-/*
-  OnCheckInstructuion() {
-    console.log('checkInstructuion', this.commentnewForm.controls['checkInstructuion'].value);
-    if (Boolean(this.commentnewForm.controls['checkInstructuion'].value) === true) {
-      this.intCheckInstructuion = 1;
-      this.commentnewForm.controls['summa'].setValue('0');
-      this.commentnewForm.controls['summa'].disable();
-    } else {
-      this.intCheckInstructuion = 0;
-      this.commentnewForm.controls['summa'].enable();
+
+
+  onFileFormOld(filePath)  {
+
+    const elementFather = <HTMLElement>this.imageloadCard.nativeElement;
+    this.indexImg = this.indexImg + 1;
+    const indexImg = this.indexImg;
+    const img = new Image();
+    img.id = 'img' + indexImg.toString();
+    let ext = '';
+    const  parts = filePath.split('.');
+    if (parts.length > 1) {
+      ext = parts.pop();
     }
+    img.title = ext;
+    // img.height = 200;
+    img.onload = function() {
+      elementFather.appendChild(img);
+    };
+
+    this.toDataURL(filePath, img, this.da2 );
+
   }
- */
+
+
+   da2(dataBase64, img) {
+     img.src = dataBase64;
+   }
+
+   toDataURL(url, img,  callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+      const reader = new FileReader();
+      reader.onloadend = function() {
+        callback(reader.result, img);
+      };
+      reader.readAsDataURL(xhr.response);
+    };
+    xhr.open('GET', url);
+    xhr.responseType = 'blob';
+    xhr.send();
+  }
+
+
 }

@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {CommentService} from '../../services/comment.service';
 import {GlobalRef} from '../../../services/globalref';
 import {AuthService} from '../../../services/auth-service.service';
+import {Router} from '@angular/router';
 declare var jQuery: any;
 
 @Component({
@@ -35,7 +36,10 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
   intResp = 1;
 
 
-  constructor(private cs: CommentService,  private gr: GlobalRef, private authService: AuthService) {
+  constructor(private cs: CommentService,
+              private gr: GlobalRef,
+              private authService: AuthService,
+              private router: Router) {
     this.commentlineForm  = new FormGroup({ });
  }
 
@@ -198,5 +202,11 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
   ocClickResumeCheck() {
     this.sError = '';
     this.intResp = this.commentlineForm.controls['checkResume' + this.id_message].value;
+  }
+
+  onClickRespose() {
+    //
+    this.router.navigate(['/comment-new'], { state: { 'numberOldZsr' : this.id_message}});
+    //
   }
 }

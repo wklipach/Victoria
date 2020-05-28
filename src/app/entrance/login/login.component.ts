@@ -1,13 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {UserTable} from '../../class/UserTable';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import * as CryptoJS from 'crypto-js';
 import {timer} from 'rxjs';
 import {Subscription} from 'rxjs';
 import {AuthService} from '../../services/auth-service.service';
-import {AdminService} from '../../services/admin.service';
-import {BranchSelectionComponent} from '../branch-selection/branch-selection.component';
 
 
 @Component({
@@ -29,6 +26,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   selector_id_user = -1;
   selector_nick = '';
   arrayBranch: Array<any>;
+  editor = 0;
 
   constructor(private router: Router, private authService: AuthService) {
 
@@ -125,6 +123,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
         if (value[0].length === 1) {
 
+          this.editor = value[0][0].editor;
           const dbPassword = value[0][0].password;
           const sFormPassword = CryptoJS.SHA256(this.loginForm.controls['password'].value).toString();
           if (dbPassword !== sFormPassword) {
@@ -193,8 +192,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.showErr = false;
     this.showSucc = true;
     this.sResTrouble = '';
-    console.log('записали в хранилище', nick, true, id_user, id_branch)
-    this.authService.setStorage(nick, true, id_user, id_branch);
+    this.authService.setStorage(nick, true, id_user, id_branch, this.editor);
     // переходим на главную страницу
     this.router.navigate(['/laundry']);
   }

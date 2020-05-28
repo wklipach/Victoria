@@ -209,7 +209,7 @@ export class BiblioNewComponent implements OnInit {
       this.biblionewForm.controls['data_situation'].value.toString().trim(),
       this.biblionewForm.controls['data_solution'].value.toString().trim(),
       0,
-      1).subscribe( value => {
+      1, -1).subscribe( value => {
 
       if (this.indexImg > 0) {
         this.onPostImageAvatar(value['insertId']);

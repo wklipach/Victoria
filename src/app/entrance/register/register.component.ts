@@ -116,7 +116,7 @@ export class RegisterComponent implements OnInit {
     const curLetter = 'Спасибо за регистрацию. Надеемся, что вы найдете здесь решение ваших вопросов.';
 
     return this.authService.setNewUser(NewUser, curSubject, curLetter).subscribe((value) => {
-          this.authService.setStorage(value[0][0].nick, true, value[0][0].id, -1);
+          this.authService.setStorage(value[0][0].nick, true, value[0][0].id, -1, 0);
           this.router.navigate(['/login']);
         });
   }

@@ -1,13 +1,10 @@
-import {AfterViewChecked, AfterViewInit, Component, EventEmitter, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth-service.service';
 import {ShiftService} from '../../services/shift.service';
 import {ReportService} from '../services/report.service';
 import {GlobalRef} from '../../services/globalref';
 import {CommentService} from '../services/comment.service';
-import { timer } from 'rxjs/observable/timer';
-import {Observable} from 'rxjs';
-import {HttpParams} from '@angular/common/http';
 declare var jQuery: any;
 
 @Component({

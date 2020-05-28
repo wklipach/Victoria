@@ -12,6 +12,7 @@ export class PersonalMenuComponent implements OnInit {
 
   @Input() numberPage = 0;
   id_user_vict = -1;
+  editor = -1;
   public sAvatarPath  = '';
   sUserName = 'Фото';
 
@@ -23,6 +24,8 @@ export class PersonalMenuComponent implements OnInit {
     if (Res.bVictConnected) {
       this.id_user_vict = Res.id_user_vict;
     }
+
+     this.editor = this.authService.getEditorStorage();
 
     this.onLoadFromBaseAvatar();
 

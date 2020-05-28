@@ -9,6 +9,15 @@ export class CommentService {
 
   constructor(private http: HttpClient, private gr: GlobalRef) { }
 
+
+  sendTelegramm(nick, text) {
+    const params = new HttpParams()
+      .set('send_text', 'send_text')
+      .set('nick', nick)
+      .set('message', text);
+    return this.http.get(this.gr.sUrlGlobal + 'telegraph', {params: params});
+  }
+
   getPositionUser(id_user, id_branch) {
     const params = new HttpParams()
       .set('get_position_user', 'get_position_user')
@@ -93,7 +102,7 @@ export class CommentService {
   }
 
   setNewMessage(id_user_from, id_position_from, id_position_to, id_branch, situation, data_situation,
-                data_solution, summa, int_instruction) {
+                data_solution, summa, int_instruction, id_parent) {
 
     const new_message = { 'insert_new_message': 'insert_new_message',
                           'id_user_from' : id_user_from,
@@ -104,7 +113,8 @@ export class CommentService {
                           'data_situation': data_situation,
                           'data_solution': data_solution,
                           'summa': summa,
-                          'int_instruction': int_instruction };
+                          'int_instruction': int_instruction,
+                          'id_parent': id_parent};
     return this.http.post(this.gr.sUrlGlobal + 'comment', new_message);
   }
 

@@ -81,18 +81,23 @@ export class GraphComponent implements OnInit {
         value[0].forEach((element, ih) => {
           const dd = new Date(element.date_shift);
           const summa = element.summa;
-          data.push([dd, summa]);
+          const rating = element.rating;
+          data.push([dd, summa, rating]);
         });
 
+        console.log('data', data);
+
         if (data.length === 0) {
-          data.push([this.dateBegin, 0]);
-          data.push([this.dateEnd, 0]);
+          data.push([this.dateBegin, 0, 0]);
+          data.push([this.dateEnd, 0, 0]);
         }
 
         const g = new Dygraph(
           document.getElementById('graph'),
           data,
-          { fillGraph: true, drawAxis: true, showLabelsOnHighlight: false, color: '#87CEFA', labels: ['Date', 'Series1'] }
+          { fillGraph: true, drawAxis: true, showLabelsOnHighlight: false,
+            colors: ['#1E90FF', '#FFFF00'], // '#CD5C5C'],
+            labels: ['Date', 'Series1', 'Series2'] }
         );
 
       }
