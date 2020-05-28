@@ -1,18 +1,7 @@
-<div class="container-fluid">
+
+<div class="container-fluid mt-5">
   <div class="row">
-
-
-<!--
-    <div class="col-2">
-      <app-mainmenu [numberPage]="102"></app-mainmenu>
-    </div>
--->
-
-
-
-    <div class="col-10 mt-4">
-      <div class="row mb-4">
-        <div class="col-12 p-0">
+        <div class="col-12 col-md-10 ml-auto">
           <full-calendar (datesRender)="onChange()"
                          (eventClick)="myClick($event)"
                          [events]="calendarEvents"
@@ -22,17 +11,8 @@
                          [plugins]="calendarPlugins" style="width: 98%;">
 
           </full-calendar>
-        </div>
-      </div>
 
-
-
-
-      <!-- Button trigger modal
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCentered">
-        Надо вставить в модальное окно
-      </button>
-    -->
+          <div class="my-3"></div>
 
       <div class="modal" #summaryLaundryModal id="summaryLaundryModal" tabindex="-1" role="dialog" aria-labelledby="summaryLaundryModalLabel" aria-hidden="true">
         <div *ngIf="resultPay !== undefined">
@@ -88,48 +68,42 @@
 
 
 
-    </div>  <!-- col-10 -->
-  </div>   <!-- row 1 -->
+          <div class="card font-weight-bold text-muted p-3 mb-4" *ngIf="resultPay !== undefined">
+            <div class="d-flex justify-content-between">
+              <p class="m-0">Дата:</p>
+              <p class="m-0"> {{resultPay.payday | date:'dd.MM.yyyy'}}</p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p class="m-0">Часов:</p>
+              <p class="m-0">{{resultPay.payhour}}</p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p class="m-0">Оплата в час:</p>
+              <p class="m-0">{{resultPay.paymentperhour}}</p>
+            </div>
 
-  <div class="row">
-    <div class="col-12 p-0">
+            <div class="d-flex justify-content-between">
+              <p class="m-0">ЗСР:</p>
+              <p class="m-0">{{resultPay.paykoeff}}</p>
+            </div>
 
-      <div class="card font-weight-bold text-muted p-3 mb-4" *ngIf="resultPay !== undefined">
-        <div class="d-flex justify-content-between">
-          <p class="m-0">Дата:</p>
-          <p class="m-0"> {{resultPay.payday | date:'dd.MM.yyyy'}}</p>
-        </div>
-        <div class="d-flex justify-content-between">
-          <p class="m-0">Часов:</p>
-          <p class="m-0">{{resultPay.payhour}}</p>
-        </div>
-        <div class="d-flex justify-content-between">
-          <p class="m-0">Оплата в час:</p>
-          <p class="m-0">{{resultPay.paymentperhour}}</p>
-        </div>
+            <div class="d-flex justify-content-between">
+              <p class="m-0">Доп. работы:</p>
+              <p class="m-0">{{resultPay.payaddwork}}</p>
+            </div>
 
-        <div class="d-flex justify-content-between">
-          <p class="m-0">ЗСР:</p>
-          <p class="m-0">{{resultPay.paykoeff}}</p>
-        </div>
+            <div class="d-flex justify-content-between text-muted">
+              <p class="m-0">Итого, &#8381;:</p>
+              <p class="m-0">{{resultPay.paymentperhour}} * {{resultPay.payhour}} * {{resultPay.paykoeff}} + {{resultPay.payaddwork}} = </p>
+              <p class="m-0">{{resultPay.itogo}}</p>
+            </div>
+          </div>
 
-        <div class="d-flex justify-content-between">
-          <p class="m-0">Доп. работы:</p>
-          <p class="m-0">{{resultPay.payaddwork}}</p>
-        </div>
-
-        <div class="d-flex justify-content-between text-muted">
-          <p class="m-0">Итого, &#8381;:</p>
-          <p class="m-0">{{resultPay.paymentperhour}} * {{resultPay.payhour}} * {{resultPay.paykoeff}} + {{resultPay.payaddwork}} = </p>
-          <p class="m-0">{{resultPay.itogo}}</p>
-        </div>
-      </div>
+           <div class="card mb-4">
+             <app-summary-week [date_begin]="weekDateBegin" [date_end]="weekDateEnd" [id_user]="weekUser" [id_branch]="weekBranch"></app-summary-week>
+            </div>
 
 
-      <app-summary-week [date_begin]="weekDateBegin" [date_end]="weekDateEnd" [id_user]="weekUser" [id_branch]="weekBranch"></app-summary-week>
-
-
-    </div>
   </div>
-
-</div>  <!-- container -->
+ </div>
+</div> <!-- container -->

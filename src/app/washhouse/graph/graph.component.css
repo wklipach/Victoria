@@ -1,16 +1,20 @@
-@media screen and (min-width: 320px) and (max-width: 991.98px) {
-  .row{
-    margin:0;
-    padding:0;
-  }
+@media screen and (min-width: 300px) and (max-width: 575.98px) {
+
   #dateBegin{
     font-weight:400;
     font-size: .9em;
     color: #A6BBC8;
 
   }
+  .today{
+    position: absolute;
+    margin-top: 80px;
+    right: 4%;
+  }
+
+.date-text{
+  height: 170px;
+  font-size: .9rem;
 }
-.notPadd{
-  margin:0;
-  padding:0;
+
 }

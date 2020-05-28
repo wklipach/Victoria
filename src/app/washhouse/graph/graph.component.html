@@ -1,13 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12">
-<!--
-    <div class="col-2">
-      <app-mainmenu [numberPage]="103"></app-mainmenu>
-    </div>
--->
-
-
+    <div class="col-12 col-md-10 ml-auto">
 
       <h3 class="alert alert-dark mt-3" style="background-color: #eef1f2;">График</h3>
 
@@ -15,15 +8,11 @@
       <div id="graph"></div>
       </div>
 
-
-
-
-
       <form [formGroup]="graphForm">
 
       <div class="row">
-        <div class="col-md-12 col-lg-5">
-          <div class="card mb-3 p-2">
+        <div class="col-md-12 p-0 col-lg-5">
+          <div class="card mb-3 mx-3 p-2">
           <div class="d-flex justify-content-between my-4 mx-3">
   <div class="custom-control custom-radio">
     <input type="radio" id="value1" formControlName="groupYear" class="custom-control-input" value="1" (change)="onClick()">
@@ -42,26 +31,22 @@
           </div>
       </div>
         </div>
-        <div class="col-md-12 col-lg-7 notPadd">
-          <div class="card mb-3 p-0">
+        <div class="col-md-12 p-0 col-lg-7">
+          <div class="card mb-3 mx-3  p-0 date-text">
   <div class="d-flex justify-content-between my-4 mx-3">
 
   <button class="btn btn-outline-primary" (click)="onClickLeft()"><i class="fa fa-angle-double-left" aria-hidden="true"></i></button>
-  <p class="font-weight-bold text-muted" style="min-width: 15%;">{{dateBegin | date:'dd.MM.yyyy'}}-{{dateEnd | date:'dd.MM.yyyy'}}</p>
+  <p class="font-weight-bold text-muted">{{dateBegin | date:'dd.MM.yyyy'}}-{{dateEnd | date:'dd.MM.yyyy'}}</p>
   <button class="btn btn-outline-primary" (click)="onClickRifht()"><i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
-  <button class="btn btn-outline-primary" (click)="onNow()" > Сегодня </button>
+  <button class="btn btn-outline-primary today" (click)="onNow()" > Сегодня </button>
 
   </div>
       </div>
         </div>
       </div>
 
-
-
 </form>
 
-      </div>
-
-
+   </div>
   </div>
 </div>
