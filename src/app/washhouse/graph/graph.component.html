@@ -16,14 +16,14 @@
       </div>
 
 
-      <div class="card my-5 p-3">
+
 
 
       <form [formGroup]="graphForm">
 
       <div class="row">
-        <div class="col-md-12 col-lg-6">
-
+        <div class="col-md-12 col-lg-5">
+          <div class="card mb-3 p-2">
           <div class="d-flex justify-content-between my-4 mx-3">
   <div class="custom-control custom-radio">
     <input type="radio" id="value1" formControlName="groupYear" class="custom-control-input" value="1" (change)="onClick()">
@@ -41,8 +41,9 @@
   </div>
           </div>
       </div>
-
-        <div class="col-md-12 col-lg-6">
+        </div>
+        <div class="col-md-12 col-lg-7 notPadd">
+          <div class="card mb-3 p-0">
   <div class="d-flex justify-content-between my-4 mx-3">
 
   <button class="btn btn-outline-primary" (click)="onClickLeft()"><i class="fa fa-angle-double-left" aria-hidden="true"></i></button>
@@ -52,13 +53,13 @@
 
   </div>
       </div>
-
+        </div>
       </div>
 
 
 
 </form>
-    </div>
+
       </div>
 
 

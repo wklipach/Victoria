@@ -1,0 +1,29 @@
+@media screen and (min-width: 320px) and (max-width: 991.98px) {
+  .jumbotron{
+    margin:0;
+    padding:0;
+    background-color: #f9f9f9;
+  }
+  #BranchName{
+    font-weight:400;
+    font-size: 1.6em;
+    color: #A6BBC8;
+    left: 35px;
+    position: absolute;
+    padding-top: 6px;
+  }
+}
+
+@media screen and (min-width: 991.99px) and (max-width: 4200px) {
+  .jumbotron{
+    margin:0;
+    padding:0;
+    background-color: #f9f9f9;
+  }
+  #BranchName{
+    font-weight: 500;
+    font-size: 1.8em;
+    color: #A6BBC8;
+    padding-top: 10px;
+  }
+}   /* Конец media  */

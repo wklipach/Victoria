@@ -1,18 +1,18 @@
 <div class="row p-0">
   <div class="col-12 py-0">
 
-    <div class="jumbotron m-0 p-0" style="background-color: #f9f9f9;">
+    <div class="jumbotron">
 
 
       <div class="row">
         <div class="col-md-12 col-lg-4">
           <a href="#">
-          <img class="img-fluid p-0 mr-auto" src="/assets/img/viktoria-horizontal.png" alt="Victoria logotype" width="326" height="60">
+            <img class="img-fluid p-0 mr-auto" src="/assets/img/viktoria-horizontal.png" alt="Victoria logotype" width="326" height="60">
           </a>
         </div>
         <div class="col-md-12 col-lg-8">
           <div class="d-flex justify-content-end">
-            <p class="text-muted my-0 mr-auto ml-3 pt-1" *ngIf="BranchName.toString() !== ''" style="font-size: 1.8em; color: #A6BBC8"> {{BranchName}}</p>
+            <p class="text-muted" id="BranchName" *ngIf="BranchName.toString() !== ''"> {{BranchName}}</p>
             <app-personal-menu></app-personal-menu>
           </div>
         </div>

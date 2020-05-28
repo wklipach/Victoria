@@ -22,12 +22,20 @@
       </form>
 
 
+
+
       <form [formGroup]="addworkSpendForm" *ngFor="let sl of detailSpendList">
-            <label>{{sl.name}}</label>
-             <input type="text" id="addSpend{{sl.id}}" formControlName="{{sl.id}}">
+        <div class="card my-3 py-2 px-3 w-75">
+          <div class="d-inline-flex">
+            <label class="font-weight-bold text-muted ml-2 w-25">{{sl.name}}</label>
+             <input class="form-control"  type="text" id="addSpend{{sl.id}}" formControlName="{{sl.id}}" style="width: 100px">
+        </div>
+        </div>
       </form>
 
-      <button type="button" class="btn btn-outline-primary mt-3" (click)="send_data()">Отправить</button>
+
+
+  <button type="button" class="btn btn-outline-primary my-4" (click)="send_data()">Отправить</button>
       {{this.sError}}
 
     </div>
