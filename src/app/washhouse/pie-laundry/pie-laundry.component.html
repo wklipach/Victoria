@@ -4,28 +4,55 @@
 
       <h3 class="alert alert-dark mt-3" style="background-color: #eef1f2;">Выработка отделения</h3>
 
-      <div class="card my-5 p-3"><app-c3pie [pieId]="1" [pieData]="bigArrayDate1" [pieColor]="bigArrayColor1" ></app-c3pie></div>
-<!--
-        <app-pie [pieDatas]='dataPie' [pieIdAddress]="dataIdAddress" ></app-pie>
--->
+       <div class="row"> <!-- Первый ряд шаров -->
+        <div class="col-4">
+          <div class="card my-5 p-3">
+            <app-c3pie [pieId]="1" [pieData]="bigArrayDate1" [pieColor]="bigArrayColor1" ></app-c3pie>
+          </div>
+        </div>
 
-      <div class="card my-5 p-3">
-        <app-c3pie [pieId]="2" [pieData]="bigArrayDate2" [pieColor]="bigArrayColor2" ></app-c3pie>
+        <div class="col-4">
+          <div class="card my-5 p-3">
+            <app-c3pie [pieId]="2" [pieData]="bigArrayDate2" [pieColor]="bigArrayColor2" ></app-c3pie>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="card my-5 p-3">
+            <app-c3pie [pieId]="3" [pieData]="bigArrayDate3" [pieColor]="bigArrayColor3" ></app-c3pie>
+          </div>
+        </div>
+
       </div>
-      <div class="card my-5 p-3">
-        <app-c3pie [pieId]="3" [pieData]="bigArrayDate3" [pieColor]="bigArrayColor3" ></app-c3pie>
-      </div>
-      <div class="card my-5 p-3">
-        <app-c3pie [pieId]="4" [pieData]="bigArrayDate4" [pieColor]="bigArrayColor4" ></app-c3pie>
-      </div>
-      <div class="card my-5 p-3">
-        <app-c3pie [pieId]="5" [pieData]="bigArrayDate5" [pieColor]="bigArrayColor5" ></app-c3pie>
-      </div>
-      <div class="card my-5 p-3">
-        <app-c3pie [pieId]="6" [pieData]="bigArrayDate6" [pieColor]="bigArrayColor6" ></app-c3pie>
+
+      <div class="row"> <!-- Второй ряд шаров -->
+        <div class="col-4">
+          <div class="card my-5 p-3">
+            <app-c3pie [pieId]="4" [pieData]="bigArrayDate4" [pieColor]="bigArrayColor4" ></app-c3pie>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="card my-5 p-3">
+            <app-c3pie [pieId]="5" [pieData]="bigArrayDate5" [pieColor]="bigArrayColor5" ></app-c3pie>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="card my-5 p-3">
+            <app-c3pie [pieId]="6" [pieData]="bigArrayDate6" [pieColor]="bigArrayColor6" ></app-c3pie>
+          </div>
+        </div>
+
       </div>
 
 
+
+
+
+      <!--
+              <app-pie [pieDatas]='dataPie' [pieIdAddress]="dataIdAddress" ></app-pie>
+      -->
 
       <form [formGroup]="pieForm">
 
