@@ -46,12 +46,12 @@ export class PersonalMenuComponent implements OnInit {
 
   onLoadFromBaseAvatar() {
 
-    console.log('personal-menu', 'onLoadFromBaseAvatar');
+    console.log('personal-menu1', 'onLoadFromBaseAvatar');
 
     this.sAvatarPath = '';
     this.authService.getUserFromId(this.id_user_vict).subscribe((aRes) => {
 
-      console.log('personal-menu', 'onLoadFromBaseAvatar', 'aRes=', aRes);
+      console.log('personal-menu2 onLoadFromBaseAvatar');
 
       if (!aRes) {
         return;

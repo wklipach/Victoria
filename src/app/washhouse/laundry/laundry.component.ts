@@ -226,7 +226,6 @@ export class LaundryComponent implements OnInit, AfterViewChecked {
     console.log('laundry', 'onLoadFromBaseAvatar');
     this.sAvatarPath = '';
     this.authService.getUserFromId(this.id_user_vict).subscribe((aRes) => {
-      console.log('laundry', 'onLoadFromBaseAvatar', 'aRes=', aRes);
 
       if (!aRes) {
         return;
