@@ -28,7 +28,7 @@
       </div>
 
       <div class="collapse" id="collapseNewAD">
-        <div class="card card-body my-2">
+        <div class="card card-body my-2 mob">
           {{sErrorNewAD}}
 
           <div class="d-flex justify-content-between">
@@ -36,7 +36,7 @@
             <input formControlName="inputNewAD" type="text" class="form-control" placeholder="Адрес" aria-label="" aria-describedby="basic-addon1">
 <!--  <input formControlName="inputNewADBranch" type="text" class="form-control" placeholder="Филиал" aria-label="" aria-describedby="basic-addon1">  -->
 
-            <button class="btn btn-outline-primary ml-2" (click)="newAD()" type="button">Сохранить</button>
+            <button class="btn btn-outline-primary ml-2 btn-mob" (click)="newAD()" type="button">Сохранить</button>
 
           </div>
         </div>
@@ -44,7 +44,7 @@
 
       <div class="collapse" id="collapseChangeAD">
 
-        <div class="card card-body">
+        <div class="card card-body mob">
           {{sErrorChangeAD}}
 
           <div class="d-flex justify-content-between">
@@ -56,7 +56,7 @@
 
 
 
-            <button class="btn btn-outline-primary ml-2" (click)="OnChangeAD()" type="button">Изменить</button>
+            <button class="btn btn-outline-primary ml-2 btn-mob" (click)="OnChangeAD()" type="button">Изменить</button>
 
 
           </div>

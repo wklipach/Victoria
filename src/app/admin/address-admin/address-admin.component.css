@@ -8,3 +8,14 @@ li.active{
   background-color: #eef1f2;
   font-weight: bold;
 }
+
+@media screen and (min-width: 300px) and (max-width: 500px) {
+  .mob{
+    height:120px;
+  }
+  .btn-mob {
+    position: absolute;
+    margin-top: 50px;
+    right: 7%;
+  }
+}

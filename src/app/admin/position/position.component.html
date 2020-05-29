@@ -28,24 +28,24 @@
     </div>
 
     <div class="collapse" id="collapseNewPosition">
-      <div class="card card-body my-2">
+      <div class="card card-body my-2 mob">
         {{sErrorNewPosition}}
 
         <div class="d-flex justify-content-between">
           <input formControlName="inputNewPosition" type="text" class="form-control" placeholder="Должность" aria-label="" aria-describedby="basic-addon1">
-          <button class="btn btn-outline-primary ml-2" (click)="newPosition()" type="button">Сохранить</button>
+          <button class="btn btn-outline-primary ml-2 btn-mob" (click)="newPosition()" type="button">Сохранить</button>
       </div>
       </div>
     </div>
 
     <div class="collapse" id="collapseChangePosition">
 
-      <div class="card card-body">
+      <div class="card card-body mob">
         {{sErrorChangePosition}}
 
         <div class="d-flex justify-content-between">
           <input formControlName="inputChangePosition" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-          <button class="btn btn-outline-primary ml-2" (click)="OnChangePosition()" type="button">Изменить</button>
+          <button class="btn btn-outline-primary ml-2 btn-mob" (click)="OnChangePosition()" type="button">Изменить</button>
         </div>
 
       </div>
