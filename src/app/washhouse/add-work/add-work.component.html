@@ -10,20 +10,6 @@
 
       <div class="alert text-muted" style="background-color: #A6BBC8">Отметьте выполненные работы.</div>
 
-      <!--
-
-           <form class="d-flex justify-content-between my-3" [formGroup]="addworkForm" *ngFor="let dl of detailList">
-
-             <div class="card p-3 w-75">
-               <div class="custom-control custom-checkbox">
-                 <input type="checkbox" class="custom-control-input"  id="addWork{{dl.id}}" formControlName="{{dl.id}}">
-                 <label class="custom-control-label font-weight-bold text-muted ml-2" for="addWork{{dl.id}}">{{dl.name}}</label>
-               </div>
-             </div>
-           </form>
-
-           -->
-
 
      <form class="d-inline-block my-3 mr-3" [formGroup]="addworkForm" *ngFor="let dl of detailList">
 
@@ -37,17 +23,19 @@
 
 
 
-      <form class="d-inline-block my-3 mr-3" [formGroup]="addworkSpendForm" *ngFor="let sl of detailSpendList">
-        <div class="card my-3 py-2 px-3">
+      <form [formGroup]="addworkSpendForm" *ngFor="let sl of detailSpendList">
+        <div class="card my-3 py-2 px-3 w-25">
           <div class="d-inline-flex">
-            <label class="font-weight-bold text-muted ml-2 mr-3 pt-1">{{sl.name}}</label>
-             <input class="form-control"  type="text" id="addSpend{{sl.id}}" formControlName="{{sl.id}}" style="width: 100px">
-        </div>
+            <label class="font-weight-bold text-muted ml-2 pt-2">{{sl.name}}</label>
+            <input class="form-control ml-auto"  type="text" id="addSpend{{sl.id}}" formControlName="{{sl.id}}" style="width: 100px">
+          </div>
         </div>
       </form>
 
 
-   <div class="clearfix"></div>
+
+
+      <div class="clearfix"></div>
 
     <button type="button" class="btn btn-outline-primary my-3" (click)="send_data()">Отправить</button>
       {{this.sError}}
