@@ -34,7 +34,8 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
   unread = 0;
   sError = '';
   intResp = 1;
-
+  showVideo = false;
+  link_video = '';
 
   constructor(private cs: CommentService,
               private gr: GlobalRef,
@@ -51,6 +52,7 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
     this.commentlineForm.addControl('checkResume' + this.id_message, new FormControl(''));
     this.commentlineForm.addControl('summa' + this.id_message, new FormControl(''));
     this.commentlineForm.addControl('respResume' + this.id_message, new FormControl(''));
+    this.commentlineForm.addControl('link_video' + this.id_message, new FormControl(''));
     this.commentlineForm.controls['situation' + this.id_message].disable();
     this.commentlineForm.controls['data_situation' + this.id_message].disable();
     this.commentlineForm.controls['data_solution' + this.id_message].disable();
@@ -104,6 +106,9 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
 
   LoadDataFromBase(id_message) {
 
+    this.showVideo = false;
+    this.link_video = '';
+
     this.cs.getMessage(id_message).subscribe(value => {
 
       if (value[0]) {
@@ -144,7 +149,15 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
           this.intResp = 2;
         }
 
-        console.log('value[0].result_response', value[0].result_response);
+        if  (this.intInstruction === 1) {
+           console.log('value[0].link_video',  value[0].link_video);
+           if (value[0].link_video) {
+             this.showVideo = true;
+             this.link_video = value[0].link_video;
+           }
+
+        }
+
 
         this.loadImageFromBase(id_message);
       }
@@ -208,5 +221,11 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
     //
     this.router.navigate(['/comment-new'], { state: { 'numberOldZsr' : this.id_message}});
     //
+  }
+
+show_video() {
+
+    this.router.navigate(['/biblio_video'], {queryParams: {'link_video': this.link_video}} );
+
   }
 }

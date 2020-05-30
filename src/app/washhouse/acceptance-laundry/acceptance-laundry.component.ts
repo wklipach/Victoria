@@ -180,12 +180,12 @@ export class AcceptanceLaundryComponent implements OnInit {
       return;
     }
 
-/*
+
     if (!Check.checkValueMassa(this.acclaundform)) {
       this.sError = 'Вы не указали массу белья.';
       return;
    }
- */
+
 
     const res_user = this.authService.loginStorage();
     const id_branch = this.authService.getBranch(res_user.id_user_vict);

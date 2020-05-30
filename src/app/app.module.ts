@@ -68,6 +68,9 @@ import { BiblioNewComponent } from './washhouse/biblio-laundry/biblio-new/biblio
 import { PieComponent } from './washhouse/reports/pie/pie.component';
 import { PieLaundryComponent } from './washhouse/pie-laundry/pie-laundry.component';
 import { C3pieComponent } from './add-library/c3pie/c3pie.component';
+import {PlyrModule} from 'ngx-plyr';
+import { StellsYoutubeComponent } from './victoriacomp/stells-youtube/stells-youtube.component';
+import { BiblioVideoComponent } from './washhouse/biblio-laundry/biblio-video/biblio-video.component';
 
 registerLocaleData(localeRu);
 
@@ -105,6 +108,7 @@ const appRoutes: Routes = [
   {path: 'comment_laundry_last', component: CommentLaundryLastComponent},
   {path: 'biblio-laundry', component: BiblioLaundryComponent},
   {path: 'biblio-new', component: BiblioNewComponent},
+  {path: 'biblio_video', component: BiblioVideoComponent},
   {path: '**', component: NotFoundComponent }
 ];
 
@@ -163,7 +167,9 @@ const appRoutes: Routes = [
     BiblioNewComponent,
     PieComponent,
     PieLaundryComponent,
-    C3pieComponent
+    C3pieComponent,
+    StellsYoutubeComponent,
+    BiblioVideoComponent
   ],
   imports: [
     BrowserModule,
@@ -173,6 +179,7 @@ const appRoutes: Routes = [
     FullCalendarModule,
     CommonModule,
     NgxGalleryModule,
+    PlyrModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [ GlobalRef, AuthService, ForgotpasswordService, ExcelService, Check],

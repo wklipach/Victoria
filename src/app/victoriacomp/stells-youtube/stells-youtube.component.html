@@ -1,0 +1,8 @@
+<div *ngIf="strUrl!==''">
+        <plyr style="display: block; width: 640px;" plyrTitle="Video 1"
+              [plyrPlaysInline]="true"
+              [plyrSources]="videoSources"
+              (plyrInit)="player = $event"
+              (plyrPlay)="played($event)">
+        </plyr>
+</div>

@@ -102,7 +102,7 @@ export class CommentService {
   }
 
   setNewMessage(id_user_from, id_position_from, id_position_to, id_branch, situation, data_situation,
-                data_solution, summa, int_instruction, id_parent) {
+                data_solution, video_link, summa, int_instruction, id_parent) {
 
     const new_message = { 'insert_new_message': 'insert_new_message',
                           'id_user_from' : id_user_from,
@@ -112,6 +112,7 @@ export class CommentService {
                           'situation': situation,
                           'data_situation': data_situation,
                           'data_solution': data_solution,
+                          'video_link': video_link,
                           'summa': summa,
                           'int_instruction': int_instruction,
                           'id_parent': id_parent};

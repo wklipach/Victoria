@@ -274,6 +274,7 @@ export class CommentNewComponent implements OnInit {
                           this.commentnewForm.controls['situation'].value.toString().trim(),
                           this.commentnewForm.controls['data_situation'].value.toString().trim(),
                           this.commentnewForm.controls['data_solution'].value.toString().trim(),
+                          '',
                           this.commentnewForm.controls['summa'].value.toString().trim(),
                           0,
                            this.numberOldZsr).subscribe( value => {

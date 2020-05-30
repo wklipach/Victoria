@@ -75,7 +75,13 @@
 
 
 
-<div *ngIf="intInstruction == 0">
+      <div *ngIf = "this.showVideo" class="alert alert-secondary" role="alert">
+        <a (click)="show_video()" class="alert-link btn btn-link">смотреть обучающее видео</a>
+      </div>
+
+
+
+      <div *ngIf="intInstruction == 0">
 
   <div class="d-flex justify-content my-2 ">
         <span class="font-weight-bold pt-2 mr-5">Сумма, &#8381;</span>

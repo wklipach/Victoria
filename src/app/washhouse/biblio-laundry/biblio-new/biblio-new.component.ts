@@ -35,7 +35,8 @@ export class BiblioNewComponent implements OnInit {
       'textPosition': new FormControl(''),
       'data_situation': new FormControl(''),
       'data_solution': new FormControl(''),
-      'summa': new FormControl('')
+      'summa': new FormControl(''),
+      'video_link': new FormControl('')
       // 'checkInstructuion': new FormControl('')
     });
   }
@@ -208,6 +209,7 @@ export class BiblioNewComponent implements OnInit {
       this.biblionewForm.controls['situation'].value.toString().trim(),
       this.biblionewForm.controls['data_situation'].value.toString().trim(),
       this.biblionewForm.controls['data_solution'].value.toString().trim(),
+      this.biblionewForm.controls['video_link'].value.toString().trim(),
       0,
       1, -1).subscribe( value => {
 
