@@ -288,6 +288,28 @@
               </div>
             </div>
 
+
+            <div class="card mb-2">
+              <div class="card-body py-2">
+                <h5 class="card-title text-left">Халаты</h5>
+
+                <div class="d-flex justify-content-between">
+                  <span class="w-25"></span>
+
+                </div>
+                <div class="d-flex justify-content-between">
+                  <label class="w-25 mt-1 font-weight-bold">Халаты</label>
+                  <p class="alert-danger">{{getErrorAndText2('n20').e}}</p>
+                  <p class="badge badge-primary badge-pill mx-auto mt-1 pt-2">{{getErrorAndText2('n20').n}}&nbsp;</p>
+                  <p class="w-25"><input type="text" [class]="getClassName('n20')" formControlName="n20" placeholder="шт" id="name39" name="name39"></p>
+                  <p class="btn btn-outline-primary mx-1" title="Прибавить" (click)="globalOnClickPlus('n20')"><i class="fa fa-plus"></i></p>
+                  <p class="btn btn-outline-primary mr-1" title="Минус" (click)="globalOnClickMinus('n20')"><i class="fa fa-minus"></i></p>
+                </div>
+
+              </div>
+            </div>
+
+
             <div *ngIf="boolMassa">
             <div class="card mb-2 px-3">
               <div class="card-body pt-2 p-0">

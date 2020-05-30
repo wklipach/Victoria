@@ -48,6 +48,7 @@ export class AcceptanceLaundryComponent implements OnInit {
       'n17': new FormControl('', [Validators.required, this.flagValidator('n17')]),
       'n18': new FormControl('', [Validators.required, this.flagValidator('n18')]),
       'n19': new FormControl('', [Validators.required, this.flagValidator('n19')]),
+      'n20': new FormControl('', [Validators.required, this.flagValidator('n20')]),
       'n1_spoiled': new FormControl('', [Validators.required, this.flagValidator('n1_spoiled')]),
       'n2_spoiled': new FormControl('', [Validators.required, this.flagValidator('n2_spoiled')]),
       'n3_spoiled': new FormControl('', [Validators.required, this.flagValidator('n3_spoiled')]),
@@ -67,6 +68,7 @@ export class AcceptanceLaundryComponent implements OnInit {
       'n17_spoiled': new FormControl('', [Validators.required, this.flagValidator('n17_spoiled')]),
       'n18_spoiled': new FormControl('', [Validators.required, this.flagValidator('n18_spoiled')]),
       'n19_spoiled': new FormControl('', [Validators.required, this.flagValidator('n19_spoiled')]),
+      'n20_spoiled': new FormControl('', [Validators.required, this.flagValidator('n20_spoiled')]),
       'massa': new FormControl('', [Validators.required, this.flagValidator('massa')])
     });
 

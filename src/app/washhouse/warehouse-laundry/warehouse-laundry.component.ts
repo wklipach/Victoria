@@ -45,6 +45,7 @@ export class WarehouseLaundryComponent implements OnInit {
       'n17': new FormControl('', [Validators.required, Check.flagValidator('n17', this.arrayFlag)]),
       'n18': new FormControl('', [Validators.required, Check.flagValidator('n18', this.arrayFlag)]),
       'n19': new FormControl('', [Validators.required, Check.flagValidator('n19', this.arrayFlag)]),
+      'n20': new FormControl('', [Validators.required, Check.flagValidator('n20', this.arrayFlag)]),
       'massa': new FormControl('', [Validators.required, Check.massaValidator('massa')])
     });
 
