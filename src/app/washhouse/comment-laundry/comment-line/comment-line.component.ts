@@ -62,7 +62,7 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
       this.id_branch_vict = Res.id_branch_vict;
 
 
-     console.log('InputOutput', this.maslineShort.InputOutput);
+     // console.log('InputOutput', this.maslineShort.InputOutput);
      if (this.maslineShort.InputOutput === 0) {
         this.TextFromTo = 'Собеседник';
      } else {

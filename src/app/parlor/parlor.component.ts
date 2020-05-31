@@ -112,7 +112,8 @@ export class ParlorComponent implements OnInit {
 
       if (value[0].datebirth) {
         const birthDate = new Date(value[0].datebirth);
-        this.parlorForm.controls['inputBirth'].setValue(birthDate.toISOString().substring(0, 10));
+
+       this.parlorForm.controls['inputBirth'].setValue(birthDate.toISOString().substring(0, 10));
       }
 
 

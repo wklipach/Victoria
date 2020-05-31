@@ -36,23 +36,33 @@ export class CommentService {
   }
 
   getMessageUnreadCount(id_user, id_branch, date_begin, date_end) {
+
+    const tzoffset = (new Date()).getTimezoneOffset() * 60000; // offset in milliseconds
+    const date_begin_gmt = (new Date(date_begin - tzoffset)).toISOString().slice(0, -1);
+    const date_end_gmt = (new Date(date_end - tzoffset)).toISOString().slice(0, -1);
+
     const params = new HttpParams()
       .set('get_unread_count', 'get_unread_count')
       .set('id_user', id_user)
       .set('id_branch', id_branch)
-      .set('date_begin', date_begin.toISOString())
-      .set('date_end', date_end.toISOString());
+      .set('date_begin', date_begin_gmt)
+      .set('date_end', date_end_gmt);
     return this.http.get(this.gr.sUrlGlobal + 'comment', {params: params});
   }
 
   getMessageList(id_user, id_branch, id_position, date_begin, date_end) {
+
+    const tzoffset = (new Date()).getTimezoneOffset() * 60000; // offset in milliseconds
+    const date_begin_gmt = (new Date(date_begin - tzoffset)).toISOString().slice(0, -1);
+    const date_end_gmt = (new Date(date_end - tzoffset)).toISOString().slice(0, -1);
+
     const params = new HttpParams()
       .set('get_message_list', 'get_message_list')
       .set('id_user', id_user)
       .set('id_branch', id_branch)
       .set('id_position', id_position)
-      .set('date_begin', date_begin.toISOString())
-      .set('date_end', date_end.toISOString());
+      .set('date_begin', date_begin_gmt)
+      .set('date_end', date_end_gmt);
     return this.http.get(this.gr.sUrlGlobal + 'comment', {params: params});
   }
 

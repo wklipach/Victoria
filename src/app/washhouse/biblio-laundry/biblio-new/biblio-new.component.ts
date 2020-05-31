@@ -126,7 +126,7 @@ export class BiblioNewComponent implements OnInit {
         ext = parts.pop();
       }
       img.title = ext;
-      console.log(files[0].name, ext);
+     // console.log(files[0].name, ext);
       // img.height = 200;
       img.onload = function() {
 

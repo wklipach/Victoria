@@ -173,7 +173,7 @@ export class CommentNewComponent implements OnInit {
         ext = parts.pop();
       }
       img.title = ext;
-      console.log(files[0].name, ext);
+      // console.log(files[0].name, ext);
       // img.height = 200;
       img.onload = function() {
 
@@ -194,9 +194,9 @@ export class CommentNewComponent implements OnInit {
 
     for (let i = 1;  i <= this.indexImg; i++) {
       const image = <HTMLImageElement>document.getElementById('img' + i.toString());
-      console.log('image', image);
-      console.log('image.src', image.src);
-      console.log('image.title', image.title);
+     //  console.log('image', image);
+     // console.log('image.src', image.src);
+     // console.log('image.title', image.title);
       if (image !== undefined) {
         this.authService.updateImageMessageTable(image.src, image.title, id_message, i).subscribe(() => {
           this.loading = false;

@@ -30,7 +30,7 @@ export class AddworkLaundryLastComponent implements OnInit {
   }
 
   LoadInfo(id_user) {
-    console.log('загружаем данные');
+    // console.log('загружаем данные');
     this.ls.getLastAddWork(id_user, this.authService.getBranch(id_user)).subscribe( value => {
       if (value[0]) {
         this.alTitle = value[0];
