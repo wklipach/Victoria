@@ -1,24 +1,17 @@
 <app-header-menu></app-header-menu>
 <div class="row">
 
-<div class="col-2">
+<div class="col-2 p-0">
 <app-mainmenu [numberPage]="9"></app-mainmenu>
 </div>
 
-
-
-
 <div class="col-10">
-
-
 
   <h3 class="alert mt-3 d-flex justify-content-between" style="background-color: #eef1f2;">Инструкции<button
     type="button" class="btn btn-outline-primary" style="background-color: white; color:#797575;"
     (click)="createNewMessage()">Создать
   </button>
   </h3>
-
-
 
 
   <div class="text-muted" *ngFor="let mline of arrLine">
