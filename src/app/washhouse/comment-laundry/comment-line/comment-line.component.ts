@@ -14,7 +14,7 @@ declare var jQuery: any;
 export class CommentLineComponent implements OnInit, AfterViewInit {
 
   @Input() id_message = -1;
-  @Input() maslineShort = {sFrom: '', sDate: '', sSituationLittle: '', sSituationSumma: '', unread: 0, InputOutput: 0};
+  @Input() maslineShort = {sFrom: '', sDate: '', sSituationLittle: '', sSituationSumma: '', unread: 0, InputOutput: 0, apply: 0};
 
   @ViewChild('summaryPositionLine') public summaryPositionLine: ElementRef;
   @ViewChild('openButton') public openButton: ElementRef;
@@ -32,6 +32,7 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
   intResponseSucc = 0;
   sBranch = '';
   unread = 0;
+  apply = 0;
   sError = '';
   intResp = 1;
   showVideo = false;
@@ -72,6 +73,7 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
     this.sFrom = this.maslineShort.sFrom;
     this.sDate = this.maslineShort.sDate;
     this.unread = this.maslineShort.unread;
+    this.apply = this.maslineShort.apply;
 
     this.sSituationLittle = this.maslineShort.sSituationLittle;
     this.sSituationSumma = this.maslineShort.sSituationSumma;
@@ -226,6 +228,16 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
 show_video() {
 
     this.router.navigate(['/biblio_video'], {queryParams: {'link_video': this.link_video}} );
+
+  }
+
+  onClickApply() {
+
+   this.cs.setApplyMessage(this.id_message, this.id_user_vict).subscribe(value => {
+      // меняем цвет конверта на зеленый
+     this.apply = 1;
+
+   });
 
   }
 }

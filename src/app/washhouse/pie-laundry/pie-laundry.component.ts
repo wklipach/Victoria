@@ -193,14 +193,17 @@ export class PieLaundryComponent implements OnInit {
 
   pie_load(id_branch, date_begin, date_end, inttype) {
 
-    const tzoffset = (new Date()).getTimezoneOffset() * 60000; // offset in milliseconds
-    const date_begin_gmt = (new Date(date_begin - tzoffset)).toISOString().slice(0, -1);
-    const date_end_gmt = (new Date(date_end - tzoffset)).toISOString().slice(0, -1);
+    // const tzoffset = (new Date()).getTimezoneOffset() * 60000; // offset in milliseconds
+    // const date_begin_gmt = (new Date(date_begin - tzoffset)).toISOString().slice(0, -1);
+    // const date_end_gmt = (new Date(date_end - tzoffset)).toISOString().slice(0, -1);
+
+    const date_begin_iso = new Date(date_begin.getTime() - (date_begin.getTimezoneOffset() * 60000)).toISOString();
+    const date_end_iso = new Date(date_end.getTime() - (date_end.getTimezoneOffset() * 60000)).toISOString();
 
     const currentPie = [];
     const var_masColor = [];
 
-    this.rs.getSelectPie(id_branch, date_begin_gmt, date_end_gmt, inttype).subscribe(
+    this.rs.getSelectPie(id_branch, date_begin_iso, date_end_iso, inttype).subscribe(
       value => {
         if (value) {
           if (value[0]) {

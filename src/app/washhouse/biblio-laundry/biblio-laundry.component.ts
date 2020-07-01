@@ -48,7 +48,8 @@ export class BiblioLaundryComponent implements OnInit {
       value[0].forEach((elem, ih) => {
         const dPipe = new DatePipe('ru'), date_from = dPipe.transform(elem.date_from, 'dd.MM.yyyy   HH.mm');
         const n = arrLine.push({id: elem.id, sFrom: elem.position_name, sDate: date_from,
-          sSituationLittle: elem.little_situation, sSituationSumma: elem.summa, unread: elem.unread, InputOutput: elem.InputOutput});
+          sSituationLittle: elem.little_situation, sSituationSumma: elem.summa, unread: elem.unread,
+          InputOutput: elem.InputOutput, apply: elem.apply});
       });
 
       this.arrLine = arrLine;

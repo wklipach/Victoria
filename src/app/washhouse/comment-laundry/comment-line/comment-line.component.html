@@ -5,8 +5,10 @@
     <div class="d-flex justify-content-start my-2">
 
 
-      <span *ngIf="unread == 0" class="text-muted mr-3"> <i class="fa fa-envelope-open-o fa-lg" aria-hidden="true"></i> </span>
-      <span *ngIf="unread == 1" class="text-muted mr-3"> <i class="fa fa-envelope-open fa-lg" aria-hidden="true">   </i> </span>
+      <span *ngIf="unread == 0 && apply == 0" class="text-muted mr-3"> <i class="fa fa-envelope-open-o fa-lg" aria-hidden="true"></i> </span>
+      <span *ngIf="unread == 1 && apply == 0" class="text-muted mr-3"> <i class="fa fa-envelope-open fa-lg" aria-hidden="true">   </i> </span>
+      <span *ngIf="apply == 1" class="text-muted mr-3"> <i class=" fa fa-envelope-open-o fa-lg" style="color: #32CD32"></i> </span>
+
 
       <span class="text-muted mr-3">{{sDate}}</span>
       <span class="text-muted mr-3" style="width: 20%">{{sFrom}}</span>
@@ -81,6 +83,10 @@
 
 
 
+      <div *ngIf="intInstruction == 1 && apply == 0">
+         <button (click)="onClickApply()"  class="btn btn-outline-primary my-3 mx-3">Принять</button>
+      </div>
+
       <div *ngIf="intInstruction == 0">
 
   <div class="d-flex justify-content my-2 ">
@@ -107,8 +113,6 @@
 
   <button *ngIf="this.intResponseSucc == 0 && this.intInstruction == 0" (click)="onClickResume()"  class="btn btn-outline-primary my-3 mb-1">Отправить</button>
   <button *ngIf="this.intInstruction == 0" (click)="onClickRespose()"  class="btn btn-outline-primary my-3 mx-3">Переслать</button>
-
-
 
 </div>
 

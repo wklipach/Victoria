@@ -74,7 +74,8 @@ export class CommentLaundryComponent implements OnInit {
       value[0].forEach((elem, ih) => {
         const dPipe = new DatePipe('ru'), date_from = dPipe.transform(elem.date_from, 'dd.MM.yyyy   HH.mm');
         const n = arrLine.push({id: elem.id, sFrom: elem.position_name, sDate: date_from,
-          sSituationLittle: elem.little_situation, sSituationSumma: elem.summa, unread: elem.unread, InputOutput: elem.InputOutput});
+          sSituationLittle: elem.little_situation,
+          sSituationSumma: elem.summa, unread: elem.unread, InputOutput: elem.InputOutput, apply: 0});
       });
 
       this.arrLine = arrLine;
@@ -93,7 +94,7 @@ export class CommentLaundryComponent implements OnInit {
         const dPipe = new DatePipe('ru'), date_from = dPipe.transform(elem.date_from, 'dd.MM.yyyy   HH.mm');
         const n = arrLine.push({id: elem.id, sFrom: elem.position_name, sDate: date_from,
                   sSituationLittle: elem.little_situation, sSituationSumma: elem.summa, unread: elem.unread,
-                  InputOutput: elem.InputOutput});
+                  InputOutput: elem.InputOutput, apply: 0});
       });
 
       this.arrLine = arrLine;
