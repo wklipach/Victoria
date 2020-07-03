@@ -29,6 +29,7 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
   TextFromTo = 'Собеседник';
   sDate = '';
   intInstruction = 0;
+  placeholderSituation = 'Решение ситуации';
   intResponseSucc = 0;
   sBranch = '';
   unread = 0;
@@ -160,6 +161,12 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
 
         }
 
+
+        if  (this.intInstruction === 1) {
+         this.placeholderSituation = 'Наименование инструкции';
+        } else {
+          this.placeholderSituation = 'Решение ситуации';
+        }
 
         this.loadImageFromBase(id_message);
       }

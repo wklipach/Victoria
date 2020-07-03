@@ -59,7 +59,14 @@
       </div>
 
       <div>
-      <div class="font-weight-bold">Ситуация</div>
+        <div *ngIf="intInstruction !== 1">
+           <div class="font-weight-bold">Ситуация</div>
+        </div>
+
+        <div *ngIf="intInstruction == 1">
+          <div class="font-weight-bold">Пункт</div>
+        </div>
+
       <textarea formControlName="situation{{id_message}}" id="situation" class = "form-control" rows = "3" placeholder="Описание ситуации"></textarea>
       </div>
 
@@ -70,8 +77,17 @@
      </div>
 
       <div class="my-3">
-        <span class="pl-2 pt-2 font-weight-bold">Решение</span>
-        <input id="data_solution" formControlName="data_solution{{id_message}}" class = "form-control" rows = "3" placeholder="Решение ситуации">
+
+        <div *ngIf="intInstruction !== 1">
+          <span class="pl-2 pt-2 font-weight-bold">Решение</span>
+        </div>
+
+        <div *ngIf="intInstruction == 1">
+          <span class="pl-2 pt-2 font-weight-bold">Наименование инструкции</span>
+        </div>
+
+        <input id="data_solution" formControlName="data_solution{{id_message}}" class = "form-control" rows = "3" placeholder={{this.placeholderSituation}}>
+
       </div>
 
 
