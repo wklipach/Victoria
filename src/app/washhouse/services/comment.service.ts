@@ -161,4 +161,13 @@ export class CommentService {
     return this.http.post(this.gr.sUrlGlobal + 'comment', apply_message);
   }
 
+
+  setPostponeSolution (id_message, id_user) {
+    const postpon_message = { 'postpon_message': 'postpon_message',
+      'id_message': id_message,
+      'id_user': id_user
+    };
+    return this.http.post(this.gr.sUrlGlobal + 'comment', postpon_message);
+  }
+
 }

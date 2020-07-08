@@ -49,7 +49,8 @@ export class BiblioLaundryComponent implements OnInit {
         const dPipe = new DatePipe('ru'), date_from = dPipe.transform(elem.date_from, 'dd.MM.yyyy   HH.mm');
         const n = arrLine.push({id: elem.id, sFrom: elem.position_name, sDate: date_from,
           sSituationLittle: elem.little_situation, sSituationSumma: elem.summa, unread: elem.unread,
-          InputOutput: elem.InputOutput, apply: elem.apply});
+          InputOutput: elem.InputOutput, apply: elem.apply,
+          intPostponeSolution: 0, result_response: elem.result_response});
       });
 
       this.arrLine = arrLine;

@@ -14,7 +14,8 @@ declare var jQuery: any;
 export class CommentLineComponent implements OnInit, AfterViewInit {
 
   @Input() id_message = -1;
-  @Input() maslineShort = {sFrom: '', sDate: '', sSituationLittle: '', sSituationSumma: '', unread: 0, InputOutput: 0, apply: 0};
+  @Input() maslineShort = {sFrom: '', sDate: '', sSituationLittle: '', sSituationSumma: '', unread: 0,
+                           InputOutput: 0, apply: 0, intPostponeSolution: 0, result_response: 0};
 
   @ViewChild('summaryPositionLine') public summaryPositionLine: ElementRef;
   @ViewChild('openButton') public openButton: ElementRef;
@@ -34,6 +35,8 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
   sBranch = '';
   unread = 0;
   apply = 0;
+  intPostponeSolution = 0;
+  result_response = 0;
   sError = '';
   intResp = 1;
   showVideo = false;
@@ -75,10 +78,13 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
     this.sDate = this.maslineShort.sDate;
     this.unread = this.maslineShort.unread;
     this.apply = this.maslineShort.apply;
+    this.intPostponeSolution = this.maslineShort.intPostponeSolution;
 
     this.sSituationLittle = this.maslineShort.sSituationLittle;
     this.sSituationSumma = this.maslineShort.sSituationSumma;
+    this.result_response = this.maslineShort.result_response;
   }
+
 
   ngAfterViewInit() {
     // подменяем имена чтобы раскладушка и кнопка работала только со своей строкой
@@ -135,6 +141,7 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
           this.commentlineForm.controls['checkResume' + this.id_message].enable();
           this.commentlineForm.controls['summa' + this.id_message].enable();
           this.commentlineForm.controls['respResume' + this.id_message].enable();
+          this.result_response = 0;
         }
 
         if (value[0].result_response.toString() === '1') {
@@ -142,6 +149,7 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
           this.commentlineForm.controls['checkResume' + this.id_message].disable();
           this.commentlineForm.controls['summa' + this.id_message].disable();
           this.commentlineForm.controls['respResume' + this.id_message].disable();
+          this.result_response = 1;
         }
 
         if (value[0].result_response.toString() === '2') {
@@ -150,6 +158,7 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
           this.commentlineForm.controls['summa' + this.id_message].disable();
           this.commentlineForm.controls['respResume' + this.id_message].disable();
           this.intResp = 2;
+          this.result_response = 2;
         }
 
         if  (this.intInstruction === 1) {
@@ -205,6 +214,7 @@ export class CommentLineComponent implements OnInit, AfterViewInit {
 
     const summa =  this.commentlineForm.controls['summa' + this.id_message].value.toString().trim();
     const intResp = this.commentlineForm.controls['checkResume' + this.id_message].value;
+    this.result_response = intResp;
 
     if  (this.commentlineForm.controls['respResume' + this.id_message].value === undefined) {
       console.log('undefined');
@@ -245,6 +255,15 @@ show_video() {
      this.apply = 1;
 
    });
+
+  }
+
+  onClickPostponeSolution() {
+    // onClickPostponeSolution()
+    this.cs.setPostponeSolution(this.id_message, this.id_user_vict).subscribe(value => {
+      // меняем цвет конверта на желтый
+      this.intPostponeSolution = 1;
+    });
 
   }
 }

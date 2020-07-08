@@ -4,10 +4,10 @@
   <div class="card my-2 p-2">
     <div class="d-flex justify-content-start my-2">
 
-
       <span *ngIf="unread == 0 && apply == 0" class="text-muted mr-3"> <i class="fa fa-envelope-open-o fa-lg" aria-hidden="true"></i> </span>
       <span *ngIf="unread == 1 && apply == 0" class="text-muted mr-3"> <i class="fa fa-envelope-open fa-lg" aria-hidden="true">   </i> </span>
       <span *ngIf="apply == 1" class="text-muted mr-3"> <i class=" fa fa-envelope-open-o fa-lg" style="color: #32CD32"></i> </span>
+      <span *ngIf="result_response == 0 && intPostponeSolution == 1" class="text-muted mr-3"> <i class=" fa fa-envelope-open-o fa-lg" style="color: #ffb948"></i> </span>
 
 
       <span class="text-muted mr-3">{{sDate}}</span>
@@ -116,6 +116,7 @@
             <input  class="custom-control-input"(change)="ocClickResumeCheck()" id="resume_1{{id_message}}" type="radio" formControlName="checkResume{{id_message}}" value="1">
             <label class="custom-control-label font-weight-bold text-muted" for="resume_1{{id_message}}">Принять</label>
          </div>
+
          <div class="custom-control custom-radio">
             <input class="custom-control-input" (change)="ocClickResumeCheck()" id="resume_2{{id_message}}" type="radio"  formControlName="checkResume{{id_message}}" value="2">
             <label class="custom-control-label font-weight-bold text-muted" for="resume_2{{id_message}}">Отказ</label>
@@ -129,6 +130,8 @@
 
   <button *ngIf="this.intResponseSucc == 0 && this.intInstruction == 0" (click)="onClickResume()"  class="btn btn-outline-primary my-3 mb-1">Отправить</button>
   <button *ngIf="this.intInstruction == 0" (click)="onClickRespose()"  class="btn btn-outline-primary my-3 mx-3">Переслать</button>
+
+  <button *ngIf="this.intInstruction == 0 && intPostponeSolution == 0" (click)="onClickPostponeSolution()"  class="btn btn-outline-primary my-3 mx-3">Отложить</button>
 
 </div>
 
