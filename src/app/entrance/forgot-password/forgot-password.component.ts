@@ -73,9 +73,9 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
           this.showErr = false;
           this.showErrMany = false;
           const newpwd =  this.randomPass(12, true, '', true);
-          console.log('newpwd', newpwd);
 
           const hash = CryptoJS.SHA256(newpwd.trim().toLowerCase()).toString().toLowerCase();
+          // console.log('newpwd', newpwd, 'hash', hash);
           const email = value[0][0].email;
 
           if (!email) {

@@ -44,14 +44,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
- //   const Res =  this.authService.loginStorage();
-//    console.log('a1', Res);
-//    this.bConnected = Res.bVictConnected;
-//    if (this.bConnected) {
-//      this.router.navigate(['/']);
-// 6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918 - это 12
-//    const encrypted = CryptoJS.SHA256('12');
-//    console.log('encrypted', encrypted.toString());
 
   }
 
@@ -125,7 +117,13 @@ export class LoginComponent implements OnInit, OnDestroy {
 
           this.editor = value[0][0].editor;
           const dbPassword = value[0][0].password;
-          const sFormPassword = CryptoJS.SHA256(this.loginForm.controls['password'].value).toString();
+          //console.log('dbPassword=', dbPassword);
+          //const sFormPassword = CryptoJS.SHA256(this.loginForm.controls['password'].value).toString();
+
+          const sFormPassword = CryptoJS.SHA256(this.loginForm.controls['password'].value.trim().toLowerCase()).toString().toLowerCase();
+
+
+          console.log('sFormPassword', sFormPassword);
           if (dbPassword !== sFormPassword) {
             this.showErr = true;
             this.showSucc = false;
